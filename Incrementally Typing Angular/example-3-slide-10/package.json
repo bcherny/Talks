@@ -1,0 +1,23 @@
+{
+  "name": "example-1-slide-6",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Boris Cherny <boris@performancejs.com> (https://performancejs.com)",
+  "license": "MIT",
+  "devDependencies": {
+    "tslint": "^4.5.1",
+    "typescript": "^2.2.1"
+  },
+  "dependencies": {
+    "@types/angular": "^1.6.9",
+    "@types/react": "^15.0.16",
+    "@types/react-dom": "^0.14.23",
+    "angular": "^1.6.3",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2"
+  }
+}
