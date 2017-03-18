@@ -14,6 +14,12 @@
   },
   "dependencies": {
     "@types/angular": "^1.6.9",
-    "angular": "^1.6.3"
+    "@types/react": "^15.0.16",
+    "angular": "^1.6.3",
+    "angular2react": "^1.0.1",
+    "ngcomponent": "^2.0.3",
+    "ngimport": "^0.6.0",
+    "react": "^15.4.2",
+    "react2angular": "^1.1.0"
   }
 }

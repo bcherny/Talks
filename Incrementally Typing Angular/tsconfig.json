@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "allowJs": true,
     "allowSyntheticDefaultImports": true,
     "declaration": false,
     "forceConsistentCasingInFileNames": true,
@@ -14,13 +15,14 @@
     "noImplicitAny": false,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
+    "outDir": "dist",
     "preserveConstEnums": true,
     "pretty": true,
     "sourceMap": true,
-    "strictNullChecks": true,
+    "strictNullChecks": false,
     "target": "es6"
   },
-  "files": [
-    "after.ts"
+  "include": [
+    "src"
   ]
 }
