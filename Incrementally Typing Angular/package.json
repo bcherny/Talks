@@ -20,6 +20,7 @@
     "ngcomponent": "^2.0.3",
     "ngimport": "^0.6.0",
     "react": "^15.4.2",
-    "react2angular": "^1.1.0"
+    "react2angular": "^1.1.0",
+    "typed-rx-emitter": "^0.2.2"
   }
 }

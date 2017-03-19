@@ -1,3 +1,7 @@
+//////////////////////////////////////////////////////////////////////////
+// Calendar
+//////////////////////////////////////////////////////////////////////////
+
 import React, { Component } from 'react'
 import { $http } from 'ngimport'
 
@@ -6,10 +10,8 @@ type Props = {
   month: number
   year: number
 }
-
-type State = {
-  events: Array<{ name: string }>
-}
+type State = { events: Events }
+type Events = Array<{ name: string }>
 
 export class Calendar extends Component<Props, State> {
   render() {
@@ -22,14 +24,19 @@ export class Calendar extends Component<Props, State> {
   }
   constructor() {
     super()
-    this.fetchEvents()
+    this.setState({ events: this.fetchEvents() })
   }
   fetchEvents() {
     const { day, month, year } = this.props
-    $http.get<any>('/api/events', { params: { day, month, year }})
-      .then(events => this.setState({ events: events.data }))
+    return $http.get<Events>('/api/events', { params: { day, month, yer }})
+      .then(events => events.data)
   }
 }
+
+
+//////////////////////////////////////////////////////////////////////////
+// App
+//////////////////////////////////////////////////////////////////////////
 
 export const App = () =>
   <Calendar date={3} month={4} year={5} />
