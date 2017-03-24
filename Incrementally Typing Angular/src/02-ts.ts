@@ -2,7 +2,7 @@
 // Calendar
 //////////////////////////////////////////////////////////////////////////
 
-import { module, IHttpService } from 'angular'
+import { IHttpService, module } from 'angular'
 
 type Events = Array<{ name: string }>
 
@@ -33,7 +33,6 @@ module('myModule').component('calendar', {
     }
   }
 })
-
 
 //////////////////////////////////////////////////////////////////////////
 // App

@@ -1,5 +1,10 @@
 import { EventEmitter2 } from 'eventEmitter2'
 
+
+
+
+
+
 const emitter = new EventEmitter2
 
 emitter.on('foo', args => { /* ... */ })

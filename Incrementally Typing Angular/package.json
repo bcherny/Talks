@@ -10,6 +10,7 @@
   "license": "MIT",
   "devDependencies": {
     "tslint": "^4.5.1",
+    "tslint-no-circular-imports": "^0.1.0",
     "typescript": "^2.2.1"
   },
   "dependencies": {

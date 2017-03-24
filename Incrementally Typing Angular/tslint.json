@@ -1,4 +1,5 @@
 {
+  "extends": ["tslint-no-circular-imports"],
   "rules": {
     "class-name": true,
     "comment-format": [true, "check-space"],
@@ -20,7 +21,7 @@
     "no-trailing-whitespace": true,
     "no-unused-expression": true,
     "no-unused-new": true,
-    "no-unused-variable": true,
+    "no-unused-variable": [true, "react"],
     "no-var-keyword": true,
     "object-literal-key-quotes": [true, "as-needed"],
     "object-literal-shorthand": true,
