@@ -2,8 +2,8 @@
 // Calendar
 //////////////////////////////////////////////////////////////////////////
 
-import React, { Component } from 'react'
 import { $http } from 'ngimport'
+import React, { Component } from 'react'
 
 type Props = {
   day: number
@@ -32,7 +32,6 @@ export class Calendar extends Component<Props, State> {
       .then(events => events.data)
   }
 }
-
 
 //////////////////////////////////////////////////////////////////////////
 // App

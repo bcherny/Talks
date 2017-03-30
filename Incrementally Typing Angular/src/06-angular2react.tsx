@@ -2,8 +2,8 @@
 // Calendar
 //////////////////////////////////////////////////////////////////////////
 
-import React, { Component } from 'react'
 import { $http } from 'ngimport'
+import React, { Component } from 'react'
 
 type Props = {
   day: number
@@ -33,12 +33,9 @@ export class Calendar extends Component<Props, State> {
   }
 }
 
-
 //////////////////////////////////////////////////////////////////////////
 // MonthPicker
 //////////////////////////////////////////////////////////////////////////
-
-import { angular2react } from 'angular2react'
 
 type MonthPickerProps = {
   month: number
@@ -53,8 +50,8 @@ export const MonthPickerComponent = {
   template: `(TODO: month picker here)`
 }
 
+import { angular2react } from 'angular2react'
 const MonthPicker = angular2react<MonthPickerProps>('monthPicker', MonthPickerComponent)
-
 
 //////////////////////////////////////////////////////////////////////////
 // App

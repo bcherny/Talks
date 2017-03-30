@@ -1,6 +1,6 @@
 import { module } from 'angular'
 import { react2angular } from 'react2angular'
-import { App, Calendar, MonthPickerComponent } from './6-angular2react'
+import { App, Calendar, MonthPickerComponent } from './06-angular2react'
 
 module('myModule', [])
   .component('monthPicker', MonthPickerComponent)
