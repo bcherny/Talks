@@ -52,14 +52,14 @@ let sum4 = a => b => c => d =>
 sum4(1)(2)(3)(4) // 10
 ```
 
-What if we want to sum any number of numbers, rather than a fixed number?
+What if we want to sum **any** number of numbers, rather than a fixed number (2, 3, 4, etc.)?
 
 ```js
 let tail = _ => _.slice(1)
-let sum = (...xs) => {
+let sum = (...xs) => {                       // equivalent to `let xs = Array.prototype.slice(arguments)`
   switch (xs.length) {
     case 0: return 0
-    default: return xs[0] + sum(...tail(xs))
+    default: return xs[0] + sum(...tail(xs)) // eg. if xs is [1, 2] then this will be sum(1, 2)
   }
 }
 sum(1, 2, 3)      // 6
