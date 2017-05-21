@@ -20,7 +20,7 @@ How about this - in what order are the `console.log`s called?
 
 Right: 3, then 1, then 2.
 
-So you remember how programs are executed from top to bottom, until every line of code that should logically be evaluated is? How is it that JavaScript knows to go back and run lines 1 and 2, even after 3 has run and the program has finished executing?
+Remember how programs are executed from top to bottom, until every line of code that should logically be evaluated is? How is it that JavaScript knows to go back and run lines 1 and 2, even after 3 has run and the program has finished executing?
 
 Right: Because it isn't actually done executing! Remember the call stack? Well, though almost every programming language has a call stack, JavaScript is one of a few languages that has an *additional* something called the *event queue*.
 

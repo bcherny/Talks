@@ -33,3 +33,7 @@ new Set([1, 2, 3])
 let y = x^2
 let z = m * x + b
 ```
+
+## Scope
+
+### Variable resolution
