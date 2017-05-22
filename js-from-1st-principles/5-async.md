@@ -32,9 +32,11 @@ How it works is this: JavaScript environments provide some asynchronous APIs. He
 |  TODO             | `fs.write`          | `setTimeout`      |
 |  TODO             | `http.get`          | `Promise.resolve` |
 
-When one of these asynchronous functions gets called:
+
+
+<!--When one of these asynchronous functions gets called:
 
 1. The function's synchronous code runs
 2. The function's asynchronous code runs
 3. When the async code is done (with its HTTP fetch, read from disk, or whatever), it generates an event and adds it to JavaScript's event queue.
-4. When JavaScript is done running all of the program's synchronous code, it checks the event queue if there are any pending events. It sees the event generated in step 3, and fires the callback passed to the async function.
+4. When JavaScript is done running all of the program's synchronous code, it checks the event queue if there are any pending events. It sees the event generated in step 3, and fires the callback passed to the async function.-->
