@@ -203,6 +203,8 @@ This reuse is important for a number of reasons:
 2. Repetitive code is hard to read - TODO
 3. Repetitive code leads to longer development times - TODO
 
+TODO: list native equivalents of reduce, map, etc
+
 -------------
 
 [1]
