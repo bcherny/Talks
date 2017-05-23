@@ -15,23 +15,25 @@ Once you write a text file containing your program, you:
 
 In a lot of languages (C++, Java, Scala, etc.) the compile and run steps are two separate commands, but in JavaScript you compile and run your program in a single step.
 
-## Setting up your text editor
+## Setting up your environment
 
-TODO
+Let's get your environment set up so we can start writing some code.
 
-## The command line
+### Installing a text editor
 
-TODO
+1. Download and install VSCode from [here](TODO)
 
-## Setting up NodeJS
+### Installing NodeJS
 
-TODO
+1. Open your terminal (Terminal on OSX, or `cmd` on Windows)
+2. Install NVM by following the instructions [here](TODO)
+3. Use NVM to install Node 6.9.5 (`nvm install v6.9.5`)
 
 ## Your first program
 
 Let's write the world's simplest program:
 
-1. Open up your text editor (Notepad, TextEdit, etc.)
+1. Open up VSCode
 2. Create a new file
 3. Save that empty file as hello.js. You can save it anywhere you want - Desktop or Documents are a good option.
 
@@ -39,7 +41,7 @@ Congratulations! You just wrote your first JavaScript program (well, it doesn't 
 
 To run it:
 
-1. Open your favorite terminal
+1. Open your terminal
 2. `cd` into the directory where you saved your file (Desktop, etc.)
 3. Run it with `node ./hello.js`
 
