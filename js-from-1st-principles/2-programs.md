@@ -35,7 +35,7 @@ Let's write the world's simplest program:
 
 1. Open up VSCode
 2. Create a new file
-3. Save that empty file as hello.js. You can save it anywhere you want - Desktop or Documents are a good option.
+3. Save that empty file as *hello.js*. You can save it anywhere you want - Desktop or Documents are a good option.
 
 Congratulations! You just wrote your first JavaScript program (well, it doesn't do much, but it's still a program!).
 
@@ -49,7 +49,7 @@ To run it:
 
 Ok, let's edit our program so it does something:
 
-1. Open hello.js in your text editor
+1. Open *hello.js* in your text editor
 2. Type `console.log(1 + 2)`
 3. Save the file
 4. Run it with `node ./hello.js`
@@ -90,17 +90,78 @@ This evaluates to `7`, so the runtime continues once more:
 
 This evaluates to `11`. Since the runtime has reached the end of the program, it exits.
 
-But what happens when your code is more complicated than that?
-
-
-
 In general, the JavaScript runtime will:
 
 - Evaluate your program one line at a time
 - Starting from the first line
 - Until it hits the last reachable line
 
-We can understand this more deeply if we look at a more complicated example:
+We can understand this more deeply if we look at a more complicated example. But first, we'll take a small detour.
+
+## Functions
+
+Here's how we define functions:
+
+```js
+let f = x => x + 1
+```
+
+Some syntax & terminology:
+
+- `let` declares a new *variable* (in this case, we're assigning a *function* to our variable)
+- The thing to the left of the `=>` (in this case, `x`) is the function's *parameter* (also called (*argument*[1])
+- The stuff to the right of the `=>` (in this case, `x + 1`) is the function's *body*
+
+In general, when you see a `=>` in JavaScript, you know you're looking at a function definition.
+
+How about this?
+
+```js
+let g = () => 'hello'
+```
+
+`g` is a function that takes no parameters, and returns the string `'hello'`.
+
+Ok, so we can define functions. How do we evaluate them with specific arguments?
+
+```js
+let h = x => x * 2
+h(3) // 6
+```
+
+- `h` is a function that takes a number `x` and returns that number multiplied by `2`
+- We are *calling* (or, *invoking*) `h` with the argument `3`
+- `h(3)` evaluates to `6`
+- `//` followed by some text is a *comment* in JavaScript, and is just there for the reader's benefit
+
+What about a function that has 2 parameters [2]? Ok, no problem:
+
+```js
+let i = x => y => x + y
+```
+
+- `i` is a function that takes a parameter `x`, and returns another function
+- The function returned by `i` has no name, so we call it an *anonymous function*
+- The function returned by `i` takes a parameter `y`, and returns `y` plus the `x` that was passed into `i`
+
+How do we call `i`?
+
+Easy:
+
+```js
+i(2)(3) // 5
+```
+
+We can also break this out into 2 steps, and assign our intermediate result to a variable:
+
+```js
+let a = i(2)
+a(3) // 5
+```
+
+**Exercise**: Implement the function `y = m * x + b`, and call it with `m`=`2`, `x`=`3`, and `b`=`4`.
+
+Ok, so far so good. Let's move on to some more complicated programs.
 
 ## Your third program
 
@@ -113,7 +174,7 @@ let h = z => g(z) > 3
 h(2)
 ```
 
-What will `h(2)` evaluate to?
+**Exercise**: What will `h(2)` evaluate to?
 
 If it helps, you can substitue in values one step at a time, like you did in algebra class (ie. replace each instance of a variable's *usage* with its *definition*):
 
@@ -155,9 +216,7 @@ let f = x => x * 2
 true
 ```
 
-That is pretty close to how your favorite JS runtime would have evaluated that program [1].
-
-**Technical note**: This kind of evaluation by substitution is called the [*Substitution Model*](https://en.wikipedia.org/wiki/Lambda_calculus#Substitution), just like in math. JavaScript uses an *Environment Model*, which is like a Substitution Model, but also supports mutable variables (more on that later).
+That is pretty close to how your favorite JS runtime would have evaluated that program [4].
 
 Let's look at another example:
 
@@ -416,7 +475,7 @@ It's probably not. In some cases, substitution is not a good enough mental model
 
 Substitution only revealed (1) to us, but we had to intuit (2) ourselves by reading through the code and knowing ahead of time that `console.log` is impure.
 
-Let's avoid getting into the weeds of side effects, but the take home lesson is that if your function has side effects, it makes its behavior hard to reason about. Better managing side effects is an active area of programming language research, and has led to some seriously cool ideas [0].
+Let's avoid getting into the weeds of side effects, but the take home lesson is that if your function has side effects, it makes its behavior hard to reason about. Better managing side effects is an active area of programming language research, and has led to some seriously cool ideas [3].
 
 Later on we'll talk about some ways to get rid of side effects, and some ways to better organize them.
 
@@ -473,7 +532,7 @@ Also notice how each function has access not just to the variables defined in it
 
 > **Scope hierarchy**: The list of scopes leading from a given function to the global scope. Think of it as the "breadcrumbs" leading from the root to a function's body. TODO: Improve this definition
 
-In other words, JavaScript looks up (or, *resolves*) variables inside-out. Ie. if a given variable is defined in the local scope, that definition will be used. Otherwise, JS traverses out one scope at a time, until it gets to the global scope; if one of these scopes defines the variable in question, that definition will be used; otherwise, the variable will resolve to `undefined`[2].
+In other words, JavaScript looks up (or, *resolves*) variables inside-out. Ie. if a given variable is defined in the local scope, that definition will be used. Otherwise, JS traverses out one scope at a time, until it gets to the global scope; if one of these scopes defines the variable in question, that definition will be used; otherwise, the variable will resolve to `undefined`[5].
 
 In pseudocode the algorithm looks like this:
 
@@ -528,16 +587,22 @@ Let's walk through how variables in this program are resolved:
 - `y` is consumed on line 3. It's *not* defined in the scope `Scope B`, so JS traverses out one scope at a time, to `Scope A`. `y` is defined in `Scope A`, so JS returns the current value of the variable `y` (in this case, `2`).
 - `z` is consumed on line 3. It's defined in the same scope that it's consumed in (`Scope B`).
 
-**Exercise**: What does `y` resolve to if we consume it in `Scope G`? [3]
+**Exercise**: What does `y` resolve to if we consume it in `Scope G`? [6]
 
-[0] In no particular order, see:
+-------------
+
+[1] There is a technical difference: *parameters* are not yet bound to values, and is what we call them when they show up in function definitions. *Arguments* are bound to specific values, and are what we call them when they show up in function invokations.
+
+[2] If you've programmed before, you'll notice that we're focusing on *unary* (or, 1-parameter) functions. Don't worry, that's on purpose.
+
+[3] In no particular order, see:
 
 - How Rust treats [memory allocation as a side effect]()
 - How Haskell uses [monads]() to manage side effects
 - How Scala uses [Effect Systems]() to encode side effects in the type system
 
-[1] Note that modern JS engines heavily optimize programs with JIT optimizers (eg. see Chrome/NodeJS/Opera's [A](), Firefox's [B](), or IE's [TODO]()).
+[4] This kind of evaluation by substitution is called the [*Substitution Model*](https://en.wikipedia.org/wiki/Lambda_calculus#Substitution), just like in math. JavaScript uses an *Environment Model*, which is like a Substitution Model, but also supports mutable variables (more on that later). Also note that modern JS engines heavily optimize programs with JIT optimizers (eg. see Chrome/NodeJS/Opera's [A](), Firefox's [B](), or IE's [TODO]()), so execution might not follow those steps exactly.
 
-[2] This algorithm for inside-out traversal is called *lexical scoping*. Alternative algorithms also exist. For a good intro, see [Appendix A](https://github.com/getify/You-Dont-Know-JS/blob/6109cfe/scope%20%26%20closures/apA.md) of Simpson's You Don't Know JS.
+[5] This algorithm for inside-out traversal is called *lexical scoping*. Alternative algorithms also exist. For a good intro, see [Appendix A](https://github.com/getify/You-Dont-Know-JS/blob/6109cfe/scope%20%26%20closures/apA.md) of Simpson's You Don't Know JS.
 
-[3] `undefined`, because it is defined in `Scope A`. Inner scopes have access to their outer scopes, but outer scopes do not have access to their inner scopes.
+[6] `undefined`, because it is defined in `Scope A`. Inner scopes have access to their outer scopes, but outer scopes do not have access to their inner scopes.
