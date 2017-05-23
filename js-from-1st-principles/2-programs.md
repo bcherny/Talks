@@ -2,16 +2,18 @@
 
 Let's start simple: What is a computer program?
 
-Right: Computer programs are files that contain text. There is nothing special about these files: you can create and edit them in Notepad (or TextEdit if you use a Mac), Microsoft Word, or any other text editing program. More commonly, people use text editors that are made specifically for editing source code. They have nice features like tabbed interfaces, highlighting text in a way that makes it easy to skim, etc.
+Right: Computer programs are files that contain text.
 
-By convention, be sure to give the text file that contains your program a file extension indicating the programming language it uses. For example, programs written in Haskell have the extension `.hs`, HTML uses `.html`, and Java uses `.java`. JavaScript uses `.js`. You might see some other variants of these (`.htm` for HTML, or `.es6` for JavaScript), but it's good style to stick to the canonical file extension for your given language. For JavaScript, that means sticking to `.js`.
+There is nothing special about these files: you can create and edit them in Notepad (or TextEdit if you use a Mac), Microsoft Word, or any other text editing program. More commonly, people use text editors that are made specifically for editing programs. They have nice features like tabbed interfaces, highlighting text in a way that makes it easy to skim, etc.
+
+By convention, we give text files that contain programs file extensions indicating the programming language they use. For example, programs written in Haskell have the extension `.hs`, HTML uses `.html`, and Java uses `.java`. JavaScript uses `.js`. You might see some other variants of these (`.htm` for HTML, or `.es6` for JavaScript), but it's good style to stick to the canonical file extension for your given language. For JavaScript, that means sticking to `.js`.
 
 Once you write a text file containing your program, you:
 
 1. First use a *compiler* (itself a program!) to *compile* your program
-2. Then use a *runtime* (another program) to *evalutate* (or, *run*) your program
+2. Then use a *runtime* (another program!) to *evalutate* (or, *run*) your program
 
-In a lot of languages the compile and run steps are two separate commands (eg. C++, Java, Scala), but in JavaScript you run one command to both compile and run your program in a single step.
+In a lot of languages (C++, Java, Scala, etc.) the compile and run steps are two separate commands, but in JavaScript you compile and run your program in a single step.
 
 ## Setting up your text editor
 
@@ -78,7 +80,7 @@ This evaluates to `3`, so the runtime continues:
 3 + 4
 ```
 
-This evaluates to `7`, so again the runtime continues:
+This evaluates to `7`, so the runtime continues once more:
 
 ```js
 5 + 6
@@ -111,7 +113,7 @@ h(2)
 
 What will `h(2)` evaluate to?
 
-If it helps, you can substitue in values one step at a time, like you did in algebra class:
+If it helps, you can substitue in values one step at a time, like you did in algebra class (ie. replace each instance of a variable's *usage* with its *definition*):
 
 ```js
 // Step 1 - Substitute in h
@@ -126,23 +128,34 @@ let f = x => x * 2
 // Step 3 - Substitute in f
 (z => (y => (x => x * 2)(y) + 1)(z) > 3)(2)
 
-// Step 4 - Evaluate h(), binding z <- 2
+// Step 4 - Bind z <- 2
+(() => (y => (x => x * 2)(y) + 1)(2) > 3)()
+
+// Step 5 - Reduce
 (y => (x => x * 2)(y) + 1)(2) > 3
 
-// Step 5 - Evaluate g(), binding y <- 2
-(x => x * 2)(2) + 1 > 3
-
-// Step 6 - Evaluate g(), binding x <- 2
-(2 * 2) + 1 > 3
+// Step 6 - Bind y <- 2
+(() => (x => x * 2)(2) + 1)() > 3
 
 // Step 7 - Reduce
+(x => x * 2)(2) + 1 > 3
+
+// Step 8 - Bind x <- 2
+(() => 2 * 2)() + 1 > 3
+
+// Step 9 - Reduce
+2 * 2 + 1 > 3
+
+// Step 10 - Reduce
 5 > 3
 
-// Step 8 - Reduce
+// Step 11 - Reduce
 true
 ```
 
-That is pretty close to how your favorite JS runtime would have evaluated that program. If you care, this process is called *substitution*, just like in math. TODO: confirm
+That is pretty close to how your favorite JS runtime would have evaluated that program [1].
+
+**Technical note**: This kind of evaluation by substitution is called the [*Substitution Model*](https://en.wikipedia.org/wiki/Lambda_calculus#Substitution), just like in math. JavaScript uses an *Environment Model*, which is like a Substitution Model, but also supports mutable variables (more on that later).
 
 Let's look at another example:
 
@@ -308,7 +321,11 @@ fib(1) + fib(0) + 1 + 1 + 0
 3
 ```
 
-Hard: Some of you may have noticed that we repeated some computations multiple times:
+We can also visualize the call tree:
+
+![](illustrations/2-Fib.svg)
+
+**Exercise (hard)**: Some of you may have noticed that we repeated some computations multiple times:
 
 - `fib(2)` - 2 times
 - `fib(1)` - 3 times
@@ -316,15 +333,15 @@ Hard: Some of you may have noticed that we repeated some computations multiple t
 
 Can you figure out a way to improve on that, so that `fib` is called at most once with any given value? Hint: Find a way to save the return value the first time `fib` is called with each input, and return it (rather than recomputing) on subsequent calls. Second hint: Look up *memoization*.
 
-TODO: Illustrate this with `fib`'s call tree?
-
 ------------------------
 
 ## Purity
 
-This is by far the easiest type of function to work with. The thing that makes it so easy to reason about is that it is *pure*.
+The above `fib` function is by far the easiest type of function to work with. The thing that makes it so easy to reason about is that it is *pure*.
 
-> *Purity*: A function is considered *pure* if its output depends only on its inputs.
+> **Purity**: A function is *pure* if its output depends only on its input.
+
+In the real world, you will encounter a lot of code that is not pure. That's because in JS, purity is not enforced (in some languages it is - eg. Haskell, OCaml, or Scala).
 
 Impure functions can be a lot harder to reason about. For example, here is a function whose output depends not just on its inputs, but also on a global state:
 
@@ -342,9 +359,9 @@ fn(3) // 3
 fn(3) // 6
 ```
 
-The first time you call `fn(3)` it gives `3`, but subsequent calls will give `6`! As an engineer looking at this code, it's not at all obvious why `fn` returns different things even though you call it with the same argument. And if you try to apply the substitution model you used above to reason through it, it won't work quite as expected!
+The first time you call `fn(3)` it gives `3`, but subsequent calls will give `6`! As an engineer looking at this code, it's not obvious why `fn` returns different things even though you call it with the same argument. And if you try to apply the substitution model you used above to reason through it, it won't work quite as expected!
 
-Exercise: Try to apply the substitution model to this code - what went wrong, and why?
+**Exercise**: Try to apply the substitution model to this code - what went wrong, and why?
 
 Instead, consider the purified version of the above code:
 
@@ -360,13 +377,13 @@ fn(true)(3) // 3
 fn(false)(3) // 6
 ```
 
-Ah, much better! This way it's clear why `fn` returned different values: because you called it with different arguments!
+Ah, much better! Now it's clear why `fn` returned different values: because it was called with different arguments!
 
 ## Side effects
 
 Something else to beware of when writing functions is *side effects*:
 
-> *Side effect*: Anything that is not pure computation (ie. substitution, binding, or reduction) is a side effect. Examples include logging to the console, rendering DOM elements, making network requests, and reading from the filesystem.
+> **Side effect**: Anything that is not pure computation (ie. substitution, binding, or reduction) is a side effect. Examples: logging to the console, rendering DOM elements, making network requests, or reading from the filesystem.
 
 For example, let's look at `console.log`. It takes a `string` and returns `undefined`, but has the side effect of writing text to the console:
 
@@ -375,7 +392,7 @@ let fn = x => console.log(x * 2)
 fn(4)
 ```
 
-If we apply the substitution model, the result doesn't quite capture what this function actually does:
+If we apply the substitution model, the result doesn't quite capture what this function really does:
 
 ```js
 // Step 1 - Substitute in fn
@@ -384,20 +401,22 @@ If we apply the substitution model, the result doesn't quite capture what this f
 // Step 2 - Evaluate fn(), binding x <- 4
 console.log(8)
 
-// Step 3 - Reduce console.log
+// Step 3 - Reduce
 undefined
 ```
 
-Even though this code logged out `8` to the console, it reduced to `undefined`! Is `undefined` a good representation of what that code did?
+Even though this code logged out `8` to the console, it reduced to `undefined`! Is `undefined` a good representation of what that code actually did?
 
-Right: It's not. In some cases, substitution is not a good enough mental model to think about what a piece of code does. In this specific case, our function actually did two things:
+It's probably not. In some cases, substitution is not a good enough mental model to think about what a piece of code does. In this specific case, our function actually did two things:
 
 1. It evaluated to `undefined`
 2. It produced the side effect of logging to the console
 
 Substitution only revealed (1) to us, but we had to intuit (2) ourselves by reading through the code and knowing ahead of time that `console.log` is impure.
 
-Let's avoid getting into the weeds of side effects here, but the take home lesson is if your function has side effects, it makes it harder to reason about. Later on we'll talk about some ways to get rid of side effects, and some ways to better organize them.
+Let's avoid getting into the weeds of side effects, but the take home lesson is that if your function has side effects, it makes its behavior hard to reason about. Better managing side effects is an active area of programming language research, and has led to some seriously cool ideas [0].
+
+Later on we'll talk about some ways to get rid of side effects, and some ways to better organize them.
 
 ## Scope
 
@@ -416,16 +435,18 @@ let c = b(2)
 
 What does `c` evaluate to?
 
-Right: It evaluates to `5`. Let's prove this by substituting:
+Right: It evaluates to `5`.
+
+Let's prove this by substitution:
 
 ```js
 // Step 1 - Substitute in a and b
-    let c = ((x => {
-      let y = x * 2
-      return z => x + y + z
-    })(1))(2)
+let c = ((x => {
+  let y = x * 2
+  return z => x + y + z
+})(1))(2)
 
-// Step 2 - Evaluate, binding x <- 1 TODO: is this kosher???
+// Step 2 - Bind x <- 1
 let c = ((() => {
   let y = 1 * 2
   return z => 1 + y + z
@@ -434,35 +455,41 @@ let c = ((() => {
 // Step 3 - Reduce
 let c = (z => 1 + 2 + z)(2)
 
-// Step 4 - Evaluate, binding z <- 2
+// Step 4 - Bind z <- 2
 let c = (() => 1 + 2 + 2)()
 
 // Step 5 - Reduce
 let c = 5
+
+// Step 6 - Reduce
+undefined
 ```
 
-TODO...
+Note how in this example we subsituted the inner expression first, then the outer one, so that we could evaluate `a(1)` before `b(2)`. When applying substitution, order does not matter - all paths lead to the same result!
 
-The lesson is this: JavaScript looks up (*resolves*) variables inside-out. Ie. if a given variable is defined in the local scope, that definition will be used. Otherwise, the JS runtime traverses out one scope at a time, until it gets to the global scope; if one of these scopes defines the variable in question, that definition will be used; otherwise, the variable will resolve to `undefined`.
+Also notice how each function has access not just to the variables defined in its own scope, but to all variables defined in outer scopes! And not just its immediate outer scope, but to *all* outer scopes in its *scope hierarchy*.
+
+> **Scope hierarchy**: The list of scopes leading from a given function to the global scope. Think of it as the "breadcrumbs" leading from the root to a function's body. TODO: Improve this definition
+
+In other words, JavaScript looks up (or, *resolves*) variables inside-out. Ie. if a given variable is defined in the local scope, that definition will be used. Otherwise, JS traverses out one scope at a time, until it gets to the global scope; if one of these scopes defines the variable in question, that definition will be used; otherwise, the variable will resolve to `undefined`[2].
 
 In pseudocode the algorithm looks like this:
 
 ```js
-let scope = CURRENT_SCOPE
-while (variable === undefined && scope !== GLOBAL_SCOPE) {
+let resolve = scope => variable => {
   if (variable in scope) {
-    return variable
-  } else {
-    scope = parent(scope)
+    return scope[variable]
   }
+  if (scope === GLOBAL_SCOPE) {
+    return undefined
+  }
+  return resolve(parentOf(scope))(variable)
 }
 ```
 
-> Technical remark: this algorithm for inside-out traversal is called *lexical scoping*. Alternative alogorithms also exist, including *dynamic scoping*. For a good intro, see [Appendix A](https://github.com/getify/You-Dont-Know-JS/blob/6109cfe/scope%20%26%20closures/apA.md) of Simpson's You Don't Know JS.
+What is a "parent scope" (the `parentOf` function in our pseudocode)?
 
-What is a "parent scope"?
-
-Let's look at the last example again (annotated with line numbers this time):
+Let's look at the last code example again, and annotate it with line numbers this time:
 
 ```js
 let a = x => {              // 1
@@ -475,14 +502,40 @@ let c = b(2)                // 6
 
 We have three scopes in this code:
 
-1. The top level scope, which includes definitions (*bindings*) for the variables `a`, `b`, and `c`. Let's call this scope `Scope G`.
-2. The `a` function's scope, which includes a binding for the variable `x`. Let's call this `Scope A`
-3. The scope for the anonymous function inside `a`, which includes a binding for the variable `z`. Let's call this `Scope B`
+1. The top level scope, which includes definitions for the variables `a`, `b`, and `c`. Let's call this scope `Scope G`.
+2. The `a` function's scope, which includes a definition for the variable `x`. Let's call this `Scope A`.
+3. The scope for the anonymous function returned by `a`, which includes a definition for the variable `z`. Let's call this `Scope B`.
 
 `Scope G` has no parent; it is the outermost, or *global* scope.
+
 `Scope A`'s parent is `Scope G`.
+
 `Scope B`'s parent is `Scope A`, and its grandparent is `Scope G`.
 
-TODO: Add illustration
+We can visualize these 3 scopes as a tree. `Scope G` is the root node, `Scope A` is its child, and `Scope B` is *its* child:
 
-Let's walk through how the various variables in our program are resolved.
+![](illustrations/2-Scopes.svg)
+
+Let's walk through how variables in this program are resolved:
+
+- `a` is consumed on line 5. It's defined in the same scope that it's consumed in (`Scope G`).
+- `b` is consumed on line 6. It's defined in the same scope that it's consumed in (`Scope G`).
+- `x` is consumed on lines 2 and 3:
+  - On line 2, it's defined in the same scope that it's consumed in (`Scope A`).
+  - On line 3, it's *not* defined in the scope (`Scope B`) that it's consumed in. Traversing out one scope at a time, JS looks at that scope's parent, `Scope A`. `Scope A` defines `x`, so JS returns the current value of the variable `x` (in this case, `1`).
+- `y` is consumed on line 3. It's *not* defined in the scope `Scope B`, so JS traverses out one scope at a time, to `Scope A`. `y` is defined in `Scope A`, so JS returns the current value of the variable `y` (in this case, `2`).
+- `z` is consumed on line 3. It's defined in the same scope that it's consumed in (`Scope B`).
+
+**Exercise**: What does `y` resolve to if we consume it in `Scope G`? [3]
+
+[0] In no particular order, see:
+
+- How Rust treats [memory allocation as a side effect]()
+- How Haskell uses [monads]() to manage side effects
+- How Scala uses [Effect Systems]() to encode side effects in the type system
+
+[1] Note that modern JS engines heavily optimize programs with JIT optimizers (eg. see Chrome/NodeJS/Opera's [A](), Firefox's [B](), or IE's [TODO]()).
+
+[2] This algorithm for inside-out traversal is called *lexical scoping*. Alternative algorithms also exist. For a good intro, see [Appendix A](https://github.com/getify/You-Dont-Know-JS/blob/6109cfe/scope%20%26%20closures/apA.md) of Simpson's You Don't Know JS.
+
+[3] `undefined`, because it is defined in `Scope A`. Inner scopes have access to their outer scopes, but outer scopes do not have access to their inner scopes.
