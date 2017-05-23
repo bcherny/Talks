@@ -14,9 +14,7 @@ let add1 = sum2(1)
 add1(2) // 3
 ```
 
-Some lingo: We call this implementing `add1` *in terms of* `sum2`.
-
-What if we want a `sum3` function? No problem:
+Ok. What if we want a `sum3` function? No problem:
 
 ```js
 let sum3 = a => b => c => a + b + c
@@ -25,9 +23,9 @@ sum3(1)(2)(3) // 6
 
 **Exercise**: Implement `sum3` and `sum4` in terms of `sum2` [1].
 
-You see the pattern here - can we write a function that sums *any* number of numbers, rather than a fixed number (2, 3, 4, etc.)?
+You see the pattern here. Can we write a function that sums *any* number of numbers, rather than a fixed number (2, 3, 4, etc.)?
 
-No problem. First we'll need a `tail` function that takes an array, and returns a new array consisting of every element after the 0th element:
+No problem. First we'll need a `tail` function that takes an array, and returns a new array consisting of every element but the first element:
 
 ```js
 let tail = _ => _.slice(1)
@@ -36,10 +34,10 @@ tail([1, 2, 3, 4] // [2, 3, 4]
 tail([])          // []
 ```
 
-- `_` is just a variable name, and has no special meaning in JavaScript. By convention, we use it in short functions where a descriptive variable name does not help the engineer reading the code understand what the function does.
-- `[1, 2]` defines a new array of length 2, with 2 members: `1` and `2`.
+- `_` is just a variable name, and has no special meaning in JavaScript. By convention, we use it in short functions where a descriptive variable name does not help an engineer reading the code understand what the function does.
+- `[1, 2]` defines a new array with 2 members: `1` and `2`.
 
-Now we can define a `sum` function, that takes an array of numbers and returns their sum:
+Now we can define a `sum` function that takes an array of numbers and returns their sum:
 
 ```js
 let sum = xs => {
@@ -54,7 +52,7 @@ sum([28, 7, -3, 4]) // 36
 ```
 
 - Read more about `switch` on [MDN](TODO).
-- This function is *recursive*. That means it calls itself either directly or indirectly.
+- This function is *recursive*. That means it either calls itself directly, or calls some other chain of functions that eventually call it again, indirectly.
 
 Let's use substitution to walk through what our `sum` function does when we call it with `[1, 2, 3]`:
 
@@ -169,7 +167,7 @@ filter(_ => _ > 3)([1, 2, 3, 4, 5]) // [4, 5]
 
 ### Do you even _?
 
-Our `min`, `sum`, `filter`, and `uniq` functions have a lot in common. All four of them iterate over an array, perform some computation, and return the computation's accumulated result.
+You may have noticed our `min`, `sum`, `filter`, and `uniq` functions have a lot in common. All four of them iterate over an array, perform some computation, and return the computation's accumulated result.
 
 Let's *lift* out the common logic into a function we'll call `reduce`:
 
