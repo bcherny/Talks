@@ -140,11 +140,31 @@ sum([1, 2, 3])
 6
 ```
 
+Does that make sense?
+
+Good. Let's look at another example.
+
+## Another example
+
+We're going to implement a `map` function that takes an array and a function, applies that function to every element, and return a new array from the result:
+
+```js
+let map = fn => xs => {
+  switch (xs.length) {
+    case 0: return xs
+    default: return [fn(xs[0])].concat(map(fn)(xs.slice(1)))
+  }
+}
+map(_ => _ * 2)([1, 2, 3])
+```
+
+**Exercise**: Apply the substitution model to evaluate `map(_ => _ * 2)([1, 2, 3])`. What is the result?
+
 **Exercise**: Implemement a recursive `uniq` function, that takes an array of numbers and returns the array without duplicates. For example, `uniq([1, 3, 2, 3])` should return `[1, 3, 2]` [2].
 
 **Exercise (hard)**: Implement a recursive `min` function, that takes an array of numbers and returns the smallest value in the array. If the array is empty, return `undefined` [3].
 
-### How about another example?
+## How about one more example?
 
 Let's implement a `filter` function that:
 
@@ -165,9 +185,9 @@ let filter = fn => xs => {
 filter(_ => _ > 3)([1, 2, 3, 4, 5]) // [4, 5]
 ```
 
-### Do you even _?
+## Do you even _?
 
-You may have noticed our `min`, `sum`, `filter`, and `uniq` functions have a lot in common. All four of them iterate over an array, perform some computation, and return the computation's accumulated result.
+You may have noticed our `map`, `min`, `sum`, `filter`, and `uniq` functions have a lot in common. All five of them iterate over an array, perform some computation, and return the computation's accumulated result.
 
 Let's *lift* out the common logic into a function we'll call `reduce`:
 
@@ -182,9 +202,12 @@ let reduce = fn => acc => xs => {
 
 - Here, `acc` is short for "accumulator".
 
-We can then reimplement `filter` in terms of `reduce`:
+We can then reimplement `map` and `filter` in terms of `reduce`:
 
 ```js
+let map = fn => reduce((a, b) => a.concat(fn(b)))([])
+map(_ => _ + 'ely')(['ok', 'dok']) // ['okely', 'dokely']
+
 let filter = fn => reduce((a, b) => fn(b) ? a.concat(b) : a)([])
 filter(_ => _ < 2)([1, 2, 3]) // [1]
 ```
@@ -203,7 +226,31 @@ This reuse is important for a number of reasons:
 2. Repetitive code is hard to read - TODO
 3. Repetitive code leads to longer development times - TODO
 
-TODO: list native equivalents of reduce, map, etc
+## Closing notes
+
+### Native implementations
+
+JavaScript provides native implementations for most of the functions we implemented in this chapter. Unless you're stuck on an island and all you have is a really old version of JavaScript that doesn't implement these functions, you should really use the native implementations.
+
+You'll notice that JavaScript's versions of these functions use a slightly different style than we did above:
+
+- Instead of functions that take one argument each and return functions, JavaScript uses multi-argument functions.
+- These functions are provided on `Array`'s `prototype`. More on that later, but it means that instead of passing in as an argument the array you want to apply a given function to, you *call the function as a method on the array*.
+
+Otherwise, they are self explanatory:
+
+```js
+let as = [1, 2, 3]
+let ds = as.reduce((a, b) => a * b, 0)  // 6
+let bs = as.map(_ => _ + 1)             // [2, 3, 4]
+let cs = as.filter(_ => _ > 2)          // [3]
+```
+
+TODO: explain this more
+
+### Limitations of recursion
+
+TODO: talk about shortcomings of recursion
 
 -------------
 
