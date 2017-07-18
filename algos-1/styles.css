@@ -1,0 +1,20 @@
+body {
+  color: #343435;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+h1, h2, h3 {
+  font-family: 'Comic Sans MS';
+}
+
+h3, h3 a {
+  color: #aeaebb;
+}
+
+h2 ~ h3 {
+  margin-top: -1em;
+}
+
+.remark-code, .remark-inline-code {
+  font-family: 'Fira Code';
+}
