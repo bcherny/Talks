@@ -5,12 +5,13 @@
   "main": "index.js",
   "scripts": {
     "start": "static-server",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "tdd": "ava -w ./code/isSorted.js"
   },
   "author": "Boris Cherny <boris@performancejs.com> (https://performancejs.com)",
   "license": "MIT",
   "dependencies": {
+    "ava": "^0.21.0",
     "remark": "^7.0.1",
-    "static-server": "^2.0.4"
+    "static-server": "^2.0.5"
   }
 }
