@@ -185,7 +185,7 @@ for (var n = 0; n < 10; n++) {
 ```
 ---
 ```js
-// O(N)
+// O(n)
 for (var n = 0; n < 10; n++) {
   ...
 }
@@ -251,7 +251,7 @@ function(n) {
 ---
 class: middle
 ```js
-// O(N)
+// O(n)
 function(n) {
   var a = 0
   while(n) {
@@ -273,7 +273,7 @@ function(n) {
 ---
 class: middle
 ```js
-// O(N)
+// O(n)
 function(n) {
   for (var a = 0; a < n; a++) {...}
   for (var b = 0; b < n; b++) {...}
@@ -286,17 +286,17 @@ class: center, middle
 
 `O(1)`
 
-`O(N)`
+`O(n)`
 
-`O(N²)`
+`O(n²)`
 
-`O(log(N))`
+`O(log(n))`
 
-`O(N*log(N))`
+`O(n*log(n))`
 
 `O(Cⁿ)`
 
-`O(N!)`
+`O(n!)`
 ---
 class: center, middle
 <img src="images/Complexity-Graph.png" width="100%">
@@ -339,14 +339,138 @@ overflow(20) // ['wakka' x1048576]
 ...What's the complexity?
 ---
 class: center, middle
-## It's `O(2ⁿ)`
+It's linear in `n`, so the time complexity is
+## `O(n)`
 
-(Not in time, but in *space*)
+But that doesn't really tell the whole story, does it?
+---
+class: center, middle
+It's
+## `O(n)`
+
+In **time**, and
+
+## `O(2ⁿ)`
+
+in **space**.
 ---
 class: center, middle
 ## Real Problems
 ---
 ### #1
+
+```js
+function sum(array) {
+  // ...
+}
+
+sum([1, 2, 3])        // 6
+sum([-2, 8, 0, 12])   // 18
+```
+---
+### #1
+
+**Algorithm**:
+
+Add each item in the array to the result.
+
+**Pseudocode**:
+
+```js
+function sum(array) {
+  // INITIALIZE the result R to 0
+  // FOR EACH number IN array:
+  //   add number to R
+}
+```
+
+**Sanity check**:
+
+- `[1, 2, 3]` ✔ Ok
+- `[-2, 8, 0, 12]` ✔ Ok
+
+**Complexity**:
+
+Time: `O(?)`
+
+Space: `O(?)`
+---
+### #1
+
+**Algorithm**:
+
+Add each item in the array to the result.
+
+**Pseudocode**:
+
+```js
+function sum(array) {
+  // INITIALIZE the result R to 0
+  // FOR EACH number IN array:
+  //   add number to R
+}
+```
+
+**Sanity check**:
+
+- `[1, 2, 3]` ✔ Ok
+- `[-2, 8, 0, 12]` ✔ Ok
+
+**Complexity**:
+
+Time: `O(n)`
+
+Space: `O(1)`
+
+---
+### #1
+
+```js
+function sum(array) {
+  let result = 0
+  for (let i = 0; i < array.length; i++) {
+    result += array[i]
+  }
+  return result
+}
+```
+---
+### #1 (2nd version)
+
+```js
+function sum(array) {
+  return array.reduce(
+    function(result, n) { return result + n },
+    0
+  )
+}
+```
+---
+### #1 (3rd version)
+
+```js
+function sum(array) {
+  if (array.length === 0) {
+    return 0
+  }
+  return array[0] + sum(array.slice(1))
+}
+```
+
+Thought process:
+
+> There are 2 cases to consider when summing an array:
+
+> 1. The sum of an **empty array** is `0`.
+
+> 2. The sum of a **non-empty array** is the first item plus the sum of the rest of the items.
+
+---
+class: center, middle
+![](images/awesome.webp)
+---
+
+### #2
 
 ```js
 function isSorted(array) {
@@ -357,7 +481,7 @@ isSorted([-9, -5, 0, 3, 9])         // true
 isSorted([3, 9, -3, 10])            // false
 ```
 ---
-### #1
+### #2
 
 **Algorithm**:
 
@@ -386,7 +510,7 @@ Time: `O(?)`
 Space: `O(?)`
 
 ---
-### #1
+### #2
 
 **Algorithm**:
 
@@ -410,12 +534,12 @@ function isSorted(array) {
 
 **Complexity**:
 
-Time: `O(N)`
+Time: `O(n)`
 
 Space: `O(1)`
 
 ---
-### #1
+### #2
 
 ```js
 function isSorted(array) {
@@ -430,7 +554,7 @@ function isSorted(array) {
 }
 ```
 ---
-### #1 (2nd version)
+### #2 (2nd version)
 
 ```js
 function isSorted(array) {
@@ -445,7 +569,7 @@ function isSorted(array) {
 }
 ```
 ---
-### #1 (3rd version)
+### #2 (3rd version)
 
 ```js
 function isSorted(array) {
@@ -460,9 +584,9 @@ function isSorted(array) {
 ```
 ---
 class: center, middle
-![](images/awesome.webp)
+![](images/excellent.webp)
 ---
-### #2
+### #3
 
 ```js
 function filter(array, fn) {
@@ -473,7 +597,7 @@ filter([1, 2, 3, 4], function(n) { return n > 0 }) // [1, 2, 3, 4]
 filter([1, 2, 3, 4], function(n) { return n < 3 }) // [1, 2]
 ```
 ---
-### #2
+### #3
 
 **Algorithm**:
 
@@ -501,7 +625,7 @@ Time: `O(?)`
 
 Space: `O(?)`
 ---
-### #2
+### #3
 
 **Algorithm**:
 
@@ -525,11 +649,11 @@ function filter(array, fn) {
 
 **Complexity**:
 
-Time: `O(N)`
+Time: `O(n)`
 
-Space: `O(N)`
+Space: `O(n)`
 ---
-### #2
+### #3
 
 ```js
 function filter(array, fn) {
@@ -544,7 +668,7 @@ function filter(array, fn) {
 }
 ```
 ---
-### #2 (2nd version)
+### #3 (2nd version)
 
 ```js
 function filter(array, fn) {
@@ -558,7 +682,7 @@ function filter(array, fn) {
 }
 ```
 ---
-### #2 (3rd version)
+### #3 (3rd version)
 
 ```js
 function filter(array, fn) {
@@ -573,74 +697,3 @@ function filter(array, fn) {
 }
 ```
 ---
-class: center, middle
-![](images/excellent.webp)
----
-### #3
-
-```js
-function uniq(array) {
-  // ...
-}
-
-uniq([1, 4, 2, 2, 3, 4, 8]) // [1, 4, 2, 3, 8]
-```
----
-### #3
-
-**Algorithm**:
-
-For each item, check if the item exists in the "results" array already. If not, add it.
-
-**Pseudocode**:
-
-```js
-function uniq(array) {
-  // INITIALIZE an empty array R
-  // FOR EACH item IN array:
-  //   IF item NOT IN R
-  //   THEN add item to R
-}
-```
-
-**Sanity check**:
-
-- `[1, 4, 2, 2, 3, 4, 8]` ✔ Ok
-
-**Complexity**:
-
-Time: `O(?)`
-
-Space: `O(?)`
----
-### #3
-
-**Algorithm**:
-
-For each item, check if the item exists in the "results" array already. If not, add it.
-
-**Pseudocode**:
-
-```js
-function uniq(array) {
-  // INITIALIZE an empty array R
-  // FOR EACH item IN array:
-  //   IF item NOT IN R
-  //   THEN add item to R
-}
-```
-
-**Sanity check**:
-
-- `[1, 4, 2, 2, 3, 4, 8]` ✔ Ok
-
-**Complexity**:
-
-Time: `O(N²)`
-
-Space: `O(N)`
----
-### #3
-
-```js
-```

@@ -3,6 +3,11 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
+blockquote {
+  border-left: 1em solid #aeaebb;
+  padding-left: 1em;
+}
+
 h1, h2, h3 {
   font-family: 'Comic Sans MS';
 }
