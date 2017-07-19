@@ -572,3 +572,75 @@ function filter(array, fn) {
   return head.concat(filter(array.slice(1), fn))
 }
 ```
+---
+class: center, middle
+![](images/excellent.webp)
+---
+### #3
+
+```js
+function uniq(array) {
+  // ...
+}
+
+uniq([1, 4, 2, 2, 3, 4, 8]) // [1, 4, 2, 3, 8]
+```
+---
+### #3
+
+**Algorithm**:
+
+For each item, check if the item exists in the "results" array already. If not, add it.
+
+**Pseudocode**:
+
+```js
+function uniq(array) {
+  // INITIALIZE an empty array R
+  // FOR EACH item IN array:
+  //   IF item NOT IN R
+  //   THEN add item to R
+}
+```
+
+**Sanity check**:
+
+- `[1, 4, 2, 2, 3, 4, 8]` ✔ Ok
+
+**Complexity**:
+
+Time: `O(?)`
+
+Space: `O(?)`
+---
+### #3
+
+**Algorithm**:
+
+For each item, check if the item exists in the "results" array already. If not, add it.
+
+**Pseudocode**:
+
+```js
+function uniq(array) {
+  // INITIALIZE an empty array R
+  // FOR EACH item IN array:
+  //   IF item NOT IN R
+  //   THEN add item to R
+}
+```
+
+**Sanity check**:
+
+- `[1, 4, 2, 2, 3, 4, 8]` ✔ Ok
+
+**Complexity**:
+
+Time: `O(N²)`
+
+Space: `O(N)`
+---
+### #3
+
+```js
+```
