@@ -4,8 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "lint": "eslint code",
+    "pretest": "npm run lint",
     "start": "static-server",
-    "tdd": "ava -w ./code/isSorted.js"
+    "tdd": "ava -w ./code/isSorted.js",
+    "test": "ava ./code/*.js"
   },
   "author": "Boris Cherny <boris@performancejs.com> (https://performancejs.com)",
   "license": "MIT",
@@ -13,5 +16,13 @@
     "ava": "^0.21.0",
     "remark": "^7.0.1",
     "static-server": "^2.0.5"
+  },
+  "devDependencies": {
+    "eslint": "^4.2.0",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-node": "^5.1.1",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-standard": "^3.0.1"
   }
 }
