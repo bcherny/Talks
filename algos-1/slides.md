@@ -14,15 +14,24 @@ class: center, middle
 <img src="images/algo-definition.png" width="100%">
 ---
 class: center, middle
-## What?
+![](./images/what-is-this.webp)
 ---
 class: center, middle
 ### For example:
+
+**Making a recipe**
+---
+class: center, middle
+### For example:
+
+Making a recipe
 
 **Tying your shoe**
 ---
 class: center, middle
 ### For example:
+
+Making a recipe
 
 Tying your shoe
 
@@ -30,6 +39,8 @@ Tying your shoe
 ---
 class: center, middle
 ### For example:
+
+Making a recipe
 
 Tying your shoe
 
@@ -39,6 +50,8 @@ Peeling an apple
 ---
 class: center, middle
 ### For example:
+
+Making a recipe
 
 Tying your shoe
 
@@ -50,6 +63,8 @@ Folding a paper airplane
 ---
 class: center, middle
 ### For example:
+
+Making a recipe
 
 Tying your shoe
 
@@ -210,9 +225,6 @@ for (var n = 0; n < 10; n++) {
   }
 }
 ```
----
-class: center, middle
-![](./images/what-is-this.webp)
 ---
 class: center, middle
 ## BIG O NOTATION
@@ -433,7 +445,11 @@ function sum(array) {
   }
   return result
 }
+
+//  Time: O(n)
+// Space: O(1)
 ```
+
 ---
 ### #1 (2nd version)
 
@@ -444,6 +460,9 @@ function sum(array) {
     0
   )
 }
+
+//  Time: O(n)
+// Space: O(1)
 ```
 ---
 ### #1 (3rd version)
@@ -455,6 +474,9 @@ function sum(array) {
   }
   return array[0] + sum(array.slice(1))
 }
+
+//  Time: O(n)
+// Space: O(n)
 ```
 
 Thought process:
@@ -552,6 +574,9 @@ function isSorted(array) {
   }
   return true
 }
+
+//  Time: O(n)
+// Space: O(1)
 ```
 ---
 ### #2 (2nd version)
@@ -567,6 +592,9 @@ function isSorted(array) {
     return next > item
   })
 }
+
+//  Time: O(n)
+// Space: O(1)
 ```
 ---
 ### #2 (3rd version)
@@ -581,6 +609,9 @@ function isSorted(array) {
   }
   return isSorted(array.slice(1))
 }
+
+//  Time: O(n)
+// Space: O(1)*
 ```
 ---
 class: center, middle
@@ -666,6 +697,9 @@ function filter(array, fn) {
   }
   return result
 }
+
+//  Time: O(n)
+// Space: O(n)
 ```
 ---
 ### #3 (2nd version)
@@ -680,6 +714,9 @@ function filter(array, fn) {
     }
   }, [])
 }
+
+//  Time: O(n)
+// Space: O(n)
 ```
 ---
 ### #3 (3rd version)
@@ -695,5 +732,163 @@ function filter(array, fn) {
   }
   return head.concat(filter(array.slice(1), fn))
 }
+
+//  Time: O(n)
+// Space: O(n²)*
 ```
 ---
+class: center, middle
+![](images/good-job.webp)
+---
+### #4
+
+```js
+function fib(n) {
+  ...
+}
+
+fib(0)        // 0
+fib(1)        // 1
+fib(10)       // 55
+fib(20)       // 6765
+```
+---
+### #4
+
+**Algorithm**:
+
+Starting with `0` and `1`, add each pair of 2 numbers until we get to the `n`th number; return the left number from the final pair.
+
+**Pseudocode**:
+
+```js
+function fib(n) {
+  // INITIALIZE L to 0
+  // INITIALIZE R to 1
+  // FOR EACH number from 0 to n:
+  //   INITIALIZE TEMP to L + R
+  //   UPDATE L to R
+  //   UPDATE R to TEMP
+  // RETURN L
+}
+```
+
+**Sanity check**:
+
+- `0` ✔ Ok
+- `0, 1` ✔ Ok
+- `0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55` ✔ Ok
+
+**Complexity**: Time: `O(?)`, Space: `O(?)`
+---
+### #4
+
+**Algorithm**:
+
+Starting with `0` and `1`, add each pair of 2 numbers until we get to the `n`th number; return the left number from the final pair.
+
+**Pseudocode**:
+
+```js
+function fib(n) {
+  // INITIALIZE L to 0
+  // INITIALIZE R to 1
+  // FOR EACH number from 0 to n:
+  //   INITIALIZE TEMP to L + R
+  //   UPDATE L to R
+  //   UPDATE R to TEMP
+  // RETURN L
+}
+```
+
+**Sanity check**:
+
+- `0` ✔ Ok
+- `0, 1` ✔ Ok
+- `0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55` ✔ Ok
+
+**Complexity**: Time: `O(n)`, Space: `O(1)`
+---
+### #4
+
+```js
+function fib(n) {
+  let left = 0
+  let right = 1
+  for (let i = 0; i < n; i++) {
+    let temp = left + right
+    left = right
+    right = temp
+  }
+  return left
+}
+
+//  Time: O(n)
+// Space: O(1)
+```
+---
+### #4 (2nd version)
+
+```js
+function fib(n) {
+  switch (n) {
+     case 0: return 0
+     case 1: return 1
+    default: return fib(n - 1) + fib(n - 2)
+  }
+}
+
+//  Time: O(2ⁿ)
+// Space: O(n)
+```
+
+Thought process:
+
+> There are 3 cases to consider when computing a Fibonacci number:
+> 1. The 0th fib number is `0`
+> 2. The 1st fib number is `1`
+> 3. Every other fib number is the sum of the 2 numbers before it
+---
+### #4 (3rd version)
+
+```js
+function _fib(n, left, right) {
+  switch (n) {
+     case 0: return 0
+     case 1: return right
+    default: return _fib(n - 1, right, left + right)
+  }
+}
+
+function fib(n) {
+  return _fib(n, 0, 1)
+}
+
+//  Time: O(n)
+// Space: O(1)
+```
+---
+### #4 (4th version)
+
+```js
+function memoize(fn) {
+  let cache = new Map
+  return function(_) {
+    if (!cache.has(_)) {
+      cache.set(_, fn(_))
+    }
+    return cache.get(_)
+  }
+}
+
+let fib = memoize(function(n) {
+  switch (n) {
+     case 0: return 0
+     case 1: return 1
+    default: return fib(n - 1) + fib(n - 2)
+  }
+})
+
+//  Time: O(n)
+// Space: O(n)
+```
