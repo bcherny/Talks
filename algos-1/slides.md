@@ -892,3 +892,33 @@ let fib = memoize(function(n) {
 //  Time: O(n)
 // Space: O(n)
 ```
+---
+### More Problems
+
+`factorial` - Returns a number that is the factorial of the given number.
+
+```js
+factorial(0)                          // 1
+factorial(1)                          // 1
+factorial(6)                          // 720
+```
+
+`isPrime` -  Returns `true` or `false`, indicating whether the given number is prime.
+
+```js
+isPrime(0)                            // false
+isPrime(1)                            // false
+isPrime(17)                           // true
+isPrime(10000000000000)               // false
+```
+
+`isBalanced` - Takes a string and returns `true` or `false` indicating whether its curly braces are balanced.
+
+```js
+isBalanced('}{')                      // false
+isBalanced('{{}')                     // false
+isBalanced('{}{}')                    // true
+isBalanced('foo { bar { baz } boo }') // true
+isBalanced('foo { bar { baz }')       // false
+isBalanced('foo { bar } }')           // false
+```
