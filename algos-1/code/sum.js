@@ -8,5 +8,5 @@ function sum(array) {
 
 import { test } from 'ava'
 
-test(t => t.is(sum([1, 2, 3]), 6))
-test(t => t.is(sum([-2, 8, 0, 12]), 18))
+test.only(t => t.is(sum([1, 2, 3]), 6))
+test.only(t => t.is(sum([-2, 8, 0, 12]), 18))

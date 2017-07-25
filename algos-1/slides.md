@@ -253,9 +253,9 @@ class: middle
 // O(?)
 function(n) {
   var a = 0
-  while(n) {
-    a++
-    n--
+  while(n > 0) {
+    a = a + 1
+    n = n - 1
   }
   return a
 }
@@ -266,9 +266,9 @@ class: middle
 // O(n)
 function(n) {
   var a = 0
-  while(n) {
-    a++
-    n--
+  while(n > 0) {
+    a = a + 1
+    n = n - 1
   }
   return a
 }
@@ -895,24 +895,13 @@ let fib = memoize(function(n) {
 ---
 ### More Problems
 
-`factorial` - Returns a number that is the factorial of the given number.
+**`min`**: Returns the smallest number in the given array (eg. `min([3, 2, 1]) === 1`)
 
-```js
-factorial(0)                          // 1
-factorial(1)                          // 1
-factorial(6)                          // 720
-```
+**`factorial`**: Returns a number that is the factorial of the given number (eg. `factorial(6) === 720`).
 
-`isPrime` -  Returns `true` or `false`, indicating whether the given number is prime.
+**`isPrime`**:  Returns `true` or `false`, indicating whether the given number is prime (eg. `isPrime(10000000000000) === false`).
 
-```js
-isPrime(0)                            // false
-isPrime(1)                            // false
-isPrime(17)                           // true
-isPrime(10000000000000)               // false
-```
-
-`isBalanced` - Takes a string and returns `true` or `false` indicating whether its curly braces are balanced.
+**`isBalanced`**: Takes a string and returns `true` or `false` indicating whether its curly braces are balanced.
 
 ```js
 isBalanced('}{')                      // false

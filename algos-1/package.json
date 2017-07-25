@@ -7,7 +7,7 @@
     "lint": "eslint code",
     "pretest": "npm run lint",
     "start": "static-server",
-    "tdd": "ava -w ./code/isSorted.js",
+    "tdd": "ava -w ./code/*.js",
     "test": "ava ./code/*.js"
   },
   "author": "Boris Cherny <boris@performancejs.com> (https://performancejs.com)",
