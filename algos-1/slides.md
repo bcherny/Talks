@@ -83,7 +83,7 @@ class: center, middle
 class: middle
 
 ```js
-for (var n = 0; n < 10; n++) {
+for (var i = 0; i < 10; i++) {
   ...
 }
 ```
@@ -91,8 +91,8 @@ for (var n = 0; n < 10; n++) {
 class: middle
 
 ```js
-for (var n = 0; n < 10; n++) {
-  for (var n = 0; n < 10; n++) {
+for (var i = 0; i < 10; i++) {
+  for (var i = 0; i < 10; i++) {
     ...
   }
 }
@@ -101,9 +101,9 @@ for (var n = 0; n < 10; n++) {
 class: middle
 
 ```js
-for (var n = 0; n < 10; n++) {
-  for (var n = 0; n < 10; n++) {
-    for (var n = 0; n < 10; n++) {
+for (var i = 0; i < 10; i++) {
+  for (var i = 0; i < 10; i++) {
+    for (var i = 0; i < 10; i++) {
       ...
     }
   }
@@ -115,15 +115,15 @@ for (var n = 0; n < 10; n++) {
 
 ```js
 // Loop 1:
-for (var n = 0; n < 10; n++) {
+for (var i = 0; i < 10; i++) {
   ...
 }
 ```
 
 ```js
 // Loop 2:
-for (var n = 0; n < 10; n++) {
-  for (var n = 0; n < 10; n++) {
+for (var i = 0; i < 10; i++) {
+  for (var i = 0; i < 10; i++) {
     ...
   }
 }
@@ -131,9 +131,9 @@ for (var n = 0; n < 10; n++) {
 
 ```js
 // Loop 3:
-for (var n = 0; n < 10; n++) {
-  for (var n = 0; n < 10; n++) {
-    for (var n = 0; n < 10; n++) {
+for (var i = 0; i < 10; i++) {
+  for (var i = 0; i < 10; i++) {
+    for (var i = 0; i < 10; i++) {
       ...
     }
   }
@@ -147,15 +147,15 @@ class: center, middle
 ---
 ```js
 // Loop 1:
-for (var n = 0; n < 10; n++) {
+for (var i = 0; i < 10; i++) {
   ...
 }
 ```
 
 ```js
 // Loop 2:
-for (var n = 0; n < 10; n++) {
-  for (var n = 0; n < 10; n++) {
+for (var i = 0; i < 10; i++) {
+  for (var i = 0; i < 10; i++) {
     ...
   }
 }
@@ -163,9 +163,9 @@ for (var n = 0; n < 10; n++) {
 
 ```js
 // Loop 3:
-for (var n = 0; n < 10; n++) {
-  for (var n = 0; n < 10; n++) {
-    for (var n = 0; n < 10; n++) {
+for (var i = 0; i < 10; i++) {
+  for (var i = 0; i < 10; i++) {
+    for (var i = 0; i < 10; i++) {
       ...
     }
   }
@@ -174,15 +174,15 @@ for (var n = 0; n < 10; n++) {
 ---
 ```js
 // n iterations
-for (var n = 0; n < 10; n++) {
+for (var i = 0; i < n; i++) {
   ...
 }
 ```
 
 ```js
 // n*n iterations
-for (var n = 0; n < 10; n++) {
-  for (var n = 0; n < 10; n++) {
+for (var i = 0; i < n; i++) {
+  for (var i = 0; i < n; i++) {
     ...
   }
 }
@@ -190,9 +190,9 @@ for (var n = 0; n < 10; n++) {
 
 ```js
 // n*n*n iterations
-for (var n = 0; n < 10; n++) {
-  for (var n = 0; n < 10; n++) {
-    for (var n = 0; n < 10; n++) {
+for (var i = 0; i < n; i++) {
+  for (var i = 0; i < n; i++) {
+    for (var i = 0; i < n; i++) {
       ...
     }
   }
@@ -201,25 +201,25 @@ for (var n = 0; n < 10; n++) {
 ---
 ```js
 // O(n)
-for (var n = 0; n < 10; n++) {
+for (var i = 0; i < n; i++) {
   ...
 }
 ```
 
 ```js
-// O(N²)
-for (var n = 0; n < 10; n++) {
-  for (var n = 0; n < 10; n++) {
+// O(n²)
+for (var i = 0; i < n; i++) {
+  for (var i = 0; i < n; i++) {
     ...
   }
 }
 ```
 
 ```js
-// O(N³)
-for (var n = 0; n < 10; n++) {
-  for (var n = 0; n < 10; n++) {
-    for (var n = 0; n < 10; n++) {
+// O(n³)
+for (var i = 0; i < n; i++) {
+  for (var i = 0; i < n; i++) {
+    for (var i = 0; i < n; i++) {
       ...
     }
   }
