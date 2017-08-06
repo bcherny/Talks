@@ -19,7 +19,7 @@ function toString(list) {
 }
 
 function head(list) {
-  return list.value
+  return list
 }
 
 function last(list) {
@@ -32,6 +32,13 @@ function last(list) {
 /** note: this mutates list! */
 function push(list, value) {
   last(list).next = cons(value, null)
+}
+
+function forEach(list, fn) {
+  while (list !== null) {
+    fn(list.value)
+    list = list.next
+  }
 }
 
 function unshift(list, value) {
@@ -71,6 +78,7 @@ function parent(list, item) {
   }
 }
 
+/** note: this mutates list! */
 function remove(list, value) {
 
   let item = find(list, value)
@@ -99,7 +107,7 @@ let b = cons(30, null)
 let c = cons(20, b)
 
 test('cons', t => t.is(toString(a), '(17, 9, 36, -3)'))
-test('head', t => t.is(head(a), 17))
+test('head', t => t.is(head(a).value, 17))
 test('last', t => t.is(last(a).value, -3))
 test('push', t => {
   push(a, 10)
@@ -108,6 +116,11 @@ test('push', t => {
 test('unshift', t =>
   t.is(toString(unshift(a, 8)), '(8, 17, 9, 36, -3, 10)')
 )
+test('forEach', t => {
+  let string = ''
+  forEach(a, v => { string += v + ',' })
+  t.is(string, '17,9,36,-3,10,')
+})
 test('indexOf', t => t.is(indexOf(a, 36), 2))
 test('concat', t => {
   concat(a, c)

@@ -356,9 +356,9 @@ cons(17, cons(9, cons(36, cons(-3, null))))
 This code represents the list `[17, 9, 36, -3]`.
 ---
 class: center, middle
-## What can we do with a Linked List?
+## What can you do with a Linked List?
 ---
-#### Singly Linked List: What can we do with a Linked List?
+#### Singly Linked List: What can you do with a Linked List?
 
 Create a new list:
 
@@ -371,7 +371,7 @@ function cons(value, next) {
 }
 ```
 ---
-#### Singly Linked List: What can we do with a Linked List?
+#### Singly Linked List: What can you do with a Linked List?
 
 Create a new list:
 
@@ -392,7 +392,7 @@ function head(list) {
 }
 ```
 ---
-#### Singly Linked List: What can we do with a Linked List?
+#### Singly Linked List: What can you do with a Linked List?
 
 Create a new list:
 
@@ -424,7 +424,17 @@ function last(list) {
 }
 ```
 ---
-#### Singly Linked List: What can we do with a Linked List?
+#### Singly Linked List: What can you do with a Linked List?
+
+Add a value to the end:
+
+```js
+function push(list, value) {
+  last(list).next = cons(value, null)
+}
+```
+---
+#### Singly Linked List: What can you do with a Linked List?
 
 Add a value to the end:
 
@@ -434,31 +444,44 @@ function push(list, value) {
 }
 ```
 
-Add a value to the beginning:
+Iterate over a list:
 
 ```js
-function unshift(list, value) {...}
-```
-
-Find the index of a value:
-
-```js
-function indexOf(list, value) {...}
-```
-
-Combine two lists:
-
-```js
-function concat(list1, list2) {...}
-```
-
-Remove a value <small>(hint: you'll also need `find(list, value)` and `parent(list, item)`)</small>:
-
-```js
-function remove(list, value) {...}
+function forEach(list, fn) {
+  while (list !== null) {
+    fn(list.value)
+    list = list.next
+  }
+}
 ```
 ---
-#### Singly Linked List: What can we do with a Linked List?
+#### Singly Linked List: What can you do with a Linked List?
+
+```js
+// Add a value to the beginning:
+function unshift(list, value) {...}
+
+// Find the index of a value:
+function indexOf(list, value) {...}
+
+// Combine two lists:
+function concat(list1, list2) {...}
+
+// Find the item with the given value:
+function find(list, value) {...}
+
+// Find an item's parent (or undefined if it has none):
+function parent(list, item) {...}
+
+// Remove a value (hint: think about what happens when we remove
+// the 1st item vs. other items):
+function remove(list, value) {...}
+```
+
+Get the LinkedList code we wrote so far: [mng.biz/123](TODO)
+
+---
+#### Singly Linked List: What can you do with a Linked List?
 
 Add a value to the beginning:
 
@@ -482,7 +505,7 @@ function indexOf(list, value, index = 0) {
 }
 ```
 ---
-#### Singly Linked List: What can we do with a Linked List?
+#### Singly Linked List: What can you do with a Linked List?
 
 Combine two lists:
 
@@ -492,14 +515,28 @@ function concat(list1, list2) {
 }
 ```
 
+Find the item with the given value:
+
+```js
+function find(list, value) {
+  if (list.value === value) {
+    return list
+  }
+  if (list.next === null) {
+    return undefined
+  }
+  return find(list.next, value)
+}
+```
+
 ---
-#### Singly Linked List: What can we do with a Linked List?
+#### Singly Linked List: What can you do with a Linked List?
 
 Remove a value:
 
 <img src="images/LinkedList-Remove.png" width="100%">
 ---
-#### Singly Linked List: What can we do with a Linked List?
+#### Singly Linked List: What can you do with a Linked List?
 
 Remove a value:
 
@@ -538,5 +575,151 @@ class: center, middle
 | Add a value to the end        | `push`     | `O(n)`       |
 | Find the index of a value     | `indexOf`  | `O(n)`       |
 | Combine two lists             | `concat`   | `O(n)`       |
+| Find the item with the given value | `find`| `O(n)`       |
+| Find an item's parent         | `parent`   | `O(n)`       |
 | Remove an item                | `remove`   | `O(n)`       |
+---
+#### Singly Linked List: Performance
+
+*** Enhancement*: Keep track of the last element in the list.**
+
+```js
+function cons(value, next, last) {
+  return {
+    value: value,
+    next: next,
+    last: last
+  }
+}
+```
+---
+#### Singly Linked List: Performance
+
+| Operation                     | Method     | Performance  |
+|-------------------------------|------------|--------------|
+| Create a list of `n` items    | `cons`     | `O(n)`       |
+| Get the first item            | `head`     | `O(1)`       |
+| Get the last item             | `last`     | ~~`O(n)`~~ `O(1)` |
+| Add a value to the beginning  | `unshift`  | `O(1)`       |
+| Add a value to the end        | `push`     | ~~`O(n)`~~ `O(1)` |
+| Find the index of a value     | `indexOf`  | `O(n)`       |
+| Combine two lists             | `concat`   | ~~`O(n)`~~ `O(1)` |
+| Find the item with the given value | `find`| `O(n)`       |
+| Find an item's parent         | `parent`   | `O(n)`       |
+| Remove an item                | `remove`   | `O(n)`       |
+---
+#### Singly Linked List: Performance
+
+*Enhancement*: Keep track of the last element in the list.
+
+```js
+function cons(value, next, last) {
+  return {
+    value: value,
+    next: next,
+    last: last
+  }
+}
+```
+
+** *Enhancement*: Make it a doubly-linked list.**
+
+```js
+function cons(value, prev, next, last) {
+  return {
+    value: value,
+    prev: prev,
+    next: next,
+    last: last
+  }
+}
+```
+---
+#### Singly Linked List: Performance
+
+| Operation                     | Method     | Performance  |
+|-------------------------------|------------|--------------|
+| Create a list of `n` items    | `cons`     | `O(n)`       |
+| Get the first item            | `head`     | `O(1)`       |
+| Get the last item             | `last`     | ~~`O(n)`~~ `O(1)` |
+| Add a value to the beginning  | `unshift`  | `O(1)`       |
+| Add a value to the end        | `push`     | ~~`O(n)`~~ `O(1)` |
+| Find the index of a value     | `indexOf`  | `O(n)`       |
+| Combine two lists             | `concat`   | ~~`O(n)`~~ `O(1)` |
+| Find the item with the given value | `find`| `O(n)`       |
+| Find an item's parent         | `parent`   | ~~`O(n)`~~ `O(1)` |
+| Remove an item                | `remove`   | ~~`O(2n)`~~ `O(n)` |
+---
+class: center, middle
+## (Side Note: Style)
+---
+#### Side Note: Style
+
+We implemented a C-style list, but we can also:
+
+1. Implement a functional list, if we avoid mutation
+2. Implement an object-oriented list, if we move methods to a List class
+---
+#### Side Note: Style
+
+We implemented a C-style list, but we can also:
+
+1. **Implement a functional list, if we avoid mutation:**
+
+  `push`, `concat`, and `remove` mutate the list we pass in. We could rewrite them to return a new list instead.
+
+2. Implement an object-oriented list, if we move methods to a List class
+---
+#### Side Note: Style
+
+We implemented a C-style list, but we can also:
+
+1. Implement a functional list, if we avoid mutation:
+
+  `push`, `concat`, and `remove` mutate the list we pass in. We could rewrite them to return a new list instead.
+
+2. **Implement an object-oriented list, if we move methods to a List class:**
+
+  ```js
+  class LinkedList {
+      constructor(value, next) {
+        this.value = value
+        this.next = next
+      }
+      head() {
+        return this
+      }
+      ...
+  }
+
+  let a = new LinkedList(1, new LinkedList(2, null))
+  let b = a.head().value // 1
+  ```
+---
+class: center, middle
+# Arrays
+---
+
+---
+class: center, middle
+# Trees
+---
+class: middle
+```
+                                 Tree
+                         (abstract data type)
+                        /                    \
+                       /                      \
+               Binary Tree                    TODO
+              /           \                  /     \
+             /             \                /       \
+          Singly         Binary         Dynamic    Fixed
+       Linked List     Search Tree       Array     Array
+```
+---
+class: center, middle
+<img src="images/Tree-Concept-1.png" width="80%">
+---
+class: center, middle
+<img src="images/Tree-Concept-2.png" width="80%">
 ---
