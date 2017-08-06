@@ -25,12 +25,23 @@ class: center, middle
 class: center, middle
 ## For example:
 
+**Data stored in your database**
+
+(TODO: database image)
+---
+class: center, middle
+## For example:
+
+Data stored in your database
+
 **A list of users you fetched from the server**
 
 (TODO: network animation)
 ---
 class: center, middle
 ## For example:
+
+Data stored in your database
 
 A list of users you fetched from the server
 
@@ -40,6 +51,8 @@ A list of users you fetched from the server
 ---
 class: center, middle
 ## For example:
+
+Data stored in your database
 
 A list of users you fetched from the server
 
@@ -51,6 +64,8 @@ The email address a user typed into your form ("crazy_about_poodles@yahoo.com")
 ---
 class: center, middle
 ## For example:
+
+Data stored in your database
 
 A list of users you fetched from the server
 
@@ -65,6 +80,8 @@ A chat conversation with your best friend
 class: center, middle
 ## For example:
 
+Data stored in your database
+
 A list of users you fetched from the server
 
 The email address a user typed into your form ("crazy_about_poodles@yahoo.com")
@@ -78,10 +95,10 @@ An email thread with your coworkers
 (TODO: youtube video)
 ---
 class: center, middle
-### Every time you handle/process/store data, you make decisions about how to represent it.
+## Every time you handle/process/store data, you make decisions about how to represent it.
 ---
 class: center, middle
-## For example, that chat conversation you had with your friend.
+## For example, that chat conversation you had with your friend...
 ---
 #### For example, that chat you had with your friend.
 
@@ -228,14 +245,10 @@ let messages = {
 ---
 #### What's the best data structure to store the chat conversation...
 ### For adding new messages?
-# 🤐☠️💀😵🤦‍
+# 🤐☠️💀😵🤦‍♀️
 ---
 class: middle
 ## Which data structure is right depends on your access pattern.
----
-class: middle
-> ## "To understand the performance implications of reading from, writing to, sorting, filtering, or otherwise manipulating your data structure, you must understand *why* your data structure has the perf characteristics it does."
-> <span class="right">-Boris Cherny</span>
 ---
 class: center, middle
 ## Lists
@@ -266,55 +279,65 @@ class: middle
     -> Linked List <-  Linked List       Array     Array
 ```
 ---
-#### Singly Linked List
-### What is a Linked List?
+class: center, middle
+<img src="images/LinkedList-Concept.png" width="100%">
+---
+class: center, middle
+<img src="images/LinkedList-Concept-Cons.png" width="100%">
+---
+class: center, middle
+<img src="images/LinkedList-Concept-Cons-Labels.png" width="100%">
 ---
 #### Singly Linked List: What is a Linked List?
+<img src="images/LinkedList.png" width="100%">
 
-It's a series of nested `cons` cells, where a `cons` cell is either:
+A Linked List is a series of `cons` cells, where a `cons` cell is either:
   - A value and `null`
   - A value and another `cons` cell
 
 ---
 #### Singly Linked List: What is a Linked List?
+<img src="images/LinkedList.png" width="100%">
 
-It's a series of nested `cons` cells, where a `cons` cell is either:
+A Linked List is a series of `cons` cells, where a `cons` cell is either:
   - **A value and `null`:**
 
   ```js
-  cons(17, null)
+  cons(-3, null)
   ```
 
   - A value and another `cons` cell
 ---
 #### Singly Linked List: What is a Linked List?
+<img src="images/LinkedList.png" width="100%">
 
-It's a series of nested `cons` cells, where a `cons` cell is either:
+A Linked List is a series of `cons` cells, where a `cons` cell is either:
   - A value and `null`:
 
   ```js
-  cons(17, null)
+  cons(-3, null)
   ```
 
   - **A value and another `cons` cell:**
 
   ```js
-  cons(17, cons(9, null))
+  cons(36, cons(-3, null))
   ```
 ---
 #### Singly Linked List: What is a Linked List?
+<img src="images/LinkedList.png" width="100%">
 
-It's a series of nested `cons` cells, where a `cons` cell is either:
+A Linked List is a series of `cons` cells, where a `cons` cell is either:
   - A value and `null`:
 
   ```js
-  cons(17, null)
+  cons(-3, null)
   ```
 
   - A value and another `cons` cell:
 
   ```js
-  cons(17, cons(9, null))
+  cons(36, cons(-3, null))
   ```
 
   - **(This can go on as long as you want):**
@@ -324,8 +347,7 @@ It's a series of nested `cons` cells, where a `cons` cell is either:
   ```
 ---
 #### Singly Linked List: What is a Linked List?
-
-<img src="images/LinkedList.png" width="100%" />
+<img src="images/LinkedList.png" width="100%">
 
 ```js
 cons(17, cons(9, cons(36, cons(-3, null))))
@@ -333,18 +355,18 @@ cons(17, cons(9, cons(36, cons(-3, null))))
 
 This code represents the list `[17, 9, 36, -3]`.
 ---
-#### Singly Linked List
-### What can we do with a Linked List?
+class: center, middle
+## What can we do with a Linked List?
 ---
 #### Singly Linked List: What can we do with a Linked List?
 
 Create a new list:
 
 ```js
-function cons(left, right) {
+function cons(value, next) {
   return {
-    left: left,
-    right: right
+    value: value,
+    next: next
   }
 }
 ```
@@ -354,31 +376,10 @@ function cons(left, right) {
 Create a new list:
 
 ```js
-function cons(left, right) {
+function cons(value, next) {
   return {
-    left: left,
-    right: right
-  }
-}
-```
-
-Get the first value:
-
-```js
-function head(list) {
-  return list.left
-}
-```
----
-#### Singly Linked List: What can we do with a Linked List?
-
-Create a new list:
-
-```js
-function cons(left, right) {
-  return {
-    left: left,
-    right: right
+    value: value,
+    next: next
   }
 }
 ```
@@ -387,7 +388,28 @@ Get the first value:
 
 ```js
 function head(list) {
-  return list.left
+  return list.value
+}
+```
+---
+#### Singly Linked List: What can we do with a Linked List?
+
+Create a new list:
+
+```js
+function cons(value, next) {
+  return {
+    value: value,
+    next: next
+  }
+}
+```
+
+Get the first value:
+
+```js
+function head(list) {
+  return list.value
 }
 ```
 
@@ -395,54 +417,110 @@ Get the last value:
 
 ```js
 function last(list) {
-  while (list.right !== null) {
-    list = list.right
+  while (list.next !== null) {
+    list = list.next
   }
-  return list.left
+  return list.value
 }
 ```
 ---
 #### Singly Linked List: What can we do with a Linked List?
 
-Add a value:
+Add a value to the end:
 
 ```js
 function push(list, value) {
-  last(list).right = cons(value, null)
+  last(list).next = cons(value, null)
 }
+```
+
+Add a value to the beginning:
+
+```js
+function unshift(list, value) {...}
+```
+
+Find the index of a value:
+
+```js
+function indexOf(list, value) {...}
+```
+
+Combine two lists:
+
+```js
+function concat(list1, list2) {...}
+```
+
+Remove a value:
+
+```js
+function remove(list, value) {...}
 ```
 ---
 #### Singly Linked List: What can we do with a Linked List?
 
-Add a value:
+Add a value to the beginning:
 
 ```js
-function push(list, value) {
-  last(list).right = cons(value, null)
+function unshift(list, value) {
+  return cons(value, list)
 }
 ```
 
 Find the index of a value:
 
 ```js
-function indexOf(list, value) {
-  // ?
+function indexOf(list, value, index = 0) {
+  if (list.value === value) {
+    return index
+  }
+  if (list.next === null) {
+    return -1
+  }
+  return indexOf(list.next, value, index + 1)
 }
 ```
+---
+#### Singly Linked List: What can we do with a Linked List?
 
 Combine two lists:
 
 ```js
 function concat(list1, list2) {
-  // ?
+  last(list1).next = list2
 }
 ```
 
-Remove a value (`sublist` is a `cons`):
+---
+#### Singly Linked List: What can we do with a Linked List?
+
+Remove a value:
+
+<img src="images/LinkedList-Remove.png" width="100%">
+---
+#### Singly Linked List: What can we do with a Linked List?
+
+Remove a value:
 
 ```js
-function remove(list, sublist) {
-  // ?
+function remove(list, value) {
+  let parent = null
+  let root = list
+  while (list.next !== null) {
+    if (list.value === value) {
+      if (parent) {
+        // cases 2, 3
+        parent.next = list.next
+        return root
+      } else {
+        // case 1
+        let next = list.next
+        list.next = null // remove reference, so head can get gc'd
+        return next
+      }
+    }
+  }
+  return root
 }
 ```
-
