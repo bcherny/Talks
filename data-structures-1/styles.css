@@ -24,6 +24,16 @@ h2 ~ h3 {
   margin-top: -1em;
 }
 
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
 .remark-code, .remark-inline-code {
   font-family: 'Fira Code';
 }

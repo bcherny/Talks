@@ -384,11 +384,11 @@ function cons(value, next) {
 }
 ```
 
-Get the first value:
+Get the first item:
 
 ```js
 function head(list) {
-  return list.value
+  return list
 }
 ```
 ---
@@ -405,22 +405,22 @@ function cons(value, next) {
 }
 ```
 
-Get the first value:
+Get the first item:
 
 ```js
 function head(list) {
-  return list.value
+  return list
 }
 ```
 
-Get the last value:
+Get the last item:
 
 ```js
 function last(list) {
   while (list.next !== null) {
     list = list.next
   }
-  return list.value
+  return list
 }
 ```
 ---
@@ -452,7 +452,7 @@ Combine two lists:
 function concat(list1, list2) {...}
 ```
 
-Remove a value:
+Remove a value <small>(hint: you'll also need `find(list, value)` and `parent(list, item)`)</small>:
 
 ```js
 function remove(list, value) {...}
@@ -505,22 +505,38 @@ Remove a value:
 
 ```js
 function remove(list, value) {
-  let parent = null
-  let root = list
-  while (list.next !== null) {
-    if (list.value === value) {
-      if (parent) {
-        // cases 2, 3
-        parent.next = list.next
-        return root
-      } else {
-        // case 1
-        let next = list.next
-        list.next = null // remove reference, so head can get gc'd
-        return next
-      }
-    }
+
+  let item = find(list, value)
+  if (item === null) {
+    return list
   }
-  return root
+
+  let prev = parent(list, item)
+
+  // case 1
+  if (prev === undefined) {
+    return item.next
+  }
+
+  // case 2 & 3
+  prev.next = item.next
+  return list
 }
 ```
+---
+class: center, middle
+## What's the performance?
+---
+#### Singly Linked List: Performance
+
+| Operation                     | Method     | Performance  |
+|-------------------------------|------------|--------------|
+| Create a list of `n` items    | `cons`     | `O(n)`       |
+| Get the first item            | `head`     | `O(1)`       |
+| Get the last item             | `last`     | `O(n)`       |
+| Add a value to the beginning  | `unshift`  | `O(1)`       |
+| Add a value to the end        | `push`     | `O(n)`       |
+| Find the index of a value     | `indexOf`  | `O(n)`       |
+| Combine two lists             | `concat`   | `O(n)`       |
+| Remove an item                | `remove`   | `O(n)`       |
+---
