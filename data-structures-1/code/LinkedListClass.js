@@ -23,6 +23,23 @@ class Cons {
     }
     return this.next.last()
   }
+
+  get(index) {
+    let list = this
+    while (list.next !== null && index > 0) {
+      list = list.next
+      index--
+    }
+    if (index === 0) {
+      return list
+    }
+  }
+
+  /** note: this mutates list! */
+  set(index, value) {
+    this.get(index).value = value
+  }
+
   /** note: this mutates list! */
   push(value) {
     this.last().next = new Cons(value, null)
@@ -104,6 +121,16 @@ let c = new Cons(20, b)
 test('Cons', t => t.is(a.toString(), '(17, 9, 36, -3)'))
 test('head', t => t.is(a.head().value, 17))
 test('last', t => t.is(a.last().value, -3))
+test('get', t => {
+  t.is(a.get(2).value, 36)
+  t.is(a.get(10), undefined)
+})
+test('set', t => {
+  a.set(2, 35)
+  t.is(a.get(2).value, 35)
+  a.set(2, 36)
+  t.is(a.get(2).value, 36)
+})
 test('push', t => {
   a.push(10)
   t.is(a.toString(), '(17, 9, 36, -3, 10)')

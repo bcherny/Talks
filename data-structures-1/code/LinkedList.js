@@ -29,6 +29,21 @@ function last(list) {
   return list
 }
 
+function get(list, index) {
+  while (list.next !== null && index > 0) {
+    list = list.next
+    index--
+  }
+  if (index === 0) {
+    return list
+  }
+}
+
+/** note: this mutates list! */
+function set(list, index, value) {
+  get(list, index).value = value
+}
+
 /** note: this mutates list! */
 function push(list, value) {
   last(list).next = cons(value, null)
@@ -109,6 +124,16 @@ let c = cons(20, b)
 test('cons', t => t.is(toString(a), '(17, 9, 36, -3)'))
 test('head', t => t.is(head(a).value, 17))
 test('last', t => t.is(last(a).value, -3))
+test('get', t => {
+  t.is(get(a, 2).value, 36)
+  t.is(get(a, 10), undefined)
+})
+test('set', t => {
+  set(a, 2, 35)
+  t.is(get(a, 2).value, 35)
+  set(a, 2, 36)
+  t.is(get(a, 2).value, 36)
+})
 test('push', t => {
   push(a, 10)
   t.is(toString(a), '(17, 9, 36, -3, 10)')

@@ -29,14 +29,45 @@ function last(list) {
   return list
 }
 
-function copyWhile(list, fn) {
-  if (fn(list) === false) {
+function get(list, index) {
+  while (list.next !== null && index > 0) {
+    list = list.next
+    index--
+  }
+  if (index === 0) {
+    return list
+  }
+}
+
+function set(list, index, value) {
+  let newList = copyWhile(list, function(item, i) {
+    return i < index
+  })
+
+  // Design note: We only copy as much as necessary, rather than
+  // copy the whole list. This means copying up to the (index - 1)st
+  // item.
+  //
+  // Eg. if the list is A -> B -> C -> D and we set C to E, then
+  // we (1) copy A -> B, (2) push E to the result, and (3) concat
+  // the rest of the list. This means we reused D between the input
+  // list and the returned list. The earlier in the list the removed
+  // item is, the more we can reuse (so we don't have to spend time
+  // & space copying it).
+  return concat(
+    push(newList, value),
+    get(list, index + 1)
+  )
+}
+
+function copyWhile(list, fn, index = 0) {
+  if (fn(list, index) === false) {
     return null
   }
   if (list.next === null) {
     return cons(list.value, null)
   }
-  return cons(list.value, copyWhile(list.next, fn))
+  return cons(list.value, copyWhile(list.next, fn, index + 1))
 }
 
 function copy(list) {
@@ -143,6 +174,14 @@ let c = cons(20, b)
 test('cons', t => t.is(toString(a), '(17, 9, 36, -3)'))
 test('head', t => t.is(head(a).value, 17))
 test('last', t => t.is(last(a).value, -3))
+test('get', t => {
+  t.is(get(a, 2).value, 36)
+  t.is(get(a, 10), undefined)
+})
+test('set', t => {
+  t.is(toString(set(a, 2, 35)), '(17, 9, 35, -3)')
+  t.not(a, set(a, 2, 35))
+})
 test('push', t => {
   t.is(toString(push(a, 10)), '(17, 9, 36, -3, 10)')
   t.not(a, push(a, 10))

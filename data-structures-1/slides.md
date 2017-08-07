@@ -27,7 +27,7 @@ class: center, middle
 
 **Data stored in your database**
 
-(TODO: database image)
+<img src="images/Database.png" height="150px">
 ---
 class: center, middle
 ## For example:
@@ -36,7 +36,7 @@ Data stored in your database
 
 **A list of users you fetched from the server**
 
-(TODO: network animation)
+<img src="images/UserList.png" height="150px">
 ---
 class: center, middle
 ## For example:
@@ -45,9 +45,9 @@ Data stored in your database
 
 A list of users you fetched from the server
 
-**The email address a user typed into your form ("crazy_about_poodles@yahoo.com")**
+**The email address a user typed into your form**
 
-(TODO: typing animation)
+<img src="images/EmailForm.png" height="150px">
 ---
 class: center, middle
 ## For example:
@@ -56,11 +56,11 @@ Data stored in your database
 
 A list of users you fetched from the server
 
-The email address a user typed into your form ("crazy_about_poodles@yahoo.com")
+The email address a user typed into your form
 
 **A chat conversation with your best friend**
 
-(TODO: chat screenshot)
+<img src="images/AIM.gif" height="150px">
 ---
 class: center, middle
 ## For example:
@@ -69,13 +69,13 @@ Data stored in your database
 
 A list of users you fetched from the server
 
-The email address a user typed into your form ("crazy_about_poodles@yahoo.com")
+The email address a user typed into your form
 
 A chat conversation with your best friend
 
 **An email thread with your coworkers**
 
-(TODO: email screenshot)
+<img src="images/EmailThread.png" height="150px">
 ---
 class: center, middle
 ## For example:
@@ -84,7 +84,7 @@ Data stored in your database
 
 A list of users you fetched from the server
 
-The email address a user typed into your form ("crazy_about_poodles@yahoo.com")
+The email address a user typed into your form
 
 A chat conversation with your best friend
 
@@ -92,7 +92,7 @@ An email thread with your coworkers
 
 **The last Youtube video you watched**
 
-(TODO: youtube video)
+<img src="images/Apple_1984.gif" height="150px">
 ---
 class: center, middle
 ## Every time you handle/process/store data, you make decisions about how to represent it.
@@ -373,17 +373,6 @@ function cons(value, next) {
 ---
 #### Singly Linked List: What can you do with a Linked List?
 
-Create a new list:
-
-```js
-function cons(value, next) {
-  return {
-    value: value,
-    next: next
-  }
-}
-```
-
 Get the first item:
 
 ```js
@@ -393,17 +382,6 @@ function head(list) {
 ```
 ---
 #### Singly Linked List: What can you do with a Linked List?
-
-Create a new list:
-
-```js
-function cons(value, next) {
-  return {
-    value: value,
-    next: next
-  }
-}
-```
 
 Get the first item:
 
@@ -426,6 +404,58 @@ function last(list) {
 ---
 #### Singly Linked List: What can you do with a Linked List?
 
+Get the first item:
+
+```js
+function head(list) {
+  return list
+}
+```
+
+Get the last item:
+
+```js
+function last(list) {
+  while (list.next !== null) {
+    list = list.next
+  }
+  return list
+}
+```
+
+Get the `n`th item:
+
+```js
+function get(list, index) {
+  while (list.next !== null && index > 0) {
+    list = list.next
+    index--
+  }
+  if (index === 0) { return list }
+}
+```
+
+---
+#### Singly Linked List: What can you do with a Linked List?
+
+Set the `n`th item:
+
+```js
+function set(list, index) {
+  get(list, index).value = value
+}
+```
+---
+#### Singly Linked List: What can you do with a Linked List?
+
+Set the `n`th item:
+
+```js
+function set(list, index) {
+  get(list, index).value = value
+}
+```
+
 Add a value to the end:
 
 ```js
@@ -435,6 +465,14 @@ function push(list, value) {
 ```
 ---
 #### Singly Linked List: What can you do with a Linked List?
+
+Set the `n`th item:
+
+```js
+function set(list, index) {
+  get(list, index).value = value
+}
+```
 
 Add a value to the end:
 
@@ -584,11 +622,12 @@ class: center, middle
 | Create a list of `n` items    | `cons`     | `O(n)`       |
 | Get the first item            | `head`     | `O(1)`       |
 | Get the last item             | `last`     | `O(n)`       |
+| Get the `n`th item            | `get`      | `O(n)`       |
+| Set the `n`th item            | `set`      | `O(n)`       |
 | Add a value to the beginning  | `unshift`  | `O(1)`       |
 | Add a value to the end        | `push`     | `O(n)`       |
 | Find the index of a value     | `indexOf`  | `O(n)`       |
 | Combine two lists             | `concat`   | `O(n)`       |
-| Find the item with the given value | `find`| `O(n)`       |
 | Find an item's parent         | `parent`   | `O(n)`       |
 | Remove an item                | `remove`   | `O(n)`       |
 ---
@@ -613,11 +652,12 @@ function cons(value, next, last) {
 | Create a list of `n` items    | `cons`     | `O(n)`       |
 | Get the first item            | `head`     | `O(1)`       |
 | Get the last item             | `last`     | ~~`O(n)`~~ `O(1)` |
+| Get the `n`th item            | `get`      | `O(n)`       |
+| Set the `n`th item            | `set`      | `O(n)`       |
 | Add a value to the beginning  | `unshift`  | `O(1)`       |
 | Add a value to the end        | `push`     | ~~`O(n)`~~ `O(1)` |
 | Find the index of a value     | `indexOf`  | `O(n)`       |
 | Combine two lists             | `concat`   | ~~`O(n)`~~ `O(1)` |
-| Find the item with the given value | `find`| `O(n)`       |
 | Find an item's parent         | `parent`   | `O(n)`       |
 | Remove an item                | `remove`   | `O(n)`       |
 ---
@@ -655,11 +695,12 @@ function cons(value, prev, next, last) {
 | Create a list of `n` items    | `cons`     | `O(n)`       |
 | Get the first item            | `head`     | `O(1)`       |
 | Get the last item             | `last`     | ~~`O(n)`~~ `O(1)` |
+| Get the `n`th item            | `get`      | `O(n)`       |
+| Set the `n`th item            | `set`      | `O(n)`       |
 | Add a value to the beginning  | `unshift`  | `O(1)`       |
 | Add a value to the end        | `push`     | ~~`O(n)`~~ `O(1)` |
 | Find the index of a value     | `indexOf`  | `O(n)`       |
 | Combine two lists             | `concat`   | ~~`O(n)`~~ `O(1)` |
-| Find the item with the given value | `find`| `O(n)`       |
 | Find an item's parent         | `parent`   | ~~`O(n)`~~ `O(1)` |
 | Remove an item                | `remove`   | ~~`O(2n)`~~ `O(n)` |
 ---
@@ -753,8 +794,6 @@ AddressInMemory = InitialLocation + (Index * 64)
 - Read at index in `O(1)`
 - Write to index in `O(1)`
 ---
-<img src="images/Array-Concept.png" width="100%">
----
 <img src="images/Array-Other-Memory.png" width="100%">
 
 ```js
@@ -776,24 +815,6 @@ class: middle
 let a = array(100)
 a[101] = 'hello world' // Error: Array has just 100 slots!
 ```
----
-class: center, middle
-## What's the performance?
----
-#### Array: Performance
-
-| Operation                     | Perf (Array)     | Perf (Doubly Linked List)  |
-|-------------------------------|------------|--------------|
-| Get the first item            | `O(1)`     | `O(1)`       |
-| Get the last item             | `O(1)`     | `O(1)`       |
-| Get the `n`th item            | **`O(1)`** | `O(n)`       |
-| Set the `n`th item            | **`O(1)`** | `O(n)`       |
-| Add a value to the beginning  | `O(n)`     | **`O(1)`**   |
-| Add a value to the end        | `O(1)`     | `O(1)`       |
-| Find the index of a value     | `O(n)`     | `O(n)`       |
-| Combine two lists             | `O(n)`     | **`O(1)`**   |
-| Find an item's parent         | `O(1)`     | `O(1)`       |
-| Remove an item                | `O(n)`     | `O(n)`       |
 ---
 class: center, middle
 ### "But in JavaScript/Python/Ruby I never had this problem!"
@@ -902,3 +923,21 @@ remove(value) {...}
 Get the DynamicArray code we wrote so far: [git.io/v76kD](https://git.io/v76kD)
 
 <small class="right">Answers here: [git.io/v76Ls](https://git.io/v76Ls)</small>
+---
+class: center, middle
+## What's the performance?
+---
+#### Array: Performance
+
+| Operation                     | Perf (Array)     | Perf (Doubly Linked List)  |
+|-------------------------------|------------|--------------|
+| Get the first item            | `O(1)`     | `O(1)`       |
+| Get the last item             | `O(1)`     | `O(1)`       |
+| Get the `n`th item            | **`O(1)`** | `O(n)`       |
+| Set the `n`th item            | **`O(1)`** | `O(n)`       |
+| Add a value to the beginning  | `O(n)`     | **`O(1)`**   |
+| Add a value to the end        | `O(1)`     | `O(1)`       |
+| Find the index of a value     | `O(n)`     | `O(n)`       |
+| Combine two lists             | `O(n)`     | **`O(1)`**   |
+| Find an item's parent         | `O(1)`     | `O(1)`       |
+| Remove an item                | `O(n)`     | `O(n)`       |
