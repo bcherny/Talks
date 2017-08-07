@@ -681,7 +681,7 @@ We implemented a C-style list, but we can also:
 2. **Implement an object-oriented list, if we move methods to a List class:**
 
   ```js
-  class LinkedList {
+  class Cons {
       constructor(value, next) {
         this.value = value
         this.next = next
@@ -692,7 +692,7 @@ We implemented a C-style list, but we can also:
       ...
   }
 
-  let a = new LinkedList(1, new LinkedList(2, null))
+  let a = new Cons(1, new Cons(2, null))
   let b = a.head().value // 1
   ```
 ---
