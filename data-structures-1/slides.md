@@ -478,7 +478,7 @@ function parent(list, item) {...}
 function remove(list, value) {...}
 ```
 
-Get the LinkedList code we wrote so far: [mng.biz/123](TODO)
+Get the LinkedList code we wrote so far: [git.io/v7oEP](https://git.io/v7oEP)
 
 ---
 #### Singly Linked List: What can you do with a Linked List?
@@ -528,7 +528,20 @@ function find(list, value) {
   return find(list.next, value)
 }
 ```
+---
+#### Singly Linked List: What can you do with a Linked List?
 
+Find an item's parent (or undefined if it has none):
+
+```js
+function parent(list, item) {
+  switch (list.next) {
+    case null: return undefined
+    case item: return list
+      default: return parent(list.next, item)
+  }
+}
+```
 ---
 #### Singly Linked List: What can you do with a Linked List?
 
@@ -695,31 +708,9 @@ We implemented a C-style list, but we can also:
   let a = new Cons(1, new Cons(2, null))
   let b = a.head().value // 1
   ```
+
+  (Full implementation: [git.io/v7oE7](https://git.io/v7oE7))
 ---
 class: center, middle
 # Arrays
----
-
----
-class: center, middle
-# Trees
----
-class: middle
-```
-                                 Tree
-                         (abstract data type)
-                        /                    \
-                       /                      \
-               Binary Tree                    TODO
-              /           \                  /     \
-             /             \                /       \
-          Singly         Binary         Dynamic    Fixed
-       Linked List     Search Tree       Array     Array
-```
----
-class: center, middle
-<img src="images/Tree-Concept-1.png" width="80%">
----
-class: center, middle
-<img src="images/Tree-Concept-2.png" width="80%">
 ---
