@@ -1,8 +1,8 @@
 /// code
 
 class DynamicArray {
-  constructor(initialSize) {
-    this.sizeAvailable = initialSize
+  constructor(sizeInitial) {
+    this.sizeAvailable = sizeInitial
     this.sizeUsed = 0
     this.data = new Array(this.sizeAvailable)
   }
@@ -21,6 +21,28 @@ class DynamicArray {
     }
     this.data[this.sizeUsed++] = value
     return this // allow chaining
+  }
+  forEach(fn) {
+    for (let i = 0; i < this.data.length; i++) {
+      if (this.data[i] === undefined) {
+        continue
+      }
+      fn(this.data[i])
+    }
+  }
+  indexOf(value) {
+    for (let i = 0; i < this.data.length; i++) {
+      if (this.data[i] === value) {
+        return i
+      }
+    }
+    return -1
+  }
+  remove(index) {
+    for (let i = index; i < this.data.length; i++) {
+      this.data[i] = this.data[i + 1]
+    }
+    this.sizeUsed -= 1
   }
   resize() {
     this.sizeAvailable *= 2
@@ -62,4 +84,16 @@ test('push', t => {
   t.is(a.sizeAvailable, 6)
   t.is(a.sizeUsed, 4)
   t.is(a.toString(), '(1, 4, 3, 5)')
+})
+test('forEach', t => {
+  let string = ''
+  a.forEach(_ => { string += _ + ',' })
+  t.is(string, '1,4,3,5,')
+})
+test('indexOf', t => t.is(a.indexOf(3), 2))
+test('remove', t => {
+  t.is(a.sizeUsed, 4)
+  a.remove(1)
+  t.is(a.toString(), '(1, 3, 5)')
+  t.is(a.sizeUsed, 3)
 })

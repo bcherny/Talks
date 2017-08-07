@@ -714,3 +714,167 @@ We implemented a C-style list, but we can also:
 class: center, middle
 # Arrays
 ---
+class: middle
+```
+                                 List
+                         (abstract data type)
+                        /                    \
+                       /                      \
+               Linked List                    Array
+              /           \                  /     \
+             /             \                /       \
+          Singly         Doubly      -> Dynamic <-  Fixed
+       Linked List     Linked List   ->  Array  <-  Array
+```
+---
+class: center, middle
+## What's an Array?
+---
+class: center, middle
+# `[]`
+---
+class: center, middle
+# `['A', 'B', 'C', 'D']`
+---
+<img src="images/Array-Concept.png" width="100%">
+---
+<img src="images/Array-Concept.png" width="100%">
+
+```js
+AddressInMemory = InitialLocation + (Index * 64)
+```
+---
+<img src="images/Array-Concept.png" width="100%">
+
+```js
+AddressInMemory = InitialLocation + (Index * 64)
+```
+
+- Read at index in `O(1)`
+- Write to index in `O(1)`
+---
+<img src="images/Array-Concept.png" width="100%">
+---
+<img src="images/Array-Other-Memory.png" width="100%">
+
+```js
+AddressInMemory = InitialLocation + (Index * 64)
+```
+---
+<img src="images/Array-Other-Memory-2.png" width="100%">
+
+```js
+AddressInMemory = InitialLocation + ???
+```
+---
+class: center, middle
+## Arrays must be pre-allocated
+### (But we don't usually have to deal with low level problems like this)
+---
+class: middle
+```js
+let a = array(100)
+a[101] = 'hello world' // Error: Array has just 100 slots!
+```
+---
+class: center, middle
+## What's the performance?
+---
+#### Array: Performance
+
+| Operation                     | Perf (Array)     | Perf (Doubly Linked List)  |
+|-------------------------------|------------|--------------|
+| Get the first item            | `O(1)`     | `O(1)`       |
+| Get the last item             | `O(1)`     | `O(1)`       |
+| Get the `n`th item            | **`O(1)`** | `O(n)`       |
+| Set the `n`th item            | **`O(1)`** | `O(n)`       |
+| Add a value to the beginning  | `O(n)`     | **`O(1)`**   |
+| Add a value to the end        | `O(1)`     | `O(1)`       |
+| Find the index of a value     | `O(n)`     | `O(n)`       |
+| Combine two lists             | `O(n)`     | **`O(1)`**   |
+| Find an item's parent         | `O(1)`     | `O(1)`       |
+| Remove an item                | `O(n)`     | `O(n)`       |
+---
+class: center, middle
+### "But in JavaScript/Python/Ruby I never had this problem!"
+---
+class: center, middle
+### That's because JavaScript/Python/Ruby use...
+## Dynamic Arrays
+---
+#### Dynamic Arrays
+- Like regular arrays, but they automatically resize when necessary
+---
+#### Dynamic Arrays
+- Like regular arrays, but they automatically resize when necessary
+- Resizing from size `m` to size `n` takes `O(m)` time
+---
+#### Dynamic Arrays
+- Like regular arrays, but they automatically resize when necessary
+- Resizing from size `m` to size `n` takes `O(m)` time
+- How big should `n` be? It's arbitrary
+---
+#### Dynamic Arrays
+- Like regular arrays, but they automatically resize when necessary
+- Resizing from size `m` to size `n` takes `O(m)` time
+- How big should `n` be? It's arbitrary
+- Perf hit from resizing isn't bad: No impact on average, `O(m)` impact in worst case
+---
+#### Dynamic Arrays
+
+```js
+class DynamicArray {
+  constructor(sizeInitial) {
+    this.sizeAvailable = sizeInitial
+    this.sizeUsed = 0
+    this.data = new Array(this.sizeAvailable)
+  }
+}
+```
+---
+#### Dynamic Arrays
+
+```js
+class DynamicArray {
+  constructor(sizeInitial) {
+    this.sizeAvailable = sizeInitial
+    this.sizeUsed = 0
+    this.data = new Array(this.sizeAvailable)
+  }
+  push(value) {
+    if (this.sizeUsed === this.sizeAvailable) {
+      this.resize()
+    }
+    this.data[this.sizeUsed++] = value
+  }
+}
+```
+---
+#### Dynamic Arrays
+
+```js
+class DynamicArray {
+  constructor(sizeInitial) {
+    this.sizeAvailable = sizeInitial
+    this.sizeUsed = 0
+    this.data = new Array(this.sizeAvailable)
+  }
+  push(value) {
+    if (this.sizeUsed === this.sizeAvailable) {
+      this.resize()
+    }
+    this.data[this.sizeUsed++] = value
+  }
+  resize() {
+    this.sizeAvailable *= 2
+
+    let data = this.data
+
+    this.data = new Array(this.sizeAvailable)
+
+    for (let i = 0; i < data.length; i++) {
+      this.data[i] = data[i]
+    }
+  }
+}
+```

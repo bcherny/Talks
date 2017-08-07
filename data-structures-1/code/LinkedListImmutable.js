@@ -110,15 +110,24 @@ function remove(list, value) {
     return item.next
   }
 
+  // Design note: We only copy as much as necessary for Case 2,
+  // rather than copy the whole list.
+  //
+  // Eg. if the list is A -> B -> C -> D and we remove C, then
+  // we only copy A -> B, and then point B's next to D. That
+  // means we reused D between the input list and the returned
+  // list. The earlier in the list the removed item is, the more we
+  // can reuse (so we don't have to spend time & space copying it).
+  let newList = copyWhile(list, function(i) {
+    return i !== item
+  })
+
   // case 3
   if (item.next === null) {
-    return copyWhile(list, function(i) {
-      return i !== item
-    })
+    return newList
   }
 
   // case 2
-  let newList = copy(list)
   newList.next = item.next
   return newList
 }
