@@ -1,20 +1,26 @@
 /// code
 
 class DynamicArray {
+
   constructor(sizeInitial) {
     this.sizeAvailable = sizeInitial
     this.sizeUsed = 0
     this.data = new Array(this.sizeAvailable)
   }
+
   get(index) {
     return this.data[index]
   }
+
+  /** note: this mutates the list! */
   set(index, value) {
     while (index > this.sizeAvailable) {
       this.resize()
     }
     this.data[index] = value
   }
+
+  /** note: this mutates the list! */
   push(value) {
     if (this.sizeUsed === this.sizeAvailable) {
       this.resize()
@@ -22,6 +28,7 @@ class DynamicArray {
     this.data[this.sizeUsed++] = value
     return this // allow chaining
   }
+
   forEach(fn) {
     for (let i = 0; i < this.data.length; i++) {
       if (this.data[i] === undefined) {
@@ -30,6 +37,7 @@ class DynamicArray {
       fn(this.data[i])
     }
   }
+
   indexOf(value) {
     for (let i = 0; i < this.data.length; i++) {
       if (this.data[i] === value) {
@@ -38,12 +46,33 @@ class DynamicArray {
     }
     return -1
   }
+
+  /** note: this mutates the list! */
   remove(index) {
     for (let i = index; i < this.data.length; i++) {
       this.data[i] = this.data[i + 1]
     }
     this.sizeUsed -= 1
   }
+
+  /** note: this mutates the list! */
+  unshift(value) {
+    if (this.sizeUsed === this.sizeAvailable) {
+      this.resize()
+    }
+    for (let i = this.data.length; i > 0; i--) {
+      this.data[i] = this.data[i - 1]
+    }
+    this.data[0] = value
+    this.sizeUsed++
+    return this // allow chaining
+  }
+
+  /** note: this mutates the list! */
+  concat(list) {
+    list.forEach(item => this.push(item))
+  }
+
   resize() {
     this.sizeAvailable *= 2
 
@@ -59,6 +88,7 @@ class DynamicArray {
       this.data[i] = data[i]
     }
   }
+
   toString() {
     return '(' + this.data.filter(_ => _ !== undefined).join(', ') + ')'
   }
@@ -96,4 +126,14 @@ test('remove', t => {
   a.remove(1)
   t.is(a.toString(), '(1, 3, 5)')
   t.is(a.sizeUsed, 3)
+})
+test('unshift', t => {
+  a.unshift(10)
+  t.is(a.toString(), '(10, 1, 3, 5)')
+})
+test('concat', t => {
+  let b = new DynamicArray(3)
+  b.push(20).push(30).push(40)
+  a.concat(b)
+  t.is(a.toString(), '(10, 1, 3, 5, 20, 30, 40)')
 })

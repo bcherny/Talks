@@ -464,11 +464,11 @@ function unshift(list, value) {...}
 // Find the index of a value:
 function indexOf(list, value) {...}
 
-// Combine two lists:
-function concat(list1, list2) {...}
-
 // Find the item with the given value:
 function find(list, value) {...}
+
+// Combine two lists:
+function concat(list1, list2) {...}
 
 // Find an item's parent (or undefined if it has none):
 function parent(list, item) {...}
@@ -507,14 +507,6 @@ function indexOf(list, value, index = 0) {
 ---
 #### Singly Linked List: What can you do with a Linked List?
 
-Combine two lists:
-
-```js
-function concat(list1, list2) {
-  last(list1).next = list2
-}
-```
-
 Find the item with the given value:
 
 ```js
@@ -526,6 +518,14 @@ function find(list, value) {
     return undefined
   }
   return find(list.next, value)
+}
+```
+
+Combine two lists:
+
+```js
+function concat(list1, list2) {
+  last(list1).next = list2
 }
 ```
 ---
@@ -878,3 +878,27 @@ class DynamicArray {
   }
 }
 ```
+---
+#### Dynamic Arrays: What can you do with a Dynamic Array?
+
+```js
+// Add a value to the beginning:
+unshift(value) {...}
+
+// Find the index of a value:
+indexOf(value) {...}
+
+// Combine two lists:
+concat(list) {...}
+
+// Iterate over a list:
+forEach(fn) {...}
+
+// Remove a value (hint: think about what happens to the items
+// after the item we remove):
+remove(value) {...}
+```
+
+Get the DynamicArray code we wrote so far: [git.io/v76kD](https://git.io/v76kD)
+
+<small class="right">Answers here: [git.io/v76Ls](https://git.io/v76Ls)</small>
