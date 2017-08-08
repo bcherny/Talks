@@ -651,13 +651,13 @@ function cons(value, next, last) {
 |-------------------------------|------------|--------------|
 | Create a list of `n` items    | `cons`     | `O(n)`       |
 | Get the first item            | `head`     | `O(1)`       |
-| Get the last item             | `last`     | ~~`O(n)`~~ `O(1)` |
+| Get the last item             | `last`     | ~~`O(n)`~~ **`O(1)`** |
 | Get the `n`th item            | `get`      | `O(n)`       |
 | Set the `n`th item            | `set`      | `O(n)`       |
 | Add a value to the beginning  | `unshift`  | `O(1)`       |
-| Add a value to the end        | `push`     | ~~`O(n)`~~ `O(1)` |
+| Add a value to the end        | `push`     | ~~`O(n)`~~ **`O(1)`** |
 | Find the index of a value     | `indexOf`  | `O(n)`       |
-| Combine two lists             | `concat`   | ~~`O(n)`~~ `O(1)` |
+| Combine two lists             | `concat`   | ~~`O(n)`~~ **`O(1)`** |
 | Find an item's parent         | `parent`   | `O(n)`       |
 | Remove an item                | `remove`   | `O(n)`       |
 ---
@@ -701,8 +701,8 @@ function cons(value, prev, next, last) {
 | Add a value to the end        | `push`     | ~~`O(n)`~~ `O(1)` |
 | Find the index of a value     | `indexOf`  | `O(n)`       |
 | Combine two lists             | `concat`   | ~~`O(n)`~~ `O(1)` |
-| Find an item's parent         | `parent`   | ~~`O(n)`~~ `O(1)` |
-| Remove an item                | `remove`   | ~~`O(2n)`~~ `O(n)` |
+| Find an item's parent         | `parent`   | ~~`O(n)`~~ **`O(1)`** |
+| Remove an item                | `remove`   | ~~`O(2n)`~~ **`O(n)`** |
 ---
 class: center, middle
 ## (Side Note: Style)
@@ -764,8 +764,8 @@ class: middle
                Linked List                    Array
               /           \                  /     \
              /             \                /       \
-          Singly         Doubly      -> Dynamic <-  Fixed
-       Linked List     Linked List   ->  Array  <-  Array
+          Singly         Doubly         Dynamic     Fixed
+       Linked List     Linked List       Array      Array
 ```
 ---
 class: center, middle
@@ -839,7 +839,7 @@ class: center, middle
 - Like regular arrays, but they automatically resize when necessary
 - Resizing from size `m` to size `n` takes `O(m)` time
 - How big should `n` be? It's arbitrary
-- Perf hit from resizing isn't bad: No impact on average, `O(m)` impact in worst case
+- Performance hit from resizing isn't bad: No impact on average, `O(m)` impact in worst case
 ---
 #### Dynamic Arrays
 
@@ -941,3 +941,6 @@ class: center, middle
 | Combine two lists             | `O(n)`     | **`O(1)`**   |
 | Find an item's parent         | `O(1)`     | `O(1)`       |
 | Remove an item                | `O(n)`     | `O(n)`       |
+---
+class: center, middle
+![](images/happy.gif)
