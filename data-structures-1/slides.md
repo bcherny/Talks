@@ -511,9 +511,9 @@ function concat(list1, list2) {...}
 // Find an item's parent (or undefined if it has none):
 function parent(list, item) {...}
 
-// Remove a value (hint: think about what happens when we remove
+// Remove an item (hint: think about what happens when we remove
 // the 1st item vs. other items):
-function remove(list, value) {...}
+function remove(list, item) {...}
 ```
 
 Get the LinkedList code we wrote so far: [git.io/v7oEP](https://git.io/v7oEP)
@@ -583,21 +583,16 @@ function parent(list, item) {
 ---
 #### Singly Linked List: What can you do with a Linked List?
 
-Remove a value:
+Remove an item:
 
 <img src="images/LinkedList-Remove.png" width="100%">
 ---
 #### Singly Linked List: What can you do with a Linked List?
 
-Remove a value:
+Remove an item:
 
 ```js
-function remove(list, value) {
-
-  let item = find(list, value)
-  if (item === null) {
-    return list
-  }
+function remove(list, item) {
 
   let prev = parent(list, item)
 
@@ -702,7 +697,7 @@ function cons(value, prev, next, last) {
 | Find the index of a value     | `indexOf`  | `O(n)`       |
 | Combine two lists             | `concat`   | ~~`O(n)`~~ `O(1)` |
 | Find an item's parent         | `parent`   | ~~`O(n)`~~ **`O(1)`** |
-| Remove an item                | `remove`   | ~~`O(2n)`~~ **`O(n)`** |
+| Remove an item                | `remove`   | ~~`O(n)`~~ **`O(1)`** |
 ---
 class: center, middle
 ## (Side Note: Style)
@@ -940,7 +935,7 @@ class: center, middle
 | Find the index of a value     | `O(n)`     | `O(n)`       |
 | Combine two lists             | `O(n)`     | **`O(1)`**   |
 | Find an item's parent         | `O(1)`     | `O(1)`       |
-| Remove an item                | `O(n)`     | `O(n)`       |
+| Remove an item                | `O(n)`     | **`O(1)`**   |
 ---
 class: center, middle
 ![](images/happy.gif)

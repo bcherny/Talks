@@ -94,12 +94,7 @@ function parent(list, item) {
 }
 
 /** note: this mutates list! */
-function remove(list, value) {
-
-  let item = find(list, value)
-  if (item === null) {
-    return list
-  }
+function remove(list, item) {
 
   let prev = parent(list, item)
 
@@ -155,12 +150,12 @@ test('find', t => t.is(find(a, 20), c))
 test('parent', t => t.is(parent(a, b), c))
 
 let d = cons(1, cons(2, cons(3, cons(4, null))))
-let e = remove(d, 1)
+let e = remove(d, find(d, 1))
 test('remove (case 1)', t => t.is(toString(e), '(2, 3, 4)'))
 test('remove (case 2)', t => {
-  remove(e, 3)
+  remove(e, find(e, 3))
   t.is(toString(e), '(2, 4)')
 })
 test('remove (case 3)', t => {
-  t.is(toString(remove(e, 4)), '(2)')
+  t.is(toString(remove(e, find(e, 4))), '(2)')
 })

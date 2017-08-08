@@ -127,12 +127,7 @@ function parent(list, item) {
   }
 }
 
-function remove(list, value) {
-
-  let item = find(list, value)
-  if (item === null) {
-    return list
-  }
+function remove(list, item) {
 
   let prev = parent(list, item)
 
@@ -203,14 +198,14 @@ test('concat', t => {
 test('find', t => t.is(find(c, 30), b))
 test('parent', t => t.is(parent(c, b), c))
 test('remove (case 1)', t => {
-  t.is(toString(remove(a, 17)), '(9, 36, -3)')
-  t.not(a, remove(a, 17))
+  t.is(toString(remove(a, find(a, 17))), '(9, 36, -3)')
+  t.not(a, remove(a, find(a, 17)))
 })
 test('remove (case 2)', t => {
-  t.is(toString(remove(a, 9)), '(17, 36, -3)')
-  t.not(a, remove(a, 9))
+  t.is(toString(remove(a, find(a, 9))), '(17, 36, -3)')
+  t.not(a, remove(a, find(a, 9)))
 })
 test('remove (case 3)', t => {
-  t.is(toString(remove(a, -3)), '(17, 9, 36)')
-  t.not(a, remove(a, -3))
+  t.is(toString(remove(a, find(a, -3))), '(17, 9, 36)')
+  t.not(a, remove(a, find(a, -3)))
 })

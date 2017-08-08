@@ -90,12 +90,7 @@ class Cons {
   }
 
   /** note: this mutates list! */
-  remove(value) {
-
-    let item = this.find(value)
-    if (item === null) {
-      return this
-    }
+  remove(item) {
 
     let prev = this.parent(item)
 
@@ -152,12 +147,12 @@ test('find', t => t.is(a.find(20), c))
 test('parent', t => t.is(a.parent(b), c))
 
 let d = new Cons(1, new Cons(2, new Cons(3, new Cons(4, null))))
-let e = d.remove(1)
+let e = d.remove(d.find(1))
 test('remove (case 1)', t => t.is(e.toString(), '(2, 3, 4)'))
 test('remove (case 2)', t => {
-  e.remove(3)
+  e.remove(e.find(3))
   t.is(e.toString(), '(2, 4)')
 })
 test('remove (case 3)', t => {
-  t.is(e.remove(4).toString(), '(2)')
+  t.is(e.remove(e.find(4)).toString(), '(2)')
 })
