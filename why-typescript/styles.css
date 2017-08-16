@@ -39,3 +39,8 @@ td, th {
 .remark-code, .remark-inline-code {
   font-family: 'Fira Code';
 }
+
+.pink {
+  background: #f90041;
+  color: #fff;
+}
