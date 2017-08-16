@@ -1,12 +1,12 @@
-## Running the slideshow
+## Running the slideshow in the ☁️
 
-Go to https://bcherny.github.io/Talks/data-structures-1
+Go to https://bcherny.github.io/Talks/why-typescript
 
 ## Running the slideshow locally
 
 ```sh
 git clone git@github.com:bcherny/Talks.git
-cd Talks/data-structures-1
+cd Talks/why-typescript
 npm install
 npm start
 ```
