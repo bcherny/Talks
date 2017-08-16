@@ -8,7 +8,7 @@ class: center, middle
 ### [github.com/bcherny](https://github.com/bcherny)
 
 ---
-class: center, middle
+class: center
 # 1
 ## Atwood's Law
 
@@ -16,13 +16,17 @@ class: center, middle
 
 <small class='right'>https://blog.codinghorror.com/the-principle-of-least-power/</small>
 ---
-class: center, middle
+class: center
 # 2
 <img src='images/js-dead.png' width='100%' />
 ---
-class: center, middle
+class: center
 # 3
 <img src='images/dt.png' width='100%' />
+---
+class: center
+# 4
+<img src='images/coolts.png' width='100%' />
 ---
 class: center, middle
 # 1. atwood's law
@@ -186,38 +190,6 @@ ScalaJS: 662
 
 **TypeScript: 3,481**
 
-Dart: Use DefinitelyTyped
----
-#### 3. typings
-BuckleScript: 29
-
-Flow: 304
-
-Elm: 558 ish
-
-ScalaJS: 662
-
-**TypeScript: 3,481**
-
-Dart: Use DefinitelyTyped
-
-Kotlin: Use DefinitelyTyped
----
-#### 3. typings
-BuckleScript: 29
-
-Flow: 304
-
-Elm: 558 ish
-
-ScalaJS: 662
-
-**TypeScript: 3,481**
-
-Dart: Use DefinitelyTyped
-
-Kotlin: Use DefinitelyTyped
-
 Reason: Use DefinitelyTyped or FlowTyped
 ---
 #### 3. typings
@@ -231,12 +203,126 @@ ScalaJS: 662
 
 **TypeScript: 3,481**
 
+Reason: Use DefinitelyTyped or FlowTyped
+
+Dart: Use DefinitelyTyped
+---
+#### 3. typings
+BuckleScript: 29
+
+Flow: 304
+
+Elm: 558 ish
+
+ScalaJS: 662
+
+**TypeScript: 3,481**
+
+Reason: Use DefinitelyTyped or FlowTyped
+
 Dart: Use DefinitelyTyped
 
 Kotlin: Use DefinitelyTyped
+---
+#### 3. typings
+BuckleScript: 29
+
+Flow: 304
+
+Elm: 558 ish
+
+ScalaJS: 662
+
+**TypeScript: 3,481**
 
 Reason: Use DefinitelyTyped or FlowTyped
+
+Dart: Use DefinitelyTyped
+
+Kotlin: Use DefinitelyTyped
 
 (NPM: 537,436)
 #😵😵😵
 ---
+class: center, middle
+# 4. <img src='images/ts.svg' width='100px' style='margin-bottom: -10px;' /> is awesome.
+---
+#### <img src='images/ts.svg' width='20px' style='margin: 0 1px -2px 0;' /> is awesome.
+- **Powerful structural types**
+---
+#### <img src='images/ts.svg' width='20px' style='margin: 0 1px -2px 0;' /> is awesome.
+- Powerful structural types
+- **Mixins**
+---
+#### <img src='images/ts.svg' width='20px' style='margin: 0 1px -2px 0;' /> is awesome.
+- Powerful structural types
+- Mixins
+- **Flowed types, discriminated unions**
+---
+#### <img src='images/ts.svg' width='20px' style='margin: 0 1px -2px 0;' /> is awesome.
+- Powerful structural types
+- Mixins
+- Flowed types, discriminated unions
+- **JSX**
+---
+#### <img src='images/ts.svg' width='20px' style='margin: 0 1px -2px 0;' /> is awesome.
+- Powerful structural types
+- Mixins
+- Flowed types, discriminated unions
+- JSX
+- **Product & sum types**
+---
+#### <img src='images/ts.svg' width='20px' style='margin: 0 1px -2px 0;' /> is awesome.
+- Powerful structural types
+- Mixins
+- Flowed types, discriminated unions
+- JSX
+- Product & sum types
+- **Constrained & polymorphic polymorphism**
+---
+#### <img src='images/ts.svg' width='20px' style='margin: 0 1px -2px 0;' /> is awesome.
+- Powerful structural types
+- Mixins
+- Flowed types, discriminated unions
+- JSX
+- Product & sum types
+- Constrained & polymorphic polymorphism
+- **Literal types** (incomplete Flow support, incomplete Haskell support, Dotty)
+---
+#### <img src='images/ts.svg' width='20px' style='margin: 0 1px -2px 0;' /> is awesome.
+- Powerful structural types
+- Mixins
+- Flowed types, discriminated unions
+- JSX
+- Product & sum types
+- Constrained & polymorphic polymorphism
+- Literal types
+- **Read-only types** (no Flow support)
+---
+#### <img src='images/ts.svg' width='20px' style='margin: 0 1px -2px 0;' /> is awesome.
+- Powerful structural types
+- Mixins
+- Flowed types, discriminated unions
+- JSX
+- Product & sum types
+- Constrained & polymorphic polymorphism
+- Literal types
+- Read-only types
+- **Mapped types** (Adris's dependent types??)
+---
+#### <img src='images/ts.svg' width='20px' style='margin: 0 1px -2px 0;' /> is awesome.
+- Powerful structural types
+- Mixins
+- Flowed types, discriminated unions
+- JSX
+- Product & sum types
+- Constrained & polymorphic polymorphism
+- Literal types
+- Read-only types
+- Mapped types
+- **Higher kinded types?? ([TypeScript/issues/1213](https://github.com/Microsoft/TypeScript/issues/1213))**
+---
+class: center, middle
+# Thanks
+### [boris@lease.ly](mailto:boris@lease.ly)
+### [github.com/bcherny](https://github.com/bcherny)
