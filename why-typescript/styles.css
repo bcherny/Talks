@@ -1,0 +1,41 @@
+body {
+  color: #343435;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+blockquote {
+  border-left: 1em solid #aeaebb;
+  font-style: italic;
+  padding-left: 1em;
+  text-align: left;
+}
+
+blockquote h2 {
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+h1, h2, h3 {
+  font-family: 'Comic Sans MS';
+}
+
+h3, h3 a {
+  color: #aeaebb;
+}
+
+h2 ~ h3 {
+  margin-top: -1em;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+.remark-code, .remark-inline-code {
+  font-family: 'Fira Code';
+}

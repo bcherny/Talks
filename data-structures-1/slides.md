@@ -939,3 +939,13 @@ class: center, middle
 ---
 class: center, middle
 ![](images/happy.gif)
+---
+class: center, middle
+
+# Thanks!
+
+## Me: [github.com/bcherny](https://github.com/bcherny)
+
+## Slides: [git.io/v76Vq](https://git.io/v76Vq)
+
+## Code: [git.io/v76Vm](https://git.io/v76Vm)
