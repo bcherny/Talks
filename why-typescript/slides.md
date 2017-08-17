@@ -127,8 +127,8 @@ typeof null
 ## A: Because:
 
 ```js
-Math.max()              // -Infinity
-Math.min()              // Infinity
+Math.max()              // Infinity
+Math.min()              // -Infinity
 Math.max() > Math.min() // false
 ```
 ---
@@ -190,7 +190,7 @@ ScalaJS: 662
 
 **TypeScript: 3,481**
 
-Reason: Use DefinitelyTyped or FlowTyped
+**Reason: Use DefinitelyTyped or FlowTyped**
 ---
 #### 3. typings
 BuckleScript: 29
@@ -203,9 +203,9 @@ ScalaJS: 662
 
 **TypeScript: 3,481**
 
-Reason: Use DefinitelyTyped or FlowTyped
+**Reason: Use DefinitelyTyped or FlowTyped**
 
-Dart: Use DefinitelyTyped
+**Dart: Use DefinitelyTyped**
 ---
 #### 3. typings
 BuckleScript: 29
@@ -218,11 +218,11 @@ ScalaJS: 662
 
 **TypeScript: 3,481**
 
-Reason: Use DefinitelyTyped or FlowTyped
+**Reason: Use DefinitelyTyped or FlowTyped**
 
-Dart: Use DefinitelyTyped
+**Dart: Use DefinitelyTyped**
 
-Kotlin: Use DefinitelyTyped
+**Kotlin: Use DefinitelyTyped**
 ---
 #### 3. typings
 BuckleScript: 29
@@ -235,11 +235,11 @@ ScalaJS: 662
 
 **TypeScript: 3,481**
 
-Reason: Use DefinitelyTyped or FlowTyped
+**Reason: Use DefinitelyTyped or FlowTyped**
 
-Dart: Use DefinitelyTyped
+**Dart: Use DefinitelyTyped**
 
-Kotlin: Use DefinitelyTyped
+**Kotlin: Use DefinitelyTyped**
 
 (NPM: 537,436)
 #😵😵😵
