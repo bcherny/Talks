@@ -248,79 +248,122 @@ class: center, middle
 # 4. <img src='images/ts.svg' width='100px' style='margin-bottom: -10px;' /> is awesome.
 ---
 #### <img src='images/ts.svg' width='20px' style='margin: 0 1px -2px 0;' /> is awesome.
-- **Powerful structural types**
+### Powerful structural types
+```ts
+function bark(animal: { bark(): string }) {
+  ...
+}
+```
 ---
 #### <img src='images/ts.svg' width='20px' style='margin: 0 1px -2px 0;' /> is awesome.
-- Powerful structural types
-- **Mixins**
+### Mixins
+```ts
+interface Barks {
+  bark(): string
+}
+
+interface Walks {
+  walk(steps: number): boolean
+}
+
+class Dog implements Barks, Walks {...}
+```
 ---
 #### <img src='images/ts.svg' width='20px' style='margin: 0 1px -2px 0;' /> is awesome.
-- Powerful structural types
-- Mixins
-- **Flowed types, discriminated unions**
+### Flowed types, discriminated unions
+```ts
+function setHTML(html: string) {
+  let element = document.querySelector('#app')
+
+  if (element == null) {
+    return
+  }
+
+  element.innerHTML = html
+}
+```
 ---
 #### <img src='images/ts.svg' width='20px' style='margin: 0 1px -2px 0;' /> is awesome.
-- Powerful structural types
-- Mixins
-- Flowed types, discriminated unions
-- **JSX**
+### JSX
+```ts
+let Button = () =>
+  <button className='Button' />
+```
 ---
 #### <img src='images/ts.svg' width='20px' style='margin: 0 1px -2px 0;' /> is awesome.
-- Powerful structural types
-- Mixins
-- Flowed types, discriminated unions
-- JSX
-- **Product & sum types**
+### Product & sum types
+```ts
+type Language = 'English' | 'Japanese'
+
+function greet(language: Language) {
+  switch (language) {
+    case 'English': return 'Hello!'
+    case 'Japanese': return 'Konichiwa!'
+  }
+}
+```
 ---
 #### <img src='images/ts.svg' width='20px' style='margin: 0 1px -2px 0;' /> is awesome.
-- Powerful structural types
-- Mixins
-- Flowed types, discriminated unions
-- JSX
-- Product & sum types
-- **Constrained & polymorphic polymorphism**
+### Constrained & parametric polymorphism
+```ts
+type PossibleColors = 'Black' | 'Brown' | 'Red'
+
+class Dog<Color extends PossibleColors> { }
+
+let a = new Dog<'Red'>()  // Ok
+let b = new Dog<'Blue'>() // Error
+```
 ---
 #### <img src='images/ts.svg' width='20px' style='margin: 0 1px -2px 0;' /> is awesome.
-- Powerful structural types
-- Mixins
-- Flowed types, discriminated unions
-- JSX
-- Product & sum types
-- Constrained & polymorphic polymorphism
-- **Literal types** (incomplete Flow support, incomplete Haskell support, Dotty)
+### Literal types (incomplete Flow support, incomplete Haskell support, Dotty)
+```ts
+function first(array: [3]) {
+  return array[0]
+}
+
+first([3]) // Ok
+first([7]) // Error
+```
 ---
 #### <img src='images/ts.svg' width='20px' style='margin: 0 1px -2px 0;' /> is awesome.
-- Powerful structural types
-- Mixins
-- Flowed types, discriminated unions
-- JSX
-- Product & sum types
-- Constrained & polymorphic polymorphism
-- Literal types
-- **Read-only types** (no Flow support)
+### Read-only types (no Flow support)
+```ts
+function handle(event: MouseEvent) {
+  event.which = 3 // Error
+}
+```
 ---
 #### <img src='images/ts.svg' width='20px' style='margin: 0 1px -2px 0;' /> is awesome.
-- Powerful structural types
-- Mixins
-- Flowed types, discriminated unions
-- JSX
-- Product & sum types
-- Constrained & polymorphic polymorphism
-- Literal types
-- Read-only types
-- **Mapped types** (Adris's dependent types??)
+### Mapped types (Adris's dependent types??)
+```ts
+interface MyObject {
+  a: number
+  b: string
+  c: boolean
+}
+
+let myObject: MyObject = {
+  a: 42,
+  b: 'foo',
+  c: true
+}
+
+function value<K extends keyof MyObject>(key: K): MyObject[K] {
+  return myObject[key]
+}
+
+value('c') // boolean
+```
 ---
 #### <img src='images/ts.svg' width='20px' style='margin: 0 1px -2px 0;' /> is awesome.
-- Powerful structural types
-- Mixins
-- Flowed types, discriminated unions
-- JSX
-- Product & sum types
-- Constrained & polymorphic polymorphism
-- Literal types
-- Read-only types
-- Mapped types
-- **Higher kinded types?? ([TypeScript/issues/1213](https://github.com/Microsoft/TypeScript/issues/1213))**
+### Higher kinded types?? ([TypeScript/issues/1213](https://github.com/Microsoft/TypeScript/issues/1213))
+```ts
+interface Monad<T<*>> {
+  map<A, B>(f: (a: A) => B): T<A> => T<B>
+  lift<A>(a: A): T<A>
+  join<A>(tta: T<T<A>>): T<A>
+}
+```
 ---
 class: center, middle
 # Thanks
