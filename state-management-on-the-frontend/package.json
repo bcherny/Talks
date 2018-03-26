@@ -9,5 +9,8 @@
   "dependencies": {
     "roughjs": "^2.0.1",
     "static-server": "^2.2.0"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.23.6"
   }
 }
