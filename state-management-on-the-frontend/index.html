@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+  <head>
+    <title>state management on the frontend</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <textarea id="source"></textarea>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/webfont/1.6.28/webfontloader.js"></script>
+    <script src="node_modules/roughjs/dist/rough.umd.js"></script>
+    <script src="remark.js"></script>
+    <script>
+      WebFont.load({
+        custom: {
+          families: ['xkcd']
+        },
+        active: main
+      })
+
+      function main() {
+        remark
+          .create({ sourceUrl: 'slides.md' })
+          .on('showSlide', () => withCanvas('canvas-a', canvas => {
+            let rc = rough.canvas(canvas)
+            let ctx = canvas.getContext('2d')
+            rc.rectangle(10, 10, 200, 200)
+            ctx.font = '2em xkcd'
+            ctx.fillText("Using the xkcd font (html5 canvas)",100, 100)
+          }))
+      }
+
+      function withCanvas(id, cb) {
+        setTimeout(() => {
+          let canvas = document.getElementById(id)
+          if (!canvas) return
+          canvas.width = canvas.parentNode.offsetWidth*2
+          canvas.height = canvas.parentNode.offsetHeight*2
+          canvas.style.width = canvas.parentNode.offsetWidth
+          canvas.style.height = canvas.parentNode.offsetHeight
+          context = canvas.getContext('2d')
+          context.scale(2,2)
+          cb(canvas)
+        })
+      }
+    </script>
+  </body>
+</html>

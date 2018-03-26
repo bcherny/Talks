@@ -1,0 +1,13 @@
+{
+  "name": "@bcherny/state-management-on-the-frontend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "static-server -o"
+  },
+  "dependencies": {
+    "roughjs": "^2.0.1",
+    "static-server": "^2.2.0"
+  }
+}
