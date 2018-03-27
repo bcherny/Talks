@@ -22,9 +22,6 @@ class: center, middle
 <img src="images/composer-annotated-3.png" width="100%" />
 ---
 class: center, middle
-<img src="images/composer-annotated-4.png" width="100%" />
----
-class: center, middle
 <img src="images/tree.png" width="100%" />
 ---
 ```jsx
