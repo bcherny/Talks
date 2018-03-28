@@ -24,6 +24,51 @@ class: center, middle
 class: center, middle
 <img src="images/tree.png" width="100%" />
 ---
+class: center, middle
+<img src="images/tree-graphql-0.png" width="100%" />
+---
+class: center, middle
+<img src="images/tree-graphql-1.png" width="100%" />
+---
+class: center, middle
+<img src="images/tree-graphql-2.png" width="100%" />
+---
+class: center, middle
+<img src="images/tree-graphql-3.png" width="100%" />
+---
+class: center, middle
+<img src="images/tree-graphql-state-0.png" width="100%" />
+---
+class: center, middle
+<img src="images/tree-graphql-state-1.png" width="100%" />
+---
+class: center, middle
+<img src="images/tree-graphql-state-2.png" width="100%" />
+---
+class: center, middle
+<img src="images/tree-graphql-state-callback-0.png" width="100%" />
+---
+class: center, middle
+<img src="images/tree-graphql-state-callback-1.png" width="100%" />
+---
+class: center, middle
+<img src="images/tree-graphql-state-callback-2.png" width="100%" />
+---
+class: center, middle
+<img src="images/tree-graphql-state-callback-3.png" width="100%" />
+---
+class: center, middle
+<img src="images/tree-state-0.png" width="100%" />
+---
+class: center, middle
+<img src="images/tree-state-1.png" width="100%" />
+---
+class: center, middle
+<img src="images/tree-state-2.png" width="100%" />
+---
+class: center, middle
+<img src="images/tree-state-3.png" width="100%" />
+---
 ```jsx
 class App extends React.Component {            // App.react.js
   render() { return <Composer /> }}

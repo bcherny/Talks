@@ -1,130 +1,132 @@
 <!doctype html>
 <html>
-  <head>
-    <title>state management on the frontend</title>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="prism.css">
-  </head>
-  <body>
-    <textarea id="source"></textarea>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/webfont/1.6.28/webfontloader.js"></script>
-    <script src="node_modules/roughjs/dist/rough.umd.js"></script>
-    <script src="prism.js"></script>
-    <script src="remark.js"></script>
-    <script>
-      function parseLanguage(lang) {
-        return {
-          js: 'jsx',
-        }[lang] || lang;
-      }
-      remark.highlighter.engine.highlightBlock = block => {
-        const language = parseLanguage(block.className.split(" ")[0]);
-        const prismLang = Prism.languages[language];
-        if (prismLang) {
-          block.parentNode.className = `${block.parentNode.className} language-${language}`;
-          const html = Prism.highlight(block.textContent, prismLang);
+
+<head>
+  <title>state management on the frontend</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="prism.css">
+</head>
+
+<body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/webfont/1.6.28/webfontloader.js"></script>
+  <script src="node_modules/roughjs/dist/rough.umd.js"></script>
+  <script src="prism.js"></script>
+  <script src="remark.js"></script>
+  <script>
+    function parseLanguage(lang) {
+      return {
+        js: 'jsx',
+      }[lang] || lang;
+    }
+    remark.highlighter.engine.highlightBlock = block => {
+      const language = parseLanguage(block.className.split(" ")[0]);
+      const prismLang = Prism.languages[language];
+      if (prismLang) {
+        block.parentNode.className = `${block.parentNode.className} language-${language}`;
+        const html = Prism.highlight(block.textContent, prismLang);
 
 
 
-          const lines = html.split(`\n`);
-          let currentSpan = null;
-          for (var i = 0; i < lines.length; i++) {
-            let line = lines[i];
-            if (currentSpan) {
-              line = currentSpan + line;
-              currentSpan = null;
-            }
-            const openTags = [];
-            const re = /(<span[^>]*>|<\/span>)/gi;
-            let matches;
-            while ((matches = re.exec(line)) != null) {
-              const tag = matches[1];
-              if (tag[1] === '/') {
-                openTags.pop();
-              } else {
-                openTags.push(tag);
-              }
-            }
-            currentSpan = openTags.join('');
-            line = line + ('</' + 'span>').repeat(openTags.length);
-            lines[i] = line;
+        const lines = html.split(`\n`);
+        let currentSpan = null;
+        for (var i = 0; i < lines.length; i++) {
+          let line = lines[i];
+          if (currentSpan) {
+            line = currentSpan + line;
+            currentSpan = null;
           }
-          block.innerHTML = lines.join('\n');
-
-
-
-        } else {
-          console.warn(`Language '${language}' not supported?`)
+          const openTags = [];
+          const re = /(<span[^>]*>|<\/span>)/gi;
+          let matches;
+          while ((matches = re.exec(line)) != null) {
+            const tag = matches[1];
+            if (tag[1] === '/') {
+              openTags.pop();
+            } else {
+              openTags.push(tag);
+            }
+          }
+          currentSpan = openTags.join('');
+          line = line + ('</' + 'span>').repeat(openTags.length);
+          lines[i] = line;
         }
-      };
-      </script>
-    <script>
-      WebFont.load({
-        custom: {
-          families: ['xkcd']
-        },
-        active: main
+        block.innerHTML = lines.join('\n');
+
+
+
+      } else {
+        console.warn(`Language '${language}' not supported?`)
+      }
+    };
+  </script>
+  <script>
+    WebFont.load({
+      custom: {
+        families: ['xkcd']
+      },
+      active: main
+    })
+
+    async function main() {
+      const result = await fetch('slides.md');
+      let lastSource = await result.text();
+      let slideshow = remark.create({
+        source: lastSource,
+        sourceUrl: 'slides.md'
       })
 
-      async function main() {
+      try {
         const result = await fetch('slides.md');
         let lastSource = await result.text();
-        let slideshow = remark.create({
+        const slideshow = remark.create({
           source: lastSource,
-          sourceUrl: 'slides.md'
-        })
-
-        try {
-          const result = await fetch('slides.md');
-          let lastSource = await result.text();
-          const slideshow = remark.create({
-            source: lastSource,
-            slideNumberFormat: function (current, total) { return null },
-            ratio: '4:3',
-            highlightLines: true,
-            highlightSpans: false // We need ES6 backticks
-          });
-          if (window.___browserSync___) {
-            ___browserSync___.socket.on('reload:slides.md', async () => {
-              try {
-                const result2 = await fetch('slides.md');
-                const newSource = await result2.text();
-                if (lastSource !== newSource) {
-                  slideshow.gotoSlide(1);
-                  slideshow.loadFromString(newSource);
-                  let slideNumber = 1;
-                  let i = 0, l = Math.min(lastSource.length, newSource.length);
-                  for (; i < l; i++) {
-                    const oldChr = lastSource[i];
-                    const newChr = newSource[i];
-                    if (oldChr === '\n') {
-                      if (lastSource.substr(i+1, 4).match(/^---?\n/)) {
-                        // TODO: don't let this break inside code blocks
-                        slideNumber++;
-                      }
-                    }
-                    if (oldChr !== newChr) {
-                      slideshow.gotoSlide(slideNumber);
-                      break;
+          slideNumberFormat: function(current, total) { return null },
+          ratio: '4:3',
+          highlightLines: true,
+          highlightSpans: false // We need ES6 backticks
+        });
+        if (window.___browserSync___) {
+          ___browserSync___.socket.on('reload:slides.md', async () => {
+            try {
+              const result2 = await fetch('slides.md');
+              const newSource = await result2.text();
+              if (lastSource !== newSource) {
+                slideshow.gotoSlide(1);
+                slideshow.loadFromString(newSource);
+                let slideNumber = 1;
+                let i = 0, l = Math.min(lastSource.length, newSource.length);
+                for (; i < l; i++) {
+                  const oldChr = lastSource[i];
+                  const newChr = newSource[i];
+                  if (oldChr === '\n') {
+                    if (lastSource.substr(i + 1, 4).match(/^---?\n/)) {
+                      // TODO: don't let this break inside code blocks
+                      slideNumber++;
                     }
                   }
-                  if (i === l) {
-                    slideshow.gotoLastSlide();
+                  if (oldChr !== newChr) {
+                    slideshow.gotoSlide(slideNumber);
+                    break;
                   }
-                  lastSource = newSource;
                 }
-              } catch (e) {
-                console.error(e);
+                if (i === l) {
+                  slideshow.gotoLastSlide();
+                }
+                lastSource = newSource;
               }
-            })
-          }
-        } catch (e) {
-          console.error(e);
-          document.body.innerHTML = '<h1>An error ocurred!<' + '/h1>';
+            } catch (e) {
+              console.error(e);
+            }
+          })
         }
-
+      } catch (e) {
+        console.error(e);
+        document.body.innerHTML = '<h1>An error ocurred!<' + '/h1>';
       }
-    </script>
-  </body>
+
+    }
+  </script>
+</body>
+
 </html>
