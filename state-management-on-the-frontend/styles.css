@@ -6,6 +6,18 @@
   font-family: xkcd;
 }
 
+.remark-slide-content {
+  padding: 0;
+}
+
+p {
+  margin: 0;
+}
+
+img.full {
+  max-height: 720px;
+}
+
 body {
   color: #343435;
   font-family: -apple-system, BlinkMacSystemFont, sans-serif;
