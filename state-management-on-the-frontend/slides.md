@@ -69,6 +69,43 @@ class: center, middle
 class: center, middle
 <img src="images/tree-state-3.png" width="100%" />
 ---
+class: center, middle
+<img src="images/tree-flux-0.png" width="100%" />
+---
+class: center, middle
+<img src="images/tree-flux-1.png" width="100%" />
+---
+class: center, middle
+<img src="images/tree-flux-2.png" width="100%" />
+---
+class: center, middle
+<img src="images/tree-flux-3.png" width="100%" />
+---
+class: center, middle
+<img src="images/tree-flux-4.png" width="100%" />
+---
+class: center, middle
+<img src="images/tree-flux-5.png" width="100%" />
+---
+class: center, middle
+<img src="images/tree-flux-6.png" width="100%" />
+---
+class: center, middle
+<img src="images/tree-flux-7.png" width="100%" />
+---
+class: center, middle
+<img src="images/tree-flux-8.png" width="100%" />
+---
+class: center, middle
+<img src="images/tree-flux-9.png" width="100%" />
+---
+class: center, middle
+## WHEW.
+<img src="images/whew.webp" />
+---
+class: center, middle
+# Let's scale it.
+---
 ```jsx
 class App extends React.Component {            // App.react.js
   render() { return <Composer /> }}
