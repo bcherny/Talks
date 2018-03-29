@@ -7,22 +7,22 @@ class: center, middle
 <img src="images/react.png" width="50%" />
 ---
 class: center, middle
-<img src="images/composer.png" class="full" />
+<img src="images/composer.png" width="100%" />
 ---
 class: center, middle
-<img src="images/composer-annotated-0.png" class="full" />
+<img src="images/composer-annotated-0.png" width="100%" />
 ---
 class: center, middle
-<img src="images/composer-annotated-1.png" class="full" />
+<img src="images/composer-annotated-1.png" width="100%" />
 ---
 class: center, middle
-<img src="images/composer-annotated-2.png" class="full" />
+<img src="images/composer-annotated-2.png" width="100%" />
 ---
 class: center, middle
-<img src="images/composer-annotated-3.png" class="full" />
+<img src="images/composer-annotated-3.png" width="100%" />
 ---
 class: center, middle
-<img src="images/tree.png" class="full" />
+<img src="images/tree.png" width="80%" />
 ---
 class: center, middle
 <img src="images/tree-graphql-0.png" class="full" />
@@ -124,6 +124,9 @@ class: center, middle
 class: center, middle
 ## Redux
 <img src="images/redux-flow.png" style="width:50%" />
+---
+class: center, middle
+<img src="images/redux-flow-code.png" class="full" />
 ---
 class: center, middle
 ## Flux
