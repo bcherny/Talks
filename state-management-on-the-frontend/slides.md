@@ -118,27 +118,14 @@ class: center, middle
 class: center, middle
 <img src="images/tree-flux-scale.png" class="full" />
 ---
-```jsx
-class App extends React.Component {            // App.react.js
-  render() { return <Composer /> }}
-
-class Composer extends React.Component {       // Composer.react.js
-  state = {
-    text: '' }
-  render() {
-    return <Editor text={this.state.text}>
-      <Avatar />
-      <Textbox onChange={this.onChange} text={text} />
-    </Editor>
-    <Sproutbar />
-    <Button isEnabled={this.state.text !== ''} />
-  }
-  onChange(text) {
-    this.setState({ text }) }}
-
-class Textbox extends React.Component          // Textbox.react.js
-  render() {
-    return <textarea
-      onChange={this.props.onChange}
-      value={this.props.text} /> }}
-```
+class: center, middle
+<img src="images/tree-redux-scale.png" class="full" />
+---
+class: center, middle
+## Redux
+<img src="images/redux-flow.png" style="width:50%" />
+---
+class: center, middle
+## Flux
+<img src="images/flux-flow.png" style="width:50%" />
+---
