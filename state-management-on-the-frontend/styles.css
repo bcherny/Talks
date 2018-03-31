@@ -8,8 +8,19 @@ p {
 }
 
 img.full {
+  height: 100%;
   margin: -1em -4em -1em -4em;
-  max-height: 720px;
+  object-fit: contain;
+  width: 100%;
+}
+
+.smaller {
+  margin-top: 35px;
+  opacity: .7;
+  font-size: .8em;
+}
+.smaller h2 {
+  font-size: 2em;
 }
 
 body {

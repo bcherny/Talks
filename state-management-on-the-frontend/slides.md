@@ -7,19 +7,19 @@ class: center, middle
 <img src="images/react.png" width="50%" />
 ---
 class: center, middle
-<img src="images/composer.png" width="100%" />
+<img src="images/composer.png" class="full"/>
 ---
 class: center, middle
-<img src="images/composer-annotated-0.png" width="100%" />
+<img src="images/composer-annotated-0.png" class="full"/>
 ---
 class: center, middle
-<img src="images/composer-annotated-1.png" width="100%" />
+<img src="images/composer-annotated-1.png" class="full"/>
 ---
 class: center, middle
-<img src="images/composer-annotated-2.png" width="100%" />
+<img src="images/composer-annotated-2.png" class="full"/>
 ---
 class: center, middle
-<img src="images/composer-annotated-3.png" width="100%" />
+<img src="images/composer-annotated-3.png" class="full"/>
 ---
 class: center, middle
 <img src="images/composer-annotated-3.png" width="50%" />
@@ -84,6 +84,7 @@ class: center, middle
 ---
 class: center, middle
 # Flux
+<img src="images/flux.svg" style="margin-top: -100px; width: 30%;" />
 ---
 class: center, middle
 <img src="images/tree-flux-0.png" class="full" />
@@ -144,22 +145,22 @@ class: center, middle
 ## Flux
 - Singleton <font color="orange">Dispatcher</font>
 - Lots of <font color="red">Stores</font>
-- Describe CRUD operations with <font color="red">Actions</font>
+- Describe CUD operations with <font color="red">Actions</font>
 - Stores take Actions → mutate their internal state → update the <font color="green">View</font>
 ---
 class: center, middle
-# Redux
+<img src="images/redux.png" style="width:50%" />
 ---
 ## Redux
 - Singleton <font color="red">Store</font>
 - Lots of <font color="magenta">Reducers</font>
-- Describe CRUD operations with <font color="red">Actions</font>
+- Describe CUD operations with <font color="red">Actions</font>
 - Reducers take Actions → create a new state for the Store → update the <font color="green">View</font>
 
 ## Flux
 - Singleton <font color="orange">Dispatcher</font>
 - Lots of <font color="red">Stores</font>
-- Describe CRUD operations with <font color="red">Actions</font>
+- Describe CUD operations with <font color="red">Actions</font>
 - Stores take Actions → mutate their internal state → update the <font color="green">View</font>
 ---
 class: center, middle
@@ -171,4 +172,65 @@ class: center, middle
 ---
 class: center, middle
 <img src="images/redux-flow-code.png" class="full" />
+---
+class: center, middle
+![](images/complicated.gif)
+---
+class: center, middle
+<img src="images/undux.png" width="45%" />
+---
+class: center, middle
+<img src="images/undux-flow-comparison.png" class="full" />
+---
+class: center, middle
+<img src="images/undux-flow-code.png" class="full" />
+---
+## Undux
+- Lots of <font color="#2a6fe6">Stores</font>
+- Use `.get(key)` and `.set(key)(value)` to read and write to them
+- <font color="#2a6fe6">Store</font> updates → <font color="green">View</font> updates
+
+<div class="smaller">
+  <h2>Redux</h2>
+  <ul>
+  <li>Singleton <font color="red">Store</font></li>
+  <li>Lots of <font color="magenta">Reducers</font></li>
+  <li>Describe CUD operations with <font color="red">Actions</font></li>
+  <li>Reducers take Actions → create a new state for the Store → update the <font color="green">View</font></li>
+  </ul>
+
+  <h2>Flux</h2>
+  <ul>
+  <li>Singleton <font color="orange">Dispatcher</font></li>
+  <li>Lots of <font color="red">Stores</font></li>
+  <li>Describe CUD operations with <font color="red">Actions</font></li>
+  <li>Stores take Actions → mutate their internal state → update the <font color="green">View</font></li>
+  </ul>
+</div>
+---
+class: center, middle
+<img src="images/tree-flux-11.png" class="full" />
+---
+class: center, middle
+<img src="images/tree-undux.png" class="full" />
+---
+## Undux: features
+---
+## Undux: features
+## 🤭 100% TYPESAFE
+---
+## Undux: features
+## 🤭 100% TYPESAFE
+## 😯 No boilerplate
+---
+## Undux: features
+## 🤭 100% TYPESAFE
+## 😯 No boilerplate
+## 😱 Reactive effects
+---
+## Undux: features
+## 🤭 100% TYPESAFE
+## 😯 No boilerplate
+## 😱 Reactive effects
+## 🤯 Built in logger
 ---
