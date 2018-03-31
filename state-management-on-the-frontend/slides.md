@@ -83,6 +83,9 @@ class: center, middle
 <img src="images/tree-state-3.png" class="full" />
 ---
 class: center, middle
+# Flux
+---
+class: center, middle
 <img src="images/tree-flux-0.png" class="full" />
 ---
 class: center, middle
@@ -119,6 +122,13 @@ class: center, middle
 <img src="images/tree-flux-11.png" class="full" />
 ---
 class: center, middle
+## Flux
+<img src="images/flux-flow.png" style="width:50%" />
+---
+class: center, middle
+<img src="images/flux-flow-code.png" class="full" />
+---
+class: center, middle
 ## WHEW.
 <img src="images/whew.webp" />
 ---
@@ -131,6 +141,27 @@ class: center, middle
 class: center, middle
 <img src="images/tree-flux-scale.png" class="full" />
 ---
+## Flux
+- Singleton <font color="orange">Dispatcher</font>
+- Lots of <font color="red">Stores</font>
+- Describe CRUD operations with <font color="red">Actions</font>
+- Stores take Actions → mutate their internal state → update the <font color="green">View</font>
+---
+class: center, middle
+# Redux
+---
+## Redux
+- Singleton <font color="red">Store</font>
+- Lots of <font color="magenta">Reducers</font>
+- Describe CRUD operations with <font color="red">Actions</font>
+- Reducers take Actions → create a new state for the Store → update the <font color="green">View</font>
+
+## Flux
+- Singleton <font color="orange">Dispatcher</font>
+- Lots of <font color="red">Stores</font>
+- Describe CRUD operations with <font color="red">Actions</font>
+- Stores take Actions → mutate their internal state → update the <font color="green">View</font>
+---
 class: center, middle
 <img src="images/tree-redux-scale.png" class="full" />
 ---
@@ -140,11 +171,4 @@ class: center, middle
 ---
 class: center, middle
 <img src="images/redux-flow-code.png" class="full" />
----
-class: center, middle
-## Flux
-<img src="images/flux-flow.png" style="width:50%" />
----
-class: center, middle
-<img src="images/flux-flow-code.png" class="full" />
 ---
