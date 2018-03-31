@@ -22,6 +22,19 @@ class: center, middle
 <img src="images/composer-annotated-3.png" width="100%" />
 ---
 class: center, middle
+<img src="images/composer-annotated-3.png" width="50%" />
+```html
+<Composer>
+  <Editor>
+    <Avatar />
+    <Textbox />
+  </Editor>
+  <Sproutbar />
+  <Button />
+</Composer>
+```
+---
+class: center, middle
 <img src="images/tree.png" width="80%" />
 ---
 class: center, middle
@@ -131,4 +144,7 @@ class: center, middle
 class: center, middle
 ## Flux
 <img src="images/flux-flow.png" style="width:50%" />
+---
+class: center, middle
+<img src="images/flux-flow-code.png" class="full" />
 ---
