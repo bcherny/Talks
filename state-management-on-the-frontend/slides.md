@@ -217,20 +217,27 @@ class: center, middle
 ## Undux: features
 ---
 ## Undux: features
-## 🤭 100% TYPESAFE
+## 🤭 No boilerplate
 ---
 ## Undux: features
-## 🤭 100% TYPESAFE
-## 😯 No boilerplate
+## 🤭 No boilerplate
+## 😯 100% TYPESAFE
 ---
 ## Undux: features
-## 🤭 100% TYPESAFE
-## 😯 No boilerplate
+## 🤭 No boilerplate
+## 😯 100% TYPESAFE
 ## 😱 Reactive effects
 ---
 ## Undux: features
-## 🤭 100% TYPESAFE
-## 😯 No boilerplate
+## 🤭 No boilerplate
+## 😯 100% TYPESAFE
 ## 😱 Reactive effects
 ## 🤯 Built in logger
 ---
+class: center, middle
+## Coming to a www near you soon...
+---
+class: center, middle
+# Thanks!
+## @bcherny
+## github.com/bcherny/undux
