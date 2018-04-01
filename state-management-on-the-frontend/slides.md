@@ -3,6 +3,13 @@ class: center, middle
 ## By Boris Cherny
 ### @bcherny - github.com/bcherny
 ---
+class: middle
+# Plan
+1. React refresher
+2. Flux
+3. Redux
+4. Undux
+---
 class: center, middle
 <img src="images/react.png" width="50%" />
 ---
@@ -81,6 +88,18 @@ class: center, middle
 ---
 class: center, middle
 <img src="images/tree-state-3.png" class="full" />
+---
+class: center, middle
+<img src="images/deep-passing-0.png" />
+---
+class: center, middle
+<img src="images/deep-passing-1.png" />
+---
+class: center, middle
+<img src="images/deep-passing-2.png" />
+---
+class: center, middle
+# 😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵
 ---
 class: center, middle
 # Flux
