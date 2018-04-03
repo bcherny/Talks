@@ -146,7 +146,10 @@ class: center, middle
 <img src="images/flux-flow.png" style="width:50%" />
 ---
 class: center, middle
-<img src="images/flux-flow-code.png" class="full" />
+<img src="images/flux-flow-code-0.png" class="full" />
+---
+class: center, middle
+<img src="images/flux-flow-code-1.png" class="full" />
 ---
 class: center, middle
 ## WHEW.
@@ -190,7 +193,13 @@ class: center, middle
 <img src="images/redux-flow.png" style="width:50%" />
 ---
 class: center, middle
-<img src="images/redux-flow-code.png" class="full" />
+<img src="images/redux-flow-code-0.png" class="full" />
+---
+class: center, middle
+<img src="images/redux-flow-code-1.png" class="full" />
+---
+class: center, middle
+<img src="images/redux-flow-code-2.png" class="full" />
 ---
 class: center, middle
 ![](images/complicated.gif)
