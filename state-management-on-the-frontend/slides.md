@@ -217,6 +217,7 @@ class: center, middle
 - Lots of <font color="#2a6fe6">Stores</font>
 - Use `.get(key)` and `.set(key)(value)` to read and write to them
 - <font color="#2a6fe6">Store</font> updates → <font color="green">View</font> updates
+- **Reactive effects**
 
 <div class="smaller">
   <h2>Redux</h2>
@@ -235,6 +236,17 @@ class: center, middle
   <li>Stores take Actions → mutate their internal state → update the <font color="green">View</font></li>
   </ul>
 </div>
+---
+class: middle
+```js
+composerStore
+  .on('text')
+  .throttle(200)
+  .filter(text => text.startsWith('hello'))
+  .subscribe(text => {
+    console.log('text changed!', text)
+  })
+```
 ---
 class: center, middle
 <img src="images/tree-flux-11.png" class="full" />
