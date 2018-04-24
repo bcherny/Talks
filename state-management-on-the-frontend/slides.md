@@ -243,6 +243,7 @@ composerStore
   .on('text')
   .throttle(200)
   .filter(text => text.startsWith('hello'))
+  .map(text => text.toUpperCase())
   .subscribe(text => {
     console.log('text changed!', text)
   })
@@ -275,9 +276,11 @@ class: center, middle
 ## 🤯 Built in logger
 ---
 class: center, middle
-## Coming to a www near you soon...
+## Learn more...
+# fburl.com/undux
 ---
 class: center, middle
 # Thanks!
 ## @bcherny
+## fburl.com/undux
 ## github.com/bcherny/undux
