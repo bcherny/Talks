@@ -679,3 +679,23 @@ class: center, middle
 class: center, middle
 <legend>5. Flux, <u>Redux</u>, Relay before & after</legend>
 <img src="images/redux-flow.png" width="60%" />
+---
+class: center, middle
+<legend>5. Flux, <u>Redux</u>, Relay before & after</legend>
+<img src="images/redux-flow-expanded-0.png" width="80%" />
+---
+class: center, middle
+<legend>5. Flux, <u>Redux</u>, Relay before & after</legend>
+<img src="images/redux-flow-expanded-1.png" width="80%" />
+---
+class: center, middle
+<legend>5. Flux, <u>Redux</u>, Relay before & after</legend>
+<img src="images/redux-flow-expanded-2.png" width="80%" />
+---
+class: center, middle
+<legend>5. Flux, <u>Redux</u>, Relay before & after</legend>
+<img src="images/redux-flow-expanded-3.png" width="80%" />
+---
+class: center, middle
+<legend>5. Flux, <u>Redux</u>, Relay before & after</legend>
+<img src="images/redux-flow-expanded-4.png" width="80%" />
