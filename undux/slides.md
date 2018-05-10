@@ -106,13 +106,13 @@ class: center, middle
 class: center
 <legend>4. Usage</legend>
 ```ts
-// store.js
+// composerStore.js
 ```
 ---
 class: center
 <legend>4. Usage</legend>
 ```ts
-// store.js
+// composerStore.js
 
 *const { createStore } = require('undux')
 ```
@@ -120,7 +120,7 @@ class: center
 class: center
 <legend>4. Usage</legend>
 ```ts
-// store.js
+// composerStore.js
 
 const { createStore } = require('undux')
 
@@ -133,7 +133,7 @@ const { createStore } = require('undux')
 class: center
 <legend>4. Usage</legend>
 ```ts
-// store.js
+// composerStore.js
 
 const { createStore } = require('undux')
 
@@ -151,7 +151,7 @@ type State = {
 class: center
 <legend>4. Usage</legend>
 ```ts
-// store.js
+// composerStore.js
 
 const { createStore } = require('undux')
 
@@ -171,7 +171,7 @@ const initialState: State = {
 class: center
 <legend>4. Usage</legend>
 ```ts
-// store.js
+// composerStore.js
 
 *const { connect, createStore } = require('undux')
 
@@ -198,9 +198,11 @@ class: center, middle
 <legend>4. Usage</legend>
 <img src="images/composer-annotated-3.png" width="100%" />
 ---
-class: center, middle
+class: center
 <legend>4. Usage</legend>
 ```jsx
+// composer.react.js
+
 class Composer extends React.Component {
   render() {
     return <>
@@ -215,9 +217,11 @@ class Composer extends React.Component {
 }
 ```
 ---
-class: center, middle
+class: center
 <legend>4. Usage</legend>
 ```jsx
+// composer.react.js
+
 *const Composer = withStore(
   class Composer extends React.Component {
     render() {
@@ -234,9 +238,11 @@ class: center, middle
 *)
 ```
 ---
-class: center, middle
+class: center
 <legend>4. Usage</legend>
 ```jsx
+// composer.react.js
+
 const Composer = withStore(
   class Composer extends React.Component {
     render() {
@@ -254,9 +260,11 @@ const Composer = withStore(
 )
 ```
 ---
-class: center, middle
+class: center
 <legend>4. Usage</legend>
 ```jsx
+// composer.react.js
+
 const Composer = withStore(
   class Composer extends React.Component {
     render() {
@@ -275,9 +283,11 @@ const Composer = withStore(
 )
 ```
 ---
-class: center, middle
+class: center
 <legend>4. Usage</legend>
 ```jsx
+// composer.react.js
+
 const Composer = withStore(
   class Composer extends React.Component {
     render() {
@@ -299,4 +309,192 @@ const Composer = withStore(
 class: center, middle
 <legend>4. Usage</legend>
 ### ✨ Step 3: Effects ✨
+---
+class: center
+<legend>4. Usage</legend>
+```jsx
+// composerEffects.js
+```
+---
+class: center
+<legend>4. Usage</legend>
+```jsx
+// composerEffects.js
+
+*import type {Plugin} from 'undux'
+*import type {State} from 'composerStore'
+```
+---
+class: center
+<legend>4. Usage</legend>
+```jsx
+// composerEffects.js
+
+import type {Plugin} from 'undux'
+import type {State} from 'composerStore'
+
+*const withEffects: Plugin<State> = store => {
+*
+*}
+```
+---
+class: center
+<legend>4. Usage</legend>
+```jsx
+// composerEffects.js
+
+import type {Plugin} from 'undux'
+import type {State} from 'composerStore'
+
+const withEffects: Plugin<State> = store => {
+* store
+*   .on('text')
+}
+```
+---
+class: center
+<legend>4. Usage</legend>
+```jsx
+// composerEffects.js
+
+import type {Plugin} from 'undux'
+import type {State} from 'composerStore'
+
+const withEffects: Plugin<State> = store => {
+  store
+    .on('text')
+*   .subscribe(text =>
+*
+*   )
+}
+```
+---
+class: center
+<legend>4. Usage</legend>
+```jsx
+// composerEffects.js
+
+import type {Plugin} from 'undux'
+import type {State} from 'composerStore'
+
+const withEffects: Plugin<State> = store => {
+  store
+    .on('text')
+    .subscribe(text =>
+*     store.set('isNextEnabled')(text !== '')
+    )
+}
+```
+---
+class: center
+<legend>4. Usage</legend>
+```jsx
+// composerEffects.js
+
+import type {Plugin} from 'undux'
+import type {State} from 'composerStore'
+
+const withEffects: Plugin<State> = store => {
+  store
+    .on('text')
+    .subscribe(text =>
+      store.set('isNextEnabled')(text !== '')
+    )
+* return store
+}
+```
+---
+class: center
+<legend>4. Usage</legend>
+```jsx
+// composerEffects.js
+
+import type {Plugin} from 'undux'
+import type {State} from 'composerStore'
+
+const withEffects: Plugin<State> = store => {
+  store
+    .on('text')
+    .subscribe(text =>
+      store.set('isNextEnabled')(text !== '')
+    )
+  return store
+}
+
+*module.exports.withEffects = withEffects
+```
+---
+class: center
+<legend>4. Usage</legend>
+```jsx
+// composerStore.js
+
+const { connect, createStore } = require('undux')
+
+type State = {
+  isNextEnabled: boolean,
+  text: string
+}
+
+const initialState: State = {
+  isNextEnabled: false,
+  text: ''
+}
+
+const store = createStore(initialState)
+
+module.exports.withStore = connect(store)
+```
+---
+class: center
+<legend>4. Usage</legend>
+```jsx
+// composerStore.js
+
+const { connect, createStore } = require('undux')
+
+*export type State = {
+  isNextEnabled: boolean,
+  text: string
+}
+
+const initialState: State = {
+  isNextEnabled: false,
+  text: ''
+}
+
+const store = createStore(initialState)
+
+module.exports.withStore = connect(store)
+```
+---
+class: center
+<legend>4. Usage</legend>
+```jsx
+// composerStore.js
+
+const { connect, createStore } = require('undux')
+*const { withEffects } = require('composerEffects')
+
+export type State = {
+  isNextEnabled: boolean,
+  text: string
+}
+
+const initialState: State = {
+  isNextEnabled: false,
+  text: ''
+}
+
+*const store = withEffects(createStore(initialState))
+
+module.exports.withStore = connect(store)
+```
+---
+class: center, middle
+<legend>4. Usage</legend>
+### <font color="#006def" style="font-size:48px">Done.</font>
+---
+class: center, middle
+## 5. Flux, Redux, Relay <br />before & after
 ---
