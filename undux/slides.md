@@ -529,9 +529,9 @@ class: center, middle
 <small>
 - **Action creators:** CompassionResourceActions.js (69 LoC)
 - **Action types:** CompassionMessageContextTypes.js (25 LoC)
+- **Container:** withCompassionResourceLoCation.js (42 LoC)
 - **Dispatcher:** CompassionResourceDispatcher.js (19 LoC)
 - **Store:** CompassionResourceStore.js (97 LoC)
-- **Container:** withCompassionResourceLoCation.js (42 LoC)
 
 </small>
 ---
@@ -542,9 +542,9 @@ class: center, middle
 <small>
 - **Action creators:** CompassionResourceActions.js (~~69~~ <font color="#006def" style="font-size:28px; line-height: 20px;">0</font> LoC)
 - **Action types:** CompassionMessageContextTypes.js (~~25~~ <font color="#006def" style="font-size:28px; line-height: 20px;">0</font> LoC)
+- **Container:** withCompassionResourceLoCation.js (~~42~~ <font color="#006def" style="font-size:28px; line-height: 20px;">0</font> LoC)
 - **Dispatcher:** CompassionResourceDispatcher.js (~~19~~ <font color="#006def" style="font-size:28px; line-height: 20px;">0</font> LoC)
 - **Store:** CompassionResourceStore.js (~~97~~ <font color="#006def" style="font-size:28px; line-height: 20px;">71</font> LoC)
-- **Container:** withCompassionResourceLoCation.js (~~42~~ <font color="#006def" style="font-size:28px; line-height: 20px;">0</font> LoC)
 
 </small>
 
