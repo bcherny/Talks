@@ -522,24 +522,46 @@ class: center, middle
 <legend>5. <u>Flux</u>, Redux, Relay before & after</legend>
 <img src="images/flux-flow-expanded-3.png" width="75%" />
 ---
-class: middle
 <legend>5. <u>Flux</u>, Redux, Relay before & after</legend>
 
-## For example: `FluxReduceStore`
+## Eg. `FluxReduceStore`
 
-- Action creators & types: `CompassionResourceActions.js`
-- Dispatcher: `CompassionResourceDispatcher.js`
-- Store: <br />`CompassionResourceStore.js`
-- Container: `withCompassionResourceLocation.js`
+<small>
+- **Action creators:** CompassionResourceActions.js (69 LoC)
+- **Action types:** CompassionMessageContextTypes.js (25 LoC)
+- **Dispatcher:** CompassionResourceDispatcher.js (19 LoC)
+- **Store:** CompassionResourceStore.js (97 LoC)
+- **Container:** withCompassionResourceLoCation.js (42 LoC)
+
+</small>
+---
+<legend>5. <u>Flux</u>, Redux, Relay before & after</legend>
+
+## Eg. `FluxReduceStore`
+
+<small>
+- **Action creators:** CompassionResourceActions.js (~~69~~ <font color="#006def" style="font-size:28px; line-height: 20px;">0</font> LoC)
+- **Action types:** CompassionMessageContextTypes.js (~~25~~ <font color="#006def" style="font-size:28px; line-height: 20px;">0</font> LoC)
+- **Dispatcher:** CompassionResourceDispatcher.js (~~19~~ <font color="#006def" style="font-size:28px; line-height: 20px;">0</font> LoC)
+- **Store:** CompassionResourceStore.js (~~97~~ <font color="#006def" style="font-size:28px; line-height: 20px;">71</font> LoC)
+- **Container:** withCompassionResourceLoCation.js (~~42~~ <font color="#006def" style="font-size:28px; line-height: 20px;">0</font> LoC)
+
+</small>
+
+## Before: 252 LoC
+
+## <font color="#006def">After: 71 LoC (70% less!)</font>
 ---
 class: middle
 <legend>5. <u>Flux</u>, Redux, Relay before & after</legend>
 
 ## For example: `FluxReduceStore` <br />+ data plugins
 
-- Action creators: `AdBreakPortalActions.js`
-- Action types: `AdBreakPortalActionTypes.js`
-- Store & container: `AdBreakPortalInsightsStore.js`
+- Action creators: `AdBreakPortalActions.js` (231 -> 103 LoC)
+- Action types: `AdBreakPortalActionTypes.js` (33 -> 0 LoC)
+- Store & container: `AdBreakPortalInsightsStore.js` (219 -> 101 LoC)
+
+60% Less Code!
 ---
 class: center, middle
 <legend>5. Flux, <u>Redux</u>, Relay before & after</legend>
@@ -547,3 +569,4 @@ class: center, middle
 ---
 class: center, middle
 <legend>5. Flux, <u>Redux</u>, Relay before & after</legend>
+<img src="images/redux-flow.png" width="60%" />

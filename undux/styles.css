@@ -15,6 +15,10 @@ legend {
     top: 10px;
 }
 
+small {
+  font-size: 20px;
+}
+
 .remark-slide-content {
   font-size: 32px;
 }
