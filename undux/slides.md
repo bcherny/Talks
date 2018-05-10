@@ -526,36 +526,119 @@ class: center, middle
 
 ## Eg. `FluxReduceStore`
 
-<small>
-- **Action creators:** CompassionResourceActions.js (69 LoC)
-- **Action types:** CompassionMessageContextTypes.js (25 LoC)
-- **Container:** withCompassionResourceLoCation.js (42 LoC)
-- **Dispatcher:** CompassionResourceDispatcher.js (19 LoC)
-- **Store:** CompassionResourceStore.js (97 LoC)
+| Role | File | LoC |
+|-------|------|-----|
+| **Action creators** | CompassionResourceActions.js | 69 |
+| **Action types** | CompassionMessageContextTypes.js | 25 |
+| **Container** | withCompassionResourceLocation.js | 42 |
+| **Dispatcher** | CompassionResourceDispatcher.js | 19 |
+| **Store** | CompassionResourceStore.js | 97 |
+|  | <b><right>Total</right></b> | <b>252</b> |
 
-</small>
 ---
 <legend>5. <u>Flux</u>, Redux, Relay before & after</legend>
 
 ## Eg. `FluxReduceStore`
 
-<small>
-- **Action creators:** CompassionResourceActions.js (~~69~~ <font color="#006def" style="font-size:28px; line-height: 20px;">0</font> LoC)
-- **Action types:** CompassionMessageContextTypes.js (~~25~~ <font color="#006def" style="font-size:28px; line-height: 20px;">0</font> LoC)
-- **Container:** withCompassionResourceLoCation.js (~~42~~ <font color="#006def" style="font-size:28px; line-height: 20px;">0</font> LoC)
-- **Dispatcher:** CompassionResourceDispatcher.js (~~19~~ <font color="#006def" style="font-size:28px; line-height: 20px;">0</font> LoC)
-- **Store:** CompassionResourceStore.js (~~97~~ <font color="#006def" style="font-size:28px; line-height: 20px;">71</font> LoC)
+| Role | File | LoC |
+|-------|------|-----|
+| **Action creators** | CompassionResourceActions.js | ~~69~~ <font color="#006def" style="font-size:28px; line-height: 20px;">0</font> |
+| **Action types** | CompassionMessageContextTypes.js | 25 |
+| **Container** | withCompassionResourceLocation.js | 42 |
+| **Dispatcher** | CompassionResourceDispatcher.js | 19 |
+| **Store** | CompassionResourceStore.js | 97 |
+|  | <b><right>Total</right></b> | <b>252</b> |
+---
+<legend>5. <u>Flux</u>, Redux, Relay before & after</legend>
 
-</small>
+## Eg. `FluxReduceStore`
 
-## Before: 252 LoC
+| Role | File | LoC |
+|-------|------|-----|
+| **Action creators** | CompassionResourceActions.js | ~~69~~ <font color="#006def" style="font-size:28px; line-height: 20px;">0</font> |
+| **Action types** | CompassionMessageContextTypes.js | ~~25~~ <font color="#006def" style="font-size:28px; line-height: 20px;">0</font> |
+| **Container** | withCompassionResourceLocation.js | 42 |
+| **Dispatcher** | CompassionResourceDispatcher.js | 19 |
+| **Store** | CompassionResourceStore.js | 97 |
+|  | <b><right>Total</right></b> | <b>252</b> |
+---
+<legend>5. <u>Flux</u>, Redux, Relay before & after</legend>
 
-## <font color="#006def">After: 71 LoC (70% less!)</font>
+## Eg. `FluxReduceStore`
+
+| Role | File | LoC |
+|-------|------|-----|
+| **Action creators** | CompassionResourceActions.js | ~~69~~ <font color="#006def" style="font-size:28px; line-height: 20px;">0</font> |
+| **Action types** | CompassionMessageContextTypes.js | ~~25~~ <font color="#006def" style="font-size:28px; line-height: 20px;">0</font> |
+| **Container** | withCompassionResourceLocation.js | ~~42~~ <font color="#006def" style="font-size:28px; line-height: 20px;">0</font> |
+| **Dispatcher** | CompassionResourceDispatcher.js | 19 |
+| **Store** | CompassionResourceStore.js | 97 |
+|  | <b><right>Total</right></b> | <b>252</b> |
+---
+<legend>5. <u>Flux</u>, Redux, Relay before & after</legend>
+
+## Eg. `FluxReduceStore`
+
+| Role | File | LoC |
+|-------|------|-----|
+| **Action creators** | CompassionResourceActions.js | ~~69~~ <font color="#006def" style="font-size:28px; line-height: 20px;">0</font> |
+| **Action types** | CompassionMessageContextTypes.js | ~~25~~ <font color="#006def" style="font-size:28px; line-height: 20px;">0</font> |
+| **Container** | withCompassionResourceLocation.js | ~~42~~ <font color="#006def" style="font-size:28px; line-height: 20px;">0</font> |
+| **Dispatcher** | CompassionResourceDispatcher.js | ~~19~~ <font color="#006def" style="font-size:28px; line-height: 20px;">0</font> |
+| **Store** | CompassionResourceStore.js | 97 |
+|  | <b><right>Total</right></b> | <b>252</b> |
+---
+<legend>5. <u>Flux</u>, Redux, Relay before & after</legend>
+
+## Eg. `FluxReduceStore`
+
+| Role | File | LoC |
+|-------|------|-----|
+| **Action creators** | CompassionResourceActions.js | ~~69~~ <font color="#006def" style="font-size:28px; line-height: 20px;">0</font> |
+| **Action types** | CompassionMessageContextTypes.js | ~~25~~ <font color="#006def" style="font-size:28px; line-height: 20px;">0</font> |
+| **Container** | withCompassionResourceLocation.js | ~~42~~ <font color="#006def" style="font-size:28px; line-height: 20px;">0</font> |
+| **Dispatcher** | CompassionResourceDispatcher.js | ~~19~~ <font color="#006def" style="font-size:28px; line-height: 20px;">0</font> |
+| **Store** | CompassionResourceStore.js | ~~97~~ <font color="#006def" style="font-size:28px; line-height: 20px;">71</font> |
+|  | <b><right>Total</right></b> | <b>252</b> |
+---
+<legend>5. <u>Flux</u>, Redux, Relay before & after</legend>
+
+## Eg. `FluxReduceStore`
+
+| Role | File | LoC |
+|-------|------|-----|
+| **Action creators** | CompassionResourceActions.js | ~~69~~ <font color="#006def" style="font-size:28px; line-height: 20px;">0</font> |
+| **Action types** | CompassionMessageContextTypes.js | ~~25~~ <font color="#006def" style="font-size:28px; line-height: 20px;">0</font> |
+| **Container** | withCompassionResourceLocation.js | ~~42~~ <font color="#006def" style="font-size:28px; line-height: 20px;">0</font> |
+| **Dispatcher** | CompassionResourceDispatcher.js | ~~19~~ <font color="#006def" style="font-size:28px; line-height: 20px;">0</font> |
+| **Store** | CompassionResourceStore.js | ~~97~~ <font color="#006def" style="font-size:28px; line-height: 20px;">71</font> |
+|  | <b><right>Total</right></b> | ~~<b>252</b>~~ <font color="#006def">71</font> |
+<right><font color="#006def">70% LESS CODE</font></right>
 ---
 class: middle
 <legend>5. <u>Flux</u>, Redux, Relay before & after</legend>
 
-## For example: `FluxReduceStore` <br />+ data plugins
+## Eg. `FluxReduceStore` <br />+ data plugins
+
+| Role | File | LoC |
+|-------|------|-----|
+| **Action creators** | AdBreakPortalActions.js | 231 |
+| **Action types** | AdBreakPortalActionTypes.js | 33 |
+| **Store** | AdBreakPortalInsightsStore.js | 219 |
+|  | <b><right>Total</right></b> | <b>483</b> |
+---
+class: middle
+<legend>5. <u>Flux</u>, Redux, Relay before & after</legend>
+
+## Eg. `FluxReduceStore` <br />+ data plugins
+
+| Role | File | LoC |
+|-------|------|-----|
+| **Action creators** | AdBreakPortalActions.js | ~~231~~ |
+| **Action types** | AdBreakPortalActionTypes.js | 33 |
+| **Store** | AdBreakPortalInsightsStore.js | 219 |
+|  | <b><right>Total</right></b> | <b>483</b> |
+---
 
 - Action creators: `AdBreakPortalActions.js` (231 -> 103 LoC)
 - Action types: `AdBreakPortalActionTypes.js` (33 -> 0 LoC)

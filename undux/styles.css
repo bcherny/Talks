@@ -15,12 +15,24 @@ legend {
     top: 10px;
 }
 
-small {
+small,
+table {
   font-size: 20px;
+}
+
+right {
+  display: block;
+  text-align: right;
 }
 
 .remark-slide-content {
   font-size: 32px;
+}
+
+.remark-slide-content td,
+.remark-slide-content th {
+  border-width: 0 0 1px 0;
+  text-align: left;
 }
 
 img.full {
