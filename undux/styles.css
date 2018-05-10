@@ -1,0 +1,87 @@
+@font-face {
+  font-family: xkcd;
+  src: url('fonts/xkcd-script.woff') format('woff');
+}
+
+p {
+  margin: 0;
+}
+
+legend {
+  color: #999;
+  font-size: 20px;
+  position: absolute;
+    left: 20px;
+    top: 10px;
+}
+
+.remark-slide-content {
+  font-size: 32px;
+}
+
+img.full {
+  height: 100%;
+  margin: -1em -4em -1em -4em;
+  object-fit: contain;
+  width: 100%;
+}
+
+.smaller {
+  margin-top: 35px;
+  opacity: .7;
+  font-size: .8em;
+}
+.smaller h2 {
+  font-size: 2em;
+}
+
+body {
+  color: #343435;
+  font-family: xkcd;
+}
+
+blockquote {
+  border-left: 1em solid #aeaebb;
+  font-style: italic;
+  padding-left: 1em;
+  text-align: left;
+}
+
+blockquote h2 {
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+h3, h3 a {
+  color: #aeaebb;
+}
+
+h2 ~ h3 {
+  margin-top: -1em;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+.remark-code, .remark-inline-code {
+  font-family: 'Fira Code';
+}
+
+.pink {
+  background: #f90041;
+  color: #fff;
+}
