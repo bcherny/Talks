@@ -613,9 +613,8 @@ class: center, middle
 | **Dispatcher** | CompassionResourceDispatcher.js | ~~19~~ <font color="#006def" style="font-size:28px; line-height: 20px;">0</font> |
 | **Store** | CompassionResourceStore.js | ~~97~~ <font color="#006def" style="font-size:28px; line-height: 20px;">71</font> |
 |  | <b><right>Total</right></b> | ~~<b>252</b>~~ <font color="#006def">71</font> |
-<right><font color="#006def">70% LESS CODE</font></right>
+<right><font color="#006def" style="font-size:28px; line-height: 20px;">70% LESS CODE</font></right>
 ---
-class: middle
 <legend>5. <u>Flux</u>, Redux, Relay before & after</legend>
 
 ## Eg. `FluxReduceStore` <br />+ data plugins
@@ -627,24 +626,51 @@ class: middle
 | **Store** | AdBreakPortalInsightsStore.js | 219 |
 |  | <b><right>Total</right></b> | <b>483</b> |
 ---
-class: middle
 <legend>5. <u>Flux</u>, Redux, Relay before & after</legend>
 
 ## Eg. `FluxReduceStore` <br />+ data plugins
 
 | Role | File | LoC |
 |-------|------|-----|
-| **Action creators** | AdBreakPortalActions.js | ~~231~~ |
+| **Action creators** | AdBreakPortalActions.js | ~~231~~ <font color="#006def" style="font-size:28px; line-height: 20px;">103</font> |
 | **Action types** | AdBreakPortalActionTypes.js | 33 |
 | **Store** | AdBreakPortalInsightsStore.js | 219 |
 |  | <b><right>Total</right></b> | <b>483</b> |
 ---
+<legend>5. <u>Flux</u>, Redux, Relay before & after</legend>
 
-- Action creators: `AdBreakPortalActions.js` (231 -> 103 LoC)
-- Action types: `AdBreakPortalActionTypes.js` (33 -> 0 LoC)
-- Store & container: `AdBreakPortalInsightsStore.js` (219 -> 101 LoC)
+## Eg. `FluxReduceStore` <br />+ data plugins
 
-60% Less Code!
+| Role | File | LoC |
+|-------|------|-----|
+| **Action creators** | AdBreakPortalActions.js | ~~231~~ <font color="#006def" style="font-size:28px; line-height: 20px;">103</font> |
+| **Action types** | AdBreakPortalActionTypes.js | ~~33~~ <font color="#006def" style="font-size:28px; line-height: 20px;">0</font> |
+| **Store** | AdBreakPortalInsightsStore.js | 219 |
+|  | <b><right>Total</right></b> | <b>483</b> |
+---
+<legend>5. <u>Flux</u>, Redux, Relay before & after</legend>
+
+## Eg. `FluxReduceStore` <br />+ data plugins
+
+| Role | File | LoC |
+|-------|------|-----|
+| **Action creators** | AdBreakPortalActions.js | ~~231~~ <font color="#006def" style="font-size:28px; line-height: 20px;">103</font> |
+| **Action types** | AdBreakPortalActionTypes.js | ~~33~~ <font color="#006def" style="font-size:28px; line-height: 20px;">0</font> |
+| **Store** | AdBreakPortalInsightsStore.js | ~~219~~ <font color="#006def" style="font-size:28px; line-height: 20px;">101</font> |
+|  | <b><right>Total</right></b> | <b>483</b> |
+---
+<legend>5. <u>Flux</u>, Redux, Relay before & after</legend>
+
+## Eg. `FluxReduceStore` <br />+ data plugins
+
+| Role | File | LoC |
+|-------|------|-----|
+| **Action creators** | AdBreakPortalActions.js | ~~231~~ <font color="#006def" style="font-size:28px; line-height: 20px;">103</font> |
+| **Action types** | AdBreakPortalActionTypes.js | ~~33~~ <font color="#006def" style="font-size:28px; line-height: 20px;">0</font> |
+| **Store** | AdBreakPortalInsightsStore.js | ~~219~~ <font color="#006def" style="font-size:28px; line-height: 20px;">101</font> |
+|  | <b><right>Total</right></b> | <b>~~483~~ <font color="#006def" style="font-size:28px; line-height: 20px;">204</font></b> |
+<right><font color="#006def">60% LESS CODE</font></right>
+<right><font color="#006def">(also: caught a bug)</font></right>
 ---
 class: center, middle
 <legend>5. Flux, <u>Redux</u>, Relay before & after</legend>
