@@ -498,3 +498,52 @@ class: center, middle
 class: center, middle
 ## 5. Flux, Redux, Relay <br />before & after
 ---
+class: center, middle
+<legend>5. <u>Flux</u>, Redux, Relay before & after</legend>
+### Flux
+---
+class: center, middle
+<legend>5. <u>Flux</u>, Redux, Relay before & after</legend>
+<img src="images/flux-flow.png" width="60%" />
+---
+class: center, middle
+<legend>5. <u>Flux</u>, Redux, Relay before & after</legend>
+<img src="images/flux-flow-expanded-0.png" width="75%" />
+---
+class: center, middle
+<legend>5. <u>Flux</u>, Redux, Relay before & after</legend>
+<img src="images/flux-flow-expanded-1.png" width="75%" />
+---
+class: center, middle
+<legend>5. <u>Flux</u>, Redux, Relay before & after</legend>
+<img src="images/flux-flow-expanded-2.png" width="75%" />
+---
+class: center, middle
+<legend>5. <u>Flux</u>, Redux, Relay before & after</legend>
+<img src="images/flux-flow-expanded-3.png" width="75%" />
+---
+class: middle
+<legend>5. <u>Flux</u>, Redux, Relay before & after</legend>
+
+## For example: `FluxReduceStore`
+
+- Action creators & types: `CompassionResourceActions.js`
+- Dispatcher: `CompassionResourceDispatcher.js`
+- Store: <br />`CompassionResourceStore.js`
+- Container: `withCompassionResourceLocation.js`
+---
+class: middle
+<legend>5. <u>Flux</u>, Redux, Relay before & after</legend>
+
+## For example: `FluxReduceStore` <br />+ data plugins
+
+- Action creators: `AdBreakPortalActions.js`
+- Action types: `AdBreakPortalActionTypes.js`
+- Store & container: `AdBreakPortalInsightsStore.js`
+---
+class: center, middle
+<legend>5. Flux, <u>Redux</u>, Relay before & after</legend>
+### Redux
+---
+class: center, middle
+<legend>5. Flux, <u>Redux</u>, Relay before & after</legend>
