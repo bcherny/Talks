@@ -699,3 +699,174 @@ class: center, middle
 class: center, middle
 <legend>5. Flux, <u>Redux</u>, Relay before & after</legend>
 <img src="images/redux-flow-expanded-4.png" width="80%" />
+---
+class: center, middle
+<legend>5. Flux, <u>Redux</u>, Relay before & after</legend>
+
+## Eg. `SRTRouting`
+
+| Role | File | LoC |
+|-------|------|-----|
+| **Action creators** | SRTRoutingActionCreators.js | 236 |
+| **Action types** | SRTRoutingActionTypes.js | 38 |
+| **Container** | SRTRoutingContainer.js | 88 |
+| **Reducer** | SRTRoutingReducer.js | 50 |
+| **Reducer** | SRTRoutingSaveRulesReducer.js | 44 |
+| **Reducer** | SRTRoutingSearchReducer.js | 63 |
+| **Store** | SRTRoutingStore.js | 59 |
+| **Store types** | SRTRoutingSearchRecord.js | 25 |
+|  | <b><right>Total</right></b> | <b>603</b> |
+---
+class: center, middle
+<legend>5. Flux, <u>Redux</u>, Relay before & after</legend>
+
+## Eg. `SRTRouting`
+
+| Role | File | LoC |
+|-------|------|-----|
+| **Action creators** | SRTRoutingActionCreators.js | ~~236~~ <font color="#006def" style="font-size:28px; line-height: 20px;">114</font> |
+| **Action types** | SRTRoutingActionTypes.js | 38 |
+| **Container** | SRTRoutingContainer.js | 88 |
+| **Reducer** | SRTRoutingReducer.js | 50 |
+| **Reducer** | SRTRoutingSaveRulesReducer.js | 44 |
+| **Reducer** | SRTRoutingSearchReducer.js | 63 |
+| **Store** | SRTRoutingStore.js | 59 |
+| **Store types** | SRTRoutingSearchRecord.js | 25 |
+|  | <b><right>Total</right></b> | <b>603</b> |
+---
+class: center, middle
+<legend>5. Flux, <u>Redux</u>, Relay before & after</legend>
+
+## Eg. `SRTRouting`
+
+| Role | File | LoC |
+|-------|------|-----|
+| **Action creators** | SRTRoutingActionCreators.js | ~~236~~ <font color="#006def" style="font-size:28px; line-height: 20px;">114</font> |
+| **Action types** | SRTRoutingActionTypes.js | ~~38~~ <font color="#006def" style="font-size:28px; line-height: 20px;">0</font> |
+| **Container** | SRTRoutingContainer.js | 88 |
+| **Reducer** | SRTRoutingReducer.js | 50 |
+| **Reducer** | SRTRoutingSaveRulesReducer.js | 44 |
+| **Reducer** | SRTRoutingSearchReducer.js | 63 |
+| **Store** | SRTRoutingStore.js | 59 |
+| **Store types** | SRTRoutingSearchRecord.js | 25 |
+|  | <b><right>Total</right></b> | <b>603</b> |
+---
+class: center, middle
+<legend>5. Flux, <u>Redux</u>, Relay before & after</legend>
+
+## Eg. `SRTRouting`
+
+| Role | File | LoC |
+|-------|------|-----|
+| **Action creators** | SRTRoutingActionCreators.js | ~~236~~ <font color="#006def" style="font-size:28px; line-height: 20px;">114</font> |
+| **Action types** | SRTRoutingActionTypes.js | ~~38~~ <font color="#006def" style="font-size:28px; line-height: 20px;">0</font> |
+| **Container** | SRTRoutingContainer.js | ~~88~~ <font color="#006def" style="font-size:28px; line-height: 20px;">78</font> |
+| **Reducer** | SRTRoutingReducer.js | 50 |
+| **Reducer** | SRTRoutingSaveRulesReducer.js | 44 |
+| **Reducer** | SRTRoutingSearchReducer.js | 63 |
+| **Store** | SRTRoutingStore.js | 59 |
+| **Store types** | SRTRoutingSearchRecord.js | 25 |
+|  | <b><right>Total</right></b> | <b>603</b> |
+---
+class: center, middle
+<legend>5. Flux, <u>Redux</u>, Relay before & after</legend>
+
+## Eg. `SRTRouting`
+
+| Role | File | LoC |
+|-------|------|-----|
+| **Action creators** | SRTRoutingActionCreators.js | ~~236~~ <font color="#006def" style="font-size:28px; line-height: 20px;">114</font> |
+| **Action types** | SRTRoutingActionTypes.js | ~~38~~ <font color="#006def" style="font-size:28px; line-height: 20px;">0</font> |
+| **Container** | SRTRoutingContainer.js | ~~88~~ <font color="#006def" style="font-size:28px; line-height: 20px;">78</font> |
+| **Reducer** | SRTRoutingReducer.js | ~~50~~ <font color="#006def" style="font-size:28px; line-height: 20px;">0</font> |
+| **Reducer** | SRTRoutingSaveRulesReducer.js | 44 |
+| **Reducer** | SRTRoutingSearchReducer.js | 63 |
+| **Store** | SRTRoutingStore.js | 59 |
+| **Store types** | SRTRoutingSearchRecord.js | 25 |
+|  | <b><right>Total</right></b> | <b>603</b> |
+---
+class: center, middle
+<legend>5. Flux, <u>Redux</u>, Relay before & after</legend>
+
+## Eg. `SRTRouting`
+
+| Role | File | LoC |
+|-------|------|-----|
+| **Action creators** | SRTRoutingActionCreators.js | ~~236~~ <font color="#006def" style="font-size:28px; line-height: 20px;">114</font> |
+| **Action types** | SRTRoutingActionTypes.js | ~~38~~ <font color="#006def" style="font-size:28px; line-height: 20px;">0</font> |
+| **Container** | SRTRoutingContainer.js | ~~88~~ <font color="#006def" style="font-size:28px; line-height: 20px;">78</font> |
+| **Reducer** | SRTRoutingReducer.js | ~~50~~ <font color="#006def" style="font-size:28px; line-height: 20px;">0</font> |
+| **Reducer** | SRTRoutingSaveRulesReducer.js | ~~44~~ <font color="#006def" style="font-size:28px; line-height: 20px;">0</font> |
+| **Reducer** | SRTRoutingSearchReducer.js | 63 |
+| **Store** | SRTRoutingStore.js | 59 |
+| **Store types** | SRTRoutingSearchRecord.js | 25 |
+|  | <b><right>Total</right></b> | <b>603</b> |
+---
+class: center, middle
+<legend>5. Flux, <u>Redux</u>, Relay before & after</legend>
+
+## Eg. `SRTRouting`
+
+| Role | File | LoC |
+|-------|------|-----|
+| **Action creators** | SRTRoutingActionCreators.js | ~~236~~ <font color="#006def" style="font-size:28px; line-height: 20px;">114</font> |
+| **Action types** | SRTRoutingActionTypes.js | ~~38~~ <font color="#006def" style="font-size:28px; line-height: 20px;">0</font> |
+| **Container** | SRTRoutingContainer.js | ~~88~~ <font color="#006def" style="font-size:28px; line-height: 20px;">78</font> |
+| **Reducer** | SRTRoutingReducer.js | ~~50~~ <font color="#006def" style="font-size:28px; line-height: 20px;">0</font> |
+| **Reducer** | SRTRoutingSaveRulesReducer.js | ~~44~~ <font color="#006def" style="font-size:28px; line-height: 20px;">0</font> |
+| **Reducer** | SRTRoutingSearchReducer.js | ~~63~~ <font color="#006def" style="font-size:28px; line-height: 20px;">0</font> |
+| **Store** | SRTRoutingStore.js | 59 |
+| **Store types** | SRTRoutingSearchRecord.js | 25 |
+|  | <b><right>Total</right></b> | <b>603</b> |
+---
+class: center, middle
+<legend>5. Flux, <u>Redux</u>, Relay before & after</legend>
+
+## Eg. `SRTRouting`
+
+| Role | File | LoC |
+|-------|------|-----|
+| **Action creators** | SRTRoutingActionCreators.js | ~~236~~ <font color="#006def" style="font-size:28px; line-height: 20px;">114</font> |
+| **Action types** | SRTRoutingActionTypes.js | ~~38~~ <font color="#006def" style="font-size:28px; line-height: 20px;">0</font> |
+| **Container** | SRTRoutingContainer.js | ~~88~~ <font color="#006def" style="font-size:28px; line-height: 20px;">78</font> |
+| **Reducer** | SRTRoutingReducer.js | ~~50~~ <font color="#006def" style="font-size:28px; line-height: 20px;">0</font> |
+| **Reducer** | SRTRoutingSaveRulesReducer.js | ~~44~~ <font color="#006def" style="font-size:28px; line-height: 20px;">0</font> |
+| **Reducer** | SRTRoutingSearchReducer.js | ~~63~~ <font color="#006def" style="font-size:28px; line-height: 20px;">0</font> |
+| **Store** | SRTRoutingStore.js | ~~59~~ <font color="#006def" style="font-size:28px; line-height: 20px;">49</font> |
+| **Store types** | SRTRoutingSearchRecord.js | 25 |
+|  | <b><right>Total</right></b> | <b>603</b> |
+---
+class: center, middle
+<legend>5. Flux, <u>Redux</u>, Relay before & after</legend>
+
+## Eg. `SRTRouting`
+
+| Role | File | LoC |
+|-------|------|-----|
+| **Action creators** | SRTRoutingActionCreators.js | ~~236~~ <font color="#006def" style="font-size:28px; line-height: 20px;">114</font> |
+| **Action types** | SRTRoutingActionTypes.js | ~~38~~ <font color="#006def" style="font-size:28px; line-height: 20px;">0</font> |
+| **Container** | SRTRoutingContainer.js | ~~88~~ <font color="#006def" style="font-size:28px; line-height: 20px;">78</font> |
+| **Reducer** | SRTRoutingReducer.js | ~~50~~ <font color="#006def" style="font-size:28px; line-height: 20px;">0</font> |
+| **Reducer** | SRTRoutingSaveRulesReducer.js | ~~44~~ <font color="#006def" style="font-size:28px; line-height: 20px;">0</font> |
+| **Reducer** | SRTRoutingSearchReducer.js | ~~63~~ <font color="#006def" style="font-size:28px; line-height: 20px;">0</font> |
+| **Store** | SRTRoutingStore.js | ~~59~~ <font color="#006def" style="font-size:28px; line-height: 20px;">49</font> |
+| **Store types** | SRTRoutingSearchRecord.js | ~~25~~ <font color="#006def" style="font-size:28px; line-height: 20px;">0</font> |
+|  | <b><right>Total</right></b> | <b>603</b> |
+---
+class: center, middle
+<legend>5. Flux, <u>Redux</u>, Relay before & after</legend>
+
+## Eg. `SRTRouting`
+
+| Role | File | LoC |
+|-------|------|-----|
+| **Action creators** | SRTRoutingActionCreators.js | ~~236~~ <font color="#006def" style="font-size:28px; line-height: 20px;">114</font> |
+| **Action types** | SRTRoutingActionTypes.js | ~~38~~ <font color="#006def" style="font-size:28px; line-height: 20px;">0</font> |
+| **Container** | SRTRoutingContainer.js | ~~88~~ <font color="#006def" style="font-size:28px; line-height: 20px;">78</font> |
+| **Reducer** | SRTRoutingReducer.js | ~~50~~ <font color="#006def" style="font-size:28px; line-height: 20px;">0</font> |
+| **Reducer** | SRTRoutingSaveRulesReducer.js | ~~44~~ <font color="#006def" style="font-size:28px; line-height: 20px;">0</font> |
+| **Reducer** | SRTRoutingSearchReducer.js | ~~63~~ <font color="#006def" style="font-size:28px; line-height: 20px;">0</font> |
+| **Store** | SRTRoutingStore.js | ~~59~~ <font color="#006def" style="font-size:28px; line-height: 20px;">49</font> |
+| **Store types** | SRTRoutingSearchRecord.js | ~~25~~ <font color="#006def" style="font-size:28px; line-height: 20px;">0</font> |
+| <font color="#006def">60% LESS CODE</font> | <b><right>Total</right></b> | <b>~~603~~ <font color="#006def" style="font-size:28px; line-height: 20px;">241</font></b> |
+---
