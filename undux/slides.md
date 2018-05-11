@@ -873,6 +873,10 @@ class: center, middle
 class: center, middle
 ## 6. A 30 second reactivity primer
 ---
+class: center, middle
+<legend>6. A 30 second reactivity primer</legend>
+### For example: Let's add a logger to composer.
+---
 <legend>6. A 30 second reactivity primer</legend>
 ```js
 const withEffects: Plugin<State> = store => {
@@ -946,3 +950,50 @@ const withEffects: Plugin<State> = store => {
   return store
 }
 ```
+---
+<legend>6. A 30 second reactivity primer</legend>
+```js
+const withEffects: Plugin<State> = store => {
+
+  return store
+}
+```
+---
+<legend>6. A 30 second reactivity primer</legend>
+```js
+*const {combineLatest} = require('rxjs')
+
+const withEffects: Plugin<State> = store => {
+* combineLatest(
+*   store.on('text'),
+*   store.on('video')
+* )
+  return store
+}
+```
+---
+<legend>6. A 30 second reactivity primer</legend>
+```js
+const {combineLatest} = require('rxjs')
+
+const withEffects: Plugin<State> = store => {
+  combineLatest(
+    store.on('text'),
+    store.on('video')
+  )
+* .subscribe(([text, video]) =>
+*   new ComposerTypedLogger
+*     .setText(text)
+*     .setVideo(video)
+*     .log()
+* )
+  return store
+}
+```
+---
+class: center, middle
+# Thanks!
+## Learn more: <font color="#006def">fburl.com/undux</font>
+# &nbsp;
+### Boris Cherny
+### @bcherny / github.com/bcherny
