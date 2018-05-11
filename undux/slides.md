@@ -9,8 +9,8 @@ class: middle
 2. How Undux solves these problems
 3. Architecture
 4. Usage
-5. Flux, Redux, Relay: before & after
-6. Scaling it
+5. Flux & Redux, before & after
+6. A 30 second reactivity primer
 ---
 class: center, middle
 ## 1. Problems with Flux & Redux
@@ -496,33 +496,33 @@ class: center, middle
 ### <font color="#006def" style="font-size:48px">Done.</font>
 ---
 class: center, middle
-## 5. Flux, Redux, Relay <br />before & after
+## 5. Flux & Redux, <br />before & after
 ---
 class: center, middle
-<legend>5. <u>Flux</u>, Redux, Relay before & after</legend>
+<legend>5. <u>Flux</u> & Redux, before & after</legend>
 ### Flux
 ---
 class: center, middle
-<legend>5. <u>Flux</u>, Redux, Relay before & after</legend>
+<legend>5. <u>Flux</u> & Redux, before & after</legend>
 <img src="images/flux-flow.png" width="60%" />
 ---
 class: center, middle
-<legend>5. <u>Flux</u>, Redux, Relay before & after</legend>
+<legend>5. <u>Flux</u> & Redux, before & after</legend>
 <img src="images/flux-flow-expanded-0.png" width="75%" />
 ---
 class: center, middle
-<legend>5. <u>Flux</u>, Redux, Relay before & after</legend>
+<legend>5. <u>Flux</u> & Redux, before & after</legend>
 <img src="images/flux-flow-expanded-1.png" width="75%" />
 ---
 class: center, middle
-<legend>5. <u>Flux</u>, Redux, Relay before & after</legend>
+<legend>5. <u>Flux</u> & Redux, before & after</legend>
 <img src="images/flux-flow-expanded-2.png" width="75%" />
 ---
 class: center, middle
-<legend>5. <u>Flux</u>, Redux, Relay before & after</legend>
+<legend>5. <u>Flux</u> & Redux, before & after</legend>
 <img src="images/flux-flow-expanded-3.png" width="75%" />
 ---
-<legend>5. <u>Flux</u>, Redux, Relay before & after</legend>
+<legend>5. <u>Flux</u> & Redux, before & after</legend>
 
 ## Eg. `FluxReduceStore`
 
@@ -536,7 +536,7 @@ class: center, middle
 |  | <b><right>Total</right></b> | <b>252</b> |
 
 ---
-<legend>5. <u>Flux</u>, Redux, Relay before & after</legend>
+<legend>5. <u>Flux</u> & Redux, before & after</legend>
 
 ## Eg. `FluxReduceStore`
 
@@ -549,7 +549,7 @@ class: center, middle
 | **Store** | CompassionResourceStore.js | 97 |
 |  | <b><right>Total</right></b> | <b>252</b> |
 ---
-<legend>5. <u>Flux</u>, Redux, Relay before & after</legend>
+<legend>5. <u>Flux</u> & Redux, before & after</legend>
 
 ## Eg. `FluxReduceStore`
 
@@ -562,7 +562,7 @@ class: center, middle
 | **Store** | CompassionResourceStore.js | 97 |
 |  | <b><right>Total</right></b> | <b>252</b> |
 ---
-<legend>5. <u>Flux</u>, Redux, Relay before & after</legend>
+<legend>5. <u>Flux</u> & Redux, before & after</legend>
 
 ## Eg. `FluxReduceStore`
 
@@ -575,7 +575,7 @@ class: center, middle
 | **Store** | CompassionResourceStore.js | 97 |
 |  | <b><right>Total</right></b> | <b>252</b> |
 ---
-<legend>5. <u>Flux</u>, Redux, Relay before & after</legend>
+<legend>5. <u>Flux</u> & Redux, before & after</legend>
 
 ## Eg. `FluxReduceStore`
 
@@ -588,7 +588,7 @@ class: center, middle
 | **Store** | CompassionResourceStore.js | 97 |
 |  | <b><right>Total</right></b> | <b>252</b> |
 ---
-<legend>5. <u>Flux</u>, Redux, Relay before & after</legend>
+<legend>5. <u>Flux</u> & Redux, before & after</legend>
 
 ## Eg. `FluxReduceStore`
 
@@ -601,7 +601,7 @@ class: center, middle
 | **Store** | CompassionResourceStore.js | ~~97~~ <font color="#006def" style="font-size:28px; line-height: 20px;">71</font> |
 |  | <b><right>Total</right></b> | <b>252</b> |
 ---
-<legend>5. <u>Flux</u>, Redux, Relay before & after</legend>
+<legend>5. <u>Flux</u> & Redux, before & after</legend>
 
 ## Eg. `FluxReduceStore`
 
@@ -615,7 +615,7 @@ class: center, middle
 |  | <b><right>Total</right></b> | ~~<b>252</b>~~ <font color="#006def">71</font> |
 <right><font color="#006def" style="font-size:28px; line-height: 20px;">70% LESS CODE</font></right>
 ---
-<legend>5. <u>Flux</u>, Redux, Relay before & after</legend>
+<legend>5. <u>Flux</u> & Redux, before & after</legend>
 
 ## Eg. `FluxReduceStore` <br />+ data plugins
 
@@ -626,7 +626,7 @@ class: center, middle
 | **Store** | AdBreakPortalInsightsStore.js | 219 |
 |  | <b><right>Total</right></b> | <b>483</b> |
 ---
-<legend>5. <u>Flux</u>, Redux, Relay before & after</legend>
+<legend>5. <u>Flux</u> & Redux, before & after</legend>
 
 ## Eg. `FluxReduceStore` <br />+ data plugins
 
@@ -637,7 +637,7 @@ class: center, middle
 | **Store** | AdBreakPortalInsightsStore.js | 219 |
 |  | <b><right>Total</right></b> | <b>483</b> |
 ---
-<legend>5. <u>Flux</u>, Redux, Relay before & after</legend>
+<legend>5. <u>Flux</u> & Redux, before & after</legend>
 
 ## Eg. `FluxReduceStore` <br />+ data plugins
 
@@ -648,7 +648,7 @@ class: center, middle
 | **Store** | AdBreakPortalInsightsStore.js | 219 |
 |  | <b><right>Total</right></b> | <b>483</b> |
 ---
-<legend>5. <u>Flux</u>, Redux, Relay before & after</legend>
+<legend>5. <u>Flux</u> & Redux, before & after</legend>
 
 ## Eg. `FluxReduceStore` <br />+ data plugins
 
@@ -659,7 +659,7 @@ class: center, middle
 | **Store** | AdBreakPortalInsightsStore.js | ~~219~~ <font color="#006def" style="font-size:28px; line-height: 20px;">101</font> |
 |  | <b><right>Total</right></b> | <b>483</b> |
 ---
-<legend>5. <u>Flux</u>, Redux, Relay before & after</legend>
+<legend>5. <u>Flux</u> & Redux, before & after</legend>
 
 ## Eg. `FluxReduceStore` <br />+ data plugins
 
@@ -673,35 +673,35 @@ class: center, middle
 <right><font color="#006def">(also: caught a bug)</font></right>
 ---
 class: center, middle
-<legend>5. Flux, <u>Redux</u>, Relay before & after</legend>
+<legend>5. Flux & <u>Redux</u>, before & after</legend>
 ### Redux
 ---
 class: center, middle
-<legend>5. Flux, <u>Redux</u>, Relay before & after</legend>
+<legend>5. Flux & <u>Redux</u>, before & after</legend>
 <img src="images/redux-flow.png" width="60%" />
 ---
 class: center, middle
-<legend>5. Flux, <u>Redux</u>, Relay before & after</legend>
+<legend>5. Flux & <u>Redux</u>, before & after</legend>
 <img src="images/redux-flow-expanded-0.png" width="80%" />
 ---
 class: center, middle
-<legend>5. Flux, <u>Redux</u>, Relay before & after</legend>
+<legend>5. Flux & <u>Redux</u>, before & after</legend>
 <img src="images/redux-flow-expanded-1.png" width="80%" />
 ---
 class: center, middle
-<legend>5. Flux, <u>Redux</u>, Relay before & after</legend>
+<legend>5. Flux & <u>Redux</u>, before & after</legend>
 <img src="images/redux-flow-expanded-2.png" width="80%" />
 ---
 class: center, middle
-<legend>5. Flux, <u>Redux</u>, Relay before & after</legend>
+<legend>5. Flux & <u>Redux</u>, before & after</legend>
 <img src="images/redux-flow-expanded-3.png" width="80%" />
 ---
 class: center, middle
-<legend>5. Flux, <u>Redux</u>, Relay before & after</legend>
+<legend>5. Flux & <u>Redux</u>, before & after</legend>
 <img src="images/redux-flow-expanded-4.png" width="80%" />
 ---
 class: center, middle
-<legend>5. Flux, <u>Redux</u>, Relay before & after</legend>
+<legend>5. Flux & <u>Redux</u>, before & after</legend>
 
 ## Eg. `SRTRouting`
 
@@ -718,7 +718,7 @@ class: center, middle
 |  | <b><right>Total</right></b> | <b>603</b> |
 ---
 class: center, middle
-<legend>5. Flux, <u>Redux</u>, Relay before & after</legend>
+<legend>5. Flux & <u>Redux</u>, before & after</legend>
 
 ## Eg. `SRTRouting`
 
@@ -735,7 +735,7 @@ class: center, middle
 |  | <b><right>Total</right></b> | <b>603</b> |
 ---
 class: center, middle
-<legend>5. Flux, <u>Redux</u>, Relay before & after</legend>
+<legend>5. Flux & <u>Redux</u>, before & after</legend>
 
 ## Eg. `SRTRouting`
 
@@ -752,7 +752,7 @@ class: center, middle
 |  | <b><right>Total</right></b> | <b>603</b> |
 ---
 class: center, middle
-<legend>5. Flux, <u>Redux</u>, Relay before & after</legend>
+<legend>5. Flux & <u>Redux</u>, before & after</legend>
 
 ## Eg. `SRTRouting`
 
@@ -769,7 +769,7 @@ class: center, middle
 |  | <b><right>Total</right></b> | <b>603</b> |
 ---
 class: center, middle
-<legend>5. Flux, <u>Redux</u>, Relay before & after</legend>
+<legend>5. Flux & <u>Redux</u>, before & after</legend>
 
 ## Eg. `SRTRouting`
 
@@ -786,7 +786,7 @@ class: center, middle
 |  | <b><right>Total</right></b> | <b>603</b> |
 ---
 class: center, middle
-<legend>5. Flux, <u>Redux</u>, Relay before & after</legend>
+<legend>5. Flux & <u>Redux</u>, before & after</legend>
 
 ## Eg. `SRTRouting`
 
@@ -803,7 +803,7 @@ class: center, middle
 |  | <b><right>Total</right></b> | <b>603</b> |
 ---
 class: center, middle
-<legend>5. Flux, <u>Redux</u>, Relay before & after</legend>
+<legend>5. Flux & <u>Redux</u>, before & after</legend>
 
 ## Eg. `SRTRouting`
 
@@ -820,7 +820,7 @@ class: center, middle
 |  | <b><right>Total</right></b> | <b>603</b> |
 ---
 class: center, middle
-<legend>5. Flux, <u>Redux</u>, Relay before & after</legend>
+<legend>5. Flux & <u>Redux</u>, before & after</legend>
 
 ## Eg. `SRTRouting`
 
@@ -837,7 +837,7 @@ class: center, middle
 |  | <b><right>Total</right></b> | <b>603</b> |
 ---
 class: center, middle
-<legend>5. Flux, <u>Redux</u>, Relay before & after</legend>
+<legend>5. Flux & <u>Redux</u>, before & after</legend>
 
 ## Eg. `SRTRouting`
 
@@ -854,7 +854,7 @@ class: center, middle
 |  | <b><right>Total</right></b> | <b>603</b> |
 ---
 class: center, middle
-<legend>5. Flux, <u>Redux</u>, Relay before & after</legend>
+<legend>5. Flux & <u>Redux</u>, before & after</legend>
 
 ## Eg. `SRTRouting`
 
@@ -870,3 +870,79 @@ class: center, middle
 | **Store types** | SRTRoutingSearchRecord.js | ~~25~~ <font color="#006def" style="font-size:28px; line-height: 20px;">0</font> |
 | <font color="#006def">60% LESS CODE</font> | <b><right>Total</right></b> | <b>~~603~~ <font color="#006def" style="font-size:28px; line-height: 20px;">241</font></b> |
 ---
+class: center, middle
+## 6. A 30 second reactivity primer
+---
+<legend>6. A 30 second reactivity primer</legend>
+```js
+const withEffects: Plugin<State> = store => {
+  store
+    .on('text')
+    .subscribe(text =>
+      store.set('isNextEnabled')(text !== '')
+    )
+  return store
+}
+```
+---
+<legend>6. A 30 second reactivity primer</legend>
+```js
+const withEffects: Plugin<State> = store => {
+  store
+    .on('text')
+    .subscribe(text =>
+*      new ComposerTypedLogger
+*        .setText(text)
+*        .log()
+    )
+  return store
+}
+```
+---
+<legend>6. A 30 second reactivity primer</legend>
+```js
+const withEffects: Plugin<State> = store => {
+  store
+    .on('text')
+*   .throttle(100)
+    .subscribe(text =>
+       new ComposerTypedLogger
+         .setText(text)
+         .log()
+    )
+  return store
+}
+```
+---
+<legend>6. A 30 second reactivity primer</legend>
+```js
+const withEffects: Plugin<State> = store => {
+  store
+    .on('text')
+    .throttle(100)
+*   .filter(text => text !== '')
+    .subscribe(text =>
+       new ComposerTypedLogger
+         .setText(text)
+         .log()
+    )
+  return store
+}
+```
+---
+<legend>6. A 30 second reactivity primer</legend>
+```js
+const withEffects: Plugin<State> = store => {
+  store
+    .on('text')
+    .throttle(100)
+    .filter(text => text !== '')
+*   .map(text => text.toLowerCase())
+    .subscribe(text =>
+       new ComposerTypedLogger
+         .setText(text)
+         .log()
+    )
+  return store
+}
+```
