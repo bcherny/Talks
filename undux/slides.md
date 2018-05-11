@@ -65,7 +65,7 @@ class: center, middle
 ---
 class: center, middle
 <legend>3. Architecture</legend>
-<img src="images/undux-flow-with-effects.png" width="60%" />
+<img src="images/undux-flow-with-effects.png" width="80%" />
 ---
 class: middle
 <legend>3. Architecture</legend>
