@@ -173,7 +173,7 @@ class: center
 ```ts
 // composerStore.js
 
-*const { connect, createStore } = require('undux')
+*const {connect, createStore} = require('undux')
 
 type State = {
   isNextEnabled: boolean,
@@ -221,6 +221,7 @@ class: center
 <legend>4. Usage</legend>
 ```jsx
 // composer.react.js
+*const {withStore} = require('composerStore')
 
 *const Composer = withStore(
   class Composer extends React.Component {
@@ -242,6 +243,7 @@ class: center
 <legend>4. Usage</legend>
 ```jsx
 // composer.react.js
+const {withStore} = require('composerStore')
 
 const Composer = withStore(
   class Composer extends React.Component {
@@ -264,6 +266,7 @@ class: center
 <legend>4. Usage</legend>
 ```jsx
 // composer.react.js
+const {withStore} = require('composerStore')
 
 const Composer = withStore(
   class Composer extends React.Component {
@@ -287,6 +290,7 @@ class: center
 <legend>4. Usage</legend>
 ```jsx
 // composer.react.js
+const {withStore} = require('composerStore')
 
 const Composer = withStore(
   class Composer extends React.Component {
@@ -429,7 +433,7 @@ class: center
 ```jsx
 // composerStore.js
 
-const { connect, createStore } = require('undux')
+const {connect, createStore} = require('undux')
 
 type State = {
   isNextEnabled: boolean,
@@ -451,7 +455,7 @@ class: center
 ```jsx
 // composerStore.js
 
-const { connect, createStore } = require('undux')
+const {connect, createStore} = require('undux')
 
 *export type State = {
   isNextEnabled: boolean,
@@ -473,8 +477,8 @@ class: center
 ```jsx
 // composerStore.js
 
-const { connect, createStore } = require('undux')
-*const { withEffects } = require('composerEffects')
+const {connect, createStore} = require('undux')
+*const {withEffects} = require('composerEffects')
 
 export type State = {
   isNextEnabled: boolean,
