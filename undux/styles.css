@@ -95,6 +95,7 @@ td, th {
 
 .remark-code, .remark-inline-code {
   font-family: 'Fira Code';
+  font-variant-ligatures: none;
 }
 
 .pink {
