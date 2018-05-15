@@ -5,56 +5,56 @@ class: center, middle
 ---
 class: middle
 # Plan
-1. Problems with Flux & Redux
-2. How Undux solves these problems
+1. Problems
+2. Solutions
 3. Architecture
 4. Usage
 5. Flux & Redux, before & after
-6. A 30 second reactivity primer
+6. Reactivity
 ---
 class: center, middle
-## 1. Problems with Flux & Redux
+## 1. Problems
 ---
-<legend>1. Problems with Flux & Redux</legend>
+<legend>1. Problems</legend>
 - Globs of boilerplate
 ---
-<legend>1. Problems with Flux & Redux</legend>
+<legend>1. Problems</legend>
 - Globs of boilerplate
 - Really hard to type safely
 ---
-<legend>1. Problems with Flux & Redux</legend>
+<legend>1. Problems</legend>
 - Globs of boilerplate
 - Really hard to type safely
 - Actions, creators, types, reducers, callers spread across lots of files
 ---
-<legend>1. Problems with Flux & Redux</legend>
+<legend>1. Problems</legend>
 - Globs of boilerplate
 - Really hard to type safely
 - Actions, creators, types, reducers, callers spread across lots of files
 - <font color="#ff005a">Makes easy things hard!</font>
 ---
 class: center, middle
-## 2. How Undux solves these problems
+## 2. Solutions
 ---
-<legend>2. How Undux solves these problems</legend>
+<legend>2. Solutions</legend>
 - ~~<font color="#999">Globs of boilerplate</font>~~ Near-zero boilerplate
 - <font color="#999">Really hard to type safely</font>
 - <font color="#999">Actions, creators, types, reducers, callers spread across lots of files</font>
 - <font color="#999">Makes easy things hard!</font>
 ---
-<legend>2. How Undux solves these problems</legend>
+<legend>2. Solutions</legend>
 - ~~<font color="#999">Globs of boilerplate</font>~~ Near-zero boilerplate
 - ~~<font color="#999">Really hard to type safely</font>~~ 100% typesafe
 - <font color="#999">Actions, creators, types, reducers, callers spread across lots of files</font>
 - <font color="#999">Makes easy things hard!</font>
 ---
-<legend>2. How Undux solves these problems</legend>
+<legend>2. Solutions</legend>
 - ~~<font color="#999">Globs of boilerplate</font>~~ Near-zero boilerplate
 - ~~<font color="#999">Really hard to type safely</font>~~ 100% typesafe
 - ~~<font color="#999">Actions, creators, types, reducers, callers spread across lots of files</font>~~ <br />Do everything right in your view
 - <font color="#999">Makes easy things hard!</font>
 ---
-<legend>2. How Undux solves these problems</legend>
+<legend>2. Solutions</legend>
 - ~~<font color="#999">Globs of boilerplate</font>~~ Near-zero boilerplate
 - ~~<font color="#999">Really hard to type safely</font>~~ 100% typesafe
 - ~~<font color="#999">Actions, creators, types, reducers, callers spread across lots of files</font>~~ <br />Do everything right in your view
@@ -84,8 +84,8 @@ class: middle
 class: middle
 <legend>3. Architecture</legend>
 <img src="images/single-node-effects.png" height="130" />
-- Subscribe to changes to specific fields
-- Or, subscribe to a set of fields
+- React to changes to specific fields
+- Or, react to a set of fields
 - A reactive way to listen to changes
 ---
 class: center, middle
@@ -385,7 +385,8 @@ const withEffects: Plugin<State> = store => {
   store
     .on('text')
     .subscribe(text =>
-*     store.set('isNextEnabled')(text !== '')
+*     const isNextEnabled = text !== ''
+*     store.set('isNextEnabled')(isNextEnabled)
     )
 }
 ```
@@ -402,7 +403,8 @@ const withEffects: Plugin<State> = store => {
   store
     .on('text')
     .subscribe(text =>
-      store.set('isNextEnabled')(text !== '')
+      const isNextEnabled = text !== ''
+      store.set('isNextEnabled')(isNextEnabled)
     )
 * return store
 }
@@ -420,7 +422,8 @@ const withEffects: Plugin<State> = store => {
   store
     .on('text')
     .subscribe(text =>
-      store.set('isNextEnabled')(text !== '')
+      const isNextEnabled = text !== ''
+      store.set('isNextEnabled')(isNextEnabled)
     )
   return store
 }
@@ -875,25 +878,38 @@ class: center, middle
 | <font color="#006def">60% LESS CODE</font> | <b><right>Total</right></b> | <b>~~603~~ <font color="#006def" style="font-size:28px; line-height: 20px;">241</font></b> |
 ---
 class: center, middle
-## 6. A 30 second reactivity primer
+## 6. Reactivity
 ---
 class: center, middle
-<legend>6. A 30 second reactivity primer</legend>
+<legend>6. Reactivity</legend>
 ### For example: Let's add a logger to composer.
 ---
-<legend>6. A 30 second reactivity primer</legend>
+<legend>6. Reactivity</legend>
 ```js
 const withEffects: Plugin<State> = store => {
   store
     .on('text')
     .subscribe(text =>
-      store.set('isNextEnabled')(text !== '')
+      const isNextEnabled = text !== ''
+      store.set('isNextEnabled')(isNextEnabled)
     )
   return store
 }
 ```
 ---
-<legend>6. A 30 second reactivity primer</legend>
+<legend>6. Reactivity</legend>
+```js
+const withEffects: Plugin<State> = store => {
+  store
+    .on('text')
+    .subscribe(text =>
+*
+    )
+  return store
+}
+```
+---
+<legend>6. Reactivity</legend>
 ```js
 const withEffects: Plugin<State> = store => {
   store
@@ -907,7 +923,7 @@ const withEffects: Plugin<State> = store => {
 }
 ```
 ---
-<legend>6. A 30 second reactivity primer</legend>
+<legend>6. Reactivity</legend>
 ```js
 const withEffects: Plugin<State> = store => {
   store
@@ -922,7 +938,7 @@ const withEffects: Plugin<State> = store => {
 }
 ```
 ---
-<legend>6. A 30 second reactivity primer</legend>
+<legend>6. Reactivity</legend>
 ```js
 const withEffects: Plugin<State> = store => {
   store
@@ -938,7 +954,7 @@ const withEffects: Plugin<State> = store => {
 }
 ```
 ---
-<legend>6. A 30 second reactivity primer</legend>
+<legend>6. Reactivity</legend>
 ```js
 const withEffects: Plugin<State> = store => {
   store
@@ -955,7 +971,7 @@ const withEffects: Plugin<State> = store => {
 }
 ```
 ---
-<legend>6. A 30 second reactivity primer</legend>
+<legend>6. Reactivity</legend>
 ```js
 const withEffects: Plugin<State> = store => {
 
@@ -963,7 +979,7 @@ const withEffects: Plugin<State> = store => {
 }
 ```
 ---
-<legend>6. A 30 second reactivity primer</legend>
+<legend>6. Reactivity</legend>
 ```js
 *const {combineLatest} = require('rxjs')
 
@@ -976,7 +992,7 @@ const withEffects: Plugin<State> = store => {
 }
 ```
 ---
-<legend>6. A 30 second reactivity primer</legend>
+<legend>6. Reactivity</legend>
 ```js
 const {combineLatest} = require('rxjs')
 
