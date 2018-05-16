@@ -276,6 +276,32 @@ const Composer = withStore(
         <Editor>
           <Avatar />
           <Textbox value={store.get('text')}
+*                  onChange={value =>
+*                    store.set('text')(value)
+*                  } />
+        </Editor>
+        <Sproutbar />
+        <Button />
+      </>
+    }
+  }
+)
+```
+---
+class: center
+<legend>4. Usage</legend>
+```jsx
+// composer.react.js
+const {withStore} = require('composerStore')
+
+const Composer = withStore(
+  class Composer extends React.Component {
+    render() {
+      const {store} = this.props
+      return <>
+        <Editor>
+          <Avatar />
+          <Textbox value={store.get('text')}
 *                  onChange={store.set('text')} />
         </Editor>
         <Sproutbar />
@@ -367,9 +393,9 @@ import type {State} from 'composerStore'
 const withEffects: Plugin<State> = store => {
   store
     .on('text')
-*   .subscribe(text =>
+*   .subscribe(text => {
 *
-*   )
+*   })
 }
 ```
 ---
@@ -384,10 +410,13 @@ import type {State} from 'composerStore'
 const withEffects: Plugin<State> = store => {
   store
     .on('text')
-    .subscribe(text =>
-*     const isNextEnabled = text !== ''
-*     store.set('isNextEnabled')(isNextEnabled)
-    )
+    .subscribe(text => {
+*     if (text === '') {
+*       store.set('isNextEnabled')(false)
+*     } else {
+*       store.set('isNextEnabled')(true)
+*     }
+    })
 }
 ```
 ---
@@ -402,10 +431,13 @@ import type {State} from 'composerStore'
 const withEffects: Plugin<State> = store => {
   store
     .on('text')
-    .subscribe(text =>
-      const isNextEnabled = text !== ''
-      store.set('isNextEnabled')(isNextEnabled)
-    )
+    .subscribe(text => {
+      if (text === '') {
+        store.set('isNextEnabled')(false)
+      } else {
+        store.set('isNextEnabled')(true)
+      }
+    })
 * return store
 }
 ```
@@ -421,10 +453,13 @@ import type {State} from 'composerStore'
 const withEffects: Plugin<State> = store => {
   store
     .on('text')
-    .subscribe(text =>
-      const isNextEnabled = text !== ''
-      store.set('isNextEnabled')(isNextEnabled)
-    )
+    .subscribe(text => {
+      if (text === '') {
+        store.set('isNextEnabled')(false)
+      } else {
+        store.set('isNextEnabled')(true)
+      }
+    })
   return store
 }
 
@@ -501,6 +536,10 @@ module.exports.withStore = connect(store)
 class: center, middle
 <legend>4. Usage</legend>
 ### <font color="#006def" style="font-size:48px">Done.</font>
+---
+class: center, middle
+<legend>4. Usage</legend>
+<video controls="true" src="images/nuclide-template.mov" width="100%" />
 ---
 class: center, middle
 ## 5. Flux & Redux, <br />before & after
@@ -889,10 +928,13 @@ class: center, middle
 const withEffects: Plugin<State> = store => {
   store
     .on('text')
-    .subscribe(text =>
-      const isNextEnabled = text !== ''
-      store.set('isNextEnabled')(isNextEnabled)
-    )
+    .subscribe(text => {
+      if (text === '') {
+        store.set('isNextEnabled')(false)
+      } else {
+        store.set('isNextEnabled')(true)
+      }
+    })
   return store
 }
 ```
