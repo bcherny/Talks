@@ -14,6 +14,27 @@ img.full {
   width: 100%;
 }
 
+img.fullish {
+  height: 100%;
+  margin: -1em -4em -1em -4em;
+  object-fit: contain;
+  width: 110%;
+}
+
+img.fullisher {
+  height: 100%;
+  margin: -1em -4em -1em -4em;
+  object-fit: contain;
+  width: 120%;
+}
+
+img.fuller {
+  height: 100%;
+  margin: -1em -4em -1em -4em;
+  object-fit: contain;
+  width: 130%;
+}
+
 .smaller {
   margin-top: 35px;
   opacity: .7;
@@ -55,6 +76,11 @@ h2 ~ h3 {
   margin-top: -1em;
 }
 
+small,
+table {
+  font-size: 20px;
+}
+
 table {
   border-collapse: collapse;
   width: 100%;
@@ -67,6 +93,11 @@ td, th {
 
 .remark-code, .remark-inline-code {
   font-family: 'Fira Code';
+  font-variant-ligatures: none;
+}
+
+.remark-slide-content {
+  font-size: 32px;
 }
 
 .pink {
