@@ -205,7 +205,7 @@ class: center, middle
 <img src="images/redux-flow-code-0.png" class="fullish" />
 ---
 class: center, middle
-<img src="images/redux-flow-code-1.png" class="fullisher" />
+<img src="images/redux-flow-code-1.png" class="fullish" />
 ---
 class: center, middle
 <img src="images/redux-flow-code-2.png" class="fullish" />
@@ -217,52 +217,63 @@ class: center, middle
 <img src="images/undux.png" width="45%" />
 ---
 class: center, middle
-<img src="images/undux-flow-comparison.png" class="full" />
+<img src="images/undux-flow-comparison.png" class="fuller" />
 ---
 class: center, middle
-<img src="images/undux-flow-code.png" class="full" />
+<img src="images/undux-flow-code-1.png" class="fuller" />
+---
+class: center, middle
+<img src="images/undux-flow-code-0.png" class="fuller" />
 ---
 ## Undux
-- Lots of <font color="#2a6fe6">Stores</font>
+- Lots of <font color="red">Stores</font>
 - Use `.get(key)` and `.set(key)(value)` to read and write to them
-- <font color="#2a6fe6">Store</font> updates → <font color="green">View</font> updates
+- <font color="red">Store</font> updates → <font color="green">View</font> updates
 - **Reactive effects**
-
-<div class="smaller">
-  <h2>Redux</h2>
-  <ul>
-  <li>Singleton <font color="red">Store</font></li>
-  <li>Lots of <font color="magenta">Reducers</font></li>
-  <li>Describe CUD operations with <font color="red">Actions</font></li>
-  <li>Reducers take Actions → create a new state for the Store → update the <font color="green">View</font></li>
-  </ul>
-
-  <h2>Flux</h2>
-  <ul>
-  <li>Singleton <font color="orange">Dispatcher</font></li>
-  <li>Lots of <font color="red">Stores</font></li>
-  <li>Describe CUD operations with <font color="red">Actions</font></li>
-  <li>Stores take Actions → mutate their internal state → update the <font color="green">View</font></li>
-  </ul>
-</div>
 ---
-class: middle
+```js
+composerStore
+  .on('text')
+  .subscribe(text => {
+    console.log('text changed!', text)
+  })
+```
+---
 ```js
 composerStore
   .on('text')
   .throttle(200)
-  .filter(text => text.startsWith('hello'))
-  .map(text => text.toUpperCase())
+  .subscribe(text => {
+    console.log('text changed!', text)
+  })
+```
+---
+```js
+composerStore
+  .on('text')
+  .throttle(200)
+  .filter(text => text !== '')
+  .subscribe(text => {
+    console.log('text changed!', text)
+  })
+```
+---
+```js
+composerStore
+  .on('text')
+  .throttle(200)
+  .filter(text => text !== '')
+  .map(text => text.toLowerCase())
   .subscribe(text => {
     console.log('text changed!', text)
   })
 ```
 ---
 class: center, middle
-<img src="images/tree-flux-11.png" class="full" />
+<img src="images/tree-flux-11.png" class="fullish" />
 ---
 class: center, middle
-<img src="images/tree-undux.png" class="full" />
+<img src="images/tree-undux.png" class="fullish" />
 ---
 ## Undux: features
 ---
@@ -286,10 +297,9 @@ class: center, middle
 ---
 class: center, middle
 ## Learn more...
-# fburl.com/undux
+# <a href="fburl.com/undux">fburl.com/undux</a>
 ---
 class: center, middle
 # Thanks!
 ## @bcherny
-## fburl.com/undux
-## github.com/bcherny/undux
+## <a href="fburl.com/undux">fburl.com/undux</a>
