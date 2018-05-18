@@ -272,6 +272,34 @@ class: center, middle
 class: center, middle
 <img src="images/undux.png" width="45%" />
 ---
+class: middle
+<legend>4. Undux</legend>
+## Create a store:
+
+```js
+const store = createStore({
+  some: 1,
+  initial: 'state'
+})
+```
+---
+class: middle
+<legend>4. Undux</legend>
+## Three methods:
+
+```js
+// Read a value
+store.get('key')
+
+// Write a value
+store.set('key')('value')
+
+// React when a value changes
+store.on('key').subscribe(function(value) {
+  ...
+})
+```
+---
 class: center, middle
 <legend>4. Undux</legend>
 <img src="images/undux-flow-comparison.png" class="fuller" />
@@ -290,6 +318,45 @@ class: center, middle
 - Use `.get(key)` and `.set(key)(value)` to read and write to them
 - <font color="red">Store</font> updates → <font color="green">View</font> updates
 - **Reactive effects**
+---
+class: center, middle
+<legend>4. Undux</legend>
+<img src="images/tree-flux-11.png" class="fullish" />
+---
+class: center, middle
+<legend>4. Undux</legend>
+<img src="images/tree-undux.png" class="fullish" />
+---
+<legend>4. Undux</legend>
+## Undux: features
+---
+<legend>4. Undux</legend>
+## Undux: features
+## 🤭 No boilerplate
+---
+<legend>4. Undux</legend>
+## Undux: features
+## 🤭 No boilerplate
+## 😯 100% TYPESAFE
+---
+<legend>4. Undux</legend>
+## Undux: features
+## 🤭 No boilerplate
+## 😯 100% TYPESAFE
+## 😱 Reactive effects
+---
+<legend>4. Undux</legend>
+## Undux: features
+## 🤭 No boilerplate
+## 😯 100% TYPESAFE
+## 😱 Reactive effects
+## 🤯 Built in logger
+---
+class: center, middle
+# Thanks!
+-----------
+## Learn more...
+## <a href="fburl.com/undux">fburl.com/undux</a>
 ---
 <legend>4. Undux</legend>
 ```js
@@ -333,41 +400,3 @@ composerStore
   })
 ```
 ---
-class: center, middle
-<legend>4. Undux</legend>
-<img src="images/tree-flux-11.png" class="fullish" />
----
-class: center, middle
-<legend>4. Undux</legend>
-<img src="images/tree-undux.png" class="fullish" />
----
-<legend>4. Undux</legend>
-## Undux: features
----
-<legend>4. Undux</legend>
-## Undux: features
-## 🤭 No boilerplate
----
-<legend>4. Undux</legend>
-## Undux: features
-## 🤭 No boilerplate
-## 😯 100% TYPESAFE
----
-<legend>4. Undux</legend>
-## Undux: features
-## 🤭 No boilerplate
-## 😯 100% TYPESAFE
-## 😱 Reactive effects
----
-<legend>4. Undux</legend>
-## Undux: features
-## 🤭 No boilerplate
-## 😯 100% TYPESAFE
-## 😱 Reactive effects
-## 🤯 Built in logger
----
-class: center, middle
-# Thanks!
------------
-## Learn more...
-## <a href="fburl.com/undux">fburl.com/undux</a>
