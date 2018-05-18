@@ -296,10 +296,7 @@ class: center, middle
 ## 🤯 Built in logger
 ---
 class: center, middle
-## Learn more...
-# <a href="fburl.com/undux">fburl.com/undux</a>
----
-class: center, middle
 # Thanks!
-## @bcherny
+-----------
+## Learn more...
 ## <a href="fburl.com/undux">fburl.com/undux</a>
