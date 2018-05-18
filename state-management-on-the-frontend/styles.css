@@ -3,6 +3,14 @@
   src: url('fonts/xkcd-script.woff') format('woff');
 }
 
+legend {
+  color: #999;
+  font-size: 20px;
+  position: absolute;
+    left: 20px;
+    top: 10px;
+}
+
 p {
   margin: 0;
 }
