@@ -292,9 +292,10 @@ class: middle
 store.get('key')
 
 // Write a value
+// (automatically re-renders components for you)
 store.set('key')('value')
 
-// React when a value changes
+// Do something when a value changes
 store.on('key').subscribe(function(value) {
   ...
 })
@@ -356,7 +357,9 @@ class: center, middle
 # Thanks!
 -----------
 ## Learn more...
-## <a href="fburl.com/undux">fburl.com/undux</a>
+### <a href="https://fburl.com/undux">fburl.com/undux</a>
+### <a href="https://fburl.com/learn-flux">fburl.com/learn-flux</a>
+### <a href="https://fburl.com/learn-redux">fburl.com/learn-redux</a>
 ---
 <legend>4. Undux</legend>
 ```js
