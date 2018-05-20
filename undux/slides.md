@@ -190,6 +190,32 @@ const store = createStore(initialState)
 *module.exports.withStore = connect(store)
 ```
 ---
+class: center
+<legend>4. Usage</legend>
+```ts
+// composerStore.js
+
+const {connect, createStore} = require('undux')
+
+type State = {
+  isNextEnabled: boolean,
+  text: string
+}
+
+const initialState: State = {
+  isNextEnabled: false,
+  text: ''
+}
+
+const store = createStore(initialState)
+
+module.exports.withStore = connect(store)
+
+*export type StoreProps = {
+*  store: typeof store
+*}
+```
+---
 class: center, middle
 <legend>4. Usage</legend>
 ### Step 2: Connect the store
@@ -203,16 +229,16 @@ class: center
 ```jsx
 // composer.react.js
 
-class Composer extends React.Component {
+class Composer extends React.Component<StoreProps> {
   render() {
-    return <>
+    return <div>
       <Editor>
         <Avatar />
         <Textbox />
       </Editor>
       <Sproutbar />
       <Button />
-    </>
+    </div>
   }
 }
 ```
@@ -221,19 +247,19 @@ class: center
 <legend>4. Usage</legend>
 ```jsx
 // composer.react.js
-*const {withStore} = require('composerStore')
+*const {StoreProps, withStore} = require('composerStore')
 
 *const Composer = withStore(
-  class Composer extends React.Component {
+  class Composer extends React.Component<StoreProps> {
     render() {
-      return <>
+      return <div>
         <Editor>
           <Avatar />
           <Textbox />
         </Editor>
         <Sproutbar />
         <Button />
-      </>
+      </div>
     }
   }
 *)
@@ -243,20 +269,19 @@ class: center
 <legend>4. Usage</legend>
 ```jsx
 // composer.react.js
-const {withStore} = require('composerStore')
+*const {StoreProps, withStore} = require('composerStore')
 
 const Composer = withStore(
-  class Composer extends React.Component {
+* class Composer extends React.Component<StoreProps> {
     render() {
-*     const {store} = this.props
-      return <>
+      return <div>
         <Editor>
           <Avatar />
-*         <Textbox value={store.get('text')} />
+          <Textbox />
         </Editor>
         <Sproutbar />
         <Button />
-      </>
+      </div>
     }
   }
 )
@@ -266,13 +291,36 @@ class: center
 <legend>4. Usage</legend>
 ```jsx
 // composer.react.js
-const {withStore} = require('composerStore')
+const {StoreProps, withStore} = require('composerStore')
 
 const Composer = withStore(
-  class Composer extends React.Component {
+  class Composer extends React.Component<StoreProps> {
+    render() {
+*     const {store} = this.props
+      return <div>
+        <Editor>
+          <Avatar />
+*         <Textbox value={store.get('text')} />
+        </Editor>
+        <Sproutbar />
+        <Button />
+      </div>
+    }
+  }
+)
+```
+---
+class: center
+<legend>4. Usage</legend>
+```jsx
+// composer.react.js
+const {StoreProps, withStore} = require('composerStore')
+
+const Composer = withStore(
+  class Composer extends React.Component<StoreProps> {
     render() {
       const {store} = this.props
-      return <>
+      return <div>
         <Editor>
           <Avatar />
           <Textbox value={store.get('text')}
@@ -282,7 +330,7 @@ const Composer = withStore(
         </Editor>
         <Sproutbar />
         <Button />
-      </>
+      </div>
     }
   }
 )
@@ -292,13 +340,13 @@ class: center
 <legend>4. Usage</legend>
 ```jsx
 // composer.react.js
-const {withStore} = require('composerStore')
+const {StoreProps, withStore} = require('composerStore')
 
 const Composer = withStore(
-  class Composer extends React.Component {
+  class Composer extends React.Component<StoreProps> {
     render() {
       const {store} = this.props
-      return <>
+      return <div>
         <Editor>
           <Avatar />
           <Textbox value={store.get('text')}
@@ -306,7 +354,7 @@ const Composer = withStore(
         </Editor>
         <Sproutbar />
         <Button />
-      </>
+      </div>
     }
   }
 )
@@ -316,13 +364,13 @@ class: center
 <legend>4. Usage</legend>
 ```jsx
 // composer.react.js
-const {withStore} = require('composerStore')
+const {StoreProps, withStore} = require('composerStore')
 
 const Composer = withStore(
-  class Composer extends React.Component {
+  class Composer extends React.Component<StoreProps> {
     render() {
       const {store} = this.props
-      return <>
+      return <div>
         <Editor>
           <Avatar />
           <Textbox value={store.get('text')}
@@ -330,7 +378,7 @@ const Composer = withStore(
         </Editor>
         <Sproutbar />
 *       <Button disabled={!store.get('isNextEnabled')} />
-      </>
+      </div>
     }
   }
 )
@@ -486,6 +534,10 @@ const initialState: State = {
 const store = createStore(initialState)
 
 module.exports.withStore = connect(store)
+
+export type StoreProps = {
+  store: typeof store
+}
 ```
 ---
 class: center
@@ -508,6 +560,10 @@ const initialState: State = {
 const store = createStore(initialState)
 
 module.exports.withStore = connect(store)
+
+export type StoreProps = {
+  store: typeof store
+}
 ```
 ---
 class: center
@@ -531,6 +587,10 @@ const initialState: State = {
 *const store = withEffects(createStore(initialState))
 
 module.exports.withStore = connect(store)
+
+export type StoreProps = {
+  store: typeof store
+}
 ```
 ---
 class: center, middle
@@ -550,7 +610,7 @@ class: center, middle
 ---
 class: center, middle
 <legend>5. <u>Flux</u> & Redux, before & after</legend>
-<img src="images/flux-flow.png" width="60%" />
+<img src="images/flux-flow.png" width="75%" />
 ---
 class: center, middle
 <legend>5. <u>Flux</u> & Redux, before & after</legend>
@@ -944,9 +1004,20 @@ const withEffects: Plugin<State> = store => {
 const withEffects: Plugin<State> = store => {
   store
     .on('text')
-    .subscribe(text =>
+    .subscribe(text => {
+      if (text === '') {
+        store.set('isNextEnabled')(false)
+      } else {
+        store.set('isNextEnabled')(true)
+      }
+    })
 *
-    )
+* store
+*   .on('text')
+*   .subscribe(text =>
+*
+*   )
+
   return store
 }
 ```
@@ -954,6 +1025,23 @@ const withEffects: Plugin<State> = store => {
 <legend>6. Reactivity</legend>
 ```js
 const withEffects: Plugin<State> = store => {
+  // ...
+*
+* store
+*   .on('text')
+*   .subscribe(text =>
+*
+*   )
+
+  return store
+}
+```
+---
+<legend>6. Reactivity</legend>
+```js
+const withEffects: Plugin<State> = store => {
+  // ...
+
   store
     .on('text')
     .subscribe(text =>
@@ -968,6 +1056,8 @@ const withEffects: Plugin<State> = store => {
 <legend>6. Reactivity</legend>
 ```js
 const withEffects: Plugin<State> = store => {
+  // ...
+
   store
     .on('text')
 *   .throttle(100)
@@ -983,6 +1073,8 @@ const withEffects: Plugin<State> = store => {
 <legend>6. Reactivity</legend>
 ```js
 const withEffects: Plugin<State> = store => {
+  // ...
+
   store
     .on('text')
     .throttle(100)
@@ -999,6 +1091,8 @@ const withEffects: Plugin<State> = store => {
 <legend>6. Reactivity</legend>
 ```js
 const withEffects: Plugin<State> = store => {
+  // ...
+
   store
     .on('text')
     .throttle(100)
@@ -1016,6 +1110,7 @@ const withEffects: Plugin<State> = store => {
 <legend>6. Reactivity</legend>
 ```js
 const withEffects: Plugin<State> = store => {
+  // ...
 
   return store
 }
@@ -1026,6 +1121,8 @@ const withEffects: Plugin<State> = store => {
 *const {combineLatest} = require('rxjs')
 
 const withEffects: Plugin<State> = store => {
+  // ...
+
 * combineLatest(
 *   store.on('text'),
 *   store.on('video')
@@ -1039,6 +1136,8 @@ const withEffects: Plugin<State> = store => {
 const {combineLatest} = require('rxjs')
 
 const withEffects: Plugin<State> = store => {
+  // ...
+
   combineLatest(
     store.on('text'),
     store.on('video')
