@@ -6,13 +6,14 @@
   <meta charset="utf-8">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="prism.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
 </head>
 
 <body>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/webfont/1.6.28/webfontloader.js"></script>
   <script src="prism.js"></script>
   <script src="remark.js"></script>
   <script>
+    // Syntax highlighting in code blocks
     function parseLanguage(lang) {
       return {
         js: 'jsx',
@@ -25,8 +26,7 @@
         block.parentNode.className = `${block.parentNode.className} language-${language}`;
         const html = Prism.highlight(block.textContent, prismLang);
 
-
-
+        // Highlight code lines starting with *
         const lines = html.split(`\n`);
         let currentSpan = null;
         for (var i = 0; i < lines.length; i++) {
@@ -60,13 +60,9 @@
     };
   </script>
   <script>
-    WebFont.load({
-      custom: {
-        families: ['xkcd']
-      },
-      active: main
-    })
+    main()
 
+    // Live reload (yarn watch)
     async function main() {
       const result = await fetch('slides.md');
       let lastSource = await result.text();
