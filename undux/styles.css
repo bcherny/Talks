@@ -3,6 +3,13 @@
   src: url('fonts/xkcd-script.woff') format('woff');
 }
 
+h3.Subtitle {
+  color: #222;
+  font-size: 28px;
+  font-weight: 300;
+  margin: -30px 0 100px;
+}
+
 p {
   margin: 0;
 }
@@ -53,7 +60,15 @@ img.full {
 
 body {
   color: #343435;
-  font-family: xkcd;
+  font: 300 18px/36px Roboto;
+}
+
+li {
+  margin-bottom: 20px;
+}
+
+h2, h3, h4 {
+  line-height: 48px;
 }
 
 blockquote {
@@ -90,15 +105,34 @@ table {
 
 td, th {
   border: 1px solid #ccc;
-  padding: 10px;
+  padding: 7px 10px;
 }
 
 .remark-code, .remark-inline-code {
   font-family: 'Fira Code';
+  font-weight: 400;
   font-variant-ligatures: none;
 }
 
 .pink {
   background: #f90041;
   color: #fff;
+}
+
+.blue {
+  color: #006def;
+  font-size: 28px;
+  line-height: 20px;
+}
+
+td .blue {
+  vertical-align: middle;
+}
+
+.medium {
+  font-weight: 400;
+}
+
+.heavy {
+  font-weight: 600;
 }

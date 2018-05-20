@@ -1,5 +1,6 @@
 class: center, middle
-# <img src="images/undux.png" width="50%" />
+# <img src="images/undux.png" width="80%" />
+<h3 class='Subtitle'>⚡Dead simple state management for ReactJS</h3>
 ## By Boris Cherny
 ### @bcherny - github.com/bcherny
 ---
@@ -229,7 +230,7 @@ class: center
 ```jsx
 // composer.react.js
 
-class Composer extends React.Component<StoreProps> {
+class Composer extends React.Component {
   render() {
     return <div>
       <Editor>
@@ -247,10 +248,10 @@ class: center
 <legend>4. Usage</legend>
 ```jsx
 // composer.react.js
-*const {StoreProps, withStore} = require('composerStore')
+*const {withStore} = require('composerStore')
 
 *const Composer = withStore(
-  class Composer extends React.Component<StoreProps> {
+  class Composer extends React.Component {
     render() {
       return <div>
         <Editor>
@@ -648,7 +649,7 @@ class: center, middle
 
 | Role | File | LoC |
 |-------|------|-----|
-| **Action creators** | CompassionResourceActions.js | ~~69~~ <font color="#006def" style="font-size:28px; line-height: 20px;">0</font> |
+| **Action creators** | CompassionResourceActions.js | ~~69~~ <span class="medium blue">0</span> |
 | **Action types** | CompassionMessageContextTypes.js | 25 |
 | **Container** | withCompassionResourceLocation.js | 42 |
 | **Dispatcher** | CompassionResourceDispatcher.js | 19 |
@@ -661,8 +662,8 @@ class: center, middle
 
 | Role | File | LoC |
 |-------|------|-----|
-| **Action creators** | CompassionResourceActions.js | ~~69~~ <font color="#006def" style="font-size:28px; line-height: 20px;">0</font> |
-| **Action types** | CompassionMessageContextTypes.js | ~~25~~ <font color="#006def" style="font-size:28px; line-height: 20px;">0</font> |
+| **Action creators** | CompassionResourceActions.js | ~~69~~ <span class="medium blue">0</span> |
+| **Action types** | CompassionMessageContextTypes.js | ~~25~~ <span class="medium blue">0</span> |
 | **Container** | withCompassionResourceLocation.js | 42 |
 | **Dispatcher** | CompassionResourceDispatcher.js | 19 |
 | **Store** | CompassionResourceStore.js | 97 |
@@ -674,9 +675,9 @@ class: center, middle
 
 | Role | File | LoC |
 |-------|------|-----|
-| **Action creators** | CompassionResourceActions.js | ~~69~~ <font color="#006def" style="font-size:28px; line-height: 20px;">0</font> |
-| **Action types** | CompassionMessageContextTypes.js | ~~25~~ <font color="#006def" style="font-size:28px; line-height: 20px;">0</font> |
-| **Container** | withCompassionResourceLocation.js | ~~42~~ <font color="#006def" style="font-size:28px; line-height: 20px;">0</font> |
+| **Action creators** | CompassionResourceActions.js | ~~69~~ <span class="medium blue">0</span> |
+| **Action types** | CompassionMessageContextTypes.js | ~~25~~ <span class="medium blue">0</span> |
+| **Container** | withCompassionResourceLocation.js | ~~42~~ <span class="medium blue">0</span> |
 | **Dispatcher** | CompassionResourceDispatcher.js | 19 |
 | **Store** | CompassionResourceStore.js | 97 |
 |  | <b><right>Total</right></b> | <b>252</b> |
@@ -687,10 +688,10 @@ class: center, middle
 
 | Role | File | LoC |
 |-------|------|-----|
-| **Action creators** | CompassionResourceActions.js | ~~69~~ <font color="#006def" style="font-size:28px; line-height: 20px;">0</font> |
-| **Action types** | CompassionMessageContextTypes.js | ~~25~~ <font color="#006def" style="font-size:28px; line-height: 20px;">0</font> |
-| **Container** | withCompassionResourceLocation.js | ~~42~~ <font color="#006def" style="font-size:28px; line-height: 20px;">0</font> |
-| **Dispatcher** | CompassionResourceDispatcher.js | ~~19~~ <font color="#006def" style="font-size:28px; line-height: 20px;">0</font> |
+| **Action creators** | CompassionResourceActions.js | ~~69~~ <span class="medium blue">0</span> |
+| **Action types** | CompassionMessageContextTypes.js | ~~25~~ <span class="medium blue">0</span> |
+| **Container** | withCompassionResourceLocation.js | ~~42~~ <span class="medium blue">0</span> |
+| **Dispatcher** | CompassionResourceDispatcher.js | ~~19~~ <span class="medium blue">0</span> |
 | **Store** | CompassionResourceStore.js | 97 |
 |  | <b><right>Total</right></b> | <b>252</b> |
 ---
@@ -700,11 +701,11 @@ class: center, middle
 
 | Role | File | LoC |
 |-------|------|-----|
-| **Action creators** | CompassionResourceActions.js | ~~69~~ <font color="#006def" style="font-size:28px; line-height: 20px;">0</font> |
-| **Action types** | CompassionMessageContextTypes.js | ~~25~~ <font color="#006def" style="font-size:28px; line-height: 20px;">0</font> |
-| **Container** | withCompassionResourceLocation.js | ~~42~~ <font color="#006def" style="font-size:28px; line-height: 20px;">0</font> |
-| **Dispatcher** | CompassionResourceDispatcher.js | ~~19~~ <font color="#006def" style="font-size:28px; line-height: 20px;">0</font> |
-| **Store** | CompassionResourceStore.js | ~~97~~ <font color="#006def" style="font-size:28px; line-height: 20px;">71</font> |
+| **Action creators** | CompassionResourceActions.js | ~~69~~ <span class="medium blue">0</span> |
+| **Action types** | CompassionMessageContextTypes.js | ~~25~~ <span class="medium blue">0</span> |
+| **Container** | withCompassionResourceLocation.js | ~~42~~ <span class="medium blue">0</span> |
+| **Dispatcher** | CompassionResourceDispatcher.js | ~~19~~ <span class="medium blue">0</span> |
+| **Store** | CompassionResourceStore.js | ~~97~~ <span class="medium blue">71</span> |
 |  | <b><right>Total</right></b> | <b>252</b> |
 ---
 <legend>5. <u>Flux</u> & Redux, before & after</legend>
@@ -713,13 +714,13 @@ class: center, middle
 
 | Role | File | LoC |
 |-------|------|-----|
-| **Action creators** | CompassionResourceActions.js | ~~69~~ <font color="#006def" style="font-size:28px; line-height: 20px;">0</font> |
-| **Action types** | CompassionMessageContextTypes.js | ~~25~~ <font color="#006def" style="font-size:28px; line-height: 20px;">0</font> |
-| **Container** | withCompassionResourceLocation.js | ~~42~~ <font color="#006def" style="font-size:28px; line-height: 20px;">0</font> |
-| **Dispatcher** | CompassionResourceDispatcher.js | ~~19~~ <font color="#006def" style="font-size:28px; line-height: 20px;">0</font> |
-| **Store** | CompassionResourceStore.js | ~~97~~ <font color="#006def" style="font-size:28px; line-height: 20px;">71</font> |
-|  | <b><right>Total</right></b> | ~~<b>252</b>~~ <font color="#006def">71</font> |
-<right><font color="#006def" style="font-size:28px; line-height: 20px;">70% LESS CODE</font></right>
+| **Action creators** | CompassionResourceActions.js | ~~69~~ <span class="medium blue">0</span> |
+| **Action types** | CompassionMessageContextTypes.js | ~~25~~ <span class="medium blue">0</span> |
+| **Container** | withCompassionResourceLocation.js | ~~42~~ <span class="medium blue">0</span> |
+| **Dispatcher** | CompassionResourceDispatcher.js | ~~19~~ <span class="medium blue">0</span> |
+| **Store** | CompassionResourceStore.js | ~~97~~ <span class="medium blue">71</span> |
+|  | <b><right>Total</right></b> | ~~<b>252</b>~~ <span class="medium blue">71</span> |
+<right><span class="heavy blue">70% LESS CODE</span></right>
 ---
 <legend>5. <u>Flux</u> & Redux, before & after</legend>
 
@@ -738,7 +739,7 @@ class: center, middle
 
 | Role | File | LoC |
 |-------|------|-----|
-| **Action creators** | AdBreakPortalActions.js | ~~231~~ <font color="#006def" style="font-size:28px; line-height: 20px;">103</font> |
+| **Action creators** | AdBreakPortalActions.js | ~~231~~ <span class="medium blue">103</span> |
 | **Action types** | AdBreakPortalActionTypes.js | 33 |
 | **Store** | AdBreakPortalInsightsStore.js | 219 |
 |  | <b><right>Total</right></b> | <b>483</b> |
@@ -749,8 +750,8 @@ class: center, middle
 
 | Role | File | LoC |
 |-------|------|-----|
-| **Action creators** | AdBreakPortalActions.js | ~~231~~ <font color="#006def" style="font-size:28px; line-height: 20px;">103</font> |
-| **Action types** | AdBreakPortalActionTypes.js | ~~33~~ <font color="#006def" style="font-size:28px; line-height: 20px;">0</font> |
+| **Action creators** | AdBreakPortalActions.js | ~~231~~ <span class="medium blue">103</span> |
+| **Action types** | AdBreakPortalActionTypes.js | ~~33~~ <span class="medium blue">0</span> |
 | **Store** | AdBreakPortalInsightsStore.js | 219 |
 |  | <b><right>Total</right></b> | <b>483</b> |
 ---
@@ -760,9 +761,9 @@ class: center, middle
 
 | Role | File | LoC |
 |-------|------|-----|
-| **Action creators** | AdBreakPortalActions.js | ~~231~~ <font color="#006def" style="font-size:28px; line-height: 20px;">103</font> |
-| **Action types** | AdBreakPortalActionTypes.js | ~~33~~ <font color="#006def" style="font-size:28px; line-height: 20px;">0</font> |
-| **Store** | AdBreakPortalInsightsStore.js | ~~219~~ <font color="#006def" style="font-size:28px; line-height: 20px;">101</font> |
+| **Action creators** | AdBreakPortalActions.js | ~~231~~ <span class="medium blue">103</span> |
+| **Action types** | AdBreakPortalActionTypes.js | ~~33~~ <span class="medium blue">0</span> |
+| **Store** | AdBreakPortalInsightsStore.js | ~~219~~ <span class="medium blue">101</span> |
 |  | <b><right>Total</right></b> | <b>483</b> |
 ---
 <legend>5. <u>Flux</u> & Redux, before & after</legend>
@@ -771,12 +772,12 @@ class: center, middle
 
 | Role | File | LoC |
 |-------|------|-----|
-| **Action creators** | AdBreakPortalActions.js | ~~231~~ <font color="#006def" style="font-size:28px; line-height: 20px;">103</font> |
-| **Action types** | AdBreakPortalActionTypes.js | ~~33~~ <font color="#006def" style="font-size:28px; line-height: 20px;">0</font> |
-| **Store** | AdBreakPortalInsightsStore.js | ~~219~~ <font color="#006def" style="font-size:28px; line-height: 20px;">101</font> |
-|  | <b><right>Total</right></b> | <b>~~483~~ <font color="#006def" style="font-size:28px; line-height: 20px;">204</font></b> |
-<right><font color="#006def">60% LESS CODE</font></right>
-<right><font color="#006def">(also: caught a bug)</font></right>
+| **Action creators** | AdBreakPortalActions.js | ~~231~~ <span class="medium blue">103</span> |
+| **Action types** | AdBreakPortalActionTypes.js | ~~33~~ <span class="medium blue">0</span> |
+| **Store** | AdBreakPortalInsightsStore.js | ~~219~~ <span class="medium blue">101</span> |
+|  | <b><right>Total</right></b> | <b>~~483~~ <span class="medium blue">204</span></b> |
+<right><span class="heavy blue">60% LESS CODE</span></right>
+<right><span class="heavy blue">(also: caught a bug)</span></right>
 ---
 class: center, middle
 <legend>5. Flux & <u>Redux</u>, before & after</legend>
@@ -830,7 +831,7 @@ class: center, middle
 
 | Role | File | LoC |
 |-------|------|-----|
-| **Action creators** | SRTRoutingActionCreators.js | ~~236~~ <font color="#006def" style="font-size:28px; line-height: 20px;">114</font> |
+| **Action creators** | SRTRoutingActionCreators.js | ~~236~~ <span class="medium blue">114</span> |
 | **Action types** | SRTRoutingActionTypes.js | 38 |
 | **Container** | SRTRoutingContainer.js | 88 |
 | **Reducer** | SRTRoutingReducer.js | 50 |
@@ -847,8 +848,8 @@ class: center, middle
 
 | Role | File | LoC |
 |-------|------|-----|
-| **Action creators** | SRTRoutingActionCreators.js | ~~236~~ <font color="#006def" style="font-size:28px; line-height: 20px;">114</font> |
-| **Action types** | SRTRoutingActionTypes.js | ~~38~~ <font color="#006def" style="font-size:28px; line-height: 20px;">0</font> |
+| **Action creators** | SRTRoutingActionCreators.js | ~~236~~ <span class="medium blue">114</span> |
+| **Action types** | SRTRoutingActionTypes.js | ~~38~~ <span class="medium blue">0</span> |
 | **Container** | SRTRoutingContainer.js | 88 |
 | **Reducer** | SRTRoutingReducer.js | 50 |
 | **Reducer** | SRTRoutingSaveRulesReducer.js | 44 |
@@ -864,9 +865,9 @@ class: center, middle
 
 | Role | File | LoC |
 |-------|------|-----|
-| **Action creators** | SRTRoutingActionCreators.js | ~~236~~ <font color="#006def" style="font-size:28px; line-height: 20px;">114</font> |
-| **Action types** | SRTRoutingActionTypes.js | ~~38~~ <font color="#006def" style="font-size:28px; line-height: 20px;">0</font> |
-| **Container** | SRTRoutingContainer.js | ~~88~~ <font color="#006def" style="font-size:28px; line-height: 20px;">78</font> |
+| **Action creators** | SRTRoutingActionCreators.js | ~~236~~ <span class="medium blue">114</span> |
+| **Action types** | SRTRoutingActionTypes.js | ~~38~~ <span class="medium blue">0</span> |
+| **Container** | SRTRoutingContainer.js | ~~88~~ <span class="medium blue">78</span> |
 | **Reducer** | SRTRoutingReducer.js | 50 |
 | **Reducer** | SRTRoutingSaveRulesReducer.js | 44 |
 | **Reducer** | SRTRoutingSearchReducer.js | 63 |
@@ -881,10 +882,10 @@ class: center, middle
 
 | Role | File | LoC |
 |-------|------|-----|
-| **Action creators** | SRTRoutingActionCreators.js | ~~236~~ <font color="#006def" style="font-size:28px; line-height: 20px;">114</font> |
-| **Action types** | SRTRoutingActionTypes.js | ~~38~~ <font color="#006def" style="font-size:28px; line-height: 20px;">0</font> |
-| **Container** | SRTRoutingContainer.js | ~~88~~ <font color="#006def" style="font-size:28px; line-height: 20px;">78</font> |
-| **Reducer** | SRTRoutingReducer.js | ~~50~~ <font color="#006def" style="font-size:28px; line-height: 20px;">0</font> |
+| **Action creators** | SRTRoutingActionCreators.js | ~~236~~ <span class="medium blue">114</span> |
+| **Action types** | SRTRoutingActionTypes.js | ~~38~~ <span class="medium blue">0</span> |
+| **Container** | SRTRoutingContainer.js | ~~88~~ <span class="medium blue">78</span> |
+| **Reducer** | SRTRoutingReducer.js | ~~50~~ <span class="medium blue">0</span> |
 | **Reducer** | SRTRoutingSaveRulesReducer.js | 44 |
 | **Reducer** | SRTRoutingSearchReducer.js | 63 |
 | **Store** | SRTRoutingStore.js | 59 |
@@ -898,11 +899,11 @@ class: center, middle
 
 | Role | File | LoC |
 |-------|------|-----|
-| **Action creators** | SRTRoutingActionCreators.js | ~~236~~ <font color="#006def" style="font-size:28px; line-height: 20px;">114</font> |
-| **Action types** | SRTRoutingActionTypes.js | ~~38~~ <font color="#006def" style="font-size:28px; line-height: 20px;">0</font> |
-| **Container** | SRTRoutingContainer.js | ~~88~~ <font color="#006def" style="font-size:28px; line-height: 20px;">78</font> |
-| **Reducer** | SRTRoutingReducer.js | ~~50~~ <font color="#006def" style="font-size:28px; line-height: 20px;">0</font> |
-| **Reducer** | SRTRoutingSaveRulesReducer.js | ~~44~~ <font color="#006def" style="font-size:28px; line-height: 20px;">0</font> |
+| **Action creators** | SRTRoutingActionCreators.js | ~~236~~ <span class="medium blue">114</span> |
+| **Action types** | SRTRoutingActionTypes.js | ~~38~~ <span class="medium blue">0</span> |
+| **Container** | SRTRoutingContainer.js | ~~88~~ <span class="medium blue">78</span> |
+| **Reducer** | SRTRoutingReducer.js | ~~50~~ <span class="medium blue">0</span> |
+| **Reducer** | SRTRoutingSaveRulesReducer.js | ~~44~~ <span class="medium blue">0</span> |
 | **Reducer** | SRTRoutingSearchReducer.js | 63 |
 | **Store** | SRTRoutingStore.js | 59 |
 | **Store types** | SRTRoutingSearchRecord.js | 25 |
@@ -915,12 +916,12 @@ class: center, middle
 
 | Role | File | LoC |
 |-------|------|-----|
-| **Action creators** | SRTRoutingActionCreators.js | ~~236~~ <font color="#006def" style="font-size:28px; line-height: 20px;">114</font> |
-| **Action types** | SRTRoutingActionTypes.js | ~~38~~ <font color="#006def" style="font-size:28px; line-height: 20px;">0</font> |
-| **Container** | SRTRoutingContainer.js | ~~88~~ <font color="#006def" style="font-size:28px; line-height: 20px;">78</font> |
-| **Reducer** | SRTRoutingReducer.js | ~~50~~ <font color="#006def" style="font-size:28px; line-height: 20px;">0</font> |
-| **Reducer** | SRTRoutingSaveRulesReducer.js | ~~44~~ <font color="#006def" style="font-size:28px; line-height: 20px;">0</font> |
-| **Reducer** | SRTRoutingSearchReducer.js | ~~63~~ <font color="#006def" style="font-size:28px; line-height: 20px;">0</font> |
+| **Action creators** | SRTRoutingActionCreators.js | ~~236~~ <span class="medium blue">114</span> |
+| **Action types** | SRTRoutingActionTypes.js | ~~38~~ <span class="medium blue">0</span> |
+| **Container** | SRTRoutingContainer.js | ~~88~~ <span class="medium blue">78</span> |
+| **Reducer** | SRTRoutingReducer.js | ~~50~~ <span class="medium blue">0</span> |
+| **Reducer** | SRTRoutingSaveRulesReducer.js | ~~44~~ <span class="medium blue">0</span> |
+| **Reducer** | SRTRoutingSearchReducer.js | ~~63~~ <span class="medium blue">0</span> |
 | **Store** | SRTRoutingStore.js | 59 |
 | **Store types** | SRTRoutingSearchRecord.js | 25 |
 |  | <b><right>Total</right></b> | <b>603</b> |
@@ -932,13 +933,13 @@ class: center, middle
 
 | Role | File | LoC |
 |-------|------|-----|
-| **Action creators** | SRTRoutingActionCreators.js | ~~236~~ <font color="#006def" style="font-size:28px; line-height: 20px;">114</font> |
-| **Action types** | SRTRoutingActionTypes.js | ~~38~~ <font color="#006def" style="font-size:28px; line-height: 20px;">0</font> |
-| **Container** | SRTRoutingContainer.js | ~~88~~ <font color="#006def" style="font-size:28px; line-height: 20px;">78</font> |
-| **Reducer** | SRTRoutingReducer.js | ~~50~~ <font color="#006def" style="font-size:28px; line-height: 20px;">0</font> |
-| **Reducer** | SRTRoutingSaveRulesReducer.js | ~~44~~ <font color="#006def" style="font-size:28px; line-height: 20px;">0</font> |
-| **Reducer** | SRTRoutingSearchReducer.js | ~~63~~ <font color="#006def" style="font-size:28px; line-height: 20px;">0</font> |
-| **Store** | SRTRoutingStore.js | ~~59~~ <font color="#006def" style="font-size:28px; line-height: 20px;">49</font> |
+| **Action creators** | SRTRoutingActionCreators.js | ~~236~~ <span class="medium blue">114</span> |
+| **Action types** | SRTRoutingActionTypes.js | ~~38~~ <span class="medium blue">0</span> |
+| **Container** | SRTRoutingContainer.js | ~~88~~ <span class="medium blue">78</span> |
+| **Reducer** | SRTRoutingReducer.js | ~~50~~ <span class="medium blue">0</span> |
+| **Reducer** | SRTRoutingSaveRulesReducer.js | ~~44~~ <span class="medium blue">0</span> |
+| **Reducer** | SRTRoutingSearchReducer.js | ~~63~~ <span class="medium blue">0</span> |
+| **Store** | SRTRoutingStore.js | ~~59~~ <span class="medium blue">49</span> |
 | **Store types** | SRTRoutingSearchRecord.js | 25 |
 |  | <b><right>Total</right></b> | <b>603</b> |
 ---
@@ -949,14 +950,14 @@ class: center, middle
 
 | Role | File | LoC |
 |-------|------|-----|
-| **Action creators** | SRTRoutingActionCreators.js | ~~236~~ <font color="#006def" style="font-size:28px; line-height: 20px;">114</font> |
-| **Action types** | SRTRoutingActionTypes.js | ~~38~~ <font color="#006def" style="font-size:28px; line-height: 20px;">0</font> |
-| **Container** | SRTRoutingContainer.js | ~~88~~ <font color="#006def" style="font-size:28px; line-height: 20px;">78</font> |
-| **Reducer** | SRTRoutingReducer.js | ~~50~~ <font color="#006def" style="font-size:28px; line-height: 20px;">0</font> |
-| **Reducer** | SRTRoutingSaveRulesReducer.js | ~~44~~ <font color="#006def" style="font-size:28px; line-height: 20px;">0</font> |
-| **Reducer** | SRTRoutingSearchReducer.js | ~~63~~ <font color="#006def" style="font-size:28px; line-height: 20px;">0</font> |
-| **Store** | SRTRoutingStore.js | ~~59~~ <font color="#006def" style="font-size:28px; line-height: 20px;">49</font> |
-| **Store types** | SRTRoutingSearchRecord.js | ~~25~~ <font color="#006def" style="font-size:28px; line-height: 20px;">0</font> |
+| **Action creators** | SRTRoutingActionCreators.js | ~~236~~ <span class="medium blue">114</span> |
+| **Action types** | SRTRoutingActionTypes.js | ~~38~~ <span class="medium blue">0</span> |
+| **Container** | SRTRoutingContainer.js | ~~88~~ <span class="medium blue">78</span> |
+| **Reducer** | SRTRoutingReducer.js | ~~50~~ <span class="medium blue">0</span> |
+| **Reducer** | SRTRoutingSaveRulesReducer.js | ~~44~~ <span class="medium blue">0</span> |
+| **Reducer** | SRTRoutingSearchReducer.js | ~~63~~ <span class="medium blue">0</span> |
+| **Store** | SRTRoutingStore.js | ~~59~~ <span class="medium blue">49</span> |
+| **Store types** | SRTRoutingSearchRecord.js | ~~25~~ <span class="medium blue">0</span> |
 |  | <b><right>Total</right></b> | <b>603</b> |
 ---
 class: center, middle
@@ -966,22 +967,22 @@ class: center, middle
 
 | Role | File | LoC |
 |-------|------|-----|
-| **Action creators** | SRTRoutingActionCreators.js | ~~236~~ <font color="#006def" style="font-size:28px; line-height: 20px;">114</font> |
-| **Action types** | SRTRoutingActionTypes.js | ~~38~~ <font color="#006def" style="font-size:28px; line-height: 20px;">0</font> |
-| **Container** | SRTRoutingContainer.js | ~~88~~ <font color="#006def" style="font-size:28px; line-height: 20px;">78</font> |
-| **Reducer** | SRTRoutingReducer.js | ~~50~~ <font color="#006def" style="font-size:28px; line-height: 20px;">0</font> |
-| **Reducer** | SRTRoutingSaveRulesReducer.js | ~~44~~ <font color="#006def" style="font-size:28px; line-height: 20px;">0</font> |
-| **Reducer** | SRTRoutingSearchReducer.js | ~~63~~ <font color="#006def" style="font-size:28px; line-height: 20px;">0</font> |
-| **Store** | SRTRoutingStore.js | ~~59~~ <font color="#006def" style="font-size:28px; line-height: 20px;">49</font> |
-| **Store types** | SRTRoutingSearchRecord.js | ~~25~~ <font color="#006def" style="font-size:28px; line-height: 20px;">0</font> |
-| <font color="#006def">60% LESS CODE</font> | <b><right>Total</right></b> | <b>~~603~~ <font color="#006def" style="font-size:28px; line-height: 20px;">241</font></b> |
+| **Action creators** | SRTRoutingActionCreators.js | ~~236~~ <span class="medium blue">114</span> |
+| **Action types** | SRTRoutingActionTypes.js | ~~38~~ <span class="medium blue">0</span> |
+| **Container** | SRTRoutingContainer.js | ~~88~~ <span class="medium blue">78</span> |
+| **Reducer** | SRTRoutingReducer.js | ~~50~~ <span class="medium blue">0</span> |
+| **Reducer** | SRTRoutingSaveRulesReducer.js | ~~44~~ <span class="medium blue">0</span> |
+| **Reducer** | SRTRoutingSearchReducer.js | ~~63~~ <span class="medium blue">0</span> |
+| **Store** | SRTRoutingStore.js | ~~59~~ <span class="medium blue">49</span> |
+| **Store types** | SRTRoutingSearchRecord.js | ~~25~~ <span class="medium blue">0</span> |
+| <span class="heavy blue">60% LESS CODE</span> | <b><right>Total</right></b> | <b>~~603~~ <span class="medium blue">241</span></b> |
 ---
 class: center, middle
 ## 6. Reactivity
 ---
 class: center, middle
 <legend>6. Reactivity</legend>
-### For example: Let's add a logger to composer.
+### For example:<br />Let's add a logger to composer.
 ---
 <legend>6. Reactivity</legend>
 ```js
