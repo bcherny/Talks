@@ -18,20 +18,29 @@ class: center, middle
 ---
 <legend>1. Problems</legend>
 - Globs of boilerplate
+  <br /><small>🐌Slows down engineering</small>
 ---
 <legend>1. Problems</legend>
 - Globs of boilerplate
+  <br /><small>🐌Slows down engineering</small>
 - Really hard to type safely
+  <br /><small>🐛Causes bugs</small>
 ---
 <legend>1. Problems</legend>
 - Globs of boilerplate
+  <br /><small>🐌Slows down engineering</small>
 - Really hard to type safely
+  <br /><small>🐛Causes bugs</small>
 - Actions, creators, types, reducers, callers spread across lots of files
+  <br /><small>🔎Makes it hard to trace code</small>
 ---
 <legend>1. Problems</legend>
 - Globs of boilerplate
+  <br /><small>🐌Slows down engineering</small>
 - Really hard to type safely
+  <br /><small>🐛Causes bugs</small>
 - Actions, creators, types, reducers, callers spread across lots of files
+  <br /><small>🔎Makes it hard to trace code</small>
 - <font color="#ff005a">Makes easy things hard!</font>
 ---
 class: center, middle
@@ -39,26 +48,38 @@ class: center, middle
 ---
 <legend>2. Solutions</legend>
 - ~~<font color="#999">Globs of boilerplate</font>~~ Near-zero boilerplate
+  <br /><small><font color="#999">~~🐌Slows down engineering~~</font> ⚡Enables rapid iteration</small>
 - <font color="#999">Really hard to type safely</font>
+  <br /><small><font color="#999">🐛Causes bugs</font></small>
 - <font color="#999">Actions, creators, types, reducers, callers spread across lots of files</font>
+  <br /><small><font color="#999">🔎Makes it hard to trace code</font></small>
 - <font color="#999">Makes easy things hard!</font>
 ---
 <legend>2. Solutions</legend>
 - ~~<font color="#999">Globs of boilerplate</font>~~ Near-zero boilerplate
+  <br /><small><font color="#999">~~🐌Slows down engineering~~</font> ⚡Enables rapid iteration</small>
 - ~~<font color="#999">Really hard to type safely</font>~~ 100% typesafe
+  <br /><small><font color="#999">~~🐛Causes bugs~~</font> 😃Prevents bugs</small>
 - <font color="#999">Actions, creators, types, reducers, callers spread across lots of files</font>
+  <br /><small><font color="#999">🔎Makes it hard to trace code</font></small>
 - <font color="#999">Makes easy things hard!</font>
 ---
 <legend>2. Solutions</legend>
 - ~~<font color="#999">Globs of boilerplate</font>~~ Near-zero boilerplate
+  <br /><small><font color="#999">~~🐌Slows down engineering~~</font> ⚡Enables rapid iteration</small>
 - ~~<font color="#999">Really hard to type safely</font>~~ 100% typesafe
+  <br /><small><font color="#999">~~🐛Causes bugs~~</font> 😃Prevents bugs</small>
 - ~~<font color="#999">Actions, creators, types, reducers, callers spread across lots of files</font>~~ <br />Do everything right in your view
+  <br /><small><font color="#999">~~🔎Makes it hard to trace code~~</font> 📍Colocates model updates with code</small>
 - <font color="#999">Makes easy things hard!</font>
 ---
 <legend>2. Solutions</legend>
 - ~~<font color="#999">Globs of boilerplate</font>~~ Near-zero boilerplate
+  <br /><small><font color="#999">~~🐌Slows down engineering~~</font> ⚡Enables rapid iteration</small>
 - ~~<font color="#999">Really hard to type safely</font>~~ 100% typesafe
+  <br /><small><font color="#999">~~🐛Causes bugs~~</font> 😃Prevents bugs</small>
 - ~~<font color="#999">Actions, creators, types, reducers, callers spread across lots of files</font>~~ <br />Do everything right in your view
+  <br /><small><font color="#999">~~🔎Makes it hard to trace code~~</font> 📍Colocates model updates with code</small>
 - ~~<font color="#999">Makes easy things hard!</font>~~ <br /><font color="#006def" style="font-size:48px">Makes hard things easy.</font>
 ---
 class: center, middle
