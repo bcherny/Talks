@@ -1180,3 +1180,50 @@ class: center, middle
 # &nbsp;
 ### Boris Cherny
 ### @bcherny / github.com/bcherny
+---
+class: center
+<legend>4. Usage</legend>
+```jsx
+const Composer = withStore(
+  class Composer extends React.Component<StoreProps> {
+    render() {
+      const {store} = this.props
+      return <div>
+        <Editor>
+          <Avatar />
+          <Textbox value={store.get('text')}
+                   onChange={store.set('text')} />
+        </Editor>
+        <Sproutbar />
+        <Button disabled={!store.get('isNextEnabled')} />
+      </div>
+    }
+  }
+)
+```
+---
+class: center
+<legend>4. Usage</legend>
+```jsx
+const Composer = withStore(
+  class Composer extends React.Component<StoreProps> {
+    render() {
+      const {store} = this.props
+      return <div>
+        <Editor>
+          <Avatar />
+          <Textbox value={store.get('text')}
+*                  onChange={setText(store)} />
+        </Editor>
+        <Sproutbar />
+        <Button disabled={!store.get('isNextEnabled')} />
+      </div>
+    }
+  }
+)
+
+*function setText(store: Store) {
+* return (text: string) =>
+*   store.set('text')(text.toUpperCase())
+*}
+```
