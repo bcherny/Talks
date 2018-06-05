@@ -136,7 +136,7 @@ class: center
 ```ts
 // composerStore.js
 
-*const { createStore } = require('undux')
+*const {createStore} = require('undux')
 ```
 ---
 class: center
@@ -144,7 +144,7 @@ class: center
 ```ts
 // composerStore.js
 
-const { createStore } = require('undux')
+const {createStore} = require('undux')
 
 *type State = {
 * isNextEnabled: boolean,
@@ -157,7 +157,7 @@ class: center
 ```ts
 // composerStore.js
 
-const { createStore } = require('undux')
+const {createStore} = require('undux')
 
 type State = {
   isNextEnabled: boolean,
@@ -175,7 +175,7 @@ class: center
 ```ts
 // composerStore.js
 
-const { createStore } = require('undux')
+const {createStore} = require('undux')
 
 type State = {
   isNextEnabled: boolean,
@@ -195,7 +195,7 @@ class: center
 ```ts
 // composerStore.js
 
-*const {connect, createStore, Plugin} = require('undux')
+*const {connect, createStore} = require('undux')
 
 type State = {
   isNextEnabled: boolean,
@@ -217,7 +217,7 @@ class: center
 ```ts
 // composerStore.js
 
-const {connect, createStore, Plugin} = require('undux')
+const {connect, createStore} = require('undux')
 
 type State = {
   isNextEnabled: boolean,
@@ -1098,8 +1098,8 @@ const withEffects: StorePlugin = store => {
 
   store
     .on('text')
-    .throttle(100)
 *   .filter(text => text !== '')
+    .throttle(100)
     .subscribe(text =>
        new ComposerTypedLogger
          .setText(text)
@@ -1116,9 +1116,9 @@ const withEffects: StorePlugin = store => {
 
   store
     .on('text')
-    .throttle(100)
     .filter(text => text !== '')
 *   .map(text => text.toLowerCase())
+    .throttle(100)
     .subscribe(text =>
        new ComposerTypedLogger
          .setText(text)
