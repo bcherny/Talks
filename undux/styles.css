@@ -109,6 +109,10 @@ td, th {
   font-variant-ligatures: none;
 }
 
+.remark-code {
+  font-size: 17px;
+}
+
 .pink {
   background: #f90041;
   color: #fff;
