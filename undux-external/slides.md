@@ -234,7 +234,7 @@ const store = createStore(initialState)
 export const withStore = connect(store)
 
 *export type StoreProps = {
-*  store: typeof store
+* store: typeof store
 *}
 ```
 ---
