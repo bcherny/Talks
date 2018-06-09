@@ -297,7 +297,7 @@ class: center
 <legend>4. Usage</legend>
 ```jsx
 // composer.react.js
-*import {withStore} from 'composerStore'
+*import {withStore} from './composerStore'
 
 *const Composer = withStore(
   class Composer extends React.Component {
@@ -319,7 +319,7 @@ class: center
 <legend>4. Usage</legend>
 ```jsx
 // composer.react.js
-*import {StoreProps, withStore} from 'composerStore'
+*import {StoreProps, withStore} from './composerStore'
 
 const Composer = withStore(
 * class Composer extends React.Component<StoreProps> {
@@ -341,7 +341,7 @@ class: center
 <legend>4. Usage</legend>
 ```jsx
 // composer.react.js
-import {StoreProps, withStore} from 'composerStore'
+import {StoreProps, withStore} from './composerStore'
 
 const Composer = withStore(
   class Composer extends React.Component<StoreProps> {
@@ -364,7 +364,7 @@ class: center
 <legend>4. Usage</legend>
 ```jsx
 // composer.react.js
-import {StoreProps, withStore} from 'composerStore'
+import {StoreProps, withStore} from './composerStore'
 
 const Composer = withStore(
   class Composer extends React.Component<StoreProps> {
@@ -390,7 +390,7 @@ class: center
 <legend>4. Usage</legend>
 ```jsx
 // composer.react.js
-import {StoreProps, withStore} from 'composerStore'
+import {StoreProps, withStore} from './composerStore'
 
 const Composer = withStore(
   class Composer extends React.Component<StoreProps> {
@@ -414,7 +414,7 @@ class: center
 <legend>4. Usage</legend>
 ```jsx
 // composer.react.js
-import {StoreProps, withStore} from 'composerStore'
+import {StoreProps, withStore} from './composerStore'
 
 const Composer = withStore(
   class Composer extends React.Component<StoreProps> {
@@ -449,7 +449,7 @@ class: center
 ```jsx
 // composerEffects.js
 
-*import type {StorePlugin} from 'composerStore'
+*import type {StorePlugin} from './composerStore'
 ```
 ---
 class: center
@@ -457,7 +457,7 @@ class: center
 ```jsx
 // composerEffects.js
 
-import type {StorePlugin} from 'composerStore'
+import type {StorePlugin} from './composerStore'
 
 *export const withEffects: StorePlugin = store => {
 *
@@ -469,7 +469,7 @@ class: center
 ```jsx
 // composerEffects.js
 
-import type {StorePlugin} from 'composerStore'
+import type {StorePlugin} from './composerStore'
 
 export const withEffects: StorePlugin = store => {
 * store
@@ -482,7 +482,7 @@ class: center
 ```jsx
 // composerEffects.js
 
-import type {StorePlugin} from 'composerStore'
+import type {StorePlugin} from './composerStore'
 
 export const withEffects: StorePlugin = store => {
   store
@@ -498,7 +498,7 @@ class: center
 ```jsx
 // composerEffects.js
 
-import type {StorePlugin} from 'composerStore'
+import type {StorePlugin} from './composerStore'
 
 export const withEffects: StorePlugin = store => {
   store
@@ -518,7 +518,7 @@ class: center
 ```jsx
 // composerEffects.js
 
-import type {StorePlugin} from 'composerStore'
+import type {StorePlugin} from './composerStore'
 
 export const withEffects: StorePlugin = store => {
   store
@@ -568,7 +568,7 @@ class: center
 // composerStore.js
 
 import {connect, createStore, Plugin} from 'undux'
-*import {withEffects} from 'composerEffects'
+*import {withEffects} from './composerEffects'
 
 type State = {
   isNextEnabled: boolean,
