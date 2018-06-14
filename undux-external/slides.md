@@ -631,6 +631,14 @@ class: center, middle
 <img src="images/flux-flow-abstracted-1.png" width="75%" />
 ---
 class: center, middle
+<legend>5. <u>Flux</u> & Redux, before & after</legend>
+<img src="images/logger.png" width="100%" />
+---
+class: center, middle
+<legend>5. <u>Flux</u> & Redux, before & after</legend>
+<img src="images/redux-logger.png" width="100%" />
+---
+class: center, middle
 <legend>5. Flux & <u>Redux</u>, before & after</legend>
 ### Redux
 ---
