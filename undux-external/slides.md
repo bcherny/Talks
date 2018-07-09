@@ -449,7 +449,7 @@ class: center
 ```jsx
 // composerEffects.js
 
-*import type {StorePlugin} from './composerStore'
+*import {StorePlugin} from './composerStore'
 ```
 ---
 class: center
@@ -457,7 +457,7 @@ class: center
 ```jsx
 // composerEffects.js
 
-import type {StorePlugin} from './composerStore'
+import {StorePlugin} from './composerStore'
 
 *export const withEffects: StorePlugin = store => {
 *
@@ -469,7 +469,7 @@ class: center
 ```jsx
 // composerEffects.js
 
-import type {StorePlugin} from './composerStore'
+import {StorePlugin} from './composerStore'
 
 export const withEffects: StorePlugin = store => {
 * store
@@ -482,7 +482,7 @@ class: center
 ```jsx
 // composerEffects.js
 
-import type {StorePlugin} from './composerStore'
+import {StorePlugin} from './composerStore'
 
 export const withEffects: StorePlugin = store => {
   store
@@ -498,7 +498,7 @@ class: center
 ```jsx
 // composerEffects.js
 
-import type {StorePlugin} from './composerStore'
+import {StorePlugin} from './composerStore'
 
 export const withEffects: StorePlugin = store => {
   store
@@ -518,7 +518,7 @@ class: center
 ```jsx
 // composerEffects.js
 
-import type {StorePlugin} from './composerStore'
+import {StorePlugin} from './composerStore'
 
 export const withEffects: StorePlugin = store => {
   store
