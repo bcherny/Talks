@@ -1,4 +1,7 @@
 class: center, middle
+# <img src="images/react-comic.jpg" width="70%" />
+---
+class: center, middle
 # <img src="images/undux.png" width="80%" />
 <h3 class='Subtitle'>⚡Dead simple state management for ReactJS</h3>
 ## Boris Cherny
