@@ -1180,6 +1180,56 @@ class: center, middle
 ### Boris Cherny
 ### @bcherny / github.com/bcherny
 ---
+class: center, middle
+## Future
+---
+class: center, middle
+<legend>Future</legend>
+### Store Instances
+---
+<legend>Future</legend>
+```ts
+type State = {|
+  a: number
+|}
+
+const initialState: State = {
+  a: 1
+}
+
+const {Container, withStore} = connectToTree(initialState)
+
+const MyConnectedComponent = withStore(...)
+
+const MyComponent = () =>
+  <Container effects={[withEffects]} initialState={...}>
+    <MyConnectedComponent />
+  </Container>
+```
+---
+class: center, middle
+<legend>Future</legend>
+### Immutability: @ compile time
+---
+<legend>Future</legend>
+```tsx
+class MyComponent extends React.Component<Props> {
+  addUser = () => {
+    this.props.store
+      .get('users')
+      .push(new User) // Error: Can't call push() on
+                      // immutable array
+  }
+  render() {
+    return <button onClick={this.addUser} />
+  }
+}
+```
+---
+class: center, middle
+<legend>Future</legend>
+<img src="images/react-native.png" width="80%" />
+---
 class: center
 <legend>4. Usage</legend>
 ```jsx
