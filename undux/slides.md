@@ -263,7 +263,7 @@ export type StoreProps = {
   store: typeof store
 }
 
-*export type StorePlugin = Plugin<Store>
+*export type StorePlugin = Plugin<State>
 ```
 ---
 class: center, middle
@@ -582,7 +582,7 @@ export type StoreProps = {
   store: typeof store
 }
 
-export type StorePlugin = Plugin<Store>
+export type StorePlugin = Plugin<State>
 ```
 ---
 class: center
@@ -611,7 +611,7 @@ export type StoreProps = {
   store: typeof store
 }
 
-export type StorePlugin = Plugin<Store>
+export type StorePlugin = Plugin<State>
 ```
 ---
 class: center, middle
