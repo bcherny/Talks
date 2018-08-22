@@ -275,53 +275,24 @@ class: center, middle
 class: center, middle
 <img src="images/undux.png" width="45%" />
 ---
-class: middle
+class: center, middle
 <legend>4. Undux</legend>
-## Create a store:
-
-```js
-const store = createStore({
-  some: 1,
-  initial: 'state'
-})
-```
+<img src="images/undux-flow-code-0.png" class="fullish" />
 ---
-class: middle
+class: center, middle
 <legend>4. Undux</legend>
-## Three methods:
-
-```js
-// Read a value
-store.get('key')
-
-// Write a value
-// (automatically re-renders components for you)
-store.set('key')('value')
-
-// Do something when a value changes
-store.on('key').subscribe(function(value) {
-  ...
-})
-```
+<img src="images/undux-flow-code-1.png" class="fullish" />
 ---
 class: center, middle
 <legend>4. Undux</legend>
 <img src="images/undux-flow-comparison.png" class="fuller" />
 ---
-class: center, middle
-<legend>4. Undux</legend>
-<img src="images/undux-flow-code-1.png" class="fuller" />
----
-class: center, middle
-<legend>4. Undux</legend>
-<img src="images/undux-flow-code-0.png" class="fuller" />
----
 <legend>4. Undux</legend>
 ## Undux
-- Lots of <font color="red">Stores</font>
-- Use `.get(key)` and `.set(key)(value)` to read and write to them
-- <font color="red">Store</font> updates → <font color="green">View</font> updates
-- **Reactive effects**
+- No dispatcher, reducer, actions
+- Any number of <font color="#774896">Stores</font>
+- Store updates → View updates
+- Reactive effects (observe store fields)
 ---
 class: center, middle
 <legend>4. Undux</legend>
@@ -331,31 +302,6 @@ class: center, middle
 <legend>4. Undux</legend>
 <img src="images/tree-undux.png" class="fullish" />
 ---
-<legend>4. Undux</legend>
-## Undux: features
----
-<legend>4. Undux</legend>
-## Undux: features
-## 🤭 No boilerplate
----
-<legend>4. Undux</legend>
-## Undux: features
-## 🤭 No boilerplate
-## 😯 100% TYPESAFE
----
-<legend>4. Undux</legend>
-## Undux: features
-## 🤭 No boilerplate
-## 😯 100% TYPESAFE
-## 😱 Reactive effects
----
-<legend>4. Undux</legend>
-## Undux: features
-## 🤭 No boilerplate
-## 😯 100% TYPESAFE
-## 😱 Reactive effects
-## 🤯 Built in logger
----
 class: center, middle
 # Thanks!
 -----------
@@ -364,46 +310,4 @@ class: center, middle
 ### <a href="https://fburl.com/learn-flux">fburl.com/learn-flux</a>
 ### <a href="https://fburl.com/learn-redux">fburl.com/learn-redux</a>
 ### TODO: Testing URL
----
-<legend>4. Undux</legend>
-```js
-composerStore
-  .on('text')
-  .subscribe(text => {
-    console.log('text changed!', text)
-  })
-```
----
-<legend>4. Undux</legend>
-```js
-composerStore
-  .on('text')
-  .filter(text => text !== '')
-  .subscribe(text => {
-    console.log('text changed!', text)
-  })
-```
----
-<legend>4. Undux</legend>
-```js
-composerStore
-  .on('text')
-  .filter(text => text !== '')
-  .map(text => text.toLowerCase())
-  .subscribe(text => {
-    console.log('text changed!', text)
-  })
-```
----
-<legend>4. Undux</legend>
-```js
-composerStore
-  .on('text')
-  .filter(text => text !== '')
-  .map(text => text.toLowerCase())
-  .throttle(200)
-  .subscribe(text => {
-    console.log('text changed!', text)
-  })
-```
 ---
