@@ -1,14 +1,11 @@
 class: center, middle
-# State Management on the Frontend
-## By Boris Cherny
-### @bcherny - github.com/bcherny
+# Web 300: UI State Management with React
 ---
 class: middle
 # Plan
 1. React refresher
-2. Flux
-3. Redux
-4. Undux
+2. Local state
+3. Application state
 ---
 class: center, middle
 <legend>1. React refresher</legend>
@@ -101,36 +98,42 @@ class: center, middle
 <img src="images/tree-state-0.png" class="fuller" />
 ---
 class: center, middle
-<legend>1. React refresher</legend>
+# Local state
+---
+class: center, middle
+<legend>2. Local state</legend>
+<img src="images/tree-state-0.png" class="fuller" />
+---
+class: center, middle
+<legend>2. Local state</legend>
 <img src="images/tree-state-1.png" class="fuller" />
 ---
 class: center, middle
-<legend>1. React refresher</legend>
+<legend>2. Local state</legend>
 <img src="images/tree-state-2.png" class="fuller" />
 ---
 class: center, middle
-<legend>1. React refresher</legend>
+<legend>2. Local state</legend>
 <img src="images/tree-state-3.png" class="fuller" />
 ---
 class: center, middle
-<legend>1. React refresher</legend>
+<legend>2. Local state</legend>
 <img src="images/deep-passing-0.png" />
 ---
 class: center, middle
-<legend>1. React refresher</legend>
+<legend>2. Local state</legend>
 <img src="images/deep-passing-1.png" />
 ---
 class: center, middle
-<legend>1. React refresher</legend>
+<legend>2. Local state</legend>
 <img src="images/deep-passing-2.png" />
 ---
 class: center, middle
-<legend>1. React refresher</legend>
+<legend>2. Local state</legend>
 # 😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵
 ---
 class: center, middle
-# Flux
-<img src="images/flux.svg" style="margin-top: -100px; width: 30%;" />
+# Application state
 ---
 class: center, middle
 <legend>2. Flux</legend>
@@ -182,7 +185,7 @@ class: center, middle
 ---
 class: center, middle
 <legend>2. Flux</legend>
-## Flux
+<img src="images/flux.svg" style="display: block; margin: 0 auto;" />
 <img src="images/flux-flow.png" style="width:70%" />
 ---
 class: center, middle
@@ -216,26 +219,26 @@ class: center, middle
 ---
 <legend>2. Flux</legend>
 ## Flux
-- Singleton <font color="orange">Dispatcher</font>
-- Lots of <font color="red">Stores</font>
-- Describe CUD operations with <font color="red">Actions</font>
-- Stores take Actions → mutate their internal state → update the <font color="green">View</font>
+- Singleton <font color="#ED692F">Dispatcher</font>
+- Lots of <font color="#774896">Stores</font>
+- Describe CUD operations with <font color="#ED692F">Actions</font>
+- Stores take Actions → mutate their internal state → update the View
 ---
 class: center, middle
 <img src="images/redux.png" style="width:50%" />
 ---
 <legend>3. Redux</legend>
 ## Redux
-- Singleton <font color="red">Store</font>
-- Lots of <font color="magenta">Reducers</font>
-- Describe CUD operations with <font color="red">Actions</font>
-- Reducers take Actions → create a new state for the Store → update the <font color="green">View</font>
+- Singleton <font color="#774896">Store</font>
+- Lots of <font color="#E57ACF">Reducers</font>
+- Describe CUD operations with <font color="#ED692F">Actions</font>
+- Reducers take Actions → create a new state for the Store → update the View
 
 <small>
 ## Flux
-- Singleton <font color="orange">Dispatcher</font>
-- Lots of <font color="red">Stores</font>
-- Describe CUD operations with <font color="red">Actions</font>
+- Singleton <font color="#ED692F">Dispatcher</font>
+- Lots of <font color="#774896">Stores</font>
+- Describe CUD operations with <font color="#ED692F">Actions</font>
 - Stores take Actions → mutate their internal state → update the <font color="green">View</font>
 
 </small>
@@ -360,6 +363,7 @@ class: center, middle
 ### <a href="https://fburl.com/undux">fburl.com/undux</a>
 ### <a href="https://fburl.com/learn-flux">fburl.com/learn-flux</a>
 ### <a href="https://fburl.com/learn-redux">fburl.com/learn-redux</a>
+### TODO: Testing URL
 ---
 <legend>4. Undux</legend>
 ```js
