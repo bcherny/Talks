@@ -5,7 +5,9 @@ class: middle
 # Plan
 1. React refresher
 2. Local state
-3. Application state
+3. Flux
+4. Redux
+5. Undux
 ---
 class: center, middle
 <legend>1. React refresher</legend>
@@ -289,10 +291,19 @@ class: center, middle
 ---
 <legend>4. Undux</legend>
 ## Undux
-- No dispatcher, reducer, actions
+- No ~~<font color="#ED692F">dispatcher</font>, <font color="#E57ACF">reducer</font>, <font color="#ED692F">actions</font>~~
 - Any number of <font color="#774896">Stores</font>
-- Store updates → View updates
 - Reactive effects (observe store fields)
+- Store updates → View updates
+
+<small>
+## Flux
+- Singleton <font color="#ED692F">Dispatcher</font>
+- Lots of <font color="#774896">Stores</font>
+- Describe CUD operations with <font color="#ED692F">Actions</font>
+- Stores take Actions → mutate their internal state → update the <font color="green">View</font>
+
+</small>
 ---
 class: center, middle
 <legend>4. Undux</legend>
@@ -303,11 +314,29 @@ class: center, middle
 <img src="images/tree-undux.png" class="fullish" />
 ---
 class: center, middle
+# tl;dr
+---
+class: middle
+<legend>5. tl;dr</legend>
+
+| Library  | For application size | Type safety | Features
+|-|-|-|-|
+| **Flux** | Medium | Poor | Most code examples
+| **Redux** | Medium | Poor | Single store, selectors
+| **Undux** | Small-Medium | Excellent | Low boilerplate, reactive effects
+| **Relay** | Medium | Poor | One API for local and remote state
+| **Flux Data Plugins** | Large | Excellent | Code splitting, selectors
+
+<br>
+<small>
+https://fburl.com/febible
+</small>
+---
+class: middle
 # Thanks!
 -----------
 ## Learn more...
-### <a href="https://fburl.com/undux">fburl.com/undux</a>
 ### <a href="https://fburl.com/learn-flux">fburl.com/learn-flux</a>
 ### <a href="https://fburl.com/learn-redux">fburl.com/learn-redux</a>
-### TODO: Testing URL
----
+### <a href="https://fburl.com/learn-undux">fburl.com/learn-undux</a>
+### <a href="https://fburl.com/learn-data-plugins">fburl.com/learn-data-plugins</a>
