@@ -79,6 +79,9 @@
         const result = await fetch('slides.md');
         let lastSource = await result.text();
         const slideshow = remark.create({
+          navigation: {
+            scroll: false
+          },
           source: lastSource,
           slideNumberFormat: function(current, total) { return null },
           ratio: '4:3',

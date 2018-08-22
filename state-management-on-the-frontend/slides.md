@@ -249,7 +249,7 @@ class: center, middle
 ---
 class: center, middle
 <legend>3. Redux</legend>
-<img src="images/tree-redux-scale.png" class="fullish" />
+<img src="images/tree-redux-scale.png" class="fullish" style="margin-top:-1.6em" />
 ---
 class: center, middle
 <legend>3. Redux</legend>
