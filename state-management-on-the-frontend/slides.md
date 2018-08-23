@@ -255,8 +255,7 @@ class: center, middle
 ---
 class: center, middle
 <legend>3. Redux</legend>
-## Redux
-<img src="images/redux-flow.png" style="width:70%" />
+<img src="images/redux-flow-comparison.png" class="fullish" />
 ---
 class: center, middle
 <legend>3. Redux</legend>
