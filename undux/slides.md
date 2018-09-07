@@ -243,7 +243,7 @@ class: center
 ```ts
 // composerStore.js
 
-*const {connect, createStore, Plugin} = require('undux')
+*const {connect, createStore, Effects} = require('undux')
 
 type State = {
   isNextEnabled: boolean,
@@ -263,7 +263,7 @@ export type StoreProps = {
   store: typeof store
 }
 
-*export type StorePlugin = Plugin<State>
+*export type StoreEffects = Effects<State>
 ```
 ---
 class: center, middle
@@ -449,7 +449,7 @@ class: center
 ```jsx
 // composerEffects.js
 
-*import type {StorePlugin} from 'composerStore'
+*import type {StoreEffects} from 'composerStore'
 ```
 ---
 class: center
@@ -457,9 +457,9 @@ class: center
 ```jsx
 // composerEffects.js
 
-import type {StorePlugin} from 'composerStore'
+import type {StoreEffects} from 'composerStore'
 
-*const withEffects: StorePlugin = store => {
+*const withEffects: StoreEffects = store => {
 *
 *}
 ```
@@ -469,9 +469,9 @@ class: center
 ```jsx
 // composerEffects.js
 
-import type {StorePlugin} from 'composerStore'
+import type {StoreEffects} from 'composerStore'
 
-const withEffects: StorePlugin = store => {
+const withEffects: StoreEffects = store => {
 * store
 *   .on('text')
 }
@@ -482,9 +482,9 @@ class: center
 ```jsx
 // composerEffects.js
 
-import type {StorePlugin} from 'composerStore'
+import type {StoreEffects} from 'composerStore'
 
-const withEffects: StorePlugin = store => {
+const withEffects: StoreEffects = store => {
   store
     .on('text')
 *   .subscribe(text => {
@@ -498,9 +498,9 @@ class: center
 ```jsx
 // composerEffects.js
 
-import type {StorePlugin} from 'composerStore'
+import type {StoreEffects} from 'composerStore'
 
-const withEffects: StorePlugin = store => {
+const withEffects: StoreEffects = store => {
   store
     .on('text')
     .subscribe(text => {
@@ -518,9 +518,9 @@ class: center
 ```jsx
 // composerEffects.js
 
-import type {StorePlugin} from 'composerStore'
+import type {StoreEffects} from 'composerStore'
 
-const withEffects: StorePlugin = store => {
+const withEffects: StoreEffects = store => {
   store
     .on('text')
     .subscribe(text => {
@@ -539,9 +539,9 @@ class: center
 ```jsx
 // composerEffects.js
 
-import type {StorePlugin} from 'composerStore'
+import type {StoreEffects} from 'composerStore'
 
-const withEffects: StorePlugin = store => {
+const withEffects: StoreEffects = store => {
   store
     .on('text')
     .subscribe(text => {
@@ -562,7 +562,7 @@ class: center
 ```jsx
 // composerStore.js
 
-const {connect, createStore, Plugin} = require('undux')
+const {connect, createStore, Effects} = require('undux')
 
 type State = {
   isNextEnabled: boolean,
@@ -582,7 +582,7 @@ export type StoreProps = {
   store: typeof store
 }
 
-export type StorePlugin = Plugin<State>
+export type StoreEffects = Effects<State>
 ```
 ---
 class: center
@@ -590,7 +590,7 @@ class: center
 ```jsx
 // composerStore.js
 
-const {connect, createStore, Plugin} = require('undux')
+const {connect, createStore, Effects} = require('undux')
 *const {withEffects} = require('composerEffects')
 
 type State = {
@@ -611,7 +611,7 @@ export type StoreProps = {
   store: typeof store
 }
 
-export type StorePlugin = Plugin<State>
+export type StoreEffects = Effects<State>
 ```
 ---
 class: center, middle
@@ -744,7 +744,7 @@ class: center, middle
 ---
 <legend>5. <u>Flux</u> & Redux, before & after</legend>
 
-## Eg. `FluxReduceStore` <br />+ data plugins
+## Eg. `FluxReduceStore` <br />+ data Effectss
 
 | Role | File | LoC |
 |-------|------|-----|
@@ -755,7 +755,7 @@ class: center, middle
 ---
 <legend>5. <u>Flux</u> & Redux, before & after</legend>
 
-## Eg. `FluxReduceStore` <br />+ data plugins
+## Eg. `FluxReduceStore` <br />+ data Effectss
 
 | Role | File | LoC |
 |-------|------|-----|
@@ -766,7 +766,7 @@ class: center, middle
 ---
 <legend>5. <u>Flux</u> & Redux, before & after</legend>
 
-## Eg. `FluxReduceStore` <br />+ data plugins
+## Eg. `FluxReduceStore` <br />+ data Effectss
 
 | Role | File | LoC |
 |-------|------|-----|
@@ -777,7 +777,7 @@ class: center, middle
 ---
 <legend>5. <u>Flux</u> & Redux, before & after</legend>
 
-## Eg. `FluxReduceStore` <br />+ data plugins
+## Eg. `FluxReduceStore` <br />+ data Effectss
 
 | Role | File | LoC |
 |-------|------|-----|
@@ -788,7 +788,7 @@ class: center, middle
 ---
 <legend>5. <u>Flux</u> & Redux, before & after</legend>
 
-## Eg. `FluxReduceStore` <br />+ data plugins
+## Eg. `FluxReduceStore` <br />+ data Effectss
 
 | Role | File | LoC |
 |-------|------|-----|
@@ -1006,7 +1006,7 @@ class: center, middle
 ---
 <legend>6. Reactivity</legend>
 ```js
-const withEffects: StorePlugin = store => {
+const withEffects: StoreEffects = store => {
   store
     .on('text')
     .subscribe(text => {
@@ -1022,7 +1022,7 @@ const withEffects: StorePlugin = store => {
 ---
 <legend>6. Reactivity</legend>
 ```js
-const withEffects: StorePlugin = store => {
+const withEffects: StoreEffects = store => {
   store
     .on('text')
     .subscribe(text => {
@@ -1045,7 +1045,7 @@ const withEffects: StorePlugin = store => {
 ---
 <legend>6. Reactivity</legend>
 ```js
-const withEffects: StorePlugin = store => {
+const withEffects: StoreEffects = store => {
   // ...
 *
 * store
@@ -1060,7 +1060,7 @@ const withEffects: StorePlugin = store => {
 ---
 <legend>6. Reactivity</legend>
 ```js
-const withEffects: StorePlugin = store => {
+const withEffects: StoreEffects = store => {
   // ...
 
   store
@@ -1076,7 +1076,7 @@ const withEffects: StorePlugin = store => {
 ---
 <legend>6. Reactivity</legend>
 ```js
-const withEffects: StorePlugin = store => {
+const withEffects: StoreEffects = store => {
   // ...
 
   store
@@ -1093,7 +1093,7 @@ const withEffects: StorePlugin = store => {
 ---
 <legend>6. Reactivity</legend>
 ```js
-const withEffects: StorePlugin = store => {
+const withEffects: StoreEffects = store => {
   // ...
 
   store
@@ -1111,7 +1111,7 @@ const withEffects: StorePlugin = store => {
 ---
 <legend>6. Reactivity</legend>
 ```js
-const withEffects: StorePlugin = store => {
+const withEffects: StoreEffects = store => {
   // ...
 
   store
@@ -1130,7 +1130,7 @@ const withEffects: StorePlugin = store => {
 ---
 <legend>6. Reactivity</legend>
 ```js
-const withEffects: StorePlugin = store => {
+const withEffects: StoreEffects = store => {
   // ...
 
   return store
@@ -1141,7 +1141,7 @@ const withEffects: StorePlugin = store => {
 ```js
 *const {combineLatest} = require('rxjs')
 
-const withEffects: StorePlugin = store => {
+const withEffects: StoreEffects = store => {
   // ...
 
 * combineLatest(
@@ -1156,7 +1156,7 @@ const withEffects: StorePlugin = store => {
 ```js
 const {combineLatest} = require('rxjs')
 
-const withEffects: StorePlugin = store => {
+const withEffects: StoreEffects = store => {
   // ...
 
   combineLatest(
@@ -1197,12 +1197,15 @@ const initialState: State = {
   a: 1
 }
 
-const {Container, withStore} = connectToTree(initialState)
+const {Container, withStore} = createConnectedStore(
+  initialState,
+  withEffects
+)
 
 const MyConnectedComponent = withStore(...)
 
 const MyComponent = () =>
-  <Container effects={[withEffects]} initialState={...}>
+  <Container>
     <MyConnectedComponent />
   </Container>
 ```

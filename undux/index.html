@@ -67,6 +67,9 @@
       const result = await fetch('slides.md');
       let lastSource = await result.text();
       let slideshow = remark.create({
+        navigation: {
+          scroll: false
+        },
         source: lastSource,
         sourceUrl: 'slides.md'
       })
