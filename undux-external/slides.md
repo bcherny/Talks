@@ -18,6 +18,7 @@ class: middle
 ---
 class: center, middle
 ## 1. Problems
+### With ___ux
 ---
 <legend>1. Problems</legend>
 - Globs of boilerplate
@@ -102,7 +103,7 @@ class: middle
 class: middle
 <legend>3. Architecture</legend>
 <img src="images/single-node-store.png" height="130" />
-- `createStore()`
+- `createConnectedStore()`
 - Updated by the <font color="green">view</font>
 - Re-renders the <font color="green">view</font>
 ---
@@ -131,23 +132,23 @@ class: center, middle
 class: center
 <legend>4. Usage</legend>
 ```ts
-// composerStore.js
+// ComposerStore.js
 ```
 ---
 class: center
 <legend>4. Usage</legend>
 ```ts
-// composerStore.js
+// ComposerStore.js
 
-*import {createStore} from 'undux'
+*import {createConnectedStore} from 'undux'
 ```
 ---
 class: center
 <legend>4. Usage</legend>
 ```ts
-// composerStore.js
+// ComposerStore.js
 
-import {createStore} from 'undux'
+import {createConnectedStore} from 'undux'
 
 *type State = {
 * isNextEnabled: boolean,
@@ -158,9 +159,9 @@ import {createStore} from 'undux'
 class: center
 <legend>4. Usage</legend>
 ```ts
-// composerStore.js
+// ComposerStore.js
 
-import {createStore} from 'undux'
+import {createConnectedStore} from 'undux'
 
 type State = {
   isNextEnabled: boolean,
@@ -176,9 +177,9 @@ type State = {
 class: center
 <legend>4. Usage</legend>
 ```ts
-// composerStore.js
+// ComposerStore.js
 
-import {createStore} from 'undux'
+import {createConnectedStore} from 'undux'
 
 type State = {
   isNextEnabled: boolean,
@@ -190,15 +191,18 @@ const initialState: State = {
   text: ''
 }
 
-*const store = createStore(initialState)
+*const {
+* Container,
+* withStore
+*} = createConnectedStore(initialState)
 ```
 ---
 class: center
 <legend>4. Usage</legend>
 ```ts
-// composerStore.js
+// ComposerStore.js
 
-*import {connect, createStore} from 'undux'
+import {createConnectedStore} from 'undux'
 
 type State = {
   isNextEnabled: boolean,
@@ -210,17 +214,15 @@ const initialState: State = {
   text: ''
 }
 
-const store = createStore(initialState)
-
-*export const withStore = connect(store)
+*export default createConnectedStore(initialState)
 ```
 ---
 class: center
 <legend>4. Usage</legend>
 ```ts
-// composerStore.js
+// ComposerStore.js
 
-import {connect, createStore} from 'undux'
+*import {Store, createConnectedStore} from 'undux'
 
 type State = {
   isNextEnabled: boolean,
@@ -232,21 +234,19 @@ const initialState: State = {
   text: ''
 }
 
-const store = createStore(initialState)
-
-export const withStore = connect(store)
+export default createConnectedStore(initialState)
 
 *export type StoreProps = {
-* store: typeof store
+* store: Store<State>
 *}
 ```
 ---
 class: center
 <legend>4. Usage</legend>
 ```ts
-// composerStore.js
+// ComposerStore.js
 
-*import {connect, createStore, Plugin} from 'undux'
+*import {Effects, Store, createConnectedStore} from 'undux'
 
 type State = {
   isNextEnabled: boolean,
@@ -258,15 +258,13 @@ const initialState: State = {
   text: ''
 }
 
-const store = createStore(initialState)
-
-export const withStore = connect(store)
+export default createConnectedStore(initialState)
 
 export type StoreProps = {
-  store: typeof store
+  store: Store<State>
 }
 
-*export type StorePlugin = Plugin<Store>
+*export type StoreEffects = Effects<State>
 ```
 ---
 class: center, middle
@@ -280,18 +278,18 @@ class: center, middle
 class: center
 <legend>4. Usage</legend>
 ```jsx
-// composer.react.js
+// Composer.react.js
 
 class Composer extends React.Component {
   render() {
-    return <div>
+    return <>
       <Editor>
         <Avatar />
         <Textbox />
       </Editor>
       <Sproutbar />
       <Button />
-    </div>
+    </>
   }
 }
 ```
@@ -299,142 +297,134 @@ class Composer extends React.Component {
 class: center
 <legend>4. Usage</legend>
 ```jsx
-// composer.react.js
-*import {withStore} from './composerStore'
+// Composer.react.js
+*import {StoreProps} from './ComposerStore'
 
-*const Composer = withStore(
-  class Composer extends React.Component {
-    render() {
-      return <div>
-        <Editor>
-          <Avatar />
-          <Textbox />
-        </Editor>
-        <Sproutbar />
-        <Button />
-      </div>
-    }
+*class Composer extends React.Component<StoreProps> {
+  render() {
+    return <>
+      <Editor>
+        <Avatar />
+        <Textbox />
+      </Editor>
+      <Sproutbar />
+      <Button />
+    </>
   }
-*)
+}
 ```
 ---
 class: center
 <legend>4. Usage</legend>
 ```jsx
-// composer.react.js
-*import {StoreProps, withStore} from './composerStore'
+// Composer.react.js
+import {StoreProps} from './ComposerStore'
 
-const Composer = withStore(
-* class Composer extends React.Component<StoreProps> {
-    render() {
-      return <div>
-        <Editor>
-          <Avatar />
-          <Textbox />
-        </Editor>
-        <Sproutbar />
-        <Button />
-      </div>
-    }
+class Composer extends React.Component<StoreProps> {
+  render() {
+*   const {store} = this.props
+    return <>
+      <Editor>
+        <Avatar />
+*       <Textbox value={store.get('text')} />
+      </Editor>
+      <Sproutbar />
+      <Button />
+    </>
   }
-)
+}
 ```
 ---
 class: center
 <legend>4. Usage</legend>
 ```jsx
-// composer.react.js
-import {StoreProps, withStore} from './composerStore'
+// Composer.react.js
+import {StoreProps} from './ComposerStore'
 
-const Composer = withStore(
-  class Composer extends React.Component<StoreProps> {
-    render() {
-*     const {store} = this.props
-      return <div>
-        <Editor>
-          <Avatar />
-*         <Textbox value={store.get('text')} />
-        </Editor>
-        <Sproutbar />
-        <Button />
-      </div>
-    }
+class Composer extends React.Component<StoreProps> {
+  render() {
+    const {store} = this.props
+    return <>
+      <Editor>
+        <Avatar />
+        <Textbox value={store.get('text')}
+*                onChange={value =>
+*                  store.set('text')(value)
+*                } />
+      </Editor>
+      <Sproutbar />
+      <Button />
+    </>
   }
-)
+}
 ```
 ---
 class: center
 <legend>4. Usage</legend>
 ```jsx
-// composer.react.js
-import {StoreProps, withStore} from './composerStore'
+// Composer.react.js
+import {StoreProps} from './ComposerStore'
 
-const Composer = withStore(
-  class Composer extends React.Component<StoreProps> {
-    render() {
-      const {store} = this.props
-      return <div>
-        <Editor>
-          <Avatar />
-          <Textbox value={store.get('text')}
-*                  onChange={value =>
-*                    store.set('text')(value)
-*                  } />
-        </Editor>
-        <Sproutbar />
-        <Button />
-      </div>
-    }
+class Composer extends React.Component<StoreProps> {
+  render() {
+    const {store} = this.props
+    return <>
+      <Editor>
+        <Avatar />
+        <Textbox value={store.get('text')}
+*                onChange={store.set('text')} />
+      </Editor>
+      <Sproutbar />
+      <Button />
+    </>
   }
-)
+}
 ```
 ---
 class: center
 <legend>4. Usage</legend>
 ```jsx
-// composer.react.js
-import {StoreProps, withStore} from './composerStore'
+// Composer.react.js
+import {StoreProps} from './ComposerStore'
 
-const Composer = withStore(
-  class Composer extends React.Component<StoreProps> {
-    render() {
-      const {store} = this.props
-      return <div>
-        <Editor>
-          <Avatar />
-          <Textbox value={store.get('text')}
-*                  onChange={store.set('text')} />
-        </Editor>
-        <Sproutbar />
-        <Button />
-      </div>
-    }
+class Composer extends React.Component<StoreProps> {
+  render() {
+    const {store} = this.props
+    return <>
+      <Editor>
+        <Avatar />
+        <Textbox value={store.get('text')}
+                 onChange={store.set('text')} />
+      </Editor>
+      <Sproutbar />
+*     <Button disabled={!store.get('isNextEnabled')} />
+    </>
   }
-)
+}
 ```
 ---
 class: center
 <legend>4. Usage</legend>
 ```jsx
-// composer.react.js
-import {StoreProps, withStore} from './composerStore'
+// Composer.react.js
+*import ComposerStore, {StoreProps} from './ComposerStore'
 
-const Composer = withStore(
-  class Composer extends React.Component<StoreProps> {
-    render() {
-      const {store} = this.props
-      return <div>
-        <Editor>
-          <Avatar />
-          <Textbox value={store.get('text')}
-                   onChange={store.set('text')} />
-        </Editor>
-        <Sproutbar />
-*       <Button disabled={!store.get('isNextEnabled')} />
-      </div>
-    }
+class Composer extends React.Component<StoreProps> {
+  render() {
+    const {store} = this.props
+    return <>
+      <Editor>
+        <Avatar />
+        <Textbox value={store.get('text')}
+                 onChange={store.set('text')} />
+      </Editor>
+      <Sproutbar />
+      <Button disabled={!store.get('isNextEnabled')} />
+    </>
   }
-)
+}
+
+*export default ComposerStore.withStore(Composer)
 ```
 ---
 class: center, middle
@@ -444,25 +434,25 @@ class: center, middle
 class: center
 <legend>4. Usage</legend>
 ```jsx
-// composerEffects.js
+// ComposerEffects.js
 ```
 ---
 class: center
 <legend>4. Usage</legend>
 ```jsx
-// composerEffects.js
+// ComposerEffects.js
 
-*import {StorePlugin} from './composerStore'
+*import {StoreEffects} from './ComposerStore'
 ```
 ---
 class: center
 <legend>4. Usage</legend>
 ```jsx
-// composerEffects.js
+// ComposerEffects.js
 
-import {StorePlugin} from './composerStore'
+import {StoreEffects} from './ComposerStore'
 
-*export const withEffects: StorePlugin = store => {
+*export const withEffects: StoreEffects = store => {
 *
 *}
 ```
@@ -470,11 +460,11 @@ import {StorePlugin} from './composerStore'
 class: center
 <legend>4. Usage</legend>
 ```jsx
-// composerEffects.js
+// ComposerEffects.js
 
-import {StorePlugin} from './composerStore'
+import {StoreEffects} from './ComposerStore'
 
-export const withEffects: StorePlugin = store => {
+export const withEffects: StoreEffects = store => {
 * store
 *   .on('text')
 }
@@ -483,11 +473,11 @@ export const withEffects: StorePlugin = store => {
 class: center
 <legend>4. Usage</legend>
 ```jsx
-// composerEffects.js
+// ComposerEffects.js
 
-import {StorePlugin} from './composerStore'
+import {StoreEffects} from './ComposerStore'
 
-export const withEffects: StorePlugin = store => {
+export const withEffects: StoreEffects = store => {
   store
     .on('text')
 *   .subscribe(text => {
@@ -499,11 +489,11 @@ export const withEffects: StorePlugin = store => {
 class: center
 <legend>4. Usage</legend>
 ```jsx
-// composerEffects.js
+// ComposerEffects.js
 
-import {StorePlugin} from './composerStore'
+import {StoreEffects} from './ComposerStore'
 
-export const withEffects: StorePlugin = store => {
+export const withEffects: StoreEffects = store => {
   store
     .on('text')
     .subscribe(text => {
@@ -519,11 +509,11 @@ export const withEffects: StorePlugin = store => {
 class: center
 <legend>4. Usage</legend>
 ```jsx
-// composerEffects.js
+// ComposerEffects.js
 
-import {StorePlugin} from './composerStore'
+import {StoreEffects} from './ComposerStore'
 
-export const withEffects: StorePlugin = store => {
+export const withEffects: StoreEffects = store => {
   store
     .on('text')
     .subscribe(text => {
@@ -540,9 +530,9 @@ export const withEffects: StorePlugin = store => {
 class: center
 <legend>4. Usage</legend>
 ```jsx
-// composerStore.js
+// ComposerStore.js
 
-import {connect, createStore, Plugin} from 'undux'
+import {Effects, Store, createConnectedStore} from 'undux'
 
 type State = {
   isNextEnabled: boolean,
@@ -554,24 +544,22 @@ const initialState: State = {
   text: ''
 }
 
-const store = createStore(initialState)
-
-export const withStore = connect(store)
+export default createConnectedStore(initialState)
 
 export type StoreProps = {
-  store: typeof store
+  store: Store<State>
 }
 
-export type StorePlugin = Plugin<Store>
+export type StoreEffects = Effects<State>
 ```
 ---
 class: center
 <legend>4. Usage</legend>
 ```jsx
-// composerStore.js
+// ComposerStore.js
 
-import {connect, createStore, Plugin} from 'undux'
-*import {withEffects} from './composerEffects'
+import {Effects, Store, createConnectedStore} from 'undux'
+*import {withEffects} from './ComposerEffects'
 
 type State = {
   isNextEnabled: boolean,
@@ -583,15 +571,16 @@ const initialState: State = {
   text: ''
 }
 
-*const store = withEffects(createStore(initialState))
-
-export const withStore = connect(store)
+*export default createConnectedStore(
+* initialState,
+* withEffects
+*)
 
 export type StoreProps = {
-  store: typeof store
+  store: Store<State>
 }
 
-export type StorePlugin = Plugin<Store>
+export type StoreEffects = Effects<State>
 ```
 ---
 class: center, middle
@@ -678,7 +667,7 @@ class: center, middle
 ---
 <legend>6. Reactivity</legend>
 ```js
-export const withEffects: StorePlugin = store => {
+export const withEffects: StoreEffects = store => {
   store
     .on('text')
     .subscribe(text => {
@@ -694,7 +683,7 @@ export const withEffects: StorePlugin = store => {
 ---
 <legend>6. Reactivity</legend>
 ```js
-export const withEffects: StorePlugin = store => {
+export const withEffects: StoreEffects = store => {
   store
     .on('text')
     .subscribe(text => {
@@ -717,7 +706,7 @@ export const withEffects: StorePlugin = store => {
 ---
 <legend>6. Reactivity</legend>
 ```js
-export const withEffects: StorePlugin = store => {
+export const withEffects: StoreEffects = store => {
   // ...
 *
 * store
@@ -734,7 +723,7 @@ export const withEffects: StorePlugin = store => {
 ```js
 *import ReactGA from 'react-ga'
 
-export const withEffects: StorePlugin = store => {
+export const withEffects: StoreEffects = store => {
   // ...
 
   store
@@ -755,7 +744,7 @@ export const withEffects: StorePlugin = store => {
 import ReactGA from 'react-ga'
 *import {debounceTime} from 'rxjs/operators'
 
-export const withEffects: StorePlugin = store => {
+export const withEffects: StoreEffects = store => {
   // ...
 
   store
@@ -779,7 +768,7 @@ export const withEffects: StorePlugin = store => {
 import ReactGA from 'react-ga'
 *import {debounceTime, filter} from 'rxjs/operators'
 
-export const withEffects: StorePlugin = store => {
+export const withEffects: StoreEffects = store => {
   // ...
 
   store
@@ -804,7 +793,7 @@ export const withEffects: StorePlugin = store => {
 import ReactGA from 'react-ga'
 *import {debounceTime, filter, map} from 'rxjs/operators'
 
-export const withEffects: StorePlugin = store => {
+export const withEffects: StoreEffects = store => {
   // ...
 
   store
@@ -835,11 +824,11 @@ class: center, middle
 class: center
 <legend>4. Usage</legend>
 ```jsx
-const Composer = withStore(
+const Composer = ComposerStore.withStore(
   class Composer extends React.Component<StoreProps> {
     render() {
       const {store} = this.props
-      return <div>
+      return <>
         <Editor>
           <Avatar />
           <Textbox value={store.get('text')}
@@ -847,7 +836,7 @@ const Composer = withStore(
         </Editor>
         <Sproutbar />
         <Button disabled={!store.get('isNextEnabled')} />
-      </div>
+      </>
     }
   }
 )
@@ -856,11 +845,11 @@ const Composer = withStore(
 class: center
 <legend>4. Usage</legend>
 ```jsx
-const Composer = withStore(
+const Composer = ComposerStore.withStore(
   class Composer extends React.Component<StoreProps> {
     render() {
       const {store} = this.props
-      return <div>
+      return <>
         <Editor>
           <Avatar />
           <Textbox value={store.get('text')}
@@ -868,7 +857,7 @@ const Composer = withStore(
         </Editor>
         <Sproutbar />
         <Button disabled={!store.get('isNextEnabled')} />
-      </div>
+      </>
     }
   }
 )
