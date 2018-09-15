@@ -596,39 +596,39 @@ class: center, middle
 ---
 class: center, middle
 <legend>5. <u>Flux</u> & Redux, before & after</legend>
-<img src="images/flux-flow.png" width="75%" />
+<img src="images/flux-flow.png" width="100%" />
 ---
 class: center, middle
 <legend>5. <u>Flux</u> & Redux, before & after</legend>
-<img src="images/flux-flow-expanded-0.png" width="75%" />
+<img src="images/flux-flow-expanded-0.png" width="100%" />
 ---
 class: center, middle
 <legend>5. <u>Flux</u> & Redux, before & after</legend>
-<img src="images/flux-flow-expanded-1.png" width="75%" />
+<img src="images/flux-flow-expanded-1.png" width="100%" />
 ---
 class: center, middle
 <legend>5. <u>Flux</u> & Redux, before & after</legend>
-<img src="images/flux-flow-expanded-2.png" width="75%" />
+<img src="images/flux-flow-expanded-2.png" width="100%" />
 ---
 class: center, middle
 <legend>5. <u>Flux</u> & Redux, before & after</legend>
-<img src="images/flux-flow-expanded-3.png" width="75%" />
+<img src="images/flux-flow-expanded-3.png" width="100%" />
 ---
 class: center, middle
 <legend>5. <u>Flux</u> & Redux, before & after</legend>
-<img src="images/flux-flow-abstracted-0.png" width="75%" />
+<img src="images/flux-flow-abstracted-0.png" width="100%" />
 ---
 class: center, middle
 <legend>5. <u>Flux</u> & Redux, before & after</legend>
-<img src="images/flux-flow-abstracted-1.png" width="75%" />
+<img src="images/flux-flow-abstracted-1.png" width="100%" />
 ---
 class: center, middle
 <legend>5. <u>Flux</u> & Redux, before & after</legend>
-<img src="images/logger.png" width="100%" />
+<img src="images/logger.png" style="margin-left:-10%;width:120%" />
 ---
 class: center, middle
 <legend>5. <u>Flux</u> & Redux, before & after</legend>
-<img src="images/redux-logger.png" width="100%" />
+<img src="images/redux-logger.png" style="margin-left:-10%;width:120%" />
 ---
 class: center, middle
 <legend>5. Flux & <u>Redux</u>, before & after</legend>
@@ -636,27 +636,27 @@ class: center, middle
 ---
 class: center, middle
 <legend>5. Flux & <u>Redux</u>, before & after</legend>
-<img src="images/redux-flow.png" width="60%" />
+<img src="images/redux-flow.png" width="80%" />
 ---
 class: center, middle
 <legend>5. Flux & <u>Redux</u>, before & after</legend>
-<img src="images/redux-flow-expanded-0.png" width="80%" />
+<img src="images/redux-flow-expanded-0.png" width="100%" />
 ---
 class: center, middle
 <legend>5. Flux & <u>Redux</u>, before & after</legend>
-<img src="images/redux-flow-expanded-1.png" width="80%" />
+<img src="images/redux-flow-expanded-1.png" width="100%" />
 ---
 class: center, middle
 <legend>5. Flux & <u>Redux</u>, before & after</legend>
-<img src="images/redux-flow-expanded-2.png" width="80%" />
+<img src="images/redux-flow-expanded-2.png" width="100%" />
 ---
 class: center, middle
 <legend>5. Flux & <u>Redux</u>, before & after</legend>
-<img src="images/redux-flow-expanded-3.png" width="80%" />
+<img src="images/redux-flow-expanded-3.png" width="100%" />
 ---
 class: center, middle
 <legend>5. Flux & <u>Redux</u>, before & after</legend>
-<img src="images/redux-flow-expanded-4.png" width="80%" />
+<img src="images/redux-flow-expanded-4.png" width="100%" />
 ---
 class: center, middle
 ## 6. Reactivity
@@ -824,46 +824,68 @@ class: center, middle
 class: center
 <legend>4. Usage</legend>
 ```jsx
-const Composer = ComposerStore.withStore(
-  class Composer extends React.Component<StoreProps> {
-    render() {
-      const {store} = this.props
-      return <>
-        <Editor>
-          <Avatar />
-          <Textbox value={store.get('text')}
-                   onChange={store.set('text')} />
-        </Editor>
-        <Sproutbar />
-        <Button disabled={!store.get('isNextEnabled')} />
-      </>
-    }
+class Composer extends React.Component<StoreProps> {
+  render() {
+    const {store} = this.props
+    return <>
+      <Editor>
+        <Avatar />
+        <Textbox value={store.get('text')}
+                 onChange={store.set('text')} />
+      </Editor>
+      <Sproutbar />
+      <Button disabled={!store.get('isNextEnabled')} />
+    </>
   }
-)
+}
 ```
 ---
 class: center
 <legend>4. Usage</legend>
 ```jsx
-const Composer = ComposerStore.withStore(
-  class Composer extends React.Component<StoreProps> {
-    render() {
-      const {store} = this.props
-      return <>
-        <Editor>
-          <Avatar />
-          <Textbox value={store.get('text')}
-*                  onChange={setText(store)} />
-        </Editor>
-        <Sproutbar />
-        <Button disabled={!store.get('isNextEnabled')} />
-      </>
-    }
+class Composer extends React.Component<StoreProps> {
+  render() {
+    const {store} = this.props
+    return <>
+      <Editor>
+        <Avatar />
+        <Textbox value={store.get('text')}
+*                onChange={text =>
+*                  store.set('text')(sanitize(text))
+*                } />
+      </Editor>
+      <Sproutbar />
+      <Button disabled={!store.get('isNextEnabled')} />
+    </>
   }
-)
+}
 
-*function setText(store: Store) {
-* return (text: string) =>
-*   store.set('text')(text.toUpperCase())
+*function sanitize(text: string) {
+* return text.replace(EVIL_REGEX, '')
 *}
+```
+---
+class: center
+<legend>4. Usage</legend>
+```jsx
+*import {flow} from 'lodash'
+
+class Composer extends React.Component<StoreProps> {
+  render() {
+    const {store} = this.props
+    return <>
+      <Editor>
+        <Avatar />
+        <Textbox value={store.get('text')}
+*                onChange={flow(sanitize, store.set('text'))} />
+      </Editor>
+      <Sproutbar />
+      <Button disabled={!store.get('isNextEnabled')} />
+    </>
+  }
+}
+
+function sanitize(text: string) {
+  return text.replace(EVIL_REGEX, '')
+}
 ```

@@ -37,6 +37,10 @@ right {
   text-align: left;
 }
 
+.remark-slide-number {
+  font-size: 22px;
+}
+
 img.full {
   height: 100%;
   margin: -1em -4em -1em -4em;
