@@ -1,8 +1,13 @@
 // @flow
+type User = {| name: string, userID: number |}
 
-function a(x: number): number { // x must be a number
-  return x + 4  // the return type must be a number
-}
+// Type of object's keys
+type UserFields = $Keys<User> // Array<'name' | 'userID'>
 
-a(42)
-a('foo')
+// Type of object's values
+type UserTypes = $Values<User> // Array<string | FBID>
+
+// Type of a value at a specific key
+type NameType = $ElementType<User, 'userID'> // FBID
+
+let a: UserFields = 'name2'

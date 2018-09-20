@@ -107,6 +107,15 @@ td, th {
   padding: 7px 10px;
 }
 
+.PadTop {
+  display: block;
+  padding-top: 100px;
+}
+
+/* .remark-slide-content {
+  padding-top: 100px;
+} */
+
 .remark-code, .remark-inline-code {
   font-family: 'Fira Code';
   font-weight: 400;
