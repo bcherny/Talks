@@ -42,7 +42,7 @@ class MyComponent extends React.Component {
       .setData({
         month: this.props.month,
         date: this.props.date,
-        yer: this.props.yer
+        year: this.props.yer
       })
       .setMethod('POST').exec();
   }
@@ -73,7 +73,7 @@ class MyComponent extends React.Component {
       .setData({
         month: this.props.month,
 *       date: this.props.date,
-*       yer: this.props.yer
+*       year: this.props.yer
       })
       .setMethod('POST').exec();
   }
@@ -126,6 +126,14 @@ class: middle
 <legend>3. How it works</legend>
 <span class="PadTop">Flow *unifies* your types</span>
 ```js
+function a(x) {
+  return x + 4
+}
+```
+---
+<legend>3. How it works</legend>
+<span class="PadTop">Flow *unifies* your types</span>
+```js
 function a(x) { // x must be a number or a string
   return x + 4  // the return type must be a number or a string
 }
@@ -137,16 +145,6 @@ function a(x) { // x must be a number or a string
 function a(x) { // x must be a number | string
   return x + 4  // the return type must be a number | string
 }
-```
----
-<legend>3. How it works</legend>
-<span class="PadTop">Flow *unifies* your types</span>
-```js
-function a(x) { // x must be a number | string
-  return x + 4  // the return type must be a number | string
-}
-
-*a(42)
 ```
 ---
 <legend>3. How it works</legend>
@@ -221,7 +219,7 @@ a('x') // number | string
 ```
 ---
 <legend>3. How it works</legend>
-<span class="PadTop">We *strip* Flow types</span>
+<span class="PadTop">We *strip* Flow types at runtime</span>
 ```js
 // Before (in Nuclide)
 *function a(x: number | string): number | string {
@@ -231,7 +229,7 @@ a('x') // number | string
   return x.toUpperCase()
 }
 
-// Before (in Sandbox & Prod)
+// After (in Sandbox & Prod)
 *function a(x) {
   if (typeof x === 'number') {
     return x * 4
@@ -254,7 +252,7 @@ function a(b: {|c: number|}): {|d: boolean|} {
 <small>Hack equivalent</small>
 ```js
 class A {
-  public function a(shape('c' => int) $b): shape('d' => bool) {
+  public function a(shape('c' => num) $b): shape('d' => bool) {
     // ...
   }
 }
@@ -270,7 +268,7 @@ type MyOther = string
 <small>Hack equivalent</small>
 ```js
 class A {
-  const type MyType = int;
+  const type MyType = num;
   const type MyOther = string;
 }
 ```
@@ -289,7 +287,7 @@ interface Boolean extends NumberOrStringOrBoolean {}
 ```
 ---
 <legend>4. Features</legend>
-<span class="PadTop">Intersection types</span>
+<span class="PadTop">Spread types</span>
 ```js
 type User = {| userID: FBID |}
 type Name = {| name: string |}
@@ -326,7 +324,7 @@ const user = {userID: 3}
 ```
 ---
 <legend>4. Features</legend>
-<span class="PadTop">Explicit types</span>
+<span class="PadTop">Explicit type annotations</span>
 ```js
 const n: number = 4
 
@@ -337,10 +335,16 @@ const user: User = {userID: 3}
 <legend>4. Features</legend>
 <span class="PadTop">Literal types</span>
 ```js
-const n: 4 = 4
+type Day = 'Monday'
+  | 'Tuesday'
+  | 'Wednesday'
+  | 'Thursday'
+  | 'Friday'
+  | 'Saturday'
+  | 'Sunday'
 
-type User = {| userID: 3 |}
-const user: User = {userID: 3}
+const a: Day = 'Friday'
+const b: Day = 'Sun' // Error: Cannot assign 'Sun' to b
 ```
 ---
 <legend>4. Features</legend>
@@ -453,6 +457,8 @@ type A = any
 type B = {b: string}
 type C = mixed
 ```
+
+<small>Use `@flow strict` or `@flow strict-local` to enforce this.</small>
 ---
 <legend>6. Common pitfalls</legend>
 <span class="PadTop"></span>
@@ -470,21 +476,18 @@ type A = {a: number}
 type B = {b: string}
 type C = A & B
 ```
+
+<small>We have a lint rule to enforce this.</small>
 ---
 <legend>6. Common pitfalls</legend>
 <span class="PadTop"></span>
 - Avoid `{}`, use `{||}` instead
 - Avoid `&`, use `...` instead
 
-```js
-// JS
-type Good = {|a: number|}
-type Bad = {a: number}
-
-// Hack
-type Good = shape('a' => num)
-type Bad = shape('a' => num, ...)
-```
+| Flow | Hack |
+|--|--|
+| `{a: number}` | `shape('a' => num, ...)` |
+| `{︳a: number︳}` | `shape('a' => num)` |
 ---
 class: center, middle
 # 7. Workflow
@@ -629,6 +632,6 @@ function mystery(a) {
 <span class="PadTop"></span>
 ## Happy fixing! 🎉
 
-- Me: `@bcherny`
-- Tasks: [fburl.com/flow-fixathon](https://fburl.com/flow-fixathon)
-
+Tasks: [fburl.com/flow-fixathon](https://fburl.com/flow-fixathon)
+<br><br>
+Flow docs: [flow.org](https://flow.org)

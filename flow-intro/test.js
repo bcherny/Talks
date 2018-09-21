@@ -1,13 +1,13 @@
 // @flow
-type User = {| name: string, userID: number |}
 
-// Type of object's keys
-type UserFields = $Keys<User> // Array<'name' | 'userID'>
+type Day = 'Monday'
+  | 'Tuesday'
+  | 'Wednesday'
+  | 'Thursday'
+  | 'Friday'
+  | 'Saturday'
+  | 'Sunday'
 
-// Type of object's values
-type UserTypes = $Values<User> // Array<string | FBID>
+const day: Day = 'Friday'
 
-// Type of a value at a specific key
-type NameType = $ElementType<User, 'userID'> // FBID
 
-let a: UserFields = 'name2'
