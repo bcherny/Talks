@@ -469,7 +469,7 @@ type C = mixed
 // Good
 type A = {|a: number|}
 type B = {|b: string|}
-type C = {|...a, ...b|}
+type C = {|...A, ...B|}
 
 // Bad
 type A = {a: number}
