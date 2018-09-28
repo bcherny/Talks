@@ -535,7 +535,7 @@ export const withEffects: StoreEffects = store => {
 ---
 class: center
 <legend>4. Usage</legend>
-<div style='margin-top: -30px'></div>
+<div style='margin-top: -32px'></div>
 ```jsx
 // ComposerStore.ts
 
@@ -562,7 +562,7 @@ export type StoreEffects = Effects<State>
 ---
 class: center
 <legend>4. Usage</legend>
-<div style='margin-top: -30px'></div>
+<div style='margin-top: -32px'></div>
 ```jsx
 // ComposerStore.ts
 
@@ -593,7 +593,7 @@ export type StoreEffects = Effects<State>
 ---
 class: center, middle
 <legend>4. Usage</legend>
-### Step 4: Wrap your app
+### Step 4: Wrap `<Composer />`
 ---
 class: center
 <legend>4. Usage</legend>
@@ -718,7 +718,10 @@ class: center, middle
 ### For example:<br />Let's add a logger to composer.
 ---
 <legend>6. Reactivity</legend>
+<div style='margin-top: -32px'></div>
 ```js
+// ComposerEffects.ts
+
 export const withEffects: StoreEffects = store => {
   store
     .on('text')
@@ -734,7 +737,10 @@ export const withEffects: StoreEffects = store => {
 ```
 ---
 <legend>6. Reactivity</legend>
+<div style='margin-top: -32px'></div>
 ```js
+// ComposerEffects.ts
+
 export const withEffects: StoreEffects = store => {
   store
     .on('text')
@@ -757,7 +763,10 @@ export const withEffects: StoreEffects = store => {
 ```
 ---
 <legend>6. Reactivity</legend>
+<div style='margin-top: -32px'></div>
 ```js
+// ComposerEffects.ts
+
 export const withEffects: StoreEffects = store => {
   // ...
 *
@@ -772,7 +781,10 @@ export const withEffects: StoreEffects = store => {
 ```
 ---
 <legend>6. Reactivity</legend>
+<div style='margin-top: -32px'></div>
 ```js
+// ComposerEffects.ts
+
 *import ReactGA from 'react-ga'
 
 export const withEffects: StoreEffects = store => {
@@ -792,7 +804,10 @@ export const withEffects: StoreEffects = store => {
 ```
 ---
 <legend>6. Reactivity</legend>
+<div style='margin-top: -32px'></div>
 ```js
+// ComposerEffects.ts
+
 import ReactGA from 'react-ga'
 *import {debounceTime} from 'rxjs/operators'
 
@@ -816,7 +831,10 @@ export const withEffects: StoreEffects = store => {
 ```
 ---
 <legend>6. Reactivity</legend>
+<div style='margin-top: -32px'></div>
 ```js
+// ComposerEffects.ts
+
 import ReactGA from 'react-ga'
 *import {debounceTime, filter} from 'rxjs/operators'
 
@@ -841,7 +859,10 @@ export const withEffects: StoreEffects = store => {
 ```
 ---
 <legend>6. Reactivity</legend>
+<div style='margin-top: -32px'></div>
 ```js
+// ComposerEffects.ts
+
 import ReactGA from 'react-ga'
 *import {debounceTime, filter, map} from 'rxjs/operators'
 
@@ -876,6 +897,8 @@ class: center, middle
 class: center
 <legend>4. Usage</legend>
 ```jsx
+// Composer.tsx
+
 class Composer extends React.Component<StoreProps> {
   render() {
     const {store} = this.props
@@ -895,6 +918,8 @@ class Composer extends React.Component<StoreProps> {
 class: center
 <legend>4. Usage</legend>
 ```jsx
+// Composer.tsx
+
 class Composer extends React.Component<StoreProps> {
   render() {
     const {store} = this.props
@@ -920,6 +945,8 @@ class Composer extends React.Component<StoreProps> {
 class: center
 <legend>4. Usage</legend>
 ```jsx
+// Composer.tsx
+
 *import {flow} from 'lodash'
 
 class Composer extends React.Component<StoreProps> {
@@ -929,7 +956,9 @@ class Composer extends React.Component<StoreProps> {
       <Editor>
         <Avatar />
         <Textbox value={store.get('text')}
-*                onChange={flow(sanitize, store.set('text'))} />
+*                onChange={
+*                  flow(sanitize, store.set('text'))
+                 } />
       </Editor>
       <Sproutbar />
       <Button disabled={!store.get('isNextEnabled')} />
