@@ -585,6 +585,37 @@ export type StoreEffects = Effects<State>
 ---
 class: center, middle
 <legend>4. Usage</legend>
+### Step 4: Wrap your app
+---
+class: center
+<legend>4. Usage</legend>
+```jsx
+// App.tsx
+
+*import Composer from './Composer'
+
+*export function App() {
+* return <Composer />
+*}
+```
+---
+class: center
+<legend>4. Usage</legend>
+```jsx
+// App.tsx
+
+import Composer from './Composer'
+*import ComposerStore from './ComposerStore'
+
+export function App() {
+* return <ComposerStore.Container>
+    <Composer />
+* </ComposerStore.Container>
+}
+```
+---
+class: center, middle
+<legend>4. Usage</legend>
 ### <font color="#006def" style="font-size:48px">Done.</font>
 ---
 class: center, middle
