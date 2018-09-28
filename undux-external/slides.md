@@ -298,6 +298,7 @@ class: center
 <legend>4. Usage</legend>
 ```jsx
 // Composer.tsx
+
 *import {StoreProps} from './ComposerStore'
 
 *class Composer extends React.Component<StoreProps> {
@@ -318,6 +319,7 @@ class: center
 <legend>4. Usage</legend>
 ```jsx
 // Composer.tsx
+
 import {StoreProps} from './ComposerStore'
 
 class Composer extends React.Component<StoreProps> {
@@ -339,6 +341,7 @@ class: center
 <legend>4. Usage</legend>
 ```jsx
 // Composer.tsx
+
 import {StoreProps} from './ComposerStore'
 
 class Composer extends React.Component<StoreProps> {
@@ -363,6 +366,7 @@ class: center
 <legend>4. Usage</legend>
 ```jsx
 // Composer.tsx
+
 import {StoreProps} from './ComposerStore'
 
 class Composer extends React.Component<StoreProps> {
@@ -385,6 +389,7 @@ class: center
 <legend>4. Usage</legend>
 ```jsx
 // Composer.tsx
+
 import {StoreProps} from './ComposerStore'
 
 class Composer extends React.Component<StoreProps> {
@@ -407,6 +412,7 @@ class: center
 <legend>4. Usage</legend>
 ```jsx
 // Composer.tsx
+
 *import ComposerStore, {StoreProps} from './ComposerStore'
 
 class Composer extends React.Component<StoreProps> {
@@ -529,6 +535,7 @@ export const withEffects: StoreEffects = store => {
 ---
 class: center
 <legend>4. Usage</legend>
+<div style='margin-top: -30px'></div>
 ```jsx
 // ComposerStore.ts
 
@@ -555,6 +562,7 @@ export type StoreEffects = Effects<State>
 ---
 class: center
 <legend>4. Usage</legend>
+<div style='margin-top: -30px'></div>
 ```jsx
 // ComposerStore.ts
 
@@ -606,6 +614,19 @@ class: center
 
 import Composer from './Composer'
 *import ComposerStore from './ComposerStore'
+
+export function App() {
+  return <Composer />
+}
+```
+---
+class: center
+<legend>4. Usage</legend>
+```jsx
+// App.tsx
+
+import Composer from './Composer'
+import ComposerStore from './ComposerStore'
 
 export function App() {
 * return <ComposerStore.Container>
