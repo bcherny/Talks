@@ -132,13 +132,13 @@ class: center, middle
 class: center
 <legend>4. Usage</legend>
 ```ts
-// ComposerStore.js
+// ComposerStore.ts
 ```
 ---
 class: center
 <legend>4. Usage</legend>
 ```ts
-// ComposerStore.js
+// ComposerStore.ts
 
 *import {createConnectedStore} from 'undux'
 ```
@@ -146,7 +146,7 @@ class: center
 class: center
 <legend>4. Usage</legend>
 ```ts
-// ComposerStore.js
+// ComposerStore.ts
 
 import {createConnectedStore} from 'undux'
 
@@ -159,7 +159,7 @@ import {createConnectedStore} from 'undux'
 class: center
 <legend>4. Usage</legend>
 ```ts
-// ComposerStore.js
+// ComposerStore.ts
 
 import {createConnectedStore} from 'undux'
 
@@ -177,7 +177,7 @@ type State = {
 class: center
 <legend>4. Usage</legend>
 ```ts
-// ComposerStore.js
+// ComposerStore.ts
 
 import {createConnectedStore} from 'undux'
 
@@ -200,7 +200,7 @@ const initialState: State = {
 class: center
 <legend>4. Usage</legend>
 ```ts
-// ComposerStore.js
+// ComposerStore.ts
 
 import {createConnectedStore} from 'undux'
 
@@ -220,7 +220,7 @@ const initialState: State = {
 class: center
 <legend>4. Usage</legend>
 ```ts
-// ComposerStore.js
+// ComposerStore.ts
 
 *import {Store, createConnectedStore} from 'undux'
 
@@ -244,7 +244,7 @@ export default createConnectedStore(initialState)
 class: center
 <legend>4. Usage</legend>
 ```ts
-// ComposerStore.js
+// ComposerStore.ts
 
 *import {Effects, Store, createConnectedStore} from 'undux'
 
@@ -278,7 +278,7 @@ class: center, middle
 class: center
 <legend>4. Usage</legend>
 ```jsx
-// Composer.react.js
+// Composer.tsx
 
 class Composer extends React.Component {
   render() {
@@ -297,7 +297,7 @@ class Composer extends React.Component {
 class: center
 <legend>4. Usage</legend>
 ```jsx
-// Composer.react.js
+// Composer.tsx
 *import {StoreProps} from './ComposerStore'
 
 *class Composer extends React.Component<StoreProps> {
@@ -317,7 +317,7 @@ class: center
 class: center
 <legend>4. Usage</legend>
 ```jsx
-// Composer.react.js
+// Composer.tsx
 import {StoreProps} from './ComposerStore'
 
 class Composer extends React.Component<StoreProps> {
@@ -338,7 +338,7 @@ class Composer extends React.Component<StoreProps> {
 class: center
 <legend>4. Usage</legend>
 ```jsx
-// Composer.react.js
+// Composer.tsx
 import {StoreProps} from './ComposerStore'
 
 class Composer extends React.Component<StoreProps> {
@@ -362,7 +362,7 @@ class Composer extends React.Component<StoreProps> {
 class: center
 <legend>4. Usage</legend>
 ```jsx
-// Composer.react.js
+// Composer.tsx
 import {StoreProps} from './ComposerStore'
 
 class Composer extends React.Component<StoreProps> {
@@ -384,7 +384,7 @@ class Composer extends React.Component<StoreProps> {
 class: center
 <legend>4. Usage</legend>
 ```jsx
-// Composer.react.js
+// Composer.tsx
 import {StoreProps} from './ComposerStore'
 
 class Composer extends React.Component<StoreProps> {
@@ -406,7 +406,7 @@ class Composer extends React.Component<StoreProps> {
 class: center
 <legend>4. Usage</legend>
 ```jsx
-// Composer.react.js
+// Composer.tsx
 *import ComposerStore, {StoreProps} from './ComposerStore'
 
 class Composer extends React.Component<StoreProps> {
@@ -434,13 +434,13 @@ class: center, middle
 class: center
 <legend>4. Usage</legend>
 ```jsx
-// ComposerEffects.js
+// ComposerEffects.ts
 ```
 ---
 class: center
 <legend>4. Usage</legend>
 ```jsx
-// ComposerEffects.js
+// ComposerEffects.ts
 
 *import {StoreEffects} from './ComposerStore'
 ```
@@ -448,7 +448,7 @@ class: center
 class: center
 <legend>4. Usage</legend>
 ```jsx
-// ComposerEffects.js
+// ComposerEffects.ts
 
 import {StoreEffects} from './ComposerStore'
 
@@ -460,7 +460,7 @@ import {StoreEffects} from './ComposerStore'
 class: center
 <legend>4. Usage</legend>
 ```jsx
-// ComposerEffects.js
+// ComposerEffects.ts
 
 import {StoreEffects} from './ComposerStore'
 
@@ -473,7 +473,7 @@ export const withEffects: StoreEffects = store => {
 class: center
 <legend>4. Usage</legend>
 ```jsx
-// ComposerEffects.js
+// ComposerEffects.ts
 
 import {StoreEffects} from './ComposerStore'
 
@@ -489,7 +489,7 @@ export const withEffects: StoreEffects = store => {
 class: center
 <legend>4. Usage</legend>
 ```jsx
-// ComposerEffects.js
+// ComposerEffects.ts
 
 import {StoreEffects} from './ComposerStore'
 
@@ -509,7 +509,7 @@ export const withEffects: StoreEffects = store => {
 class: center
 <legend>4. Usage</legend>
 ```jsx
-// ComposerEffects.js
+// ComposerEffects.ts
 
 import {StoreEffects} from './ComposerStore'
 
@@ -530,7 +530,7 @@ export const withEffects: StoreEffects = store => {
 class: center
 <legend>4. Usage</legend>
 ```jsx
-// ComposerStore.js
+// ComposerStore.ts
 
 import {Effects, Store, createConnectedStore} from 'undux'
 
@@ -556,7 +556,7 @@ export type StoreEffects = Effects<State>
 class: center
 <legend>4. Usage</legend>
 ```jsx
-// ComposerStore.js
+// ComposerStore.ts
 
 import {Effects, Store, createConnectedStore} from 'undux'
 *import {withEffects} from './ComposerEffects'
