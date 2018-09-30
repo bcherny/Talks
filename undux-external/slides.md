@@ -579,10 +579,10 @@ const initialState: State = {
   text: ''
 }
 
-*export default createConnectedStore(
-* initialState,
+export default createConnectedStore(
+  initialState,
 * withEffects
-*)
+)
 
 export type StoreProps = {
   store: Store<State>
@@ -638,6 +638,29 @@ export function App() {
 class: center, middle
 <legend>4. Usage</legend>
 ### <font color="#006def" style="font-size:48px">Done.</font>
+---
+class: center, middle
+<legend>4. Usage</legend>
+#### To Recap
+---
+class: center, middle
+<legend>4. Usage</legend>
+#### To Recap
+---
+class: middle
+<legend>4. Usage</legend>
+```js
+// Get a value
+store.get(key)
+
+// Set a value
+store.set(key)(value)
+
+// Listen on a value
+store.on(key).subscribe(value => {
+
+})
+```
 ---
 class: center, middle
 ## 5. Flux & Redux, <br />before & after
@@ -956,7 +979,7 @@ class Composer extends React.Component<StoreProps> {
       <Editor>
         <Avatar />
         <Textbox value={store.get('text')}
-*                onChange={
+                 onChange={
 *                  flow(sanitize, store.set('text'))
                  } />
       </Editor>
