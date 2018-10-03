@@ -12,6 +12,9 @@ class: middle
 class: center, middle
 <legend>1. React refresher</legend>
 <img src="images/react.png" width="50%" />
+
+???
+Let's start with a quick refresher on React.
 ---
 class: center, middle
 <legend>1. React refresher</legend>
