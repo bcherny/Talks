@@ -19805,4 +19805,669 @@ require=(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof requ
     }
   }
 
-  function setClassFromProperties (element,
+  function setClassFromProperties (element, properties) {
+    utils.addClass(element, 'remark-slide-content');
+
+    (properties['class'] || '').split(/,| /)
+      .filter(function (s) { return s !== ''; })
+      .forEach(function (c) { utils.addClass(element, c); });
+  }
+
+  function highlightCodeBlocks (content, slideshow) {
+    var codeBlocks = content.getElementsByTagName('code'),
+        highlightLines = slideshow.getHighlightLines(),
+        highlightSpans = slideshow.getHighlightSpans(),
+        highlightInline = slideshow.getHighlightInlineCode(),
+        meta;
+
+    codeBlocks.forEach(function (block) {
+      if (block.className === '') {
+        block.className = slideshow.getHighlightLanguage();
+      }
+
+      if (block.parentElement.tagName !== 'PRE') {
+        utils.addClass(block, 'remark-inline-code');
+        if (highlightInline) {
+          highlighter.engine.highlightBlock(block, '');
+        }
+        return;
+      }
+
+      if (highlightLines) {
+        meta = extractMetadata(block);
+      }
+
+      if (block.className !== '') {
+        highlighter.engine.highlightBlock(block, '  ');
+      }
+
+      wrapLines(block);
+
+      if (highlightLines) {
+        highlightBlockLines(block, meta.highlightedLines);
+      }
+
+      if (highlightSpans) {
+        highlightBlockSpans(block);
+      }
+
+      utils.addClass(block, 'remark-code');
+    });
+  }
+
+  function extractMetadata (block) {
+    var highlightedLines = [];
+
+    block.innerHTML = block.innerHTML.split(/\r?\n/).map(function (line, i) {
+      if (line.indexOf('*') === 0) {
+        highlightedLines.push(i);
+        return line.replace(/^\*( )?/, '$1$1');
+      }
+
+      return line;
+    }).join('\n');
+
+    return {
+      highlightedLines: highlightedLines
+    };
+  }
+
+  function wrapLines (block) {
+    var lines = block.innerHTML.split(/\r?\n/).map(function (line) {
+      return '<div class="remark-code-line">' + line + '</div>';
+    });
+
+    // Remove empty last line (due to last \n)
+    if (lines.length && lines[lines.length - 1].indexOf('><') !== -1) {
+      lines.pop();
+    }
+
+    block.innerHTML = lines.join('');
+  }
+
+  function highlightBlockLines (block, lines) {
+    lines.forEach(function (i) {
+      utils.addClass(block.childNodes[i], 'remark-code-line-highlighted');
+    });
+  }
+
+  function highlightBlockSpans (block) {
+    var pattern = /([^`])`([^`]+?)`/g ;
+
+    block.childNodes.forEach(function (element) {
+      element.innerHTML = element.innerHTML.replace(pattern,
+        function (m,e,c) {
+          if (e === '\\') {
+            return m.substr(1);
+          }
+          return e + '<span class="remark-code-span-highlighted">' +
+            c + '</span>';
+        });
+    });
+  }
+
+  },{"../components/slide-number/slide-number":"components/slide-number","../converter":12,"../highlighter":14,"../utils":24}],27:[function(require,module,exports){
+  var SlideView = require('./slideView')
+    , Timer = require('../components/timer/timer')
+    , NotesView = require('./notesView')
+    , Scaler = require('../scaler')
+    , resources = require('../resources')
+    , utils = require('../utils')
+    , printing = require('../components/printing/printing')
+    ;
+
+  module.exports = SlideshowView;
+
+  function SlideshowView (events, dom, containerElement, slideshow) {
+    var self = this;
+
+    self.events = events;
+    self.dom = dom;
+    self.slideshow = slideshow;
+    self.scaler = new Scaler(events, slideshow);
+    self.slideViews = [];
+
+    self.configureContainerElement(containerElement);
+    self.configureChildElements();
+
+    self.updateDimensions();
+    self.scaleElements();
+    self.updateSlideViews();
+
+    self.timer = new Timer(events, self.timerElement);
+
+    events.on('slidesChanged', function () {
+      self.updateSlideViews();
+    });
+
+    events.on('hideSlide', function (slideIndex) {
+      // To make sure that there is only one element fading at a time,
+      // remove the fading class from all slides before hiding
+      // the new slide.
+      self.elementArea.getElementsByClassName('remark-fading').forEach(function (slide) {
+        utils.removeClass(slide, 'remark-fading');
+      });
+      self.hideSlide(slideIndex);
+    });
+
+    events.on('showSlide', function (slideIndex) {
+      self.showSlide(slideIndex);
+    });
+
+    events.on('forcePresenterMode', function () {
+
+      if (!utils.hasClass(self.containerElement, 'remark-presenter-mode')) {
+        utils.toggleClass(self.containerElement, 'remark-presenter-mode');
+        self.scaleElements();
+        printing.setPageOrientation('landscape');
+      }
+    });
+
+    events.on('togglePresenterMode', function () {
+      utils.toggleClass(self.containerElement, 'remark-presenter-mode');
+      self.scaleElements();
+      events.emit('toggledPresenter', self.slideshow.getCurrentSlideIndex() + 1);
+
+      if (utils.hasClass(self.containerElement, 'remark-presenter-mode')) {
+        printing.setPageOrientation('portrait');
+      }
+      else {
+        printing.setPageOrientation('landscape');
+      }
+    });
+
+    events.on('toggleHelp', function () {
+      utils.toggleClass(self.containerElement, 'remark-help-mode');
+    });
+
+    events.on('toggleBlackout', function () {
+      utils.toggleClass(self.containerElement, 'remark-blackout-mode');
+    });
+
+    events.on('toggleMirrored', function () {
+      utils.toggleClass(self.containerElement, 'remark-mirrored-mode');
+    });
+
+    events.on('hideOverlay', function () {
+      utils.removeClass(self.containerElement, 'remark-blackout-mode');
+      utils.removeClass(self.containerElement, 'remark-help-mode');
+    });
+
+    events.on('pause', function () {
+      utils.toggleClass(self.containerElement, 'remark-pause-mode');
+    });
+
+    events.on('resume', function () {
+      utils.toggleClass(self.containerElement, 'remark-pause-mode');
+    });
+
+    handleFullscreen(self);
+  }
+
+  function handleFullscreen(self) {
+    var requestFullscreen = utils.getPrefixedProperty(self.containerElement, 'requestFullScreen')
+      , cancelFullscreen = utils.getPrefixedProperty(document, 'cancelFullScreen')
+      ;
+
+    self.events.on('toggleFullscreen', function () {
+      var fullscreenElement = utils.getPrefixedProperty(document, 'fullscreenElement') ||
+        utils.getPrefixedProperty(document, 'fullScreenElement');
+
+      if (!fullscreenElement && requestFullscreen) {
+        requestFullscreen.call(self.containerElement, Element.ALLOW_KEYBOARD_INPUT);
+      }
+      else if (cancelFullscreen) {
+        cancelFullscreen.call(document);
+      }
+      self.scaleElements();
+    });
+  }
+
+  SlideshowView.prototype.isEmbedded = function () {
+    return this.containerElement !== this.dom.getBodyElement();
+  };
+
+  SlideshowView.prototype.configureContainerElement = function (element) {
+    var self = this;
+
+    self.containerElement = element;
+
+    utils.addClass(element, 'remark-container');
+
+    if (element === self.dom.getBodyElement()) {
+      utils.addClass(self.dom.getHTMLElement(), 'remark-container');
+
+      forwardEvents(self.events, window, [
+        'hashchange', 'resize', 'keydown', 'keypress', 'mousewheel',
+        'message', 'DOMMouseScroll'
+      ]);
+      forwardEvents(self.events, self.containerElement, [
+        'touchstart', 'touchmove', 'touchend', 'click', 'contextmenu'
+      ]);
+    }
+    else {
+      element.style.position = 'absolute';
+      element.tabIndex = -1;
+
+      forwardEvents(self.events, window, ['resize']);
+      forwardEvents(self.events, element, [
+        'keydown', 'keypress', 'mousewheel',
+        'touchstart', 'touchmove', 'touchend'
+      ]);
+    }
+
+    // Tap event is handled in slideshow view
+    // rather than controller as knowledge of
+    // container width is needed to determine
+    // whether to move backwards or forwards
+    self.events.on('tap', function (endX) {
+      if (endX < self.containerElement.clientWidth / 2) {
+        self.slideshow.gotoPreviousSlide();
+      }
+      else {
+        self.slideshow.gotoNextSlide();
+      }
+    });
+  };
+
+  function forwardEvents (target, source, events) {
+    events.forEach(function (eventName) {
+      source.addEventListener(eventName, function () {
+        var args = Array.prototype.slice.call(arguments);
+        target.emit.apply(target, [eventName].concat(args));
+      });
+    });
+  }
+
+  SlideshowView.prototype.configureChildElements = function () {
+    var self = this;
+
+    self.containerElement.innerHTML += resources.containerLayout;
+
+    self.elementArea = self.containerElement.getElementsByClassName('remark-slides-area')[0];
+    self.previewArea = self.containerElement.getElementsByClassName('remark-preview-area')[0];
+    self.notesArea = self.containerElement.getElementsByClassName('remark-notes-area')[0];
+
+    self.notesView = new NotesView (self.events, self.notesArea, function () {
+      return self.slideViews;
+    });
+
+    self.backdropElement = self.containerElement.getElementsByClassName('remark-backdrop')[0];
+    self.helpElement = self.containerElement.getElementsByClassName('remark-help')[0];
+
+    self.timerElement = self.notesArea.getElementsByClassName('remark-toolbar-timer')[0];
+    self.pauseElement = self.containerElement.getElementsByClassName('remark-pause')[0];
+
+    self.events.on('propertiesChanged', function (changes) {
+      if (changes.hasOwnProperty('ratio')) {
+        self.updateDimensions();
+      }
+    });
+
+    self.events.on('resize', onResize);
+
+    printing.init();
+    printing.on('print', onPrint);
+
+    function onResize () {
+      self.scaleElements();
+    }
+
+    function onPrint (e) {
+      var slideHeight;
+
+      if (e.isPortrait) {
+        slideHeight = e.pageHeight * 0.4;
+      }
+      else {
+        slideHeight = e.pageHeight;
+      }
+
+      self.slideViews.forEach(function (slideView) {
+        slideView.scale({
+          clientWidth: e.pageWidth,
+          clientHeight: slideHeight
+        });
+
+        if (e.isPortrait) {
+          slideView.scalingElement.style.top = '20px';
+          slideView.notesElement.style.top = slideHeight + 40 + 'px';
+        }
+      });
+    }
+  };
+
+  SlideshowView.prototype.updateSlideViews = function () {
+    var self = this;
+
+    self.slideViews.forEach(function (slideView) {
+      self.elementArea.removeChild(slideView.containerElement);
+    });
+
+    self.slideViews = self.slideshow.getSlides().map(function (slide) {
+      return new SlideView(self.events, self.slideshow, self.scaler, slide);
+    });
+
+    self.slideViews.forEach(function (slideView) {
+      self.elementArea.appendChild(slideView.containerElement);
+    });
+
+    self.updateDimensions();
+
+    if (self.slideshow.getCurrentSlideIndex() > -1) {
+      self.showSlide(self.slideshow.getCurrentSlideIndex());
+    }
+  };
+
+  SlideshowView.prototype.scaleSlideBackgroundImages = function (dimensions) {
+    var self = this;
+
+    self.slideViews.forEach(function (slideView) {
+      slideView.scaleBackgroundImage(dimensions);
+    });
+  };
+
+  SlideshowView.prototype.showSlide =  function (slideIndex) {
+    var self = this
+      , slideView = self.slideViews[slideIndex]
+      , nextSlideView = self.slideViews[slideIndex + 1]
+      ;
+
+    self.events.emit("beforeShowSlide", slideIndex);
+
+    slideView.show();
+
+    if (nextSlideView) {
+      self.previewArea.innerHTML = nextSlideView.containerElement.outerHTML;
+    }
+    else {
+      self.previewArea.innerHTML = '';
+    }
+
+    self.events.emit("afterShowSlide", slideIndex);
+  };
+
+  SlideshowView.prototype.hideSlide = function (slideIndex) {
+    var self = this
+      , slideView = self.slideViews[slideIndex]
+      ;
+
+    self.events.emit("beforeHideSlide", slideIndex);
+    slideView.hide();
+    self.events.emit("afterHideSlide", slideIndex);
+
+  };
+
+  SlideshowView.prototype.updateDimensions = function () {
+    var self = this
+      , dimensions = self.scaler.dimensions
+      ;
+
+    self.helpElement.style.width = dimensions.width + 'px';
+    self.helpElement.style.height = dimensions.height + 'px';
+
+    self.scaleSlideBackgroundImages(dimensions);
+    self.scaleElements();
+  };
+
+  SlideshowView.prototype.scaleElements = function () {
+    var self = this;
+
+    self.slideViews.forEach(function (slideView) {
+      slideView.scale(self.elementArea);
+    });
+
+    if (self.previewArea.children.length) {
+      self.scaler.scaleToFit(self.previewArea.children[0].children[0], self.previewArea);
+    }
+    self.scaler.scaleToFit(self.helpElement, self.containerElement);
+    self.scaler.scaleToFit(self.pauseElement, self.containerElement);
+  };
+
+  },{"../components/printing/printing":"components/printing","../components/timer/timer":"components/timer","../resources":22,"../scaler":23,"../utils":24,"./notesView":25,"./slideView":26}],"components/printing":[function(require,module,exports){
+  var EventEmitter = require('events').EventEmitter
+    , styler = require('../styler/styler')
+    ;
+
+  var LANDSCAPE = 'landscape'
+    , PORTRAIT = 'portrait'
+    , PAGE_HEIGHT = 681
+    , PAGE_WIDTH = 908
+    ;
+
+  function PrintComponent () {}
+
+  // Add eventing
+  PrintComponent.prototype = new EventEmitter();
+
+  // Sets up listener for printing
+  PrintComponent.prototype.init = function () {
+    var self = this;
+
+    this.setPageOrientation(LANDSCAPE);
+
+    if (!window.matchMedia) {
+      return false;
+    }
+
+    window.matchMedia('print').addListener(function (e) {
+      self.onPrint(e);
+    });
+  };
+
+  // Handles printing event
+  PrintComponent.prototype.onPrint = function (e) {
+    var slideHeight;
+
+    if (!e.matches) {
+      return;
+    }
+
+    this.emit('print', {
+      isPortrait: this._orientation === 'portrait'
+    , pageHeight: this._pageHeight
+    , pageWidth: this._pageWidth
+    });
+  };
+
+  PrintComponent.prototype.setPageOrientation = function (orientation) {
+    if (orientation === PORTRAIT) {
+      // Flip dimensions for portrait orientation
+      this._pageHeight = PAGE_WIDTH;
+      this._pageWidth = PAGE_HEIGHT;
+    }
+    else if (orientation === LANDSCAPE) {
+      this._pageHeight = PAGE_HEIGHT;
+      this._pageWidth = PAGE_WIDTH;
+    }
+    else {
+      throw new Error('Unknown print orientation: ' + orientation);
+    }
+
+    this._orientation = orientation;
+
+    styler.setPageSize(this._pageWidth + 'px ' + this._pageHeight + 'px');
+  };
+
+  // Export singleton instance
+  module.exports = new PrintComponent();
+
+  },{"../styler/styler":"components/styler","events":1}],"components/slide-number":[function(require,module,exports){
+  module.exports = SlideNumberViewModel;
+
+  function SlideNumberViewModel (slide, slideshow) {
+    var self = this;
+
+    self.slide = slide;
+    self.slideshow = slideshow;
+
+    self.element = document.createElement('div');
+    self.element.className = 'remark-slide-number';
+    self.element.innerHTML = formatSlideNumber(self.slide, self.slideshow);
+  }
+
+  function formatSlideNumber (slide, slideshow) {
+    var format = slideshow.getSlideNumberFormat()
+      , slides = slideshow.getSlides()
+      , current = getSlideNo(slide, slideshow)
+      , total = getSlideNo(slides[slides.length - 1], slideshow)
+      ;
+
+    if (typeof format === 'function') {
+      return format.call(slideshow, current, total);
+    }
+
+    return format
+        .replace('%current%', current)
+        .replace('%total%', total);
+  }
+
+  function getSlideNo (slide, slideshow) {
+    var slides = slideshow.getSlides(), i, slideNo = 0;
+
+    for (i = 0; i <= slide.getSlideIndex() && i < slides.length; ++i) {
+      if (slides[i].properties.count !== 'false') {
+        slideNo += 1;
+      }
+    }
+
+    return Math.max(1, slideNo);
+  }
+
+  },{}],"components/styler":[function(require,module,exports){
+  var resources = require('../../resources')
+    , highlighter = require('../../highlighter')
+    ;
+
+  module.exports = {
+    styleDocument: styleDocument
+  , setPageSize: setPageSize
+  };
+
+  // Applies bundled styles to document
+  function styleDocument () {
+    var headElement, styleElement, style;
+
+    // Bail out if document has already been styled
+    if (getRemarkStylesheet()) {
+      return;
+    }
+
+    headElement = document.getElementsByTagName('head')[0];
+    styleElement = document.createElement('style');
+    styleElement.type = 'text/css';
+
+    // Set title in order to enable lookup
+    styleElement.title = 'remark';
+
+    // Set document styles
+    styleElement.innerHTML = resources.documentStyles;
+
+    // Append highlighting styles
+    for (style in highlighter.styles) {
+      if (highlighter.styles.hasOwnProperty(style)) {
+        styleElement.innerHTML = styleElement.innerHTML +
+          highlighter.styles[style];
+      }
+    }
+
+    // Put element first to prevent overriding user styles
+    headElement.insertBefore(styleElement, headElement.firstChild);
+  }
+
+  function setPageSize (size) {
+    var stylesheet = getRemarkStylesheet()
+      , pageRule = getPageRule(stylesheet)
+      ;
+
+    pageRule.style.size = size;
+  }
+
+  // Locates the embedded remark stylesheet
+  function getRemarkStylesheet () {
+    var i, l = document.styleSheets.length;
+
+    for (i = 0; i < l; ++i) {
+      if (document.styleSheets[i].title === 'remark') {
+        return document.styleSheets[i];
+      }
+    }
+  }
+
+  // Locates the CSS @page rule
+  function getPageRule (stylesheet) {
+    var i, l = stylesheet.cssRules.length;
+
+    for (i = 0; i < l; ++i) {
+      if (stylesheet.cssRules[i] instanceof window.CSSPageRule) {
+        return stylesheet.cssRules[i];
+      }
+    }
+  }
+
+  },{"../../highlighter":14,"../../resources":22}],"components/timer":[function(require,module,exports){
+  var utils = require('../../utils');
+
+  module.exports = TimerViewModel;
+
+  function TimerViewModel (events, element) {
+    var self = this;
+
+    self.events = events;
+    self.element = element;
+
+    self.startTime = null;
+    self.pauseStart = null;
+    self.pauseLength = 0;
+
+    element.innerHTML = '0:00:00';
+
+    setInterval(function() {
+        self.updateTimer();
+      }, 100);
+
+    events.on('start', function () {
+      // When we do the first slide change, start the clock.
+      self.startTime = new Date();
+    });
+
+    events.on('resetTimer', function () {
+      // If we reset the timer, clear everything.
+      self.startTime = null;
+      self.pauseStart = null;
+      self.pauseLength = 0;
+      self.element.innerHTML = '0:00:00';
+    });
+
+    events.on('pause', function () {
+      self.pauseStart = new Date();
+    });
+
+    events.on('resume', function () {
+      self.pauseLength += new Date() - self.pauseStart;
+      self.pauseStart = null;
+    });
+  }
+
+  TimerViewModel.prototype.updateTimer = function () {
+    var self = this;
+
+    if (self.startTime) {
+      var millis;
+      // If we're currently paused, measure elapsed time from the pauseStart.
+      // Otherwise, use "now".
+      if (self.pauseStart) {
+        millis = self.pauseStart - self.startTime - self.pauseLength;
+      } else {
+        millis = new Date() - self.startTime - self.pauseLength;
+      }
+
+      var seconds = Math.floor(millis / 1000) % 60;
+      var minutes = Math.floor(millis / 60000) % 60;
+      var hours = Math.floor(millis / 3600000);
+
+      self.element.innerHTML = hours + (minutes > 9 ? ':' : ':0') + minutes + (seconds > 9 ? ':' : ':0') + seconds;
+    }
+  };
+
+  },{"../../utils":24}]},{},[4]);
