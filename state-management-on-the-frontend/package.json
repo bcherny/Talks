@@ -8,9 +8,9 @@
     "watch": "browser-sync start --no-open --no-ui --server --files slides.md --files styles.css"
   },
   "dependencies": {
-    "static-server": "^2.2.0"
+    "static-server": "^2.2.1"
   },
   "devDependencies": {
-    "browser-sync": "^2.24.4"
+    "browser-sync": "^2.26.3"
   }
 }
