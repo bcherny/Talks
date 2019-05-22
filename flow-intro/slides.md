@@ -1,13 +1,9 @@
 class: center, middle
-# An introduction to Flow
-## Boris Cherny
-### @bcherny
----
-class: center, middle
-# <img src="images/flow-logo.png" style="margin:-25% 0 0 -20%;width:140%" />
+# Flow: The 10-minute Intro
+## By @bcherny
 ---
 class: middle
-## Plan
+## Outline
 1. The problem
 2. The solution
 3. How it works
@@ -18,65 +14,58 @@ class: middle
 class: center, middle
 ## 1. The problem
 ---
+class: middle
 <legend>1. The problem</legend>
 ```js
-class MyComponent extends React.Component {
-  state = {events: {}}
-  render() {
-    return <div>
-      <p>Today is: {this.props.day}/{this.props.month}/{this.props.year}</p>
-      <p>Today's events are:</p>
-      <ul>{this.events.map(event => <li>{event.name}</li></ul>
-      <MonthPicker year={this.props.year} month={this.props.moth} />
-      <button onClick={this.refresh}>Refresh</button>
-    </div>
+function MyComponent(props) {
+  const [events, setEvents] = useState({})
+
+  function refresh() {
+    const events = fetchEvents()
+    setEvents(events)
   }
-  async refresh = () => {
-    const events = this.fetchEvents()
-    this.setState({
-      events: events
-    })
-  }
-  fetchEvents() {
-    new AsyncRequest().setURI('/uri')
-      .setData({
-        month: this.props.month,
-        date: this.props.date,
-        year: this.props.yer
-      })
-      .setMethod('POST').exec();
-  }
+
+  return <div>
+    <p>Today is: {this.props.day}/{this.props.month}/{this.props.year}</p>
+    <p>Today's events are:</p>
+    <ul>{events.map(event => <li>{event.name}</li></ul>
+    <MonthPicker year={props.year} month={props.moth} />
+    <button onClick={refresh()}>Refresh</button>
+  </div>
 }
 ```
 ---
+class: middle
 <legend>1. The problem</legend>
 ```js
-class MyComponent extends React.Component {
-* state = {events: {}}
-  render() {
-    return <div>
-      <p>Today is: {this.props.day}/{this.props.month}/{this.props.year}</p>
-      <p>Today's events are:</p>
-*     <ul>{this.events.map(event => <li>{event.name}</li></ul>
-*     <MonthPicker year={this.props.year} month={this.props.moth} />
-      <button onClick={this.refresh}>Refresh</button>
-    </div>
+function MyComponent(props) {
+* const [events, setEvents] = useState({})
+
+  function refresh() {
+    const events = fetchEvents()
+    setEvents(events)
   }
-  async refresh = () => {
-*   const events = this.fetchEvents()
-    this.setState({
-      events: events
-    })
+
+  return <div>
+*   <p>Today is: {this.props.day}/{this.props.month}/{this.props.year}</p>
+    <p>Today's events are:</p>
+*   <ul>{events.map(event => <li>{event.name}</li></ul>
+*   <MonthPicker year={props.year} month={props.moth} />
+*   <button onClick={refresh()}>Refresh</button>
+  </div>
+}
+```
+---
+class: middle
+<legend>1. The problem</legend>
+```js
+function confuseEngineer() {
+  if (typeof arguments[0] === 'number') {
+    return [3]
+  } else if (typeof arguments[1] !== 'string') {
+    return confuseEngineer(arguments[2])
   }
-  fetchEvents() {
-*   new AsyncRequest().setURI('/uri')
-      .setData({
-        month: this.props.month,
-*       date: this.props.date,
-*       year: this.props.yer
-      })
-      .setMethod('POST').exec();
-  }
+  return [] + 4
 }
 ```
 ---
@@ -86,6 +75,7 @@ class: center, middle
 class: center, middle
 # <img src="images/flow-logo.png" style="margin:-25% 0 0 -20%;width:140%" />
 ---
+class: middle
 <legend>2. The solution</legend>
 ```js
 // @flow
@@ -96,13 +86,10 @@ type Props = {|
   year: number
 |}
 
-type State = {|
-  events: Array<{name: string}>
-|}
+function MyComponent(props: Props): React.Element<'div'> {
+  const [events, setEvents] = useState({})
 
-class MyComponent extends React.Component<Props, State> {
-  // ...
-}
+// ...
 ```
 ---
 class: center, middle
@@ -124,7 +111,7 @@ class: middle
 ```
 ---
 <legend>3. How it works</legend>
-<span class="PadTop">Flow *unifies* your types</span>
+<span class="PadTop">Flow *unifies* your types\*</span>
 ```js
 function a(x) {
   return x + 4
@@ -132,7 +119,7 @@ function a(x) {
 ```
 ---
 <legend>3. How it works</legend>
-<span class="PadTop">Flow *unifies* your types</span>
+<span class="PadTop">Flow *unifies* your types\*</span>
 ```js
 function a(x) { // x must be a number or a string
   return x + 4  // the return type must be a number or a string
@@ -140,7 +127,7 @@ function a(x) { // x must be a number or a string
 ```
 ---
 <legend>3. How it works</legend>
-<span class="PadTop">Flow *unifies* your types</span>
+<span class="PadTop">Flow *unifies* your types\*</span>
 ```js
 function a(x) { // x must be a number | string
   return x + 4  // the return type must be a number | string
@@ -148,7 +135,7 @@ function a(x) { // x must be a number | string
 ```
 ---
 <legend>3. How it works</legend>
-<span class="PadTop">Flow *unifies* your types</span>
+<span class="PadTop">Flow *unifies* your types\*</span>
 ```js
 function a(x) { // x must be a number
   return x + 4  // the return type must be a number
@@ -158,7 +145,7 @@ function a(x) { // x must be a number
 ```
 ---
 <legend>3. How it works</legend>
-<span class="PadTop">Flow *unifies* your types</span>
+<span class="PadTop">Flow *unifies* your types\*</span>
 ```js
 function a(x) { // x must be a string
   return x + 4  // the return type must be a string
@@ -168,7 +155,7 @@ function a(x) { // x must be a string
 ```
 ---
 <legend>3. How it works</legend>
-<span class="PadTop">Flow *unifies* your types</span>
+<span class="PadTop">Flow *unifies* your types\*</span>
 ```js
 function a(x) { // x must be a number | string
   return x + 4  // the return type must be a number | string
@@ -179,7 +166,7 @@ a('foo')
 ```
 ---
 <legend>3. How it works</legend>
-<span class="PadTop">Flow *unifies* your types</span>
+<span class="PadTop">Flow *unifies* your types\*</span>
 ```js
 *function a(x: number): number { // x must be a number
   return x + 4  // the return type must be a number
@@ -194,10 +181,10 @@ a('foo') // Error: Cannot call a with 'foo' bound to x because
 <span class="PadTop">Flow takes *control flow* into account</span>
 ```js
 function a(x: number | string): number | string {
-  if (typeof x === 'number') {
+* if (typeof x === 'number') {
     return x * 4 // x must be a number
   }
-  return x.toUpperCase() // x must be a string
+* return x.toUpperCase() // x must be a string
 }
 
 a(42) // number | string
@@ -205,17 +192,17 @@ a('x') // number | string
 ```
 ---
 <legend>3. How it works</legend>
-<span class="PadTop">Flow takes *control flow* into account</span>
+<span class="PadTop">Like Hack, Flow requires annotations for module exports</span>
 ```js
-function a(x: number | string): number | string {
+function a(x) {
   if (typeof x === 'number') {
-    return x * 4 // x must be a number
+    return x * 4
   }
-  return x.toUpperCase() // x must be a string
+  return x.toUpperCase()
 }
 
-a(42) // number | string
-a('x') // number | string
+*module.exports = a // Error: Missing type annotation for x.
+*                  //        Missing type annotation at function return.
 ```
 ---
 <legend>3. How it works</legend>
@@ -296,7 +283,7 @@ type UserWithName = {| ...User, ...Name |}
 // Equivalent to:
 type UserWithName = {| userID: FBID, name: string |}
 ```
-<small>Hack equivalent</small>
+<small>Hack equivalent (sort of)</small>
 ```js
 interface User {
   public FBID $userID;
@@ -311,7 +298,7 @@ trait UserWithName {
 ```
 ---
 <legend>4. Features</legend>
-<span class="PadTop">Type reflection</span>
+<span class="PadTop">Type queries</span>
 ```js
 const user = {userID: 3}
 
@@ -333,9 +320,20 @@ const user: User = {userID: 3}
 ```
 ---
 <legend>4. Features</legend>
+<span class="PadTop">Explicit type parameter annotations</span>
+```js
+function a<T>(x: T): T {
+  return x
+}
+
+a<number>(4)
+```
+---
+<legend>4. Features</legend>
 <span class="PadTop">Literal types</span>
 ```js
-type Day = 'Monday'
+type Day =
+  | 'Monday'
   | 'Tuesday'
   | 'Wednesday'
   | 'Thursday'
@@ -376,11 +374,8 @@ type Props = {|
   a: number
 |}
 
-type State = {|
-  b: string
-|}
-
-class MyComponent extends React.Component<Props, State> {
+function MyComponent(props: Props) {
+  const [a, useA] = useState(3)
   // ...
 }
 ```
@@ -392,50 +387,9 @@ type Props = {|
   a: number
 |}
 
-type State = {|
-  b: string
-|}
-
-class MyComponent extends React.Component<Props, State> {
+function MyComponent(props: Props) {
+  const [a, useA] = useState<$ReadOnlyArray<number>>([3])
   // ...
-}
-```
----
-<legend>5. Common patterns</legend>
-<span class="PadTop">Functional React components</span>
-```js
-type Props = {|
-  a: number
-|}
-
-function MyComponent(props: Props): React.Node {
-  // ...
-}
-```
----
-<legend>5. Common patterns</legend>
-<span class="PadTop">Relay</span>
-```js
-import type {MyComponent_myGraphQLQuery} from 'MyComponent_myGraphQLQuery.graphql'
-
-type Props = {|
-  a: number
-|}
-
-type QueryRendererProps = {|
-  error?: Error,
-  props?: MyComponent_myGraphQLQuery
-|}
-
-function MyComponent(props: Props): React.Node {
-  return <QueryRenderer
-    environment={RelayFBEnvironment}
-    query={myGraphQLQuery}
-    variables={{a: 1}}
-    render={({error, props}: QueryRendererProps): React.Node => {
-      // ...
-    }}
-  />
 }
 ```
 ---
@@ -444,21 +398,23 @@ class: center, middle
 ---
 <legend>6. Common pitfalls</legend>
 <span class="PadTop"></span>
-- Avoid `any`, `Object`, and `*` like 🔥
+- Avoid `any`/`Function`/`Object`/`*` like 🔥
 
 ```js
-// Good
-type A = mixed
-type B = Object
-type C = *
-
 // Bad
 type A = any
-type B = {b: string}
+type B = Object
+type C = *
+type D = Function
+
+// Good
+type A = mixed
+type B = {|b: string|}
 type C = mixed
+type D = number => string
 ```
 
-<small>Use `@flow strict` or `@flow strict-local` to enforce this.</small>
+<small>We use `@flow strict-local` to enforce this.</small>
 ---
 <legend>6. Common pitfalls</legend>
 <span class="PadTop"></span>
@@ -466,15 +422,15 @@ type C = mixed
 - Avoid `&`, use `...` instead
 
 ```js
-// Good
-type A = {|a: number|}
-type B = {|b: string|}
-type C = {|...A, ...B|}
-
 // Bad
 type A = {a: number}
 type B = {b: string}
 type C = A & B
+
+// Good
+type A = {|a: number|}
+type B = {|b: string|}
+type C = {|...A, ...B|}
 ```
 
 <small>We have a lint rule to enforce this.</small>
@@ -489,149 +445,7 @@ type C = A & B
 | `{a: number}` | `shape('a' => num, ...)` |
 | `{︳a: number︳}` | `shape('a' => num)` |
 ---
-class: center, middle
-# 7. Workflow
----
-<legend>7. Workflow</legend>
 <span class="PadTop"></span>
-① Type your code manually, if types are obvious
+## Thanks! 🎉
 
-```js
-function timesSeven(n) {
-  return n * 7
-}
-
-module.exports = timesSeven
-```
----
-<legend>7. Workflow</legend>
-<span class="PadTop"></span>
-① Type your code manually, if types are obvious
-
-```js
-*function timesSeven(n: number): number {
-  return n * 7
-}
-
-module.exports = timesSeven
-```
----
-<legend>7. Workflow</legend>
-<span class="PadTop"></span>
-② TBGS & look at how people use your code
-
-```js
-// Foobjord.js
-class Foobjord {
-  fwonk(zoom) {
-    return zoom.froomba.hello()
-  }
-}
-
-module.exports = Foobjord
-
-// Main.js
-const f = new Foobjord
-f.fwonk({
-  froomba: {
-    hello() { return 12 }
-  }
-})
-```
----
-<legend>7. Workflow</legend>
-<span class="PadTop"></span>
-② TBGS & look at how people use your code
-
-```js
-// Foobjord.js
-*type Zoom = {| hello(): number |}
-
-class Foobjord {
-* fwonk(zoom: Zoom): number {
-    return zoom.froomba.hello()
-  }
-}
-
-module.exports = Foobjord
-
-// Main.js
-const f = new Foobjord
-f.fwonk({
-  froomba: {
-    hello() { return 12 }
-  }
-})
-```
----
-<legend>7. Workflow</legend>
-<span class="PadTop"></span>
-③ Set a debugger and run your code
-
-```js
-function mystery(a) {
-  dosomething()
-}
-```
----
-<legend>7. Workflow</legend>
-<span class="PadTop"></span>
-③ Set a debugger and run your code
-
-```js
-function mystery(a) {
-* debugger
-  dosomething()
-}
-```
----
-<legend>7. Workflow</legend>
-<span class="PadTop"></span>
-③ Set a debugger and run your code
-<span class="PadTop"></span>
-<img src="images/devtools.png" />
----
-<legend>7. Workflow</legend>
-<span class="PadTop"></span>
-③ Set a debugger and run your code
-<span class="PadTop"></span>
-<img src="images/devtools-hover.png" />
----
-<legend>7. Workflow</legend>
-<span class="PadTop"></span>
-④ Add `@typechecks`
-
-<small>To throw runtime exceptions in your sandbox.</small>
-```js
-/**
- * Copyright 2004-present Facebook. All Rights Reserved.
- *
- * @flow strict
- * @format
- * @emails oncall+chats_in_groups_fb
- */
-```
----
-<legend>7. Workflow</legend>
-<span class="PadTop"></span>
-④ Add `@typechecks`
-
-<small>To throw runtime exceptions in your sandbox.</small>
-```js
-/**
- * Copyright 2004-present Facebook. All Rights Reserved.
- *
- * @flow strict
- * @format
- * @emails oncall+chats_in_groups_fb
-* * @typechecks
- */
-```
----
-<legend>7. Workflow</legend>
-<span class="PadTop"></span>
-## Happy fixing! 🎉
-
-Tasks: [fburl.com/flow-fixathon](https://fburl.com/flow-fixathon)
-<br><br>
 Flow docs: [flow.org](https://flow.org)
