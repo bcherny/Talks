@@ -362,6 +362,10 @@ enqueueMutation(environment, config)
 createUseMutation(graphql, config)
 ```
 ---
+class: center, middle
+<legend>APIs > mutating</legend>
+<img src="./images/mutation.png" class="fuller" />
+---
 <legend>APIs > mutating</legend>
 ```js
 *commitMutation(environment, config)
@@ -497,7 +501,49 @@ commitMutation(environment, config)
 *enqueueMutation(environment, config)
 createUseMutation(graphql, config)
 ```
-<img src="./images/waterfall.png" class="video" />
+<img src="./images/waterfall-good.png" class="video" />
+---
+<legend>APIs > mutating</legend>
+```js
+commitMutation(environment, config)
+*enqueueMutation(environment, config)
+createUseMutation(graphql, config)
+```
+<img src="./images/waterfall-bad.png" class="video" />
+---
+<legend>APIs > mutating</legend>
+```js
+*commitMutation(environment, config)
+enqueueMutation(environment, config)
+createUseMutation(graphql, config)
+```
+
+| action | UI state | optimistic stack |
+| ---|--|--|
+| (start) | <img src="./images/join-button.png" style="margin-bottom: -11px; width:200px" /> | `[]`
+| click Join | <img src="./images/leave-button.png" style="margin-bottom: -11px; width:200px" /> | `[Cancel]`
+| (Join returns) | <img src="./images/leave-button.png" style="margin-bottom: -11px; width:200px" /> | `[]`
+| click Cancel | <img src="./images/join-button.png" style="margin-bottom: -11px; width:200px" /> | `[Join]`
+| (Cancel returns) | <img src="./images/join-button.png" style="margin-bottom: -11px; width:200px" /> | `[]`
+
+<img src="./images/waterfall-good.png" style="display: block; margin: 20px auto; width: 330px;" />
+---
+<legend>APIs > mutating</legend>
+```js
+*commitMutation(environment, config)
+enqueueMutation(environment, config)
+createUseMutation(graphql, config)
+```
+
+| action | UI state | optimistic stack |
+| ---|--|--|
+| (start) | <img src="./images/join-button.png" style="margin-bottom: -11px; width:200px" /> | `[]`
+| click Join | <img src="./images/leave-button.png" style="margin-bottom: -11px; width:200px" /> | `[Cancel]`
+| click Cancel | <img src="./images/join-button.png" style="margin-bottom: -11px; width:200px" /> | `[Cancel, Join]`
+| (Cancel returns) | <img src="./images/leave-button.png" style="margin-bottom: -11px; width:200px" /> | `[Cancel]`
+| (Join returns) | <img src="./images/leave-button.png" style="margin-bottom: -11px; width:200px" /> | `[]`
+
+<img src="./images/waterfall-bad.png" style="display: block; margin: 20px auto; width: 330px;" />
 ---
 <legend>APIs > mutating</legend>
 ```js
@@ -506,16 +552,13 @@ commitMutation(environment, config)
 createUseMutation(graphql, config)
 ```
 
-| action | UI state | optimistic stack |
-| ---|--|--|
-| (start) | Join | `[]`
-| click Join | Leave | `[Leave]`
-| click Leave | Join | `[Leave, Join]`
-| (Leave returns) | Leave | `[Leave]`
-| (Join returns) | Leave | `[]`
-
-<img src="./images/waterfall.png" style="display: block; margin: 20px auto; width: 330px;" />
-
+| action | UI state | optimistic stack | network queue |
+| ---|--|--|--|
+| (start) | <img src="./images/join-button.png" style="margin-bottom: -11px; width:200px" /> | `[]` | `[]`
+| click Join | <img src="./images/leave-button.png" style="margin-bottom: -11px; width:200px" /> | `[Cancel]` | `[]`
+| click Cancel | <img src="./images/join-button.png" style="margin-bottom: -11px; width:200px" /> | `[Cancel, Join]` | `[Cancel]`
+| (Join returns) | <img src="./images/join-button.png" style="margin-bottom: -11px; width:200px" /> | `[Cancel]` | `[Cancel]`
+| (Cancel returns) | <img src="./images/join-button.png" style="margin-bottom: -11px; width:200px" /> | `[]` | `[]`
 ---
 <legend>APIs > mutating</legend>
 ```js
@@ -534,10 +577,6 @@ createUseMutation(graphql, config)
   <video src="./images/queue-after.mov" class="small-video" autoplay loop />
   </div>
 </div>
----
-class: center, middle
-<legend>APIs > mutating</legend>
-<img src="./images/mutation.png" class="fuller" />
 ---
 class: center, middle
 <legend>deep dives > actors</legend>
