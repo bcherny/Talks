@@ -75,23 +75,6 @@ class: center, middle
 class: center, middle
 # <img src="images/flow-logo.png" style="margin:-25% 0 0 -20%;width:140%" />
 ---
-class: middle
-<legend>2. The solution</legend>
-```js
-// @flow
-
-type Props = {|
-  day: number,
-  month: number,
-  year: number
-|}
-
-function MyComponent(props: Props): React.Element<'div'> {
-  const [events, setEvents] = useState({})
-
-// ...
-```
----
 class: center, middle
 ## 3. How it works
 ---
@@ -115,14 +98,6 @@ class: middle
 ```js
 function a(x) {
   return x + 4
-}
-```
----
-<legend>3. How it works</legend>
-<span class="PadTop">Flow *unifies* your types\*</span>
-```js
-function a(x) { // x must be a number or a string
-  return x + 4  // the return type must be a number or a string
 }
 ```
 ---
@@ -203,6 +178,20 @@ function a(x) {
 
 *module.exports = a // Error: Missing type annotation for x.
 *                  //        Missing type annotation at function return.
+```
+---
+<legend>3. How it works</legend>
+<span class="PadTop">Like Hack, Flow requires annotations for module exports</span>
+```js
+*function a(x: number | string): number | string {
+  if (typeof x === 'number') {
+    return x * 4
+  }
+  return x.toUpperCase()
+}
+
+module.exports = a
+
 ```
 ---
 <legend>3. How it works</legend>
@@ -351,12 +340,12 @@ const b: Day = 'Sun' // Error: Cannot assign 'Sun' to b
 type User = {| name: string, userID: FBID |}
 
 // Type of object's keys
-type UserFields = $Keys<User> // Array<'name' | 'userID'>
-const a: UserFields = 'name' // OK
-const b: UserFields = 'name2' // Error!
+type UserFields = $Keys<User>                // 'name' | 'userID'
+const a: UserFields = 'name'                 // OK
+const b: UserFields = 'name2'                // Error!
 
 // Type of object's values
-type UserTypes = $Values<User> // Array<string | FBID>
+type UserTypes = $Values<User>               // string | FBID
 
 // Type of a value at a specific key
 type NameType = $ElementType<User, 'userID'> // FBID

@@ -1,0 +1,199 @@
+.relay-full-screen {
+  align-items: center;
+  background: #f26b00;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+}
+
+.relay-full-screen img {
+  flex: 1;
+  max-width: 60%;
+}
+
+h3.Subtitle {
+  color: #222;
+  font-size: 28px;
+  font-weight: 300;
+  margin: -30px 0 100px;
+}
+
+p {
+  margin: 0;
+}
+
+legend {
+  color: #999;
+  font-size: 20px;
+  position: absolute;
+    left: 20px;
+    top: 10px;
+}
+
+small,
+table {
+  font-size: 20px;
+}
+
+right {
+  display: block;
+  text-align: right;
+}
+
+.remark-slide-content {
+  font-size: 32px;
+}
+
+.remark-slide-content td,
+.remark-slide-content th {
+  border-width: 0 0 1px 0;
+  text-align: left;
+}
+
+.remark-slide-number {
+  font-size: 22px;
+}
+
+img.full {
+  height: 100%;
+  margin: -1em -4em -1em -4em;
+  object-fit: contain;
+  width: 100%;
+}
+
+.smaller {
+  margin-top: 35px;
+  opacity: .7;
+  font-size: .8em;
+}
+.smaller h2 {
+  font-size: 2em;
+}
+
+body {
+  color: #343435;
+  font: 300 18px/36px Roboto;
+}
+
+li {
+  margin-bottom: 20px;
+}
+
+h2, h3, h4 {
+  line-height: 48px;
+}
+
+blockquote {
+  border-left: 1em solid #aeaebb;
+  font-style: italic;
+  padding-left: 1em;
+  text-align: left;
+}
+
+blockquote h2 {
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+h3, h3 a {
+  color: #aeaebb;
+}
+
+h2 ~ h3 {
+  margin-top: -1em;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #ccc;
+  padding: 7px 10px;
+}
+
+.PadTop {
+  display: block;
+  padding-top: 100px;
+}
+
+/* .remark-slide-content {
+  padding-top: 100px;
+} */
+
+.remark-code, .remark-inline-code {
+  font-family: 'Fira Code';
+  font-weight: 400;
+  font-variant-ligatures: none;
+}
+
+.remark-code {
+  font-size: 14px;
+}
+
+.pink {
+  background: #f90041;
+  color: #fff;
+}
+
+.blue {
+  color: #006def;
+  font-size: 28px;
+  line-height: 20px;
+}
+
+td .blue {
+  vertical-align: middle;
+}
+
+.medium {
+  font-weight: 400;
+}
+
+.heavy {
+  font-weight: 600;
+}
+
+li > ul {
+  margin-top: 15px;
+}
+
+.fuller {
+  position: absolute;
+    left: 0;
+    top: 80px;
+  width: 100%;
+}
+
+.columns {
+  display: flex;
+  margin-left: -80px;
+}
+
+.columns div + div {
+  margin-left: 20px;
+}
+
+.video {
+  display: block;
+  margin: 100px auto;
+  width: 500px;
+}
+
+.small-video {
+  display: block;
+  margin: 0 auto;
+  width: 400px;
+}
