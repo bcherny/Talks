@@ -391,6 +391,8 @@ function useChangeName(
     `,
     onCompleted,
     onError,
+    optimisticResponse, // or, optimisticUpdater
+    updater,
     variables: {groupID, name}
   })
 }
@@ -428,6 +430,26 @@ commitMutation(environment, {
 ```
 ---
 <legend>APIs > mutating</legend>
+## mutations
+- a way to call a Hack function
+- update data & fetch new data in one request
+---
+<legend>APIs > mutating</legend>
+## handling responses
+- **principle**: tell people when something succeeded/failed; stronger intent -> stronger affordance
+  - eg. optimistic update
+  - eg. optimistic update + confirmation toast <img src="./images/success.png" width="300px" />
+  - eg. optimistic update + confirmation toast w/ Undo <img src="./images/success-undo.png" width="300px" />
+---
+<legend>APIs > mutating</legend>
+## handling errors
+- `onCompleted(data, errors)`
+- `onError(error)`
+- **principle**: give people a way to recover
+  - eg. optimistic update + error toast w/ Try Again <img src="./images/error.png" width="300px" style="margin-bottom:-25px" />
+- Errors: [Scuba > GraphQL Exceptions](https://our.intern.facebook.com/intern/scuba/query?dataset=graphql_exception)
+---
+<legend>APIs > mutating</legend>
 ```js
 *commitMutation(environment, config)
 enqueueMutation(environment, config)
@@ -448,6 +470,69 @@ commitMutation(environment, {
   ...
 )
 ```
+---
+<legend>APIs > mutating</legend>
+```js
+*commitMutation(environment, config)
+enqueueMutation(environment, config)
+createUseMutation(graphql, config)
+
+// Mutation
+commitMutation(environment, {
+  mutation: graphql`
+    mutation ChangeGroupName($input: ChangeGroupNameData!) {
+      change_group_name(data: $input) {
+        group {
+          name
+        }
+      }
+    }
+  `,
+  optimisticResponse: {
+    change_group_name: {
+      group: {
+        name: 'New beanz'
+      }
+    }
+  }
+)
+```
+---
+<legend>APIs > mutating</legend>
+```js
+*commitMutation(environment, config)
+enqueueMutation(environment, config)
+createUseMutation(graphql, config)
+
+// Mutation
+commitMutation(environment, {
+  mutation: graphql`
+    mutation ChangeGroupName($input: ChangeGroupNameData!) {
+      change_group_name(data: $input) {
+        group {
+          name
+        }
+      }
+    }
+  `,
+  optimisticUpdater(store) {
+    const group = store.get(groupID)
+    group.setValue('New beanz', 'name')
+  }
+)
+```
+---
+class: middle
+<legend>APIs > mutating</legend>
+
+## optimistic updates
+
+- prefer them > loading states
+- prefer `optimisticResponse` > `optimisticUpdater`
+- use them when the mutation is:
+  - not critical
+  - predictable
+  - reliable
 ---
 <legend>APIs > mutating</legend>
 ```js
@@ -474,6 +559,7 @@ function useChangeName(
     `,
     onCompleted,
     onError,
+    optimisticResponse, // or, optimisticUpdater
     variables: {groupID, name}
   })
 }
