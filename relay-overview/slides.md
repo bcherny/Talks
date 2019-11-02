@@ -7,9 +7,7 @@ class: middle
 - APIs
   - querying
   - mutating
-- deep dives
-  - actors
-  - queuing
+- actors
 ---
 class: middle
 <legend>architecture</legend>
@@ -213,20 +211,28 @@ usePaginationFragment(graphql, fragmentReference)
 useLazyLoadQuery(graphql, vars)
 *usePreloadedQuery(graphql, queryReference)
 
-// Fragments
-useFragment(graphql, fragmentReference)
-useRefetchableFragment(graphql, fragmentReference)
-usePaginationFragment(graphql, fragmentReference)
+// MyQueryRoot.entrypoint.js
+const entrypoint = {
+  getPreloadProps: ({actorID, groupID}) => ({
+    queries: {
+      myQueryReference: {
+        environmentProviderOptions: {actorID},
+        parameters: require('MyQuery$Parameters'),
+        variables: {groupID}
+      }
+    }
+  }),
+  root: JSResourceForInteraction('m#MyQueryRoot.react')
+}
 
-TODO: entrypoint
-
-const {group} = usePreloadedQuery<Q>(graphql`
-  query Q {
+// MyQueryRoot.react.js
+const {group} = usePreloadedQuery(graphql`
+  query MyQuery {
     group(id: $id) {
       name
     }
   }
-`, queryReference)
+`, myQueryReference)
 ```
 ---
 <legend>APIs > querying</legend>
@@ -373,7 +379,7 @@ enqueueMutation(environment, config)
 createUseMutation(graphql, config)
 
 function useChangeName(
-  groupID: FBID,
+  group_id: FBID,
   name: string,
   onCompleted: ChangeGroupNameResponse => void,
   onError: Error => void
@@ -393,7 +399,7 @@ function useChangeName(
     onError,
     optimisticResponse, // or, optimisticUpdater
     updater,
-    variables: {groupID, name}
+    variables: {group_id, name}
   })
 }
 ```
@@ -435,6 +441,13 @@ commitMutation(environment, {
 - update data & fetch new data in one request
 ---
 <legend>APIs > mutating</legend>
+## handling loading states
+- **principle**: always show that something happened
+  - eg. optimistic update
+  - eg. disable the button that triggered it
+  - eg. show a glimmer
+---
+<legend>APIs > mutating</legend>
 ## handling responses
 - **principle**: tell people when something succeeded/failed; stronger intent -> stronger affordance
   - eg. optimistic update
@@ -447,7 +460,7 @@ commitMutation(environment, {
 - `onError(error)`
 - **principle**: give people a way to recover
   - eg. optimistic update + error toast w/ Try Again <img src="./images/error.png" width="300px" style="margin-bottom:-25px" />
-- Errors: [Scuba > GraphQL Exceptions](https://our.intern.facebook.com/intern/scuba/query?dataset=graphql_exception)
+- No need to log errors. Already in [Scuba > GraphQL Exceptions](https://our.intern.facebook.com/intern/scuba/query?dataset=graphql_exception)
 ---
 <legend>APIs > mutating</legend>
 ```js
@@ -541,7 +554,7 @@ commitMutation(environment, config)
 createUseMutation(graphql, config)
 
 function useChangeName(
-  groupID: FBID,
+  group_id: FBID,
   name: string,
   onCompleted: ChangeGroupNameResponse => void,
   onError: Error => void
@@ -560,7 +573,7 @@ function useChangeName(
     onCompleted,
     onError,
     optimisticResponse, // or, optimisticUpdater
-    variables: {groupID, name}
+    variables: {group_id, name}
   })
 }
 ```
@@ -664,39 +677,136 @@ createUseMutation(graphql, config)
   </div>
 </div>
 ---
+<legend>APIs > mutating</legend>
+```js
+commitMutation(environment, config)
+enqueueMutation(environment, config)
+*createUseMutation(graphql, config)
+
+// Mutation
+const useChangeGroupName = createUseMutation(
+  graphql`
+    mutation ChangeGroupName($input: ChangeGroupNameData!) {
+      change_group_name(data: $input) {
+        group {name}
+      }
+    }
+  `,
+  input => ({
+    change_group_name: {
+      group: {
+        name: input.name
+      }
+    }
+  })
+)
+
+// In a React component...
+const changeGroupName = useChangeGroupName()
+
+changeGroupName({group_id: '123', name: 'New beanz'})
+  .then(response => { /* success */ })
+  .catch(error => { /* error */ })
+```
+---
+class: middle
+<legend>APIs > mutating</legend>
+## `createUseMutation`
+- Porcelain for `enqueueMutation`
+- `Promise`-based API
+- Environment-aware
+- More intuitive success/error callbacks
+---
 class: center, middle
-<legend>deep dives > actors</legend>
+## actors
+---
+class: middle
+<legend>actors</legend>
+## definitions
+- **account**: who you're logged in as
+- **user** (or, "actor"): who you're acting as
+
+<small>*41 kinds of actors at time of writing</small>
+---
+class: center, middle
+<legend>actors</legend>
+<img src="./images/actor-0.png" class="fuller" style="top: 40px" />
+---
+class: center, middle
+<legend>actors</legend>
+<img src="./images/actor-1.png" class="fuller" style="top: 40px" />
+---
+class: center, middle
+<legend>actors</legend>
+<img src="./images/actor-2.png" class="fuller" style="top: 40px" />
+---
+class: center, middle
+<legend>actors</legend>
 <img src="./images/env.png" class="full" />
 ---
 class: center, middle
-<legend>deep dives > actors</legend>
+<legend>actors</legend>
 <img src="./images/envs.png" class="full" />
 ---
 class: middle
-<legend>deep dives > actors</legend>
+<legend>actors</legend>
 ```js
-<ActorProvider initialActorID="a" readonly={true}>
-  <Feed>                                                // actor = a
-    <ActorProvider initialActorID="b" readonly={true}>
-      <Media>                                           // actor = b
-        <Image />                                       // actor = b
-      </Media>
+<ActorProvider initialActorID="123" readonly={true}>
+  <TopBar />                                              // actor = 123
+  <GroupMall>                                             // actor = 123
+    <ActorProvider initialActorID="456" readonly={true}>  // actor = 123
+      <GroupMallFeed />                                   // actor = 456
     </ActorProvider>
-  </Feed>
+  </GroupMall>
 </ActorProvider>
 ```
 ---
 class: center, middle
-<legend>deep dives > actors</legend>
+<legend>actors</legend>
 <img src="./images/av.png" class="fuller" />
 ---
-<legend>deep dives > queuing</legend>
-Click button
-Dispatch Join mutation
-Optimistically update the UI to "Requested"
-Click button again
-Dispatch Leave mutation
-Optimistically update the UI to "Join"
-Leave mutation completes. Update Relay cache with server response (to "Join")
-Join mutation completes. Update Relay cache with server response (to "Requested")
+class: middle
+<legend>actors</legend>
+## getting the current actor
+```js
+const [actorID] = useActor()
+
+// or
+{
+  viewer {
+    actor {
+      id
+    }
+  }
+}
+```
 ---
+class: middle
+<legend>actors</legend>
+## setting the current actor
+```js
+<ActorProvider initialActorID="123" scope="456">
+  <MyComponent />
+</ActorProvider>
+
+// MyComponent.react.js
+const [actorID, setActorID] = useActor()
+setActorID('789')
+```
+---
+class: middle
+<legend>actors</legend>
+## actors
+- many actors per page
+- set automatically on all GraphQL reads/writes
+- totally sandboxed data
+---
+class: center, middle
+## thanks!
+---
+class: middle
+## learn more:
+
+- fburl.com/guided-tour-of-relay
+- fburl.com/relay-api
+- fburl.com/actors-on-comet
