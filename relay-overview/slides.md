@@ -12,20 +12,20 @@ class: middle
 class: middle
 <legend>architecture</legend>
 ## architecture
-- compiler
+- react-relay
 - runtime
   - environment
      - store
      - network
-- comet-relay
+- compiler
+---
+class: center, middle
+<legend>architecture</legend>
+<img src="./images/architecture.png" class="fuller" />
 ---
 class: center, middle
 <legend>architecture > compiler</legend>
 <img src="./images/compiler.png" class="fuller" />
----
-class: center, middle
-<legend>architecture > runtime</legend>
-<img src="./images/architecture.png" class="fuller" />
 ---
 class: center, middle
 <legend>architecture > runtime > environment</legend>
@@ -145,6 +145,45 @@ class: center, middle
 <legend>APIs</legend>
 ## relay APIs
 ---
+class: center, middle
+<legend>APIs > querying</legend>
+## query APIs
+---
+class: middle
+<legend>APIs > querying</legend>
+## query/fragment APIs
+- fetch data
+- add it to the right store
+- re-render your react tree
+---
+class: center, middle
+<legend>APIs > querying</legend>
+<img src="./images/query.png" class="fuller" />
+---
+class: center, middle
+<legend>APIs > querying</legend>
+<img src="./images/tree-1.png" class="fuller" />
+---
+class: center, middle
+<legend>APIs > querying</legend>
+<img src="./images/tree-2.png" class="fuller" />
+---
+class: center, middle
+<legend>APIs > querying</legend>
+<img src="./images/tree-3.png" class="fuller" />
+---
+class: center, middle
+<legend>APIs > querying</legend>
+<img src="./images/tree-4.png" class="fuller" />
+---
+class: center, middle
+<legend>APIs > querying</legend>
+<img src="./images/tree-5.png" class="fuller" />
+---
+class: center, middle
+<legend>APIs > querying</legend>
+<img src="./images/tree-6.png" class="fuller" />
+---
 <legend>APIs > querying</legend>
 ```js
 // Queries
@@ -196,10 +235,10 @@ usePaginationFragment(graphql, fragmentReference)
 
 // Data in store
 {
-*  '842472': {
-    __id: '842472',
+*  '123': {
+    __id: '123',
     __typename: 'Group',
-    id: '842472',
+    id: '123',
     name: 'Cool beanz for teens',
   }
 }
@@ -226,13 +265,15 @@ const entrypoint = {
 }
 
 // MyQueryRoot.react.js
-const {group} = usePreloadedQuery(graphql`
-  query MyQuery {
-    group(id: $id) {
-      name
+function MyQueryRoot({myQueryReference}) {
+  const {group} = usePreloadedQuery(graphql`
+    query MyQuery {
+      group(id: $id) {
+        name
+      }
     }
-  }
-`, myQueryReference)
+  `, myQueryReference)
+}
 ```
 ---
 <legend>APIs > querying</legend>
@@ -334,43 +375,26 @@ loadNext(4)
 ```
 ---
 class: center, middle
-<legend>APIs > querying</legend>
-<img src="./images/query.png" class="fuller" />
+<legend>APIs > mutating</legend>
+## mutation APIs
+---
+class: middle
+<legend>APIs > mutating</legend>
+## mutations
+- a way to call a Hack function from JS
+- write data & fetch new data in one request
+- add it to the right store
 ---
 class: center, middle
-<legend>APIs > querying</legend>
-<img src="./images/tree-1.png" class="fuller" />
----
-class: center, middle
-<legend>APIs > querying</legend>
-<img src="./images/tree-2.png" class="fuller" />
----
-class: center, middle
-<legend>APIs > querying</legend>
-<img src="./images/tree-3.png" class="fuller" />
----
-class: center, middle
-<legend>APIs > querying</legend>
-<img src="./images/tree-4.png" class="fuller" />
----
-class: center, middle
-<legend>APIs > querying</legend>
-<img src="./images/tree-5.png" class="fuller" />
----
-class: center, middle
-<legend>APIs > querying</legend>
-<img src="./images/tree-6.png" class="fuller" />
+<legend>APIs > mutating</legend>
+<img src="./images/mutation.png" class="fuller" />
 ---
 <legend>APIs > mutating</legend>
 ```js
 commitMutation(environment, config)
 enqueueMutation(environment, config)
-createUseMutation(graphql, config)
+createUseMutation(graphql, config) // unofficial!
 ```
----
-class: center, middle
-<legend>APIs > mutating</legend>
-<img src="./images/mutation.png" class="fuller" />
 ---
 <legend>APIs > mutating</legend>
 ```js
@@ -435,11 +459,7 @@ commitMutation(environment, {
 }
 ```
 ---
-<legend>APIs > mutating</legend>
-## mutations
-- a way to call a Hack function
-- update data & fetch new data in one request
----
+class: middle
 <legend>APIs > mutating</legend>
 ## handling loading states
 - **principle**: always show that something happened
@@ -447,6 +467,7 @@ commitMutation(environment, {
   - eg. disable the button that triggered it
   - eg. show a glimmer
 ---
+class: middle
 <legend>APIs > mutating</legend>
 ## handling responses
 - **principle**: tell people when something succeeded/failed; stronger intent -> stronger affordance
@@ -454,6 +475,7 @@ commitMutation(environment, {
   - eg. optimistic update + confirmation toast <img src="./images/success.png" width="300px" />
   - eg. optimistic update + confirmation toast w/ Undo <img src="./images/success-undo.png" width="300px" />
 ---
+class: middle
 <legend>APIs > mutating</legend>
 ## handling errors
 - `onCompleted(data, errors)`
@@ -580,35 +602,19 @@ function useChangeName(
 ---
 <legend>APIs > mutating</legend>
 ```js
-commitMutation(environment, config)
-*enqueueMutation(environment, config)
+*commitMutation(environment, config)
+enqueueMutation(environment, config)
 createUseMutation(graphql, config)
 ```
-<video src="./images/queue-before.mov" class="video" autoplay />
+<video src="./images/queue-before.mov" class="video" autoplay controls loop />
 ---
 <legend>APIs > mutating</legend>
 ```js
-commitMutation(environment, config)
-*enqueueMutation(environment, config)
-createUseMutation(graphql, config)
-```
-<video src="./images/queue-before.mov" class="video" autoplay loop />
----
-<legend>APIs > mutating</legend>
-```js
-commitMutation(environment, config)
-*enqueueMutation(environment, config)
+*commitMutation(environment, config)
+enqueueMutation(environment, config)
 createUseMutation(graphql, config)
 ```
 <img src="./images/waterfall-good.png" class="video" />
----
-<legend>APIs > mutating</legend>
-```js
-commitMutation(environment, config)
-*enqueueMutation(environment, config)
-createUseMutation(graphql, config)
-```
-<img src="./images/waterfall-bad.png" class="video" />
 ---
 <legend>APIs > mutating</legend>
 ```js
@@ -626,6 +632,14 @@ createUseMutation(graphql, config)
 | (Cancel returns) | <img src="./images/join-button.png" style="margin-bottom: -11px; width:200px" /> | `[]`
 
 <img src="./images/waterfall-good.png" style="display: block; margin: 20px auto; width: 330px;" />
+---
+<legend>APIs > mutating</legend>
+```js
+*commitMutation(environment, config)
+enqueueMutation(environment, config)
+createUseMutation(graphql, config)
+```
+<img src="./images/waterfall-bad.png" class="video" />
 ---
 <legend>APIs > mutating</legend>
 ```js
@@ -669,11 +683,11 @@ createUseMutation(graphql, config)
 <div class="columns">
   <div class="column">
   <h4><code>commitMutation</code></h4>
-  <video src="./images/queue-before.mov" class="small-video" autoplay loop />
+  <video src="./images/queue-before.mov" class="small-video" autoplay controls loop />
   </div>
   <div class="column">
   <h4><code>enqueueMutation</code></h4>
-  <video src="./images/queue-after.mov" class="small-video" autoplay loop />
+  <video src="./images/queue-after.mov" class="small-video" autoplay controls loop />
   </div>
 </div>
 ---
