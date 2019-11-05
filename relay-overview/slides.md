@@ -13,11 +13,12 @@ class: middle
 <legend>architecture</legend>
 ## architecture
 - react-relay
-- runtime
+- relay runtime
+  - runtime
   - environment
      - store
      - network
-- compiler
+- relay compiler
 ---
 class: center, middle
 <legend>architecture</legend>
@@ -32,6 +33,13 @@ class: center, middle
 ---
 class: center, middle
 ## relay runtime
+---
+class: middle
+<legend>architecture > runtime</legend>
+## relay runtime
+
+- sends & caches queries + mutations
+- interacts with the network
 ---
 class: center, middle
 <legend>architecture > runtime > environment</legend>
@@ -98,8 +106,8 @@ class: middle
     fragment A on User {
       id
       friends {
-        nodes {
-          name
+        edges {
+          node {name}
         }
       }
     }
@@ -481,31 +489,6 @@ commitMutation(environment, {
 }
 ```
 ---
-class: middle
-<legend>APIs > mutating</legend>
-## handling loading states
-- **principle**: always show that something happened
-  - eg. optimistic update
-  - eg. disable the button that triggered it
-  - eg. show a glimmer
----
-class: middle
-<legend>APIs > mutating</legend>
-## handling responses
-- **principle**: tell people when something succeeded/failed; stronger intent -> stronger affordance
-  - eg. optimistic update
-  - eg. optimistic update + confirmation toast <img src="./images/success.png" width="300px" />
-  - eg. optimistic update + confirmation toast w/ Undo <img src="./images/success-undo.png" width="300px" />
----
-class: middle
-<legend>APIs > mutating</legend>
-## handling errors
-- `onCompleted(data, errors)`
-- `onError(error)`
-- **principle**: give people a way to recover
-  - eg. optimistic update + error toast w/ Try Again <img src="./images/error.png" width="300px" style="margin-bottom:-25px" />
-- No need to log errors. Already in [Scuba > GraphQL Exceptions](https://our.intern.facebook.com/intern/scuba/query?dataset=graphql_exception)
----
 <legend>APIs > mutating</legend>
 ```js
 *commitMutation(environment, config)
@@ -527,6 +510,31 @@ commitMutation(environment, {
   ...
 )
 ```
+---
+class: middle
+<legend>APIs > mutating</legend>
+## handling loading states
+- **ux principle**: always show that something happened
+  - eg. optimistic update
+  - eg. disable the button that triggered it
+  - eg. show a glimmer
+---
+class: middle
+<legend>APIs > mutating</legend>
+## handling responses
+- **ux principle**: tell people when something succeeded/failed; stronger intent -> stronger affordance
+  - eg. update ui
+  - eg. update ui + confirmation toast <img src="./images/success.png" width="300px" />
+  - eg. update ui + confirmation toast w/ Undo <img src="./images/success-undo.png" width="300px" />
+---
+class: middle
+<legend>APIs > mutating</legend>
+## handling errors
+- `onCompleted(data, errors)`
+- `onError(error)`
+- **ux principle**: give people a way to recover
+  - eg. error toast w/ Try Again <img src="./images/error.png" width="300px" style="margin-bottom:-25px" />
+- No need to log errors. Already in [Scuba > GraphQL Exceptions](https://our.intern.facebook.com/intern/scuba/query?dataset=graphql_exception)
 ---
 <legend>APIs > mutating</legend>
 ```js
