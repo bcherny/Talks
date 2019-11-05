@@ -24,8 +24,14 @@ class: center, middle
 <img src="./images/architecture.png" class="fuller" />
 ---
 class: center, middle
+## relay compiler
+---
+class: center, middle
 <legend>architecture > compiler</legend>
 <img src="./images/compiler.png" class="fuller" />
+---
+class: center, middle
+## relay runtime
 ---
 class: center, middle
 <legend>architecture > runtime > environment</legend>
@@ -102,9 +108,19 @@ class: middle
     {
       id: '842472',
       friends: {
-        nodes: [
-          {name: 'Amy'},
-          {name: 'Beth'},
+        edges: [
+          {
+            node: {
+              id: '123',
+              name: 'Amy'
+            }
+          },
+          {
+            node: {
+              id: '456',
+              name: 'Beth'
+            }
+          },
         ]
       }
     }
@@ -118,24 +134,30 @@ class: middle
         __id: '842472',
         __typename: 'User',
         id: '842472',
-        name: 'Joe',
         friends: {__ref: 'client:842472:friends'},
       },
       'client:842472:friends': {
         __id: 'client:842472:friends',
-        __refs: ['123', '456'],
-        __typename: 'UserToFriendsConnection'
+        __typename: 'UserToFriendsConnection',
+        edges: {
+          __refs: [
+            'client:842472:friends:edges:0',
+            'client:842472:friends:edges:1'
+          ]
+        }
+      },
+      'client:842472:friends:edges:0': {
+        __id: 'client:842472:friends:edges:0',
+        __typename: 'FriendsEdge',
+        node: {__ref: '123'}
       },
       '123': {
         __id: '123',
         __typename: 'User',
+        id: '123',
         name: 'Amy'
       },
-      '456': {
-        __id: '456',
-        __typename: 'User',
-        name: 'Beth'
-      }
+      ...
     }
     </code></pre>
   </div>
@@ -235,7 +257,7 @@ usePaginationFragment(graphql, fragmentReference)
 
 // Data in store
 {
-*  '123': {
+   '123': {
     __id: '123',
     __typename: 'Group',
     id: '123',
@@ -450,10 +472,10 @@ commitMutation(environment, {
 
 // Data in store
 {
-   '842472': {
-    __id: '842472',
+   '123': {
+    __id: '123',
     __typename: 'Group',
-    id: '842472',
+    id: '123',
     name: 'New beanz', // Before: 'Cool beanz for teens'
   }
 }
@@ -626,9 +648,9 @@ createUseMutation(graphql, config)
 | action | UI state | optimistic stack |
 | ---|--|--|
 | (start) | <img src="./images/join-button.png" style="margin-bottom: -11px; width:200px" /> | `[]`
-| click Join | <img src="./images/leave-button.png" style="margin-bottom: -11px; width:200px" /> | `[Cancel]`
+| **click Join** | <img src="./images/leave-button.png" style="margin-bottom: -11px; width:200px" /> | `[JOIN]`
 | (Join returns) | <img src="./images/leave-button.png" style="margin-bottom: -11px; width:200px" /> | `[]`
-| click Cancel | <img src="./images/join-button.png" style="margin-bottom: -11px; width:200px" /> | `[Join]`
+| **click Cancel** | <img src="./images/join-button.png" style="margin-bottom: -11px; width:200px" /> | `[CANCEL]`
 | (Cancel returns) | <img src="./images/join-button.png" style="margin-bottom: -11px; width:200px" /> | `[]`
 
 <img src="./images/waterfall-good.png" style="display: block; margin: 20px auto; width: 330px;" />
@@ -651,9 +673,9 @@ createUseMutation(graphql, config)
 | action | UI state | optimistic stack |
 | ---|--|--|
 | (start) | <img src="./images/join-button.png" style="margin-bottom: -11px; width:200px" /> | `[]`
-| click Join | <img src="./images/leave-button.png" style="margin-bottom: -11px; width:200px" /> | `[Cancel]`
-| click Cancel | <img src="./images/join-button.png" style="margin-bottom: -11px; width:200px" /> | `[Cancel, Join]`
-| (Cancel returns) | <img src="./images/leave-button.png" style="margin-bottom: -11px; width:200px" /> | `[Cancel]`
+| **click Join** | <img src="./images/leave-button.png" style="margin-bottom: -11px; width:200px" /> | `[JOIN]`
+| **click Cancel** | <img src="./images/join-button.png" style="margin-bottom: -11px; width:200px" /> | `[JOIN, CANCEL]`
+| (Cancel returns) | <img src="./images/leave-button.png" style="margin-bottom: -11px; width:200px" /> | `[JOIN]`
 | (Join returns) | <img src="./images/leave-button.png" style="margin-bottom: -11px; width:200px" /> | `[]`
 
 <img src="./images/waterfall-bad.png" style="display: block; margin: 20px auto; width: 330px;" />
@@ -668,9 +690,9 @@ createUseMutation(graphql, config)
 | action | UI state | optimistic stack | network queue |
 | ---|--|--|--|
 | (start) | <img src="./images/join-button.png" style="margin-bottom: -11px; width:200px" /> | `[]` | `[]`
-| click Join | <img src="./images/leave-button.png" style="margin-bottom: -11px; width:200px" /> | `[Cancel]` | `[]`
-| click Cancel | <img src="./images/join-button.png" style="margin-bottom: -11px; width:200px" /> | `[Cancel, Join]` | `[Cancel]`
-| (Join returns) | <img src="./images/join-button.png" style="margin-bottom: -11px; width:200px" /> | `[Cancel]` | `[Cancel]`
+| **click Join** | <img src="./images/leave-button.png" style="margin-bottom: -11px; width:200px" /> | `[JOIN]` | `[]`
+| **click Cancel** | <img src="./images/join-button.png" style="margin-bottom: -11px; width:200px" /> | `[JOIN, CANCEL]` | `[CANCEL]`
+| (Join returns) | <img src="./images/join-button.png" style="margin-bottom: -11px; width:200px" /> | `[CANCEL]` | `[]`
 | (Cancel returns) | <img src="./images/join-button.png" style="margin-bottom: -11px; width:200px" /> | `[]` | `[]`
 ---
 <legend>APIs > mutating</legend>
